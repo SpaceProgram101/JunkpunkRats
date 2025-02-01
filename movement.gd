@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var float_duration: float = 0.9
-@export var float_gravity: float = 1000.0
+@export var float_gravity: float = 0
 @export var bullet_scene: PackedScene
 @export var spread_angle: float = 90.0
 @export var num_projectiles: int = 7
@@ -60,7 +60,7 @@ func _physics_process(delta: float) -> void:
 	
 func trigger_cannon_attack():
 	velocity.x = 0
-	velocity.y = -500
+	velocity.y = 0
 	floating = true
 	float_timer = float_duration
 	is_shooting = false
@@ -103,7 +103,7 @@ func _on_frame_changed():
 	if is_shooting:
 		return
 	
-	if $AnimatedSprite2D.frame == fire_frame:
+	if $AnimatedSprite2D.frame == fire_frame and floating == true:
 		shoot_shotgun_blasts()
 		is_shooting = true
 

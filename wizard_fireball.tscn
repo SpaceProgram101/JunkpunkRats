@@ -1,45 +1,59 @@
-[gd_scene load_steps=9 format=3 uid="uid://cb1c6mtm40tbf"]
+[gd_scene load_steps=11 format=3 uid="uid://cb1c6mtm40tbf"]
 
 [ext_resource type="Script" path="res://wizard_fireball.gd" id="1_kfcww"]
-[ext_resource type="Texture2D" uid="uid://cc21gist002up" path="res://spikeball;.png" id="2_omp4h"]
+[ext_resource type="Texture2D" uid="uid://bl5am82fb5yiw" path="res://spikeball; (1).png" id="2_gk6wf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swemh"]
 size = Vector2(4.27637, 5.1714)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xsviw"]
-atlas = ExtResource("2_omp4h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1dac"]
+atlas = ExtResource("2_gk6wf")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_bjts4"]
-atlas = ExtResource("2_omp4h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_kannw"]
+atlas = ExtResource("2_gk6wf")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_24ucq"]
-atlas = ExtResource("2_omp4h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s0u4b"]
+atlas = ExtResource("2_gk6wf")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ptol6"]
-atlas = ExtResource("2_omp4h")
+[sub_resource type="AtlasTexture" id="AtlasTexture_3fby6"]
+atlas = ExtResource("2_gk6wf")
 region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6n7u"]
+atlas = ExtResource("2_gk6wf")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hqecb"]
+atlas = ExtResource("2_gk6wf")
+region = Rect2(64, 128, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_wmenk"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xsviw")
+"texture": SubResource("AtlasTexture_d1dac")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_bjts4")
+"texture": SubResource("AtlasTexture_kannw")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_24ucq")
+"texture": SubResource("AtlasTexture_s0u4b")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ptol6")
+"texture": SubResource("AtlasTexture_3fby6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6n7u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hqecb")
 }],
 "loop": true,
 "name": &"fireball",
-"speed": 5.0
+"speed": 15.0
 }]
 
 [node name="Area2D" type="Area2D"]
@@ -59,3 +73,4 @@ position = Vector2(-1.47825, 0.929689)
 scale = Vector2(0.127475, 0.289948)
 sprite_frames = SubResource("SpriteFrames_wmenk")
 animation = &"fireball"
+frame_progress = 0.00106606
