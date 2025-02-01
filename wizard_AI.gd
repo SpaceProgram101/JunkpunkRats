@@ -5,6 +5,8 @@ var shoot_interval = 2  # Time in seconds between shots
 var next_shoot_time = 0.0
 var speed = 100;
 var direction = -1;
+var max_health = 5
+var current_health = 5
 
 var player  # Reference to the player node
 var attack_range = 300.0

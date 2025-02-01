@@ -7,16 +7,19 @@ var direction: Vector2 = Vector2.ZERO  # Direction of the bullet movement
 var delete_time = 2.0
 
 
-func _ready():
-	sprite.play("fireball")  # Replace with your animation name
-	var timer = get_tree().create_timer(delete_time)
 
+func _ready():
+	#play the animation fireball
+	sprite.play("fireball")  
+	#create a timer, set to the delete time (or two seconds)
+	var timer = get_tree().create_timer(delete_time)
+	#wait for the timer to run out
 	await timer.timeout
-	
+	#delete fireball
 	queue_free()
 	
 func _process(delta):
-	# Move the bullet in the specified direction
+	#increment distance by multiplying direction, speed, and the current time.
 	position += direction * speed * delta
 
 	# Optionally add collision handling here (e.g. hit detection)

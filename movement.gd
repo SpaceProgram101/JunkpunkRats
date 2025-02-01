@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+#create variables that access things outside of the main script
 @export var float_duration: float = 0.9
 @export var float_gravity: float = 0
 @export var bullet_scene: PackedScene
@@ -16,15 +17,18 @@ const JUMP_VELOCITY = -700.0
 var GRAVITY = 2500.0
 
 func _ready():
+	#connect the code with the sprite animations when each frame changes 
 	$AnimatedSprite2D.connect("frame_changed",Callable(self,"_on_frame_changed"))
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
+	#if not on floor, increment velocity by the specified gravity value times the time.
 	if not is_on_floor():
 		velocity.y += GRAVITY * delta
+	#but if you press E while in the air, trigger the cannon
 	if not is_on_floor() and Input.is_action_just_pressed("up_spell"):
 		trigger_cannon_attack()
-
+	#if floating is set to true, decrease gravity, start the timer
 	if floating:
 		GRAVITY = float_gravity
 		float_timer -= delta
@@ -42,7 +46,7 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-		
+	#
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
 	if floating:
@@ -59,6 +63,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	
 func trigger_cannon_attack():
+	#set total velocity to 0, tell the player to float, and that you're no longer shooting
 	velocity.x = 0
 	velocity.y = 0
 	floating = true
@@ -68,7 +73,10 @@ func trigger_cannon_attack():
 	
 	
 func shoot_shotgun_blasts():
-	
+	#im gonna be honest this entire thing is jank as fuck
+	#projectiles are made with a certain degree, then converted to radians
+	#then we use unit circle to aim them
+	#tbh idfk what's going on here it just works sometimes
 	var start_angle = -spread_angle / 2
 	
 	for i in range(num_projectiles):
