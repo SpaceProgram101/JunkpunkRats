@@ -1,4 +1,5 @@
 # TO DO LIST
+- FIX KNOCKBACK AND SPRITE HITBOXES
 - Health bar (lobuis)
 - Enemy atack (geb)
 - Level art (lobungle) collisions (geb)
@@ -19,6 +20,7 @@ Absolutely everything we need to do to finish the game
   - Enemy parkour and AI
   - Enemy Collision
 - Player
+  - Roll/Dash ability
   - Main attack
   - Leg Sweep
   - Fireball up and down(Ultimate cum blast) (Cog i mean cog)
