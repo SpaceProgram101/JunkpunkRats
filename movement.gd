@@ -13,7 +13,7 @@ var is_shooting: bool = false
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -700.0
-var GRAVITY = 2500.0
+var GRAVITY = 5000.0
 
 func _ready():
 	$AnimatedSprite2D.connect("frame_changed",Callable(self,"_on_frame_changed"))
