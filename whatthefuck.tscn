@@ -1,4 +1,4 @@
-[gd_scene load_steps=76 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=77 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -29,9 +29,6 @@ sources/0 = SubResource("TileSetAtlasSource_rfigp")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdxuj"]
 size = Vector2(135, 55)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehqqx"]
-size = Vector2(44, 78.0843)
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ydyk1"]
 
@@ -225,6 +222,9 @@ animations = [{
 "speed": 8.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehqqx"]
+size = Vector2(44, 78.0843)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dxav2"]
 size = Vector2(81, 121.551)
 
@@ -251,6 +251,8 @@ size = Vector2(143.984, 43.8047)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_afyso"]
 size = Vector2(882.039, 44.0017)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_deo7v"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_566ko"]
 atlas = ExtResource("7_oeoj5")
@@ -461,13 +463,9 @@ shape = SubResource("RectangleShape2D_fdxuj")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(166, 430)
 scale = Vector2(1, 1.11064)
+collision_mask = 7
 script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(-21, 4.9521)
-scale = Vector2(1, 1.02625)
-shape = SubResource("RectangleShape2D_ehqqx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-20.0585, 13.4895)
@@ -481,11 +479,20 @@ frame_progress = 1.0
 offset = Vector2(0, -75)
 zoom = Vector2(2, 2)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
+position = Vector2(-21, 4.9521)
+scale = Vector2(1, 1.02625)
+shape = SubResource("RectangleShape2D_ehqqx")
+
 [node name="Area2D" type="Area2D" parent="Player"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2(39, -15.3065)
 shape = SubResource("RectangleShape2D_dxav2")
+
+[node name="KnockbackTimer" type="Timer" parent="Player"]
+wait_time = 0.2
+one_shot = true
 
 [node name="platform1" type="StaticBody2D" parent="."]
 position = Vector2(574, 423)
@@ -540,7 +547,12 @@ shape = SubResource("RectangleShape2D_afyso")
 
 [node name="Crawler" type="CharacterBody2D" parent="."]
 position = Vector2(1479, 262)
+collision_layer = 2
+collision_mask = 7
 script = ExtResource("7_mitai")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crawler"]
+shape = SubResource("RectangleShape2D_deo7v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crawler"]
 position = Vector2(18, -0.999995)
@@ -549,8 +561,11 @@ sprite_frames = SubResource("SpriteFrames_ulnej")
 animation = &"walk"
 frame_progress = 0.347652
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Crawler"]
-position = Vector2(17, -2)
+[node name="Area2D" type="Area2D" parent="Crawler"]
+position = Vector2(-1479, -262)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crawler/Area2D"]
+position = Vector2(1496, 260)
 shape = SubResource("RectangleShape2D_g214b")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
@@ -571,6 +586,7 @@ metadata/_edit_use_anchors_ = true
 [node name="Wizard" type="CharacterBody2D" parent="."]
 position = Vector2(1416, 71)
 scale = Vector2(1.12595, 1.05487)
+collision_mask = 7
 script = ExtResource("12_mwc2y")
 fireball_scene = ExtResource("13_4jaoe")
 portal_scene = ExtResource("14_tebxn")
@@ -580,7 +596,6 @@ position = Vector2(-2.66431, -9.47983)
 scale = Vector2(0.559542, 0.621676)
 sprite_frames = SubResource("SpriteFrames_61o5e")
 animation = &"rat_idle"
-frame_progress = 0.02002
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wizard"]
 position = Vector2(-1.77627, -16.1158)
