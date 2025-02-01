@@ -8,6 +8,16 @@ extends CharacterBody2D
 @export var num_projectiles: int = 7
 @export var fire_frame: int = 2
 
+@onready var heart_container = $HealthUI
+
+var shotgun_spread = 3
+var pellets = 15
+var projectile_scene = preload("res://projectile.tscn")
+var bust = false
+var overalldirection = 1
+
+var max_health = 5
+var current_health = 5
 var floating: bool = false
 var float_timer: float = 0.0
 var is_shooting: bool = false
@@ -19,6 +29,35 @@ var GRAVITY = 2500.0
 func _ready():
 	#connect the code with the sprite animations when each frame changes 
 	$AnimatedSprite2D.connect("frame_changed",Callable(self,"_on_frame_changed"))
+
+func _process(_delta):
+	if Input.is_action_just_pressed("spell"):
+		bust = true
+		
+
+		
+		
+func launch_shotgun_attack():
+	if bust:
+		for i in range (num_projectiles):
+			var angle_offset = (i - (num_projectiles / 2)) * shotgun_spread
+			var spawn_angle = rotation + deg_to_rad(angle_offset)  # Rotate relative to player
+	
+			# Spawn the projectile
+			var projectile = projectile_scene.instantiate()
+			get_parent().add_child(projectile)  # Add the projectile to the scene
+
+			# Position the projectile where the player is
+			projectile.position = position  # Spawn at the player's position
+			projectile.position.y -= 35
+			print("Projectile Rotation: ", projectile.rotation)
+			  # Set the projectile's initial rotation
+			var direction = Vector2(cos(spawn_angle), sin(spawn_angle))
+			if overalldirection < 0:
+				direction.x = -direction.x
+			projectile.speed = direction * randf_range(800,1200)
+		bust = false
+
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -40,6 +79,11 @@ func _physics_process(delta: float) -> void:
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
+	if Input.is_action_pressed("ui_left"):
+		overalldirection = -1
+	elif Input.is_action_pressed("ui_right"):
+		overalldirection = 1  # Move right
+		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if not floating:
 		if direction:
@@ -49,7 +93,11 @@ func _physics_process(delta: float) -> void:
 	#
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-	if floating:
+	if bust:
+		velocity.x = 0
+		velocity.y = 0
+		$AnimatedSprite2D.play("bust")
+	elif floating:
 		$AnimatedSprite2D.play("up_spell")
 	elif not is_on_floor() and abs(velocity.y) > 0:
 		$AnimatedSprite2D.play("fall")
@@ -64,13 +112,32 @@ func _physics_process(delta: float) -> void:
 	
 func trigger_cannon_attack():
 	#set total velocity to 0, tell the player to float, and that you're no longer shooting
+	take_damage(1)
 	velocity.x = 0
 	velocity.y = 0
 	floating = true
 	float_timer = float_duration
 	is_shooting = false
+
+func take_damage(amount: int):
+	current_health -= amount
+	if current_health < 0:
+		current_health = 0
+	update_health_ui()
 	
+func heal(amount: int):
+	current_health += amount
+	if current_health > max_health:
+		current_health = max_health
+	update_health_ui()
 	
+func update_health_ui():
+	for i in range (max_health):
+		var heart = heart_container.get_child(i)
+		if i < current_health:
+			heart.texture = preload("res://full_heart.png")
+		else:
+			heart.texture = preload("res://empty_heart.png")
 	
 func shoot_shotgun_blasts():
 	#im gonna be honest this entire thing is jank as fuck
@@ -114,5 +181,8 @@ func _on_frame_changed():
 	if $AnimatedSprite2D.frame == fire_frame and floating == true:
 		shoot_shotgun_blasts()
 		is_shooting = true
+	if $AnimatedSprite2D.frame == fire_frame and bust == true:
+		launch_shotgun_attack()
+
 
 		

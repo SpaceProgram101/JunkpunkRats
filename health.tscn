@@ -1,9 +1,30 @@
-[gd_scene format=3 uid="uid://b2jolji85xo22"]
+[gd_scene load_steps=2 format=3 uid="uid://b2jolji85xo22"]
 
-[node name="Control" type="Control"]
+[ext_resource type="Texture2D" uid="uid://0nt7mvrryuuf" path="res://full_heart.png" id="1_scowt"]
+
+[node name="HealthUI" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_scowt")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(137, 0)
+texture = ExtResource("1_scowt")
+
+[node name="Sprite2D3" type="Sprite2D" parent="."]
+position = Vector2(-132, -1)
+texture = ExtResource("1_scowt")
+
+[node name="Sprite2D4" type="Sprite2D" parent="."]
+position = Vector2(70, 0)
+texture = ExtResource("1_scowt")
+
+[node name="Sprite2D5" type="Sprite2D" parent="."]
+position = Vector2(-61, -1)
+texture = ExtResource("1_scowt")

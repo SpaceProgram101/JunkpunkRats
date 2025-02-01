@@ -1,10 +1,11 @@
-[gd_scene load_steps=76 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=81 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
 [ext_resource type="Script" path="res://movement.gd" id="2_50bmu"]
 [ext_resource type="Texture2D" uid="uid://cynla508ss6mu" path="res://player animations/player_fall.png" id="3_etwtc"]
 [ext_resource type="PackedScene" uid="uid://bel852y212xra" path="res://fireball.tscn" id="3_ng311"]
+[ext_resource type="Texture2D" uid="uid://hwbk7b72oyq3" path="res://bot_busting.png" id="4_xigor"]
 [ext_resource type="Texture2D" uid="uid://b2qth7rn0y55l" path="res://player animations/player_hurt.png" id="4_yeyww"]
 [ext_resource type="Texture2D" uid="uid://dnkw46k4vhogl" path="res://tile_platform.png" id="6_wvem4"]
 [ext_resource type="Script" path="res://enemy_AI_walk.gd" id="7_mitai"]
@@ -16,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://btlck4ecnptdp" path="res://sheet_wizard_idle.png" id="13_1tjjp"]
 [ext_resource type="PackedScene" uid="uid://cb1c6mtm40tbf" path="res://wizard_fireball.tscn" id="13_4jaoe"]
 [ext_resource type="PackedScene" uid="uid://ga4oghl0gm17" path="res://blue_explosion_scene.tscn" id="14_tebxn"]
+[ext_resource type="Texture2D" uid="uid://0nt7mvrryuuf" path="res://full_heart.png" id="17_tb3th"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_706ym"]
 
@@ -70,6 +72,18 @@ region = Rect2(500, 700, 500, 350)
 [sub_resource type="AtlasTexture" id="AtlasTexture_pruol"]
 atlas = SubResource("CompressedTexture2D_ydyk1")
 region = Rect2(1000, 700, 500, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0bndm"]
+atlas = ExtResource("4_xigor")
+region = Rect2(0, 0, 250, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sqm0g"]
+atlas = ExtResource("4_xigor")
+region = Rect2(250, 0, 250, 350)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cpkcu"]
+atlas = ExtResource("4_xigor")
+region = Rect2(0, 350, 250, 350)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nc87b"]
 atlas = ExtResource("7_o34tf")
@@ -151,6 +165,20 @@ animations = [{
 "loop": false,
 "name": &"attack",
 "speed": 50.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0bndm")
+}, {
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_sqm0g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cpkcu")
+}],
+"loop": false,
+"name": &"bust",
+"speed": 15.0
 }, {
 "frames": [],
 "loop": true,
@@ -473,8 +501,8 @@ shape = SubResource("RectangleShape2D_ehqqx")
 position = Vector2(-20.0585, 13.4895)
 scale = Vector2(0.384468, 0.3189)
 sprite_frames = SubResource("SpriteFrames_inw14")
-animation = &"up_spell"
-frame = 4
+animation = &"bust"
+frame = 2
 frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -486,6 +514,39 @@ zoom = Vector2(2, 2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2(39, -15.3065)
 shape = SubResource("RectangleShape2D_dxav2")
+
+[node name="HealthUI" type="Control" parent="Player"]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -166.0
+offset_top = -387.164
+offset_right = -126.0
+offset_bottom = -347.164
+
+[node name="heart1" type="Sprite2D" parent="Player/HealthUI"]
+position = Vector2(-82, 201.685)
+scale = Vector2(0.453, 0.453)
+texture = ExtResource("17_tb3th")
+
+[node name="heart2" type="Sprite2D" parent="Player/HealthUI"]
+position = Vector2(-50, 201.685)
+scale = Vector2(0.453, 0.453)
+texture = ExtResource("17_tb3th")
+
+[node name="heart3" type="Sprite2D" parent="Player/HealthUI"]
+position = Vector2(-16, 201.685)
+scale = Vector2(0.453, 0.453)
+texture = ExtResource("17_tb3th")
+
+[node name="heart4" type="Sprite2D" parent="Player/HealthUI"]
+position = Vector2(15, 201.685)
+scale = Vector2(0.453, 0.453)
+texture = ExtResource("17_tb3th")
+
+[node name="heart5" type="Sprite2D" parent="Player/HealthUI"]
+position = Vector2(46, 202.586)
+scale = Vector2(0.453125, 0.457795)
+texture = ExtResource("17_tb3th")
 
 [node name="platform1" type="StaticBody2D" parent="."]
 position = Vector2(574, 423)
@@ -552,21 +613,6 @@ frame_progress = 0.347652
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Crawler"]
 position = Vector2(17, -2)
 shape = SubResource("RectangleShape2D_g214b")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-anchors_preset = -1
-anchor_left = -0.297743
-anchor_top = -0.276
-anchor_right = -0.137
-anchor_bottom = -0.235
-offset_left = -10.0
-offset_top = -0.151978
-offset_right = -0.175995
-offset_bottom = 0.280014
-value = 100.0
-metadata/_edit_use_anchors_ = true
 
 [node name="Wizard" type="CharacterBody2D" parent="."]
 position = Vector2(1416, 71)
