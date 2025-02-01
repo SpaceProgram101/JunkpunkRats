@@ -1,0 +1,6 @@
+When you finish a commit, please title it with the following:
+Update - New textures, code got revisted, etc.
+Fix - Bug has been fixed
+Addition - New thing added
+
+Then list the changes in the summary as concisely as you can, we should try to stay organized.
