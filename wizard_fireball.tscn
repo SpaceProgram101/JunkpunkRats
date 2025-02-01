@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=3 uid="uid://cb1c6mtm40tbf"]
 
 [ext_resource type="Script" path="res://wizard_fireball.gd" id="1_kfcww"]
-[ext_resource type="Texture2D" uid="uid://bl5am82fb5yiw" path="res://spikeball; (1).png" id="2_gk6wf"]
+[ext_resource type="Texture2D" uid="uid://bl5am82fb5yiw" path="res://sheet_lightning.png" id="2_gk6wf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swemh"]
 size = Vector2(4.27637, 5.1714)

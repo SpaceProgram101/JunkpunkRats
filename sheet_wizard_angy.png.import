@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://biw3q45nsk6td"
-path="res://.godot/imported/junkcrawler_animation.png-fe55d86106163295929492ed3a1935ff.ctex"
+uid="uid://btfaxtn6ik3pw"
+path="res://.godot/imported/sheet_wizard_angy.png-7c9b1fa8adb57b0eb61d096c2de570ad.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://junkcrawler_animation.png"
-dest_files=["res://.godot/imported/junkcrawler_animation.png-fe55d86106163295929492ed3a1935ff.ctex"]
+source_file="res://sheet_wizard_angy.png"
+dest_files=["res://.godot/imported/sheet_wizard_angy.png-7c9b1fa8adb57b0eb61d096c2de570ad.ctex"]
 
 [params]
 

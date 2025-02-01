@@ -1,19 +1,19 @@
 [gd_scene load_steps=76 format=4 uid="uid://bxnxqqch8tqh6"]
 
-[ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_1.png" id="1_nugcr"]
+[ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
 [ext_resource type="Script" path="res://movement.gd" id="2_50bmu"]
 [ext_resource type="Texture2D" uid="uid://cynla508ss6mu" path="res://player animations/player_fall.png" id="3_etwtc"]
 [ext_resource type="PackedScene" uid="uid://bel852y212xra" path="res://fireball.tscn" id="3_ng311"]
 [ext_resource type="Texture2D" uid="uid://b2qth7rn0y55l" path="res://player animations/player_hurt.png" id="4_yeyww"]
-[ext_resource type="Texture2D" uid="uid://dnkw46k4vhogl" path="res://platforms.png" id="6_wvem4"]
-[ext_resource type="Script" path="res://character_body_2d_2.gd" id="7_mitai"]
+[ext_resource type="Texture2D" uid="uid://dnkw46k4vhogl" path="res://tile_platform.png" id="6_wvem4"]
+[ext_resource type="Script" path="res://enemy_AI_walk.gd" id="7_mitai"]
 [ext_resource type="Texture2D" uid="uid://cxj1xxxilusu" path="res://player animations/player_run.png" id="7_o34tf"]
-[ext_resource type="Texture2D" uid="uid://biw3q45nsk6td" path="res://junkcrawler_animation.png" id="7_oeoj5"]
+[ext_resource type="Texture2D" uid="uid://biw3q45nsk6td" path="res://sheet_crawler.png" id="7_oeoj5"]
 [ext_resource type="Texture2D" uid="uid://o2r85ygsx40f" path="res://player animations/cannon_up.png" id="7_virct"]
 [ext_resource type="Script" path="res://wizard_AI.gd" id="12_mwc2y"]
-[ext_resource type="Texture2D" uid="uid://btfaxtn6ik3pw" path="res://rat_wizard_angy.png" id="12_nn6wy"]
-[ext_resource type="Texture2D" uid="uid://btlck4ecnptdp" path="res://rat_wizard_idle.png" id="13_1tjjp"]
+[ext_resource type="Texture2D" uid="uid://btfaxtn6ik3pw" path="res://sheet_wizard_angy.png" id="12_nn6wy"]
+[ext_resource type="Texture2D" uid="uid://btlck4ecnptdp" path="res://sheet_wizard_idle.png" id="13_1tjjp"]
 [ext_resource type="PackedScene" uid="uid://cb1c6mtm40tbf" path="res://wizard_fireball.tscn" id="13_4jaoe"]
 [ext_resource type="PackedScene" uid="uid://ga4oghl0gm17" path="res://blue_explosion_scene.tscn" id="14_tebxn"]
 
@@ -458,18 +458,18 @@ position = Vector2(-9, -6)
 scale = Vector2(3.8, 1)
 shape = SubResource("RectangleShape2D_fdxuj")
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="." groups=["player"]]
+[node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(166, 430)
 scale = Vector2(1, 1.11064)
 script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-21, 4.9521)
 scale = Vector2(1, 1.02625)
 shape = SubResource("RectangleShape2D_ehqqx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(-20.0585, 13.4895)
 scale = Vector2(0.384468, 0.3189)
 sprite_frames = SubResource("SpriteFrames_inw14")
@@ -477,13 +477,13 @@ animation = &"up_spell"
 frame = 4
 frame_progress = 1.0
 
-[node name="Camera2D" type="Camera2D" parent="CharacterBody2D"]
+[node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0, -75)
 zoom = Vector2(2, 2)
 
-[node name="Area2D" type="Area2D" parent="CharacterBody2D"]
+[node name="Area2D" type="Area2D" parent="Player"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 position = Vector2(39, -15.3065)
 shape = SubResource("RectangleShape2D_dxav2")
 
@@ -538,18 +538,18 @@ tile_set = SubResource("TileSet_c4d4r")
 position = Vector2(375.24, 12.0008)
 shape = SubResource("RectangleShape2D_afyso")
 
-[node name="CharacterBody2D2" type="CharacterBody2D" parent="."]
+[node name="Crawler" type="CharacterBody2D" parent="."]
 position = Vector2(1479, 262)
 script = ExtResource("7_mitai")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D2"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Crawler"]
 position = Vector2(18, -0.999995)
 scale = Vector2(0.644531, 0.730469)
 sprite_frames = SubResource("SpriteFrames_ulnej")
 animation = &"walk"
 frame_progress = 0.347652
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Crawler"]
 position = Vector2(17, -2)
 shape = SubResource("RectangleShape2D_g214b")
 
@@ -568,23 +568,23 @@ offset_bottom = 0.280014
 value = 100.0
 metadata/_edit_use_anchors_ = true
 
-[node name="CharacterBody2D3" type="CharacterBody2D" parent="."]
+[node name="Wizard" type="CharacterBody2D" parent="."]
 position = Vector2(1416, 71)
 scale = Vector2(1.12595, 1.05487)
 script = ExtResource("12_mwc2y")
 fireball_scene = ExtResource("13_4jaoe")
 portal_scene = ExtResource("14_tebxn")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CharacterBody2D3"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wizard"]
 position = Vector2(-2.66431, -9.47983)
 scale = Vector2(0.559542, 0.621676)
 sprite_frames = SubResource("SpriteFrames_61o5e")
 animation = &"rat_idle"
 frame_progress = 0.02002
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wizard"]
 position = Vector2(-1.77627, -16.1158)
 scale = Vector2(0.828125, 0.859375)
 shape = SubResource("RectangleShape2D_jhqfp")
 
-[node name="FireTimer" type="Timer" parent="CharacterBody2D3"]
+[node name="FireTimer" type="Timer" parent="Wizard"]

@@ -17,7 +17,7 @@ func _ready():
 	next_shoot_time = shoot_interval
 	start_position = position
 	fireball_scene = preload("res://wizard_fireball.tscn")
-	player = get_tree().root.get_node("Node2D/CharacterBody2D")  # Make sure to set this to your player node path
+	player = get_tree().root.get_node("Node2D/Player")  # Make sure to set this to your player node path
 	portal_scene = preload("res://blue_explosion_scene.tscn")
 	
 func _process(delta):

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bl5am82fb5yiw"
-path="res://.godot/imported/spikeball; (1).png-3566b46027ec9a69c983f0a0270feb31.ctex"
+uid="uid://dwnrpveqajdlc"
+path="res://.godot/imported/sheet_fireball.png-2d54a4562037ca9cc238badb105274e7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://spikeball; (1).png"
-dest_files=["res://.godot/imported/spikeball; (1).png-3566b46027ec9a69c983f0a0270feb31.ctex"]
+source_file="res://sheet_fireball.png"
+dest_files=["res://.godot/imported/sheet_fireball.png-2d54a4562037ca9cc238badb105274e7.ctex"]
 
 [params]
 

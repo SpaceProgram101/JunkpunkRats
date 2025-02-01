@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://bel852y212xra"]
 
-[ext_resource type="Texture2D" uid="uid://dwnrpveqajdlc" path="res://fireball.png" id="1_b0hxv"]
+[ext_resource type="Texture2D" uid="uid://dwnrpveqajdlc" path="res://sheet_fireball.png" id="1_b0hxv"]
 [ext_resource type="Script" path="res://fireball.gd" id="2_edfso"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_to5lg"]

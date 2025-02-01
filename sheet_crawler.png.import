@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8a033bv7h6gg"
-path="res://.godot/imported/blue_explosion.png-421c125221328639d9e166645050fb9d.ctex"
+uid="uid://biw3q45nsk6td"
+path="res://.godot/imported/sheet_crawler.png-464d661f6f697c0c09a7e59488a9934c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://blue_explosion.png"
-dest_files=["res://.godot/imported/blue_explosion.png-421c125221328639d9e166645050fb9d.ctex"]
+source_file="res://sheet_crawler.png"
+dest_files=["res://.godot/imported/sheet_crawler.png-464d661f6f697c0c09a7e59488a9934c.ctex"]
 
 [params]
 
