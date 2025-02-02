@@ -1,4 +1,4 @@
-[gd_scene load_steps=82 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=103 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -19,6 +19,9 @@
 [ext_resource type="PackedScene" uid="uid://cb1c6mtm40tbf" path="res://wizard_fireball.tscn" id="13_4jaoe"]
 [ext_resource type="PackedScene" uid="uid://ga4oghl0gm17" path="res://blue_explosion_scene.tscn" id="14_tebxn"]
 [ext_resource type="Texture2D" uid="uid://0nt7mvrryuuf" path="res://full_heart.png" id="17_tb3th"]
+[ext_resource type="Script" path="res://collector.gd" id="20_myck8"]
+[ext_resource type="Texture2D" uid="uid://ctjgnr01sefh7" path="res://collector_wakeup.png" id="21_yig3p"]
+[ext_resource type="Texture2D" uid="uid://c1jcyqinso0sv" path="res://collector_talk.png" id="22_xgecc"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_706ym"]
 
@@ -467,6 +470,149 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhqfp"]
 size = Vector2(27.8841, 69.496)
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_3j7b1"]
+radius = 278.907
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckhff"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_waxo3"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qlbkd"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n40d6"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4nwr5"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a8ims"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7e2tk"]
+atlas = ExtResource("22_xgecc")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psouk"]
+atlas = ExtResource("22_xgecc")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcuuk"]
+atlas = ExtResource("22_xgecc")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ltot"]
+atlas = ExtResource("22_xgecc")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gqk1o"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(0, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kp2xk"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(256, 0, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wbrph"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(0, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_klqoo"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(256, 256, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oasco"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(0, 512, 256, 256)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3hxb3"]
+atlas = ExtResource("21_yig3p")
+region = Rect2(256, 512, 256, 256)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tnyth"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckhff")
+}],
+"loop": true,
+"name": &"asleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_waxo3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qlbkd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n40d6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4nwr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a8ims")
+}],
+"loop": false,
+"name": &"fall_asleep",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7e2tk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psouk")
+}],
+"loop": true,
+"name": &"talking_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mcuuk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ltot")
+}],
+"loop": true,
+"name": &"talking_right",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gqk1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kp2xk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wbrph")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_klqoo")
+}, {
+"duration": 10.0,
+"texture": SubResource("AtlasTexture_oasco")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3hxb3")
+}],
+"loop": false,
+"name": &"waking up",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(-237, -452)
 
@@ -483,6 +629,23 @@ tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAD9////AAAAAAAAAAABAP//AAAAAAA
 tile_set = SubResource("TileSet_4ipcd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor1"]
+position = Vector2(-9, -6)
+scale = Vector2(3.8, 1)
+shape = SubResource("RectangleShape2D_fdxuj")
+
+[node name="floor2" type="StaticBody2D" parent="."]
+position = Vector2(-890, 340)
+
+[node name="Sprite2D" type="Sprite2D" parent="floor2"]
+material = SubResource("ShaderMaterial_706ym")
+position = Vector2(-0.999878, -1.00003)
+scale = Vector2(7.51563, 0.5625)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="floor2"]
+tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAD9////AAAAAAAAAAABAP//AAAAAAAAAAAFAP//AAAAAAAAAAAJAP//AAAAAAAAAAANAP//AAAAAAAAAAD1////AAAAAAAAAADx////AAAAAAAAAAA=")
+tile_set = SubResource("TileSet_4ipcd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor2"]
 position = Vector2(-9, -6)
 scale = Vector2(3.8, 1)
 shape = SubResource("RectangleShape2D_fdxuj")
@@ -595,6 +758,45 @@ position = Vector2(23.9198, 13.2228)
 scale = Vector2(1.24595, 1.17869)
 shape = SubResource("RectangleShape2D_7y06n")
 
+[node name="platform5" type="StaticBody2D" parent="."]
+position = Vector2(-161, 429)
+scale = Vector2(0.668904, 0.794078)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="platform5"]
+tile_map_data = PackedByteArray("AAAFAAAAAAAAAAAAAAABAAAAAAABAAAAAAD9/wAAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_c4d4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform5"]
+position = Vector2(23.9198, 13.2228)
+scale = Vector2(1.24595, 1.17869)
+shape = SubResource("RectangleShape2D_7y06n")
+
+[node name="platform6" type="StaticBody2D" parent="."]
+position = Vector2(-340, 377)
+scale = Vector2(0.668904, 0.794078)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="platform6"]
+tile_map_data = PackedByteArray("AAAFAAAAAAAAAAAAAAABAAAAAAABAAAAAAD9/wAAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_c4d4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform6"]
+position = Vector2(23.9198, 13.2228)
+scale = Vector2(1.24595, 1.17869)
+shape = SubResource("RectangleShape2D_7y06n")
+
+[node name="platform7" type="StaticBody2D" parent="."]
+position = Vector2(-512, 337)
+scale = Vector2(0.668904, 0.794078)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="platform7"]
+tile_map_data = PackedByteArray("AAAFAAAAAAAAAAAAAAABAAAAAAABAAAAAAD9/wAAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_c4d4r")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="platform7"]
+position = Vector2(23.9198, 13.2228)
+scale = Vector2(1.24595, 1.17869)
+shape = SubResource("RectangleShape2D_7y06n")
+
 [node name="platform4" type="StaticBody2D" parent="."]
 position = Vector2(1207, 284)
 scale = Vector2(0.668904, 0.794078)
@@ -642,3 +844,24 @@ scale = Vector2(0.828125, 0.859375)
 shape = SubResource("RectangleShape2D_jhqfp")
 
 [node name="FireTimer" type="Timer" parent="Wizard"]
+
+[node name="Collector" type="Area2D" parent="."]
+position = Vector2(-887, 241)
+scale = Vector2(0.491702, 0.539309)
+script = ExtResource("20_myck8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Collector"]
+shape = SubResource("CircleShape2D_3j7b1")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Collector"]
+sprite_frames = SubResource("SpriteFrames_tnyth")
+animation = &"fall_asleep"
+
+[node name="InteractionLabel" type="Label" parent="Collector"]
+offset_left = -38.6413
+offset_top = -103.837
+offset_right = 1.35874
+offset_bottom = -80.8366
+text = "F"
+horizontal_alignment = 1
+uppercase = true
