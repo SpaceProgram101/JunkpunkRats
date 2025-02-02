@@ -57,6 +57,7 @@ size = Vector2(10.715, 0.356317)
 [node name="Area2D" type="Area2D"]
 scale = Vector2(36.2672, 34.3246)
 script = ExtResource("2_edfso")
+speed = null
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0.303304, 2.98023e-08)
