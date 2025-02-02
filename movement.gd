@@ -9,6 +9,7 @@ extends CharacterBody2D
 @export var fire_frame: int = 2
 
 @onready var heart_container = $HealthUI
+@onready var oil_container = $HealthUI
 
 var shotgun_spread = 3
 var pellets = 15
@@ -22,6 +23,9 @@ var floating: bool = false
 var float_timer: float = 0.0
 var is_shooting: bool = false
 
+var max_oil = 3
+var current_oil = 3
+
 const SPEED = 300.0
 const JUMP_VELOCITY = -700.0
 var GRAVITY = 2500.0
@@ -32,13 +36,17 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("spell"):
-		bust = true
+		if current_oil > 0:
+			bust = true
+			update_oil_ui()
+			current_oil -= 1
+		update_oil_ui()
 		
 
 		
 		
 func launch_shotgun_attack():
-	if bust:
+	if bust:	
 		for i in range (num_projectiles):
 			var angle_offset = (i - (num_projectiles / 2)) * shotgun_spread
 			var spawn_angle = rotation + deg_to_rad(angle_offset)  # Rotate relative to player
@@ -66,7 +74,9 @@ func _physics_process(delta: float) -> void:
 		velocity.y += GRAVITY * delta
 	#but if you press E while in the air, trigger the cannon
 	if not is_on_floor() and Input.is_action_just_pressed("up_spell"):
-		trigger_cannon_attack()
+		if current_oil > 0:
+			current_oil -= 1
+			trigger_cannon_attack()
 	#if floating is set to true, decrease gravity, start the timer
 	if floating:
 		GRAVITY = float_gravity
@@ -118,6 +128,7 @@ func trigger_cannon_attack():
 	floating = true
 	float_timer = float_duration
 	is_shooting = false
+	update_oil_ui()
 
 func take_damage(amount: int):
 	current_health -= amount
@@ -138,6 +149,19 @@ func update_health_ui():
 			heart.texture = preload("res://full_heart.png")
 		else:
 			heart.texture = preload("res://empty_heart.png")
+
+func update_oil_ui():
+	print ("Oil ct: ", current_oil)
+	var oil = oil_container.get_child(5)
+	if current_oil == 3:
+		oil.texture = preload("res://oil_bar/oil_bar_full.png")
+	elif current_oil == 2:
+		oil.texture = preload("res://oil_bar/oil_bar_2.png")
+	elif current_oil == 1:
+		oil.texture = preload("res://oil_bar/oil_bar_1.png")
+	else: 
+		oil.texture = preload("res://oil_bar/oil_bar_empty.png")
+		
 	
 func shoot_shotgun_blasts():
 	#im gonna be honest this entire thing is jank as fuck
@@ -145,7 +169,6 @@ func shoot_shotgun_blasts():
 	#then we use unit circle to aim them
 	#tbh idfk what's going on here it just works sometimes
 	var start_angle = -spread_angle / 2
-	
 	for i in range(num_projectiles):
 		
 		var angle_offset = start_angle + (i * (spread_angle / (num_projectiles -1)))
@@ -167,7 +190,7 @@ func shoot_shotgun_blasts():
 				
 			get_parent().add_child(bullet)
 			
-
+	
 
 func stop_floating():
 	floating = false;

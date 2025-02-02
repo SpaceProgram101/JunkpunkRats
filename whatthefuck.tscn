@@ -1,4 +1,4 @@
-[gd_scene load_steps=81 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=82 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://cxj1xxxilusu" path="res://player animations/player_run.png" id="7_o34tf"]
 [ext_resource type="Texture2D" uid="uid://biw3q45nsk6td" path="res://sheet_crawler.png" id="7_oeoj5"]
 [ext_resource type="Texture2D" uid="uid://o2r85ygsx40f" path="res://player animations/cannon_up.png" id="7_virct"]
+[ext_resource type="Texture2D" uid="uid://1588eudwbijm" path="res://oil_bar/oil_bar_full.png" id="11_f43ly"]
 [ext_resource type="Script" path="res://wizard_AI.gd" id="12_mwc2y"]
 [ext_resource type="Texture2D" uid="uid://btfaxtn6ik3pw" path="res://sheet_wizard_angy.png" id="12_nn6wy"]
 [ext_resource type="Texture2D" uid="uid://btlck4ecnptdp" path="res://sheet_wizard_idle.png" id="13_1tjjp"]
@@ -547,6 +548,11 @@ texture = ExtResource("17_tb3th")
 position = Vector2(46, 202.586)
 scale = Vector2(0.453125, 0.457795)
 texture = ExtResource("17_tb3th")
+
+[node name="OilBar" type="Sprite2D" parent="Player/HealthUI"]
+position = Vector2(-9, 239.502)
+scale = Vector2(0.735136, 0.6685)
+texture = ExtResource("11_f43ly")
 
 [node name="platform1" type="StaticBody2D" parent="."]
 position = Vector2(574, 423)
