@@ -43,8 +43,8 @@ func _ready():
 		printerr("ERROR: KnockbackTimer node not found in _ready()!")
 	
 	$AnimatedSprite2D.connect("frame_changed", Callable(self, "_on_frame_changed"))
-	connect("body_entered", Callable(self, "_on_body_entered"))  # Connect body collision
-	connect("area_entered", Callable(self, "_on_area_entered"))  # Connect area collision
+	#connect("body_entered", Callable(self, "_on_body_entered"))  # Connect body collision
+	#connect("area_entered", Callable(self, "_on_area_entered"))  # Connect area collision
 
 
 func _process(_delta):

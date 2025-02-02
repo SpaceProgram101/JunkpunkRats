@@ -12,9 +12,9 @@ var start_position = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$Area2D.connect("body_entered", Callable(self, "_on_body_entered"))
-	$Area2D.connect("area_entered", Callable(self, "_on_area_entered"))
-	set_meta("knockback", true)
+	#$Area2D.connect("body_entered", Callable(self, "_on_body_entered"))
+	#$Area2D.connect("area_entered", Callable(self, "_on_area_entered"))
+	#set_meta("knockback", true)
 	start_position = position  # Save the starting position
 	$AnimatedSprite2D.play("walk")
 # Called every frame

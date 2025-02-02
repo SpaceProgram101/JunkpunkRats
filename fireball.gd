@@ -10,21 +10,14 @@ var direction: Vector2 = Vector2.ZERO  # Direction of the bullet movement
 var delete_time = 2.0
 
 
-<<<<<<< HEAD
-=======
-func _ready():
-	$Area2D.connect("body_entered", Callable(self, "_on_body_entered"))
-	$Area2D.connect("area_entered", Callable(self, "_on_area_entered"))
-	set_meta("knockback", true)
-	
-	sprite.play("fireball")  # Replace with your animation name
-	var timer = get_tree().create_timer(delete_time)
->>>>>>> 7495d01715aa12bcc7b488d123cfc3bab0ec69fd
 
 func _ready():
 	#play the animation fireball
-	sprite.play("fireball")  
-	#create a timer, set to the delete time (or two seconds)
+	#$Area2D.connect("body_entered", Callable(self, "_on_body_entered"))
+	#$Area2D.connect("area_entered", Callable(self, "_on_area_entered"))
+	set_meta("knockback", true)
+	
+	sprite.play("fireball")  # Replace with your animation name
 	var timer = get_tree().create_timer(delete_time)
 	#wait for the timer to run out
 	await timer.timeout
