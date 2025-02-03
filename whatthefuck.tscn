@@ -1,4 +1,4 @@
-[gd_scene load_steps=126 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=127 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -69,9 +69,18 @@ texture = ExtResource("1_nugcr")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1r0q2"]
+texture = ExtResource("2_yrw4x")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_c4d4r"]
 sources/0 = SubResource("TileSetAtlasSource_4y6qv")
 sources/1 = SubResource("TileSetAtlasSource_e33kk")
+sources/2 = SubResource("TileSetAtlasSource_1r0q2")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_7y06n"]
 size = Vector2(143.984, 43.8047)
@@ -838,7 +847,7 @@ position = Vector2(1207, 284)
 scale = Vector2(0.668904, 0.794078)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="platform4"]
-tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAD9/wAAAAAAAAEAAAAEAAAAAAABAAAAAAAIAAAAAAABAAAAAAAMAAAAAAABAAAAAAAQAAAAAAABAAAAAAATAAAAAAABAAAAAAAXAAAAAAABAAAAAAAbAAAAAAABAAAAAAAfAAAAAAABAAAAAAAjAAAAAAABAAAAAAAnAAAAAAABAAAAAAArAAAAAAABAAAAAAAvAAAAAAABAAAAAAAzAAAAAAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAAAAAAABAAAAAAD9/wAAAAAAAAEAAAAEAAAAAAABAAAAAAAIAAAAAAABAAAAAAAMAAAAAAABAAAAAAAQAAAAAAABAAAAAAATAAAAAAABAAAAAAAXAAAAAAABAAAAAAAbAAAAAAABAAAAAAAfAAAAAAABAAAAAAAjAAAAAAABAAAAAAAnAAAAAAABAAAAAAArAAAAAAABAAAAAAAvAAAAAAABAAAAAAAzAAAAAAAAAAAAAAAa/wwAAgAAAAAAAAAh/wwAAgAAAAAAAAAe/wgAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_c4d4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform4"]
@@ -887,7 +896,7 @@ position = Vector2(-1343, 502)
 
 [node name="collector_house" type="TileMapLayer" parent="collector_house"]
 visibility_layer = 513
-tile_map_data = PackedByteArray("AAAMAPv/AAAAAAAAAAAEAPv/AAAAAAAAAAD8//v/AAAAAAAAAAD0//v/AAAAAAAAAAD0//P/AAAAAAAAAAD8//P/AAAAAAAAAAAEAPP/AAAAAAAAAAAMAPP/AAAAAAAAAADy/wAAAgAAAAAAAAD2/wAAAgAAAAAAAAD6/wAAAgAAAAAAAAD+/wAAAgAAAAAAAAACAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAKAAAAAgAAAAAAAAAOAAAAAgAAAAAAAAA=")
+tile_map_data = PackedByteArray("AADy/wAAAgAAAAAAAAD2/wAAAgAAAAAAAAD6/wAAAgAAAAAAAAD+/wAAAgAAAAAAAAACAAAAAgAAAAAAAAAGAAAAAgAAAAAAAAAKAAAAAgAAAAAAAAAOAAAAAgAAAAAAAAA=")
 tile_set = SubResource("TileSet_06d0s")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="collector_house"]
@@ -916,7 +925,7 @@ animation = &"rat"
 frame_progress = 0.710585
 
 [node name="music_radius" type="CollisionShape2D" parent="Collector"]
-position = Vector2(16.1436, -5.50416)
+position = Vector2(2.03369, 7.41687)
 shape = SubResource("CircleShape2D_hptjh")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Collector" node_paths=PackedStringArray("player")]
