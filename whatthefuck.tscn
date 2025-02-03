@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=115 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bel852y212xra" path="res://fireball.tscn" id="3_ng311"]
 [ext_resource type="Texture2D" uid="uid://hwbk7b72oyq3" path="res://bot_busting.png" id="4_xigor"]
 [ext_resource type="Texture2D" uid="uid://b2qth7rn0y55l" path="res://player animations/player_hurt.png" id="4_yeyww"]
+[ext_resource type="PackedScene" uid="uid://cg2w86vgbvq04" path="res://projectile.tscn" id="5_qtrld"]
 [ext_resource type="Texture2D" uid="uid://dnkw46k4vhogl" path="res://tile_platform.png" id="6_wvem4"]
 [ext_resource type="Script" path="res://enemy_AI_walk.gd" id="7_mitai"]
 [ext_resource type="Texture2D" uid="uid://cxj1xxxilusu" path="res://player animations/player_run.png" id="7_o34tf"]
@@ -725,6 +726,7 @@ scale = Vector2(1, 1.11064)
 collision_mask = 7
 script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
+projectile_scene = ExtResource("5_qtrld")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-21, 4.9521)

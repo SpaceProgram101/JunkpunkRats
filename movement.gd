@@ -8,6 +8,8 @@ extends CharacterBody2D
 @export var num_projectiles: int = 7
 @export var fire_frame: int = 2
 @export var sex_force = 700.0  # Adjust the knockback strength
+@export var projectile_scene: PackedScene
+@export var knockback_force = 200.0  # Adjust the knockback strength
 @export var knockback_duration = 0.2  # Adjust the knockback duration (in seconds)
 
 @onready var heart_container = $HealthUI
@@ -16,22 +18,24 @@ extends CharacterBody2D
 var suicide = true
 var shotgun_spread = 3
 var pellets = 15
-var projectile_scene = preload("res://projectile.tscn")
-var bust = false
 var overalldirection = 1
+
+
+var is_shooting: bool = false
+
+var current_spell = 0
+
 
 var skibidi = 5
 var toilet = 5
-var floating: bool = false
-var float_timer: float = 0.0
-var is_shooting: bool = false
-
 var max_oil = 3
 var current_oil = 3
 
+
+var frozen: bool = false
 const SPEED = 300.0
 const JUMP_VELOCITY = -700.0
-var GRAVITY = 2500.0
+var gravity = 2500.0
 
 var is_knocked_back = false
 var knockback_timer = 0.0
@@ -51,53 +55,27 @@ func _ready():
 func _process(_delta):
 	if Input.is_action_just_pressed("spell"):
 		if current_oil > 0:
-			bust = true
-			update_oil_ui()
 			current_oil -= 1
+			current_spell = 1
+			trigger_spell()
 		update_oil_ui()
 		
-
-		
-		
-func launch_shotgun_attack():
-	if bust:	
-		for i in range (num_projectiles):
-			var angle_offset = (i - (num_projectiles / 2)) * shotgun_spread
-			var spawn_angle = rotation + deg_to_rad(angle_offset)  # Rotate relative to player
-	
-			# Spawn the projectile
-			var projectile = projectile_scene.instantiate()
-			get_parent().add_child(projectile)  # Add the projectile to the scene
-
-			# Position the projectile where the player is
-			projectile.position = position  # Spawn at the player's position
-			projectile.position.y -= 35
-			print("Projectile Rotation: ", projectile.rotation)
-			  # Set the projectile's initial rotation
-			var direction = Vector2(cos(spawn_angle), sin(spawn_angle))
-			if overalldirection < 0:
-				direction.x = -direction.x
-			projectile.speed = direction * randf_range(800,1200)
-		bust = false
-
+	if not is_on_floor() and Input.is_action_just_pressed("up_spell"):
+		if current_oil > 0:
+			current_oil -= 1
+			current_spell = 2
+			trigger_spell()
+		update_oil_ui()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
 	if not is_on_floor():
-		velocity.y += GRAVITY * delta
+		velocity.y += gravity * delta
 	#but if you press E while in the air, trigger the cannon
-	if not is_on_floor() and Input.is_action_just_pressed("up_spell"):
-		if current_oil > 0:
-			current_oil -= 1
-			trigger_cannon_attack()
+	
 	#if floating is set to true, decrease gravity, start the timer
-	if floating:
-		GRAVITY = float_gravity
-		float_timer -= delta
-		if float_timer <= 0:
-			stop_floating()
-			
+
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = JUMP_VELOCITY
@@ -109,7 +87,7 @@ func _physics_process(delta: float) -> void:
 		overalldirection = 1  # Move right
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if not floating:
+	if not frozen:
 		if direction:
 			velocity.x = direction * SPEED
 		else:
@@ -117,13 +95,11 @@ func _physics_process(delta: float) -> void:
 	#
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
-	if bust:
-		velocity.x = 0
-		velocity.y = 0
+	if current_spell == 1:
 		$AnimatedSprite2D.play("bust")
-	elif floating:
+	elif current_spell == 2:
 		$AnimatedSprite2D.play("up_spell")
-	elif not is_on_floor() and abs(velocity.y) > 0:
+	elif not is_on_floor() and abs(velocity.y) > -1:
 		$AnimatedSprite2D.play("fall")
 	elif abs(velocity.x) > 0:
 		$AnimatedSprite2D.play("run")
@@ -165,14 +141,25 @@ func apply_knockback(enemy_position: Vector2):
 		printerr("ERROR: KnockbackTimer node not found!")
 
 func trigger_cannon_attack():
+	if is_knocked_back:
+		knockback_timer += delta
+		if knockback_timer >= knockback_duration:
+			is_knocked_back = false
+			knockback_timer = 0.0
+		else:
+			# Apply knockback force (you might need to adjust this based on your movement system)
+			velocity = knockback_direction * knockback_force  # For KinematicBody2D
+			move_and_slide() # For KinematicBody2D
+			# position += knockback_direction * knockback_force * delta #For other Node Types
+	move_and_slide()
+	
+func trigger_spell():
 	#set total velocity to 0, tell the player to float, and that you're no longer shooting
-	take_damage(1)
-	velocity.x = 0
-	velocity.y = 0
-	floating = true
-	float_timer = float_duration
+	freeze()
 	is_shooting = false
 	update_oil_ui()
+
+
 
 func take_damage(amount: int):
 	toilet -= amount
@@ -195,7 +182,6 @@ func update_health_ui():
 			heart.texture = preload("res://empty_heart.png")
 
 func update_oil_ui():
-	print ("Oil ct: ", current_oil)
 	var oil = oil_container.get_child(5)
 	if current_oil == 3:
 		oil.texture = preload("res://oil_bar/oil_bar_full.png")
@@ -212,6 +198,7 @@ func shoot_shotgun_blasts():
 	#projectiles are made with a certain degree, then converted to radians
 	#then we use unit circle to aim them
 	#tbh idfk what's going on here it just works sometimes
+	is_shooting = false
 	var start_angle = -spread_angle / 2
 	for i in range(num_projectiles):
 		
@@ -235,21 +222,59 @@ func shoot_shotgun_blasts():
 			get_parent().add_child(bullet)
 			
 	
+	unfreeze()
+	current_spell = 0
+	
+	
+func launch_shotgun_attack():
+	freeze()
+	print ("Frozen!")
+	for i in range (pellets):
+		var angle_offset = (i - (pellets / 2)) * shotgun_spread
+		var spawn_angle = rotation + deg_to_rad(angle_offset)  # Rotate relative to player
+		print ("Rotation set!")
+		# Spawn the projectile
+		var projectile = projectile_scene.instantiate()
+		get_parent().add_child(projectile)  # Add the projectile to the scene
+		print ("Child successfully set!")
+			# Position the projectile where the player is
+		projectile.position = position  # Spawn at the player's position
+		projectile.position.y -= 35
+		print("Projectile Rotation: ", projectile.rotation)
+		  # Set the projectile's initial rotation
+		var direction = Vector2(cos(spawn_angle), sin(spawn_angle))
+		if overalldirection < 0:
+			direction.x = -direction.x
+		projectile.speed = direction * randf_range(800,1200)
+		
+	unfreeze()
+	current_spell = 0
+	print ("Bust is false!")
 
-func stop_floating():
-	floating = false;
-	GRAVITY = 2500
+
+
+func freeze():
+	velocity.x = 0
+	velocity.y = 0
+	gravity = 0
+	frozen = true
+
+func unfreeze():
+	frozen = false
+	gravity = 2500
+
 
 
 func _on_frame_changed():
 	if is_shooting:
 		return
-	
-	if $AnimatedSprite2D.frame == fire_frame and floating == true:
+		
+	if $AnimatedSprite2D.frame == fire_frame and current_spell == 2:
 		shoot_shotgun_blasts()
 		is_shooting = true
-	if $AnimatedSprite2D.frame == fire_frame and bust == true:
+	if $AnimatedSprite2D.frame == fire_frame and current_spell == 1:
 		launch_shotgun_attack()
+		is_shooting = true
 
 
 		
