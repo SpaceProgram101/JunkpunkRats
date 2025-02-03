@@ -791,6 +791,8 @@ texture = ExtResource("11_f43ly")
 
 [node name="KnockbackTimer" type="Timer" parent="Player"]
 
+[node name="DashCooldownTimer" type="Timer" parent="Player"]
+
 [node name="platform1" type="StaticBody2D" parent="."]
 position = Vector2(574, 423)
 scale = Vector2(0.668904, 0.794078)
