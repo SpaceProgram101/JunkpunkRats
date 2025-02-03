@@ -281,3 +281,11 @@ func _on_frame_changed():
 
 
 		
+
+
+func _on_Area2D_body_entered(_Node) -> void:
+	pass 
+
+
+func _on_Area2D_body_exited(_Node) -> void:
+	pass 
