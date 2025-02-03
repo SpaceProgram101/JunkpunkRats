@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
 @export var fireball_scene : PackedScene
+@export var max_health: int = 50
+var current_health: int
 var shoot_interval = 2  # Time in seconds between shots
 var next_shoot_time = 0.0
-var speed = 100;
-var direction = -1;
-
+var speed = 100
+var direction = -1
+var dead = false
+var dying = false
+var gravity = 500
 
 var player  # Reference to the player node
 var attack_range = 300.0
@@ -15,6 +19,7 @@ var start_position = Vector2()
 var portal_effect : Node2D = null
 
 func _ready():
+	current_health = max_health
 	next_shoot_time = shoot_interval
 	start_position = position
 	fireball_scene = preload("res://wizard_fireball.tscn")
@@ -25,7 +30,13 @@ func _process(delta):
 	if player:
 		var distance_to_player = position.distance_to(player.position)
 		
-		if distance_to_player <= attack_range:
+		if dead:
+			if not is_on_floor():
+				$AnimatedSprite2D.play("falling")
+				position.y += gravity * delta
+			elif is_on_floor():
+				$AnimatedSprite2D.play("dead")
+		elif distance_to_player <= attack_range:
 			$AnimatedSprite2D.play("rat_angy")
 			next_shoot_time -= delta
 			if next_shoot_time <= 0:
@@ -35,7 +46,7 @@ func _process(delta):
 			$AnimatedSprite2D.play("rat_idle")
 			position.x += speed * direction * delta
 			move_and_slide()
-	
+		move_and_slide()
 		# Flip sprite based on direction
 		if direction == -1:
 			$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
@@ -70,3 +81,8 @@ func spawn_portal_effect():
 		
 		await animated_sprite.animation_finished
 		portal_effect.queue_free()
+
+func take_damage(damage: int) -> void:
+	current_health -= damage
+	if current_health <= 0:
+		dead = true

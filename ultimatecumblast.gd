@@ -1,11 +1,13 @@
 extends Area2D
 
-var speed = 800  # Speed of the projectile
+@export var speed = 800  # Speed of the projectile
 var rotation_speed = 3  # How fast the projectile rotates (degrees per second)  
 var cog_gravity = 500 # Gravity force that pulls the projectile downwards
 var gravity_delay = 0.2
 var time_in_air = 0
 var proj_life = 0.5
+@export var damage: int = 10
+
 
 var min_size = 0.1
 var max_size = 1.0
@@ -39,3 +41,10 @@ func _process(delta):
 
 	# Apply rotation over time for the spinning effect
 	rotation += rotation_speed * delta
+
+
+func _on_Projectile_body_entered(body: Node) -> void:
+	if body.is_in_group("enemies"):
+		body.take_damage(damage)
+		queue_free()
+		 

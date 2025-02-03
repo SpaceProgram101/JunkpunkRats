@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=118 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -21,6 +21,7 @@
 [ext_resource type="PackedScene" uid="uid://cb1c6mtm40tbf" path="res://wizard_fireball.tscn" id="13_4jaoe"]
 [ext_resource type="PackedScene" uid="uid://ga4oghl0gm17" path="res://blue_explosion_scene.tscn" id="14_tebxn"]
 [ext_resource type="Texture2D" uid="uid://0nt7mvrryuuf" path="res://full_heart.png" id="17_tb3th"]
+[ext_resource type="Texture2D" uid="uid://oivgqwd7pq0o" path="res://rat_fucking_dead.png" id="20_hy2ch"]
 [ext_resource type="Script" path="res://collector.gd" id="20_myck8"]
 [ext_resource type="Texture2D" uid="uid://ctjgnr01sefh7" path="res://collector_wakeup.png" id="21_yig3p"]
 [ext_resource type="Texture2D" uid="uid://c1jcyqinso0sv" path="res://collector_talk.png" id="22_xgecc"]
@@ -213,7 +214,7 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 1.0,
+"duration": 10.0,
 "texture": ExtResource("4_yeyww")
 }],
 "loop": true,
@@ -359,6 +360,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g214b"]
 size = Vector2(38, 24.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_a0n8g"]
+atlas = ExtResource("20_hy2ch")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pj2ui"]
+atlas = ExtResource("20_hy2ch")
+region = Rect2(0, 0, 128, 128)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_u0fm7"]
 atlas = ExtResource("12_nn6wy")
 region = Rect2(0, 0, 128, 128)
@@ -421,9 +430,25 @@ region = Rect2(0, 256, 128, 128)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_61o5e"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a0n8g")
+}],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
 "frames": [],
 "loop": true,
 "name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pj2ui")
+}],
+"loop": true,
+"name": &"falling",
 "speed": 5.0
 }, {
 "frames": [{
@@ -483,7 +508,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jhqfp"]
-size = Vector2(27.8841, 69.496)
+size = Vector2(27.8841, 50.1915)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3j7b1"]
 radius = 278.907
@@ -737,9 +762,7 @@ shape = SubResource("RectangleShape2D_ehqqx")
 position = Vector2(-20.0585, 13.4895)
 scale = Vector2(0.384468, 0.3189)
 sprite_frames = SubResource("SpriteFrames_inw14")
-animation = &"bust"
-frame = 2
-frame_progress = 1.0
+animation = &"hit"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0, -75)
@@ -895,14 +918,13 @@ fireball_scene = ExtResource("13_4jaoe")
 portal_scene = ExtResource("14_tebxn")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Wizard"]
-position = Vector2(-2.66431, -9.47983)
+position = Vector2(-1.77628, -14.2198)
 scale = Vector2(0.559542, 0.621676)
 sprite_frames = SubResource("SpriteFrames_61o5e")
 animation = &"rat_idle"
-frame_progress = 0.02002
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Wizard"]
-position = Vector2(-1.77627, -16.1158)
+position = Vector2(-1.77625, -22.5146)
 scale = Vector2(0.828125, 0.859375)
 shape = SubResource("RectangleShape2D_jhqfp")
 

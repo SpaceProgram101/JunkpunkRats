@@ -41,7 +41,7 @@ var skibidi = 5
 var toilet = 5
 var max_oil = 3
 var current_oil = 3
-
+var immunity = 0
 
 var frozen: bool = false
 const SPEED = 300.0
@@ -106,6 +106,7 @@ func _physics_process(delta: float) -> void:
 	#
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x < 0
+	
 	if current_spell == 1:
 		$AnimatedSprite2D.play("bust")
 	elif current_spell == 2:
@@ -121,12 +122,14 @@ func _physics_process(delta: float) -> void:
 		var collision = get_slide_collision(index)
 		var collider = collision.get_collider()
 
-		if collider:
-			print("Collided with: ", collider.name)  # Debugging collision detection
-
 		if collider and collider.is_in_group("enemies"):  # Check if it's an enemy
-			print("Enemy detected! Applying knockback.")  # Debugging enemy detection
-			apply_knockback(collider.global_position)
+			if immunity <= 0:
+				$AnimatedSprite2D.play("hit")
+				take_damage(1)
+				apply_knockback(collider.global_position)
+				immunity = 1
+			else:
+				immunity -= delta
 		
 	move_and_slide()
 
@@ -140,7 +143,7 @@ func apply_knockback(enemy_position: Vector2):
 	# Add slight upward force
 	knockback_direction.y = -0.3  
 
-	velocity = 2*(knockback_direction * sex_force)  # Apply knockback
+	velocity = 2.5*(knockback_direction * sex_force)  # Apply knockback
 
 	# ✅ Now set is_knocked_back AFTER applying knockback
 	is_knocked_back = true  
@@ -150,8 +153,6 @@ func apply_knockback(enemy_position: Vector2):
 		$KnockbackTimer.start(knockback_duration)
 	else:
 		printerr("ERROR: KnockbackTimer node not found!")
-
-	
 
 
 func trigger_spell():
@@ -200,6 +201,7 @@ func shoot_shotgun_blasts():
 	#then we use unit circle to aim them
 	#tbh idfk what's going on here it just works sometimes
 	is_shooting = false
+	spread_angle = randf_range(15,30)
 	var start_angle = -spread_angle / 2
 	for i in range(num_projectiles):
 		
