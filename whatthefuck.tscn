@@ -1,8 +1,9 @@
-[gd_scene load_steps=103 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=114 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
 [ext_resource type="Script" path="res://movement.gd" id="2_50bmu"]
+[ext_resource type="Texture2D" uid="uid://dfawcd1r8r384" path="res://clutter (1).png" id="2_yrw4x"]
 [ext_resource type="Texture2D" uid="uid://cynla508ss6mu" path="res://player animations/player_fall.png" id="3_etwtc"]
 [ext_resource type="PackedScene" uid="uid://bel852y212xra" path="res://fireball.tscn" id="3_ng311"]
 [ext_resource type="Texture2D" uid="uid://hwbk7b72oyq3" path="res://bot_busting.png" id="4_xigor"]
@@ -22,6 +23,7 @@
 [ext_resource type="Script" path="res://collector.gd" id="20_myck8"]
 [ext_resource type="Texture2D" uid="uid://ctjgnr01sefh7" path="res://collector_wakeup.png" id="21_yig3p"]
 [ext_resource type="Texture2D" uid="uid://c1jcyqinso0sv" path="res://collector_talk.png" id="22_xgecc"]
+[ext_resource type="Texture2D" uid="uid://c2nmnwvo68tr7" path="res://text_collector.png" id="23_m348c"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_706ym"]
 
@@ -30,11 +32,23 @@ texture = ExtResource("1_nugcr")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ktaoy"]
+texture = ExtResource("2_yrw4x")
+texture_region_size = Vector2i(128, 128)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
 [sub_resource type="TileSet" id="TileSet_4ipcd"]
 sources/0 = SubResource("TileSetAtlasSource_rfigp")
+sources/3 = SubResource("TileSetAtlasSource_ktaoy")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rjt6i"]
+size = Vector2(1469, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdxuj"]
-size = Vector2(135, 55)
+size = Vector2(135.921, 55)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehqqx"]
 size = Vector2(44, 78.0843)
@@ -613,6 +627,62 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_l0bl7"]
+atlas = ExtResource("23_m348c")
+region = Rect2(128, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y2hgc"]
+atlas = ExtResource("23_m348c")
+region = Rect2(0, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xlocs"]
+atlas = ExtResource("23_m348c")
+region = Rect2(128, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_isoia"]
+atlas = ExtResource("23_m348c")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pabwl"]
+atlas = ExtResource("23_m348c")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gh68h"]
+atlas = ExtResource("23_m348c")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nyoo8"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l0bl7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2hgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xlocs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y2hgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_isoia")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pabwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gh68h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pabwl")
+}],
+"loop": true,
+"name": &"rat",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(-237, -452)
 
@@ -625,16 +695,15 @@ position = Vector2(-0.999878, -1.00003)
 scale = Vector2(7.51563, 0.5625)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="floor1"]
-tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAD9////AAAAAAAAAAABAP//AAAAAAAAAAAFAP//AAAAAAAAAAAJAP//AAAAAAAAAAANAP//AAAAAAAAAAD1////AAAAAAAAAADx////AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAD9////AAAAAAAAAAABAP//AAAAAAAAAAAFAP//AAAAAAAAAAAJAP//AAAAAAAAAAANAP//AAAAAAAAAAD1////AAAAAAAAAADx////AAAAAAAAAADt////AAAAAAAAAADp////AAAAAAAAAADl////AAAAAAAAAADh////AAAAAAAAAADd////AAAAAAAAAADZ////AAAAAAAAAADV////AAAAAAAAAADR////AAAAAAAAAADN////AAAAAAAAAADJ////AAAAAAAAAADF////AAAAAAAAAADB////AAAAAAAAAAC9////AAAAAAAAAAC5////AAAAAAAAAAC1////AAAAAAAAAADN//r/AwAAAAAAAADT//r/AwAAAAAAAADQ//b/AwAAAAAAAAAWAPb/AwABAAAAAAAiAPP/AwABAAEAAABAAO3/AwAAAAEAAAAAAPr/AwAAAAAAAAAAAPb/AwAAAAAAAAAAAPL/AwAAAAAAAAD8//r/AwABAAAAAAA=")
 tile_set = SubResource("TileSet_4ipcd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor1"]
-position = Vector2(-9, -6)
-scale = Vector2(3.8, 1)
-shape = SubResource("RectangleShape2D_fdxuj")
+position = Vector2(-489.5, -5)
+shape = SubResource("RectangleShape2D_rjt6i")
 
 [node name="floor2" type="StaticBody2D" parent="."]
-position = Vector2(-890, 340)
+position = Vector2(-1038, 131.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="floor2"]
 material = SubResource("ShaderMaterial_706ym")
@@ -651,7 +720,7 @@ scale = Vector2(3.8, 1)
 shape = SubResource("RectangleShape2D_fdxuj")
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
-position = Vector2(166, 430)
+position = Vector2(-882, 425)
 scale = Vector2(1, 1.11064)
 script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
@@ -671,7 +740,7 @@ frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 offset = Vector2(0, -75)
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 
 [node name="Area2D" type="Area2D" parent="Player"]
 
@@ -688,32 +757,32 @@ offset_right = -126.0
 offset_bottom = -347.164
 
 [node name="heart1" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(-82, 201.685)
+position = Vector2(-77.504, 201.775)
 scale = Vector2(0.453, 0.453)
 texture = ExtResource("17_tb3th")
 
 [node name="heart2" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(-50, 201.685)
+position = Vector2(-39.504, 201.775)
 scale = Vector2(0.453, 0.453)
 texture = ExtResource("17_tb3th")
 
 [node name="heart3" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(-16, 201.685)
+position = Vector2(-2.50401, 202.676)
 scale = Vector2(0.453, 0.453)
 texture = ExtResource("17_tb3th")
 
 [node name="heart4" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(15, 201.685)
+position = Vector2(36.496, 203.576)
 scale = Vector2(0.453, 0.453)
 texture = ExtResource("17_tb3th")
 
 [node name="heart5" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(46, 202.586)
+position = Vector2(74.496, 203.576)
 scale = Vector2(0.453125, 0.457795)
 texture = ExtResource("17_tb3th")
 
 [node name="OilBar" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(-9, 239.502)
+position = Vector2(-1, 238.601)
 scale = Vector2(0.735136, 0.6685)
 texture = ExtResource("11_f43ly")
 
@@ -759,7 +828,7 @@ scale = Vector2(1.24595, 1.17869)
 shape = SubResource("RectangleShape2D_7y06n")
 
 [node name="platform5" type="StaticBody2D" parent="."]
-position = Vector2(-161, 429)
+position = Vector2(-309, 220.1)
 scale = Vector2(0.668904, 0.794078)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="platform5"]
@@ -767,12 +836,12 @@ tile_map_data = PackedByteArray("AAAFAAAAAAAAAAAAAAABAAAAAAABAAAAAAD9/wAAAAAAAAE
 tile_set = SubResource("TileSet_c4d4r")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="platform5"]
-position = Vector2(23.9198, 13.2228)
+position = Vector2(26.9097, 8.81525)
 scale = Vector2(1.24595, 1.17869)
 shape = SubResource("RectangleShape2D_7y06n")
 
 [node name="platform6" type="StaticBody2D" parent="."]
-position = Vector2(-340, 377)
+position = Vector2(-488, 168.1)
 scale = Vector2(0.668904, 0.794078)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="platform6"]
@@ -785,7 +854,7 @@ scale = Vector2(1.24595, 1.17869)
 shape = SubResource("RectangleShape2D_7y06n")
 
 [node name="platform7" type="StaticBody2D" parent="."]
-position = Vector2(-512, 337)
+position = Vector2(-660, 128.1)
 scale = Vector2(0.668904, 0.794078)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="platform7"]
@@ -846,7 +915,7 @@ shape = SubResource("RectangleShape2D_jhqfp")
 [node name="FireTimer" type="Timer" parent="Wizard"]
 
 [node name="Collector" type="Area2D" parent="."]
-position = Vector2(-887, 241)
+position = Vector2(-1035, 32.1003)
 scale = Vector2(0.491702, 0.539309)
 script = ExtResource("20_myck8")
 
@@ -865,3 +934,11 @@ offset_bottom = -80.8366
 text = "F"
 horizontal_alignment = 1
 uppercase = true
+metadata/_edit_use_anchors_ = true
+
+[node name="text_bubble" type="AnimatedSprite2D" parent="Collector"]
+position = Vector2(-12.2026, -129.796)
+scale = Vector2(1.43743, 1.59347)
+sprite_frames = SubResource("SpriteFrames_nyoo8")
+animation = &"rat"
+frame_progress = 0.710585
