@@ -15,9 +15,9 @@ extends CharacterBody2D
 @onready var heart_container = $HealthUI
 @onready var oil_container = $HealthUI
 
-<<<<<<< Updated upstream
+
 var suicide = true
-=======
+
 @export var dash_speed: float = 1000.0  # How fast the dash is
 @export var dash_duration: float = 0.2  # How long the dash lasts
 @export var dash_cooldown: float = 1.0  # How long before you can dash again
@@ -27,7 +27,6 @@ var dash_timer: float = 0.0
 var dash_direction: Vector2 = Vector2.ZERO
 var can_dash: bool = true
 
->>>>>>> Stashed changes
 var shotgun_spread = 3
 var pellets = 15
 var overalldirection = 1
@@ -152,66 +151,10 @@ func apply_knockback(enemy_position: Vector2):
 	else:
 		printerr("ERROR: KnockbackTimer node not found!")
 
-func trigger_cannon_attack():
-	if is_knocked_back:
-		knockback_timer += delta
-		if knockback_timer >= knockback_duration:
-			is_knocked_back = false
-			knockback_timer = 0.0
-		else:
-			# Apply knockback force (you might need to adjust this based on your movement system)
-			velocity = knockback_direction * knockback_force  # For KinematicBody2D
-			move_and_slide() # For KinematicBody2D
-			# position += knockback_direction * knockback_force * delta #For other Node Types
-<<<<<<< Updated upstream
-=======
-	if is_dashing:
-		dash_timer -= delta
-		if dash_timer <= 0:
-			is_dashing = false
-			velocity = Vector2.ZERO  # Stop dash after time runs out
-		move_and_slide()
-		return  # Exit early to prevent other movement while dashing
-
-	# Normal gravity and movement
-	if not is_on_floor():
-		velocity.y += GRAVITY * delta
-
-	var directiondash := Input.get_axis("ui_left", "ui_right")
-
-	if directiondash:
-		velocity.x = directiondash * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-
-	# Handle dash input
-	if Input.is_action_just_pressed("dash") and can_dash:
-		start_dash(directiondash)
-
->>>>>>> Stashed changes
-	move_and_slide()
-
-func start_dash(direction: float):
-	if direction == 0:  # If no direction is pressed, use the last facing direction
-		direction = -1 if $AnimatedSprite2D.flip_h else 1
-
-	is_dashing = true
-	dash_timer = dash_duration
-	dash_direction = Vector2(direction, 0)
-	velocity = dash_direction * dash_speed
-	can_dash = false
-
-	# Start cooldown timer
-	$DashCooldownTimer.start(dash_cooldown)
 	
-<<<<<<< Updated upstream
-func trigger_spell():
-=======
-func _on_DashCooldownTimer_timeout():
-	can_dash = true
 
-func trigger_cannon_attack():
->>>>>>> Stashed changes
+
+func trigger_spell():
 	#set total velocity to 0, tell the player to float, and that you're no longer shooting
 	freeze()
 	is_shooting = false
