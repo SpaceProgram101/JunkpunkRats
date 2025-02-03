@@ -13,7 +13,7 @@ var wake_up_animation = "waking up"
 var current_animation = sleep_animation
 
 
-var sleep_distance = 250
+var sleep_distance = 300
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	text_bubble.visible = false
