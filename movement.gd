@@ -17,18 +17,20 @@ extends CharacterBody2D
 var suicide = true
 var shotgun_spread = 3
 var pellets = 15
-var bust: bool = false
-var is_busting: bool = false
 var overalldirection = 1
 
-var skibidi = 5
-var toilet = 5
+
 var is_shooting: bool = false
 
 var current_spell = 0
 
+
+var skibidi = 5
+var toilet = 5
 var max_oil = 3
 var current_oil = 3
+
+
 var frozen: bool = false
 const SPEED = 300.0
 const JUMP_VELOCITY = -700.0
@@ -189,7 +191,6 @@ func shoot_shotgun_blasts():
 	
 	
 func launch_shotgun_attack():
-	bust = false
 	freeze()
 	print ("Frozen!")
 	for i in range (pellets):
