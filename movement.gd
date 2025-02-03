@@ -288,7 +288,7 @@ func launch_shotgun_attack():
 	freeze()
 	print ("Frozen!")
 	for i in range (pellets):
-		var angle_offset = (i - (pellets / 2)) * shotgun_spread
+		var angle_offset = (i - (pellets / 2.0)) * shotgun_spread
 		var spawn_angle = rotation + deg_to_rad(angle_offset)  # Rotate relative to player
 		print ("Rotation set!")
 		# Spawn the projectile
