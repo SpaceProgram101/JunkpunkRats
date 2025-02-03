@@ -703,7 +703,7 @@ position = Vector2(-489.5, -5)
 shape = SubResource("RectangleShape2D_rjt6i")
 
 [node name="floor2" type="StaticBody2D" parent="."]
-position = Vector2(-1038, 131.1)
+position = Vector2(2471, 172.1)
 
 [node name="Sprite2D" type="Sprite2D" parent="floor2"]
 material = SubResource("ShaderMaterial_706ym")
@@ -751,38 +751,38 @@ shape = SubResource("RectangleShape2D_dxav2")
 [node name="HealthUI" type="Control" parent="Player"]
 layout_mode = 3
 anchors_preset = 0
-offset_left = -166.0
-offset_top = -387.164
-offset_right = -126.0
-offset_bottom = -347.164
+offset_left = 3343.0
+offset_top = -350.248
+offset_right = 3383.0
+offset_bottom = -310.248
 
 [node name="heart1" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(-77.504, 201.775)
+position = Vector2(-3583, 168.371)
 scale = Vector2(0.453, 0.453)
 texture = ExtResource("17_tb3th")
 
 [node name="heart2" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(-39.504, 201.775)
+position = Vector2(-3549, 168.371)
 scale = Vector2(0.453, 0.453)
 texture = ExtResource("17_tb3th")
 
 [node name="heart3" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(-2.50401, 202.676)
+position = Vector2(-3516, 168.371)
 scale = Vector2(0.453, 0.453)
 texture = ExtResource("17_tb3th")
 
 [node name="heart4" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(36.496, 203.576)
+position = Vector2(-3485, 169.272)
 scale = Vector2(0.453, 0.453)
 texture = ExtResource("17_tb3th")
 
 [node name="heart5" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(74.496, 203.576)
-scale = Vector2(0.453125, 0.457795)
+position = Vector2(-3451, 171.072)
+scale = Vector2(0.453125, 0.510266)
 texture = ExtResource("17_tb3th")
 
 [node name="OilBar" type="Sprite2D" parent="Player/HealthUI"]
-position = Vector2(-1, 238.601)
+position = Vector2(-3509, 211.59)
 scale = Vector2(0.735136, 0.6685)
 texture = ExtResource("11_f43ly")
 
@@ -827,21 +827,8 @@ position = Vector2(23.9198, 13.2228)
 scale = Vector2(1.24595, 1.17869)
 shape = SubResource("RectangleShape2D_7y06n")
 
-[node name="platform5" type="StaticBody2D" parent="."]
-position = Vector2(-309, 220.1)
-scale = Vector2(0.668904, 0.794078)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="platform5"]
-tile_map_data = PackedByteArray("AAAFAAAAAAAAAAAAAAABAAAAAAABAAAAAAD9/wAAAAAAAAEAAAA=")
-tile_set = SubResource("TileSet_c4d4r")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="platform5"]
-position = Vector2(26.9097, 8.81525)
-scale = Vector2(1.24595, 1.17869)
-shape = SubResource("RectangleShape2D_7y06n")
-
 [node name="platform6" type="StaticBody2D" parent="."]
-position = Vector2(-488, 168.1)
+position = Vector2(2083, 214)
 scale = Vector2(0.668904, 0.794078)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="platform6"]
@@ -854,7 +841,7 @@ scale = Vector2(1.24595, 1.17869)
 shape = SubResource("RectangleShape2D_7y06n")
 
 [node name="platform7" type="StaticBody2D" parent="."]
-position = Vector2(-660, 128.1)
+position = Vector2(1896, 275)
 scale = Vector2(0.668904, 0.794078)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="platform7"]
@@ -915,7 +902,7 @@ shape = SubResource("RectangleShape2D_jhqfp")
 [node name="FireTimer" type="Timer" parent="Wizard"]
 
 [node name="Collector" type="Area2D" parent="."]
-position = Vector2(-1035, 32.1003)
+position = Vector2(2474, 73.1001)
 scale = Vector2(0.491702, 0.539309)
 script = ExtResource("20_myck8")
 

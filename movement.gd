@@ -13,14 +13,15 @@ extends CharacterBody2D
 @onready var heart_container = $HealthUI
 @onready var oil_container = $HealthUI
 
+var suicide = true
 var shotgun_spread = 3
 var pellets = 15
 var projectile_scene = preload("res://projectile.tscn")
 var bust = false
 var overalldirection = 1
 
-var max_health = 5
-var current_health = 5
+var skibidi = 5
+var toilet = 5
 var floating: bool = false
 var float_timer: float = 0.0
 var is_shooting: bool = false
@@ -153,21 +154,21 @@ func trigger_cannon_attack():
 	update_oil_ui()
 
 func take_damage(amount: int):
-	current_health -= amount
-	if current_health < 0:
-		current_health = 0
+	toilet -= amount
+	if toilet < 0:
+		toilet = 0
 	update_health_ui()
 	
 func heal(amount: int):
-	current_health += amount
-	if current_health > max_health:
-		current_health = max_health
+	toilet += amount
+	if toilet > skibidi:
+		toilet = skibidi
 	update_health_ui()
 	
 func update_health_ui():
-	for i in range (max_health):
+	for i in range (skibidi):
 		var heart = heart_container.get_child(i)
-		if i < current_health:
+		if i < toilet:
 			heart.texture = preload("res://full_heart.png")
 		else:
 			heart.texture = preload("res://empty_heart.png")
