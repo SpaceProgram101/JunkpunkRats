@@ -1,7 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://cb1c6mtm40tbf"]
+[gd_scene load_steps=12 format=3 uid="uid://cb1c6mtm40tbf"]
 
 [ext_resource type="Script" path="res://wizard_fireball.gd" id="1_kfcww"]
 [ext_resource type="Texture2D" uid="uid://bl5am82fb5yiw" path="res://sheet_lightning.png" id="2_gk6wf"]
+[ext_resource type="Texture2D" uid="uid://dp6n5f5mx4nq2" path="res://light_source.png" id="3_pi3u7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_swemh"]
 size = Vector2(4.27637, 5.1714)
@@ -74,3 +75,10 @@ scale = Vector2(0.127475, 0.289948)
 sprite_frames = SubResource("SpriteFrames_wmenk")
 animation = &"fireball"
 frame_progress = 0.00106606
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-1.47825, 0.929688)
+scale = Vector2(0.0276347, 0.0584335)
+color = Color(0.211765, 1, 1, 1)
+energy = 0.65
+texture = ExtResource("3_pi3u7")

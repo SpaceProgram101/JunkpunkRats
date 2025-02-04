@@ -1,4 +1,4 @@
-[gd_scene load_steps=137 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=138 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://1588eudwbijm" path="res://oil_bar/oil_bar_full.png" id="11_f43ly"]
 [ext_resource type="Script" path="res://wizard_AI.gd" id="12_mwc2y"]
 [ext_resource type="Texture2D" uid="uid://btfaxtn6ik3pw" path="res://sheet_wizard_angy.png" id="12_nn6wy"]
+[ext_resource type="AudioStream" uid="uid://c3rwv0kdift04" path="res://gleb (1).mp3" id="12_t4eks"]
 [ext_resource type="Texture2D" uid="uid://btlck4ecnptdp" path="res://sheet_wizard_idle.png" id="13_1tjjp"]
 [ext_resource type="PackedScene" uid="uid://cb1c6mtm40tbf" path="res://wizard_fireball.tscn" id="13_4jaoe"]
 [ext_resource type="Texture2D" uid="uid://b1lsdyne54iom" path="res://fireplace.png" id="13_pq53n"]
@@ -943,6 +944,9 @@ scale = Vector2(0.828125, 0.859375)
 shape = SubResource("RectangleShape2D_jhqfp")
 
 [node name="FireTimer" type="Timer" parent="Wizard"]
+
+[node name="gleb_rat" type="AudioStreamPlayer2D" parent="Wizard"]
+stream = ExtResource("12_t4eks")
 
 [node name="collector_house" type="StaticBody2D" parent="."]
 position = Vector2(-1343, 502)

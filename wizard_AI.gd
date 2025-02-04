@@ -10,7 +10,7 @@ var direction = -1
 var dead = false
 var dying = false
 var gravity = 500
-
+var audio_player: AudioStreamPlayer2D
 var player  # Reference to the player node
 var attack_range = 300.0
 var start_position = Vector2()
@@ -19,6 +19,7 @@ var start_position = Vector2()
 var portal_effect : Node2D = null
 
 func _ready():
+	audio_player = $gleb_rat
 	current_health = max_health
 	next_shoot_time = shoot_interval
 	start_position = position
@@ -85,4 +86,5 @@ func spawn_portal_effect():
 func take_damage(damage: int) -> void:
 	current_health -= damage
 	if current_health <= 0:
+		audio_player.play()
 		dead = true

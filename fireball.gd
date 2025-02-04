@@ -2,7 +2,7 @@ extends Area2D  # Or Area2D, depending on your choice
 
 @export var knockback_force = 200.0
 @export var knockback_duration = 0.2
-
+@export var damage: int = 10
 @export var speed: float = 700.0  # Bullet speed
 var direction: Vector2 = Vector2.ZERO  # Direction of the bullet movement
 
@@ -26,6 +26,7 @@ func _ready():
 	
 func _process(delta):
 	#increment distance by multiplying direction, speed, and the current time.
+	speed = randf_range(600,1200)
 	position += direction * speed * delta
 
 	# Optionally add collision handling here (e.g. hit detection)
@@ -44,3 +45,9 @@ func _on_area_entered(area):
 		area.apply_knockback(knockback_force, knockback_duration, global_position)
 	else:
 		printerr("Colliding area does not have 'apply_knockback' function")
+
+func _on_Projectile_body_entered(body: Node) -> void:
+	if body.is_in_group("enemies"):
+		body.take_damage(damage)
+		queue_free()
+		 

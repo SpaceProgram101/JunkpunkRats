@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://c3rwv0kdift04"
+path="res://.godot/imported/gleb (1).mp3-82d60c372ab2c2ef729d981e17b84bdd.mp3str"
+
+[deps]
+
+source_file="res://gleb (1).mp3"
+dest_files=["res://.godot/imported/gleb (1).mp3-82d60c372ab2c2ef729d981e17b84bdd.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
