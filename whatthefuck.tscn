@@ -961,7 +961,7 @@ position = Vector2(-93, -77)
 scale = Vector2(0.914063, 1.00781)
 sprite_frames = SubResource("SpriteFrames_w43w2")
 autoplay = "default"
-frame_progress = 0.818084
+frame_progress = 0.667015
 
 [node name="PointLight2D" type="PointLight2D" parent="collector_house/AnimatedSprite2D"]
 position = Vector2(-15.3162, 23.814)
@@ -998,6 +998,11 @@ position = Vector2(-0.126465, 1.91274)
 stream = ExtResource("27_y51m0")
 script = ExtResource("28_mbbb7")
 player = NodePath("../../Player")
+
+[node name="gleb" type="AudioStreamPlayer2D" parent="Collector"]
+
+[node name="Timer" type="Timer" parent="Collector"]
+autostart = true
 
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 position = Vector2(-882, 425)
@@ -1075,11 +1080,6 @@ texture = ExtResource("11_f43ly")
 [node name="KnockbackTimer" type="Timer" parent="Player"]
 
 [node name="DashCooldownTimer" type="Timer" parent="Player"]
-
-[node name="PointLight2D" type="PointLight2D" parent="Player"]
-position = Vector2(-21, -28.8122)
-scale = Vector2(0.343739, 0.237227)
-texture = ExtResource("14_7w078")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.42

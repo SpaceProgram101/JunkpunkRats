@@ -11,10 +11,28 @@ var sleep_animation = "asleep"
 var wake_up_animation = "waking up"
 var current_animation = sleep_animation
 var music_player: AudioStreamPlayer2D
-
+var audio_player: AudioStreamPlayer2D
+var timer : Timer
 var sleep_distance = 300
+
+var voicelines : Array = [
+	preload("res://Collector1.mp3"),
+	preload("res://Collector2.mp3"),
+	preload("res://Collector3.mp3"),
+	preload("res://Collector5.mp3"),
+]
+
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	audio_player = $gleb
+	timer = $Timer
+	
+	timer.connect("timeout",Callable(self,"_on_Timer_timeout"))
+	
+	timer.start()
+	
 	text_bubble.visible = false
 	connect("body_entered",Callable(self,"_on_body_entered"))
 	connect("body_exited",Callable(self,"_on_body_exited"))
@@ -84,4 +102,13 @@ func _input(event):
 	if event.is_action_pressed("interact") and player and is_awake == false:
 		wake_up()
 		
-		
+	
+func _on_Timer_timeout():
+	
+	var random_index = randi() % voicelines.size()
+	
+	audio_player.stream = voicelines[random_index]
+	
+	if not audio_player.playing:
+		if is_awake:
+			audio_player.play()
