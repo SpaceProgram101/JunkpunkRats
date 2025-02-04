@@ -1,4 +1,4 @@
-[gd_scene load_steps=127 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=137 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -19,6 +19,8 @@
 [ext_resource type="Texture2D" uid="uid://btfaxtn6ik3pw" path="res://sheet_wizard_angy.png" id="12_nn6wy"]
 [ext_resource type="Texture2D" uid="uid://btlck4ecnptdp" path="res://sheet_wizard_idle.png" id="13_1tjjp"]
 [ext_resource type="PackedScene" uid="uid://cb1c6mtm40tbf" path="res://wizard_fireball.tscn" id="13_4jaoe"]
+[ext_resource type="Texture2D" uid="uid://b1lsdyne54iom" path="res://fireplace.png" id="13_pq53n"]
+[ext_resource type="Texture2D" uid="uid://dp6n5f5mx4nq2" path="res://light_source.png" id="14_7w078"]
 [ext_resource type="PackedScene" uid="uid://ga4oghl0gm17" path="res://blue_explosion_scene.tscn" id="14_tebxn"]
 [ext_resource type="Texture2D" uid="uid://0nt7mvrryuuf" path="res://full_heart.png" id="17_tb3th"]
 [ext_resource type="Texture2D" uid="uid://oivgqwd7pq0o" path="res://rat_fucking_dead.png" id="20_hy2ch"]
@@ -26,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://ctjgnr01sefh7" path="res://collector_wakeup.png" id="21_yig3p"]
 [ext_resource type="Texture2D" uid="uid://c1jcyqinso0sv" path="res://collector_talk.png" id="22_xgecc"]
 [ext_resource type="Texture2D" uid="uid://c2nmnwvo68tr7" path="res://text_collector.png" id="23_m348c"]
+[ext_resource type="Texture2D" uid="uid://cwb351cqwlhfs" path="res://background (2).png" id="24_g2vq3"]
 [ext_resource type="AudioStream" uid="uid://dbuwplqxx0g6b" path="res://collectors_stash.mp3" id="27_y51m0"]
 [ext_resource type="Script" path="res://collector_music.gd" id="28_mbbb7"]
 [ext_resource type="Texture2D" uid="uid://buj8fvm76vvts" path="res://wood_planks.png" id="29_3iv1w"]
@@ -314,6 +317,56 @@ sources/2 = SubResource("TileSetAtlasSource_ajc6t")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eus83"]
 size = Vector2(519.5, 54)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hjw8q"]
+atlas = ExtResource("13_pq53n")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3dnmx"]
+atlas = ExtResource("13_pq53n")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yxe0l"]
+atlas = ExtResource("13_pq53n")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_psywt"]
+atlas = ExtResource("13_pq53n")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tpiny"]
+atlas = ExtResource("13_pq53n")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pm48c"]
+atlas = ExtResource("13_pq53n")
+region = Rect2(128, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w43w2"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hjw8q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3dnmx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yxe0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_psywt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tpiny")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pm48c")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_3j7b1"]
 radius = 278.907
@@ -903,17 +956,29 @@ tile_set = SubResource("TileSet_06d0s")
 position = Vector2(6, 8)
 shape = SubResource("RectangleShape2D_eus83")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="collector_house"]
+position = Vector2(-93, -77)
+scale = Vector2(0.914063, 1.00781)
+sprite_frames = SubResource("SpriteFrames_w43w2")
+autoplay = "default"
+frame_progress = 0.818084
+
+[node name="PointLight2D" type="PointLight2D" parent="collector_house/AnimatedSprite2D"]
+position = Vector2(-15.3162, 23.814)
+scale = Vector2(0.890993, 0.835273)
+texture = ExtResource("14_7w078")
+
 [node name="Collector" type="Area2D" parent="."]
 position = Vector2(-1350, 385)
 scale = Vector2(0.491702, 0.539309)
 script = ExtResource("20_myck8")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collector"]
-position = Vector2(12.0759, 0.0585041)
+position = Vector2(14.2363, 44.5014)
 shape = SubResource("CircleShape2D_3j7b1")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Collector"]
-position = Vector2(30.3799, 50.1226)
+position = Vector2(34.5738, 70.4605)
 sprite_frames = SubResource("SpriteFrames_tnyth")
 animation = &"fall_asleep"
 
@@ -925,7 +990,7 @@ animation = &"rat"
 frame_progress = 0.710585
 
 [node name="music_radius" type="CollisionShape2D" parent="Collector"]
-position = Vector2(2.03369, 7.41687)
+position = Vector2(-8.13501, 63.0436)
 shape = SubResource("CircleShape2D_hptjh")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Collector" node_paths=PackedStringArray("player")]
@@ -941,6 +1006,12 @@ collision_mask = 7
 script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
 projectile_scene = ExtResource("5_qtrld")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+z_index = -1
+position = Vector2(-6, -55.8237)
+scale = Vector2(0.619843, 0.329131)
+texture = ExtResource("24_g2vq3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(-21, 4.9521)
@@ -1004,6 +1075,15 @@ texture = ExtResource("11_f43ly")
 [node name="KnockbackTimer" type="Timer" parent="Player"]
 
 [node name="DashCooldownTimer" type="Timer" parent="Player"]
+
+[node name="PointLight2D" type="PointLight2D" parent="Player"]
+position = Vector2(-21, -28.8122)
+scale = Vector2(0.343739, 0.237227)
+texture = ExtResource("14_7w078")
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.42
+blend_mode = 1
 
 [connection signal="child_entered_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="child_exiting_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_exited"]
