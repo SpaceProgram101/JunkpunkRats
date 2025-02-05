@@ -51,3 +51,11 @@ func _on_area_entered(area):
 		area.apply_knockback(knockback_force, knockback_duration, global_position)
 	else:
 		printerr("Colliding area does not have 'apply_knockback' function")
+
+
+func _on_player_detected(_area: Area2D) -> void:
+	pass # Replace with function body.
+
+
+func _on_player_lost(_area: Area2D) -> void:
+	pass # Replace with function body.

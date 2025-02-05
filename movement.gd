@@ -201,7 +201,7 @@ func shoot_shotgun_blasts():
 	#then we use unit circle to aim them
 	#tbh idfk what's going on here it just works sometimes
 	is_shooting = false
-	spread_angle = randf_range(15,30)
+	spread_angle = randf_range(-45,45)
 	var start_angle = -spread_angle / 2
 	for i in range(num_projectiles):
 		
