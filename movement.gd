@@ -7,6 +7,7 @@ extends CharacterBody2D
 @export var spread_angle: float = 90.0
 @export var num_projectiles: int = 7
 @export var fire_frame: int = 2
+@export var fire_frame_1: int = 1
 @export var sex_force = 700.0  # Adjust the knockback strength
 @export var projectile_scene: PackedScene
 @export var knockback_force = 200.0  # Adjust the knockback strength
@@ -28,8 +29,19 @@ var dash_direction: Vector2 = Vector2.ZERO
 var can_dash: bool = true
 
 var shotgun_spread = 3
-var pellets = 15
+var pellets = 50
 var overalldirection = 1
+
+
+var wall_jump_speed = -400
+var can_wall_jump = false
+var touching_wall = false
+var cling = false
+var cling_timer = 0.0
+var wall_direction = 0
+
+var wall_ray_left : RayCast2D
+var wall_ray_right : RayCast2D
 
 
 var is_shooting: bool = false
@@ -53,6 +65,10 @@ var knockback_timer = 0.0
 var knockback_direction = Vector2.ZERO
 
 func _ready():
+	
+	wall_ray_left = $WallRayLeft
+	wall_ray_right = $WallRayRight
+
 	if $KnockbackTimer:
 		$KnockbackTimer.connect("timeout", Callable(self, "_on_KnockbackTimer_timeout"))
 	else:
@@ -79,12 +95,54 @@ func _process(_delta):
 		update_oil_ui()
 
 func _physics_process(delta: float) -> void:
+	
+	
+	wall_direction = 0
+	
+	
+	if wall_ray_left.is_colliding():
+		print ("Ray Cast 1")
+		touching_wall = true
+		wall_direction = -1
+	elif wall_ray_right.is_colliding():
+		print ("Ray Cast 2")
+		touching_wall = true
+		wall_direction = 1
+	else:
+		touching_wall = false
+		wall_direction = 0
+		
+
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
-	if not is_on_floor():
+	if touching_wall and not is_on_floor() and can_wall_jump:
+		cling = true
+		velocity.x = 0
+		gravity = 0
+		velocity.y = 0
+		cling_timer = 0.5
+		
+	if cling and Input.is_action_just_pressed("ui_accept"):
+		velocity.y = wall_jump_speed
+		velocity.x = wall_direction * 1000
+		cling = false
+		can_wall_jump = false
+		gravity = 2500
+		
+		if wall_direction == 1:
+			velocity.x += 100
+		elif wall_direction == -1: 
+			velocity.x -= 100
+		print (wall_direction)
+	elif not is_on_floor() and not touching_wall:
+		can_wall_jump = true
+		gravity = 2500.0
 		velocity.y += gravity * delta
 	#but if you press E while in the air, trigger the cannon
-	
+	if cling_timer > 0:
+		cling_timer -= delta
+	else:
+		cling = false
 	#if floating is set to true, decrease gravity, start the timer
 
 	# Handle jump.
@@ -93,9 +151,9 @@ func _physics_process(delta: float) -> void:
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if Input.is_action_pressed("ui_left"):
-		overalldirection = -1
+		overalldirection = 1
 	elif Input.is_action_pressed("ui_right"):
-		overalldirection = 1  # Move right
+		overalldirection = -1  # Move right
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if not frozen:
@@ -105,9 +163,12 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 	#
 	if velocity.x != 0:
-		$AnimatedSprite2D.flip_h = velocity.x < 0
+		$AnimatedSprite2D.flip_h = velocity.x > 0
 	
-	if current_spell == 1:
+	
+	if cling:
+		$AnimatedSprite2D.play("cling")
+	elif current_spell == 1:
 		$AnimatedSprite2D.play("bust")
 	elif current_spell == 2:
 		$AnimatedSprite2D.play("up_spell")
@@ -179,9 +240,9 @@ func update_health_ui():
 	for i in range (skibidi):
 		var heart = heart_container.get_child(i)
 		if i < toilet:
-			heart.texture = preload("res://full_heart.png")
+			heart.texture = preload("res://rat_heart_full.png")
 		else:
-			heart.texture = preload("res://empty_heart.png")
+			heart.texture = preload("res://rat_heart_empty.png")
 
 func update_oil_ui():
 	var oil = oil_container.get_child(5)
@@ -201,7 +262,7 @@ func shoot_shotgun_blasts():
 	#then we use unit circle to aim them
 	#tbh idfk what's going on here it just works sometimes
 	is_shooting = false
-	spread_angle = randf_range(-45,45)
+	spread_angle = randf_range(-90,90)
 	var start_angle = -spread_angle / 2
 	for i in range(num_projectiles):
 		
@@ -215,7 +276,7 @@ func shoot_shotgun_blasts():
 			var direction = Vector2(sin(angle_rad), -cos(angle_rad))
 			bullet.direction = direction
 
-			var bullet_position = position + Vector2(-25,-100)
+			var bullet_position = position + Vector2(0,-5)
 			bullet.position = bullet_position
 			
 			var bullet_sprite = bullet.get_child(0)	
@@ -242,7 +303,7 @@ func launch_shotgun_attack():
 		print ("Child successfully set!")
 			# Position the projectile where the player is
 		projectile.position = position  # Spawn at the player's position
-		projectile.position.y -= 35
+		projectile.position.y -= 5
 		print("Projectile Rotation: ", projectile.rotation)
 		  # Set the projectile's initial rotation
 		var direction = Vector2(cos(spawn_angle), sin(spawn_angle))
@@ -275,7 +336,7 @@ func _on_frame_changed():
 	if $AnimatedSprite2D.frame == fire_frame and current_spell == 2:
 		shoot_shotgun_blasts()
 		is_shooting = true
-	if $AnimatedSprite2D.frame == fire_frame and current_spell == 1:
+	if $AnimatedSprite2D.frame == fire_frame_1 and current_spell == 1:
 		launch_shotgun_attack()
 		is_shooting = true
 

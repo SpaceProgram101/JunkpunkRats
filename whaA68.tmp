@@ -1,4 +1,4 @@
-[gd_scene load_steps=163 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=160 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -31,7 +31,6 @@
 [ext_resource type="AudioStream" uid="uid://dbuwplqxx0g6b" path="res://collectors_stash.mp3" id="27_y51m0"]
 [ext_resource type="Script" path="res://collector_music.gd" id="28_mbbb7"]
 [ext_resource type="Texture2D" uid="uid://buj8fvm76vvts" path="res://wood_planks.png" id="29_3iv1w"]
-[ext_resource type="Texture2D" uid="uid://cil3i0soynkos" path="res://player_cling-1.png (1).png" id="29_7rrba"]
 [ext_resource type="Texture2D" uid="uid://c214sc5ygy3ey" path="res://player_bust_spell (1).png" id="30_l1cg2"]
 [ext_resource type="Texture2D" uid="uid://cuq8ik262f21y" path="res://player animations/player_jump.png" id="31_2lhso"]
 [ext_resource type="Texture2D" uid="uid://dcttc06fhvqtu" path="res://player animations/player_run (1).png" id="34_hf2sd"]
@@ -64,13 +63,7 @@ sources/3 = SubResource("TileSetAtlasSource_ktaoy")
 size = Vector2(1469, 52)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfbql"]
-size = Vector2(61, 382.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vmd13"]
-size = Vector2(62, 200)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6dqo"]
-size = Vector2(194, 52)
+size = Vector2(61, 147)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdxuj"]
 size = Vector2(135.921, 55)
@@ -747,6 +740,11 @@ region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_inw14"]
 animations = [{
+"frames": [],
+"loop": false,
+"name": &"attack",
+"speed": 50.0
+}, {
 "frames": [{
 "duration": 3.0,
 "texture": SubResource("AtlasTexture_jwef8")
@@ -757,14 +755,6 @@ animations = [{
 "loop": false,
 "name": &"bust",
 "speed": 15.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("29_7rrba")
-}],
-"loop": false,
-"name": &"cling",
-"speed": 50.0
 }, {
 "frames": [],
 "loop": true,
@@ -977,7 +967,7 @@ position = Vector2(-0.999878, -1.00003)
 scale = Vector2(7.51563, 0.5625)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="floor1"]
-tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAD9////AAAAAAAAAAABAP//AAAAAAAAAAAFAP//AAAAAAAAAAAJAP//AAAAAAAAAAANAP//AAAAAAAAAAD1////AAAAAAAAAADx////AAAAAAAAAADt////AAAAAAAAAADp////AAAAAAAAAADl////AAAAAAAAAADh////AAAAAAAAAADd////AAAAAAAAAADZ////AAAAAAAAAADV////AAAAAAAAAADR////AAAAAAAAAADN////AAAAAAAAAADJ////AAAAAAAAAADF////AAAAAAAAAADB////AAAAAAAAAAC9////AAAAAAAAAAC5////AAAAAAAAAAC1////AAAAAAAAAADN//r/AwAAAAAAAADT//r/AwAAAAAAAADQ//b/AwAAAAAAAAAWAPb/AwABAAAAAAAiAPP/AwABAAEAAABAAO3/AwAAAAEAAAAAAPr/AwAAAAAAAAAAAPb/AwAAAAAAAAAAAPL/AwAAAAAAAAD8//r/AwABAAAAAAD0//z/AAAAAAAAAAD0//n/AAAAAAAAAAD0//b/AAAAAAAAAADs//b/AAAAAAAAAADs//P/AAAAAAAAAADs//D/AAAAAAAAAADs/+3/AAAAAAAAAAD0/+3/AAAAAAAAAAD0/+r/AAAAAAAAAAD0/+f/AAAAAAAAAAD4/+f/AAAAAAAAAAD8/+f/AAAAAAAAAAAAAOf/AAAAAAAAAAD0//D/AAAAAAAAAAD0//P/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAD9////AAAAAAAAAAABAP//AAAAAAAAAAAFAP//AAAAAAAAAAAJAP//AAAAAAAAAAANAP//AAAAAAAAAAD1////AAAAAAAAAADx////AAAAAAAAAADt////AAAAAAAAAADp////AAAAAAAAAADl////AAAAAAAAAADh////AAAAAAAAAADd////AAAAAAAAAADZ////AAAAAAAAAADV////AAAAAAAAAADR////AAAAAAAAAADN////AAAAAAAAAADJ////AAAAAAAAAADF////AAAAAAAAAADB////AAAAAAAAAAC9////AAAAAAAAAAC5////AAAAAAAAAAC1////AAAAAAAAAADN//r/AwAAAAAAAADT//r/AwAAAAAAAADQ//b/AwAAAAAAAAAWAPb/AwABAAAAAAAiAPP/AwABAAEAAABAAO3/AwAAAAEAAAAAAPr/AwAAAAAAAAAAAPb/AwAAAAAAAAAAAPL/AwAAAAAAAAD8//r/AwABAAAAAAD0//z/AAAAAAAAAAD0//n/AAAAAAAAAAD0//b/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_4ipcd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor1"]
@@ -985,16 +975,8 @@ position = Vector2(-489.5, -5)
 shape = SubResource("RectangleShape2D_rjt6i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="floor1"]
-position = Vector2(-185, -223.75)
+position = Vector2(-183.5, -104.5)
 shape = SubResource("RectangleShape2D_xfbql")
-
-[node name="CollisionShape2D3" type="CollisionShape2D" parent="floor1"]
-position = Vector2(-312, -220)
-shape = SubResource("RectangleShape2D_vmd13")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="floor1"]
-position = Vector2(-58, -389)
-shape = SubResource("RectangleShape2D_q6dqo")
 
 [node name="floor2" type="StaticBody2D" parent="."]
 position = Vector2(2471, 172.1)
@@ -1237,7 +1219,7 @@ shape = SubResource("RectangleShape2D_ehqqx")
 position = Vector2(0.999971, 0.900387)
 scale = Vector2(0.384468, 0.3189)
 sprite_frames = SubResource("SpriteFrames_inw14")
-animation = &"cling"
+animation = &"bust"
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, 29.7126)
@@ -1293,11 +1275,9 @@ texture = ExtResource("11_f43ly")
 
 [node name="WallRayLeft" type="RayCast2D" parent="Player"]
 target_position = Vector2(-10, 0)
-collide_with_areas = true
 
 [node name="WallRayRight" type="RayCast2D" parent="Player"]
 target_position = Vector2(10, 0)
-collide_with_areas = true
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.33

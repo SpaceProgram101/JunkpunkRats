@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cg2w86vgbvq04"]
 
 [ext_resource type="Script" path="res://ultimatecumblast.gd" id="1_g2fxi"]
-[ext_resource type="Texture2D" uid="uid://bf2u58ila0u16" path="res://cog1.png" id="2_bcu1a"]
+[ext_resource type="Texture2D" uid="uid://nklvob0bpk2c" path="res://player animations/bubble-1.png.png" id="2_c5eey"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_3itek"]
 size = Vector2(42, 51)
@@ -11,7 +11,7 @@ scale = Vector2(0.375198, 0.375198)
 script = ExtResource("1_g2fxi")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_bcu1a")
+texture = ExtResource("2_c5eey")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 1.5)

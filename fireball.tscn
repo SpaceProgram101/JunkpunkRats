@@ -52,21 +52,21 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i055n"]
-size = Vector2(10.715, 0.356317)
+size = Vector2(1.81953, 0.178158)
 
 [node name="Area2D" type="Area2D"]
 scale = Vector2(36.2672, 34.3246)
 script = ExtResource("2_edfso")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.303304, 2.98023e-08)
-scale = Vector2(0.0406243, 0.0166999)
+position = Vector2(0.0275731, -1.77636e-15)
+scale = Vector2(0.00684342, 0.00964759)
 sprite_frames = SubResource("SpriteFrames_joxid")
 animation = &"fireball"
 frame = 4
 frame_progress = 0.288328
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.0275733, 1.49012e-08)
+position = Vector2(-0.0413597, -0.0145668)
 scale = Vector2(0.136386, 0.49058)
 shape = SubResource("RectangleShape2D_i055n")
