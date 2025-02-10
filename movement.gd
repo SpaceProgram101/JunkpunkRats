@@ -19,14 +19,14 @@ extends CharacterBody2D
 
 var suicide = true
 
-@export var dash_speed: float = 1000.0  # How fast the dash is
-@export var dash_duration: float = 0.2  # How long the dash lasts
-@export var dash_cooldown: float = 1.0  # How long before you can dash again
-
-var is_dashing: bool = false
-var dash_timer: float = 0.0
-var dash_direction: Vector2 = Vector2.ZERO
 var can_dash: bool = true
+var is_dashing: bool = false
+var dash_speed: float = 3500.0  # Adjust speed as needed
+var dash_time: float = 0.2  # Duration of dash in seconds
+var dash_cooldown: float = 1.0  # Cooldown time in seconds
+
+var dash_timer: float = 0.0
+var cooldown_timer: float = 0.
 
 var is_jumping = false
 
@@ -151,7 +151,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		cling = false
 	#if floating is set to true, decrease gravity, start the timer
-
+		
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		$AnimatedSprite2D.play("jump")
@@ -161,8 +161,7 @@ func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed("ui_left"):
 		overalldirection = 1
 	elif Input.is_action_pressed("ui_right"):
-		overalldirection = -1  # Move right
-		
+		overalldirection = -1  # Move right		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if not frozen:
 		if direction and can_wall_jump:
@@ -199,7 +198,27 @@ func _physics_process(delta: float) -> void:
 				immunity = 1
 			else:
 				immunity -= delta
-		
+	
+	print("Overalldirection:", overalldirection)
+	
+	if Input.is_action_just_pressed("dash") and can_dash and overalldirection != 0:
+		is_dashing = true
+		can_dash = false
+		dash_timer = dash_time
+		velocity.x += (overalldirection*-1) * dash_speed  # Set velocity in dash direction
+		print("velocity", velocity.x)
+	
+	if is_dashing:
+		dash_timer -= delta
+		if dash_timer <= 0:
+			is_dashing = false
+			cooldown_timer = dash_cooldown  # Start cooldown
+	
+	if not can_dash:
+		cooldown_timer -= delta
+		if cooldown_timer <= 0:
+			can_dash = true  # Reset dash ability
+	
 	move_and_slide()
 
 func apply_knockback(enemy_position: Vector2):
