@@ -15,7 +15,7 @@ func _ready():
 
 func _process(_delta):
 	# Make the camera follow the player
-	camera.position = player.position
+
 
 	# Parallax background effect: Move background at a slower speed
 	var camera_position = camera.position

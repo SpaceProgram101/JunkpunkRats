@@ -13,8 +13,8 @@ extends CharacterBody2D
 @export var knockback_force = 200.0  # Adjust the knockback strength
 @export var knockback_duration = 0.2  # Adjust the knockback duration (in seconds)
 
-@onready var heart_container = $HealthUI
-@onready var oil_container = $HealthUI
+@onready var heart_container = $/root/Node2D/CanvasLayer/HealthUI
+@onready var oil_container = $/root/Node2D/CanvasLayer/HealthUI
 
 
 var suicide = true
@@ -28,12 +28,14 @@ var dash_timer: float = 0.0
 var dash_direction: Vector2 = Vector2.ZERO
 var can_dash: bool = true
 
+var is_jumping = false
+
 var shotgun_spread = 3
 var pellets = 50
 var overalldirection = 1
 
 
-var wall_jump_speed = -400
+var wall_jump_speed = -600
 var can_wall_jump = false
 var touching_wall = false
 var cling = false
@@ -56,8 +58,8 @@ var current_oil = 3
 var immunity = 0
 
 var frozen: bool = false
-const SPEED = 300.0
-const JUMP_VELOCITY = -700.0
+const SPEED = 200.0
+const JUMP_VELOCITY = -600.0
 var gravity = 2500.0
 
 var is_knocked_back = false
@@ -101,11 +103,9 @@ func _physics_process(delta: float) -> void:
 	
 	
 	if wall_ray_left.is_colliding():
-		print ("Ray Cast 1")
 		touching_wall = true
 		wall_direction = -1
 	elif wall_ray_right.is_colliding():
-		print ("Ray Cast 2")
 		touching_wall = true
 		wall_direction = 1
 	else:
@@ -116,28 +116,35 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
 	if touching_wall and not is_on_floor() and can_wall_jump:
+		rotation = 0
 		cling = true
 		velocity.x = 0
 		gravity = 0
-		velocity.y = 0
+		velocity.y = 5
 		cling_timer = 0.5
+		move_and_slide()
 		
 	if cling and Input.is_action_just_pressed("ui_accept"):
 		velocity.y = wall_jump_speed
-		velocity.x = wall_direction * 1000
+		velocity.x = -wall_direction * 1000
 		cling = false
 		can_wall_jump = false
 		gravity = 2500
-		
 		if wall_direction == 1:
 			velocity.x += 100
 		elif wall_direction == -1: 
 			velocity.x -= 100
-		print (wall_direction)
+			
 	elif not is_on_floor() and not touching_wall:
 		can_wall_jump = true
 		gravity = 2500.0
+		if overalldirection == 1:
+			rotation = lerp_angle(rotation,-90,0.01)
+		elif overalldirection == -1:
+			rotation = lerp_angle(rotation,90,0.01)
 		velocity.y += gravity * delta
+	if is_on_floor():
+		rotation = 0
 	#but if you press E while in the air, trigger the cannon
 	if cling_timer > 0:
 		cling_timer -= delta
@@ -147,6 +154,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+		$AnimatedSprite2D.play("jump")
 		velocity.y = JUMP_VELOCITY
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -157,7 +165,7 @@ func _physics_process(delta: float) -> void:
 		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if not frozen:
-		if direction:
+		if direction and can_wall_jump:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
