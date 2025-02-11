@@ -1,8 +1,9 @@
-[gd_scene load_steps=160 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=174 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
 [ext_resource type="Script" path="res://movement.gd" id="2_50bmu"]
+[ext_resource type="Texture2D" uid="uid://croujhcjklvqd" path="res://tiles/dirt.png" id="2_80r12"]
 [ext_resource type="Texture2D" uid="uid://dfawcd1r8r384" path="res://clutter (1).png" id="2_yrw4x"]
 [ext_resource type="PackedScene" uid="uid://bel852y212xra" path="res://fireball.tscn" id="3_ng311"]
 [ext_resource type="Texture2D" uid="uid://b35t1rnxvr5vf" path="res://ratmadillo_prep.png" id="4_p0dj1"]
@@ -33,11 +34,14 @@
 [ext_resource type="Texture2D" uid="uid://buj8fvm76vvts" path="res://wood_planks.png" id="29_3iv1w"]
 [ext_resource type="Texture2D" uid="uid://cil3i0soynkos" path="res://player_cling-1.png (1).png" id="29_7rrba"]
 [ext_resource type="Texture2D" uid="uid://c214sc5ygy3ey" path="res://player_bust_spell (1).png" id="30_l1cg2"]
+[ext_resource type="Texture2D" uid="uid://cuq8ik262f21y" path="res://player animations/player_jump.png" id="31_2lhso"]
 [ext_resource type="Texture2D" uid="uid://siompig61qhu" path="res://player_jump (1).png" id="31_32rmk"]
 [ext_resource type="Texture2D" uid="uid://dcttc06fhvqtu" path="res://player animations/player_run (1).png" id="34_hf2sd"]
 [ext_resource type="Texture2D" uid="uid://beir8cak7gdyh" path="res://player animations/player_upspell.png" id="35_udoj1"]
 [ext_resource type="Texture2D" uid="uid://bh8hifppvhkaj" path="res://rat_heart_full.png" id="37_ryose"]
 [ext_resource type="Script" path="res://rat_king.gd" id="38_1wqn7"]
+[ext_resource type="Shader" path="res://fade.gdshader" id="38_6v1qq"]
+[ext_resource type="Texture2D" uid="uid://daepfu7jiok2d" path="res://player_dash-1.png.png" id="38_j1gh1"]
 [ext_resource type="Texture2D" uid="uid://ctrm6vxrsmfm8" path="res://rat_king.png" id="38_m2foi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_706ym"]
@@ -45,6 +49,11 @@
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rfigp"]
 texture = ExtResource("1_nugcr")
 texture_region_size = Vector2i(64, 64)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ysq46"]
+texture = ExtResource("2_80r12")
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ktaoy"]
@@ -58,18 +67,28 @@ texture_region_size = Vector2i(128, 128)
 [sub_resource type="TileSet" id="TileSet_4ipcd"]
 sources/0 = SubResource("TileSetAtlasSource_rfigp")
 sources/3 = SubResource("TileSetAtlasSource_ktaoy")
+sources/1 = SubResource("TileSetAtlasSource_ysq46")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rjt6i"]
-size = Vector2(1469, 52)
+size = Vector2(1469, 32)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xfbql"]
-size = Vector2(61, 382.5)
+size = Vector2(28, 385)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vmd13"]
-size = Vector2(62, 200)
+size = Vector2(32.5, 187)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6dqo"]
-size = Vector2(194, 52)
+size = Vector2(324, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o5ejt"]
+size = Vector2(128, 102.75)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bhspw"]
+size = Vector2(65, 203)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c5xvf"]
+size = Vector2(239, 57)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdxuj"]
 size = Vector2(135.921, 55)
@@ -677,9 +696,6 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hptjh"]
 radius = 755.891
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehqqx"]
-size = Vector2(15, 6.14146)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_jwef8"]
 atlas = ExtResource("30_l1cg2")
 region = Rect2(0, 0, 64, 64)
@@ -688,9 +704,21 @@ region = Rect2(0, 0, 64, 64)
 atlas = ExtResource("30_l1cg2")
 region = Rect2(0, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_ka8wm"]
-atlas = ExtResource("31_32rmk")
+[sub_resource type="AtlasTexture" id="AtlasTexture_p61d8"]
+atlas = ExtResource("31_2lhso")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lt27"]
+atlas = ExtResource("31_2lhso")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ffgqw"]
+atlas = ExtResource("31_2lhso")
 region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ig3e"]
+atlas = ExtResource("31_2lhso")
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8ouxj"]
 atlas = ExtResource("2_23lgj")
@@ -764,7 +792,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_ka8wm")
+"texture": SubResource("AtlasTexture_p61d8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lt27")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ffgqw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ig3e")
 }],
 "loop": true,
 "name": &"fall",
@@ -837,6 +874,18 @@ animations = [{
 "name": &"up_spell",
 "speed": 8.0
 }]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ehqqx"]
+size = Vector2(15, 6.14146)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vkins"]
+shader = ExtResource("38_6v1qq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mg6mm"]
+shader = ExtResource("38_6v1qq")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tcqd4"]
+shader = ExtResource("38_6v1qq")
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yt4mi"]
 atlas = ExtResource("38_m2foi")
@@ -967,24 +1016,40 @@ position = Vector2(-0.999878, -1.00003)
 scale = Vector2(7.51563, 0.5625)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="floor1"]
-tile_map_data = PackedByteArray("AAD5////AAAAAAAAAAD9////AAAAAAAAAAABAP//AAAAAAAAAAAFAP//AAAAAAAAAAAJAP//AAAAAAAAAAANAP//AAAAAAAAAAD1////AAAAAAAAAADx////AAAAAAAAAADt////AAAAAAAAAADp////AAAAAAAAAADl////AAAAAAAAAADh////AAAAAAAAAADd////AAAAAAAAAADZ////AAAAAAAAAADV////AAAAAAAAAADR////AAAAAAAAAADN////AAAAAAAAAADJ////AAAAAAAAAADF////AAAAAAAAAADB////AAAAAAAAAAC9////AAAAAAAAAAC5////AAAAAAAAAAC1////AAAAAAAAAADN//r/AwAAAAAAAADT//r/AwAAAAAAAADQ//b/AwAAAAAAAAAWAPb/AwABAAAAAAAiAPP/AwABAAEAAABAAO3/AwAAAAEAAAAAAPr/AwAAAAAAAAAAAPb/AwAAAAAAAAAAAPL/AwAAAAAAAAD8//r/AwABAAAAAAD0//z/AAAAAAAAAAD0//n/AAAAAAAAAAD0//b/AAAAAAAAAADs//b/AAAAAAAAAADs//P/AAAAAAAAAADs//D/AAAAAAAAAADs/+3/AAAAAAAAAAD0/+3/AAAAAAAAAAD0/+r/AAAAAAAAAAD0/+f/AAAAAAAAAAD4/+f/AAAAAAAAAAD8/+f/AAAAAAAAAAAAAOf/AAAAAAAAAAD0//D/AAAAAAAAAAD0//P/AAAAAAAAAAA=")
+tile_map_data = PackedByteArray("AAABAP//AAAAAAAAAAAFAP//AAAAAAAAAAAJAP//AAAAAAAAAAANAP//AAAAAAAAAADN//r/AwAAAAAAAADT//r/AwAAAAAAAADQ//b/AwAAAAAAAAAWAPb/AwABAAAAAAAiAPP/AwABAAEAAABAAO3/AwAAAAEAAAAAAPr/AwAAAAAAAAAAAPb/AwAAAAAAAAAAAPL/AwAAAAAAAAD8//r/AwABAAAAAAAIAOT/AAAAAAAAAAAIAOH/AAAAAAAAAAAMAOH/AAAAAAAAAAAUAOH/AAAAAAAAAAAYAOH/AAAAAAAAAAAiAOH/AAAAAAAAAAAiAOT/AAAAAAAAAAAiAOf/AAAAAAAAAAAiAOr/AAAAAAAAAAAbAPL/AAAAAAAAAAAfAPL/AAAAAAAAAAAjAPL/AAAAAAAAAAAmAPL/AAAAAAAAAAC0////AQAAAAAAAAC2////AQAAAAAAAAC4////AQAAAAAAAAC6////AQAAAAAAAAC8////AQAAAAAAAAC+////AQAAAAAAAADA////AQAAAAAAAADC////AQAAAAAAAADE////AQAAAAAAAADG////AQAAAAAAAADI////AQAAAAAAAADK////AQAAAAAAAADM////AQAAAAAAAADO////AQAAAAAAAADQ////AQAAAAAAAADR////AQAAAAAAAADT////AQAAAAAAAADV////AQAAAAAAAADX////AQAAAAAAAADZ////AQAAAAAAAADb////AQAAAAAAAADd////AQAAAAAAAADf////AQAAAAAAAADh////AQAAAAAAAADj////AQAAAAAAAADl////AQAAAAAAAADn////AQAAAAAAAADp////AQAAAAAAAADr////AQAAAAAAAADt////AQAAAAAAAADv////AQAAAAAAAADx////AQAAAAAAAADz////AQAAAAAAAAD1////AQAAAAAAAAD3////AQAAAAAAAAD0//3/AQAAAAAAAAD0//v/AQAAAAAAAAD0//n/AQAAAAAAAAD0//f/AQAAAAAAAAD0//X/AQAAAAAAAAD0//P/AQAAAAAAAAD0//H/AQAAAAAAAAD0/+//AQAAAAAAAAD0/+3/AQAAAAAAAAD0/+v/AQAAAAAAAAD0/+n/AQAAAAAAAAD0/+f/AQAAAAAAAAD2/+f/AQAAAAAAAAD4/+f/AQAAAAAAAAD6/+f/AQAAAAAAAAD8/+f/AQAAAAAAAAD+/+f/AQAAAAAAAAAAAOf/AQAAAAAAAAACAOf/AQAAAAAAAAAEAOf/AQAAAAAAAADu/+3/AQAAAAAAAADu/+//AQAAAAAAAADu//H/AQAAAAAAAADu//P/AQAAAAAAAADu//X/AQAAAAAAAADu//f/AQAAAAAAAAA=")
 tile_set = SubResource("TileSet_4ipcd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="floor1"]
-position = Vector2(-489.5, -5)
+position = Vector2(-489.5, -7)
 shape = SubResource("RectangleShape2D_rjt6i")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="floor1"]
-position = Vector2(-185, -223.75)
+position = Vector2(-184, -215.5)
 shape = SubResource("RectangleShape2D_xfbql")
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="floor1"]
-position = Vector2(-312, -220)
+position = Vector2(-281.25, -215)
 shape = SubResource("RectangleShape2D_vmd13")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="floor1"]
-position = Vector2(-58, -389)
+position = Vector2(-7, -392)
 shape = SubResource("RectangleShape2D_q6dqo")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="floor1"]
+position = Vector2(167, -463.5)
+shape = SubResource("RectangleShape2D_o5ejt")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="floor1"]
+position = Vector2(360, -460.375)
+shape = SubResource("RectangleShape2D_o5ejt")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="floor1"]
+position = Vector2(551.5, -414.5)
+shape = SubResource("RectangleShape2D_bhspw")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="floor1"]
+position = Vector2(528.5, -213.5)
+shape = SubResource("RectangleShape2D_c5xvf")
 
 [node name="floor2" type="StaticBody2D" parent="."]
 position = Vector2(2471, 172.1)
@@ -1069,7 +1134,7 @@ scale = Vector2(1.24595, 1.17869)
 shape = SubResource("RectangleShape2D_7y06n")
 
 [node name="platform4" type="StaticBody2D" parent="."]
-position = Vector2(1207, 284)
+position = Vector2(1088, 285)
 scale = Vector2(0.668904, 0.794078)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="platform4"]
@@ -1081,7 +1146,7 @@ position = Vector2(375.24, 12.0008)
 shape = SubResource("RectangleShape2D_afyso")
 
 [node name="Crawler" type="CharacterBody2D" parent="." groups=["enemies"]]
-position = Vector2(1479, 262)
+position = Vector2(1360, 263)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("7_mitai")
@@ -1098,7 +1163,7 @@ position = Vector2(17, -2)
 shape = SubResource("RectangleShape2D_g214b")
 
 [node name="Wizard" type="CharacterBody2D" parent="." groups=["enemies"]]
-position = Vector2(1332, 201)
+position = Vector2(1213, 202)
 scale = Vector2(0.7, 0.656)
 script = ExtResource("12_mwc2y")
 fireball_scene = ExtResource("13_4jaoe")
@@ -1164,10 +1229,11 @@ script = ExtResource("4_ywl2l")
 [node name="Area2D" type="Area2D" parent="ratmadillo"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ratmadillo/Area2D"]
-position = Vector2(3.68359, 2.96984)
+position = Vector2(-3.68358, 13.0673)
 shape = SubResource("RectangleShape2D_jsd4g")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ratmadillo"]
+position = Vector2(-4.91145, 9.50349)
 sprite_frames = SubResource("SpriteFrames_puet3")
 animation = &"walk"
 
@@ -1259,21 +1325,21 @@ script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
 projectile_scene = ExtResource("5_qtrld")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(1, 0.900381)
+scale = Vector2(0.384468, 0.3189)
+sprite_frames = SubResource("SpriteFrames_inw14")
+animation = &"fall"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0.999999, 0)
 scale = Vector2(1, 1.02625)
 shape = SubResource("RectangleShape2D_ehqqx")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(0.999971, 0.900387)
-scale = Vector2(0.384468, 0.3189)
-sprite_frames = SubResource("SpriteFrames_inw14")
-animation = &"jump"
-
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position = Vector2(1, 29.7126)
 offset = Vector2(0, -50)
-zoom = Vector2(7, 7)
+zoom = Vector2(6, 6)
 position_smoothing_enabled = true
 
 [node name="Area2D" type="Area2D" parent="Player"]
@@ -1290,6 +1356,26 @@ collide_with_areas = true
 [node name="WallRayRight" type="RayCast2D" parent="Player"]
 target_position = Vector2(10, 0)
 collide_with_areas = true
+
+[node name="afterimage_1" type="Sprite2D" parent="Player"]
+visible = false
+material = SubResource("ShaderMaterial_vkins")
+position = Vector2(1, 0)
+scale = Vector2(0.375, 0.369582)
+texture = ExtResource("38_j1gh1")
+
+[node name="afterimage_2" type="Sprite2D" parent="Player"]
+visible = false
+material = SubResource("ShaderMaterial_mg6mm")
+scale = Vector2(0.290123, 0.318584)
+texture = ExtResource("38_j1gh1")
+
+[node name="afterimage_3" type="Sprite2D" parent="Player"]
+visible = false
+material = SubResource("ShaderMaterial_tcqd4")
+position = Vector2(1, 0)
+scale = Vector2(0.304348, 0.331361)
+texture = ExtResource("38_j1gh1")
 
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.33

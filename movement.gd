@@ -16,6 +16,12 @@ extends CharacterBody2D
 @onready var heart_container = $/root/Node2D/CanvasLayer/HealthUI
 @onready var oil_container = $/root/Node2D/CanvasLayer/HealthUI
 
+@onready var afterimage_sprites = [
+	$afterimage_1,
+	$afterimage_2,
+	$afterimage_3
+]
+
 
 var suicide = true
 
@@ -60,7 +66,7 @@ var immunity = 0
 var frozen: bool = false
 const SPEED = 200.0
 const JUMP_VELOCITY = -600.0
-var gravity = 2500.0
+var gravity = 2000.0
 
 var is_knocked_back = false
 var knockback_timer = 0.0
@@ -126,18 +132,18 @@ func _physics_process(delta: float) -> void:
 		
 	if cling and Input.is_action_just_pressed("ui_accept"):
 		velocity.y = wall_jump_speed
-		velocity.x = -wall_direction * 1000
+		velocity.x = -wall_direction * 600
 		cling = false
 		can_wall_jump = false
-		gravity = 2500
+		gravity = 2000
 		if wall_direction == 1:
 			velocity.x += 100
 		elif wall_direction == -1: 
 			velocity.x -= 100
 			
 	elif not is_on_floor() and not touching_wall:
+		gravity = 2000.0
 		can_wall_jump = true
-		gravity = 2500.0
 		if overalldirection == 1:
 			rotation = lerp_angle(rotation,-90,0.01)
 		elif overalldirection == -1:
@@ -199,21 +205,20 @@ func _physics_process(delta: float) -> void:
 			else:
 				immunity -= delta
 	
-	print("Overalldirection:", overalldirection)
 	
 	if Input.is_action_just_pressed("dash") and can_dash and overalldirection != 0:
 		is_dashing = true
 		can_dash = false
 		dash_timer = dash_time
-		velocity.x += (overalldirection*-1) * dash_speed  # Set velocity in dash direction
-		print("velocity", velocity.x)
+		create_afterimages()
+		position.x += (overalldirection*-1) * dash_speed * delta
+		  # Set velocity in dash direction
 	
 	if is_dashing:
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
 			cooldown_timer = dash_cooldown  # Start cooldown
-	
 	if not can_dash:
 		cooldown_timer -= delta
 		if cooldown_timer <= 0:
@@ -221,6 +226,31 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+func create_afterimages():
+	for i in range (afterimage_sprites.size()):
+		var afterimage = afterimage_sprites[i]
+		var offset = Vector2(-20 * (i+1), 0)
+		afterimage.position = position + offset
+		afterimage.visible = true
+		afterimage.modulate = Color(1, 1, 1, 1) 
+		print("Afterimage Position: ", afterimage.position)
+		print ("Player position: ", position)
+		afterimage.z_index = 10
+		
+		
+		
+		var timer = Timer.new()
+		add_child(timer)
+		timer.wait_time = 0.8 * (i + 1)
+		timer.one_shot = true
+		timer.connect("timeout", Callable(self,"_on_afterimage_timeout").bind(afterimage, timer))
+		timer.start()
+		
+func _on_afterimage_timeout(afterimage,timer):
+	print ("Sprite no longer visible")
+	afterimage.visible = false
+	afterimage.modulate = Color(1, 1, 1, 1) 
+	timer.queue_free()
 func apply_knockback(enemy_position: Vector2):
 	knockback_direction = (global_position - enemy_position).normalized()
 
