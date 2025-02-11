@@ -22,6 +22,8 @@ extends CharacterBody2D
 	$afterimage_3
 ]
 
+@onready var footstep_audio = $AudioStreamPlayer2D
+
 
 var suicide = true
 
@@ -71,6 +73,7 @@ var gravity = 2000.0
 var is_knocked_back = false
 var knockback_timer = 0.0
 var knockback_direction = Vector2.ZERO
+
 
 func _ready():
 	
@@ -166,15 +169,21 @@ func _physics_process(delta: float) -> void:
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if Input.is_action_pressed("ui_left"):
 		overalldirection = 1
-	elif Input.is_action_pressed("ui_right"):
-		overalldirection = -1  # Move right		
+		
+	elif Input.is_action_pressed("ui_right"):  # Move right		
+		overalldirection = -1
+		
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if not frozen:
 		if direction and can_wall_jump:
 			velocity.x = direction * SPEED
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-	#
+			footstep_audio.play()
+			
+			if !(is_on_floor()):
+				footstep_audio.stop()
+				
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x > 0
 	
