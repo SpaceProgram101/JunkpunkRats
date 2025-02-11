@@ -63,6 +63,8 @@ var max_oil = 3
 var current_oil = 3
 var immunity = 0
 
+var has_touched_wall = false
+
 var frozen: bool = false
 const SPEED = 200.0
 const JUMP_VELOCITY = -600.0
@@ -122,17 +124,22 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
 	if touching_wall and not is_on_floor() and can_wall_jump:
+		
 		rotation = 0
 		cling = true
 		velocity.x = 0
 		gravity = 0
 		velocity.y = 5
 		cling_timer = 0.5
+		if not has_touched_wall:
+			$AudioWallJump.play()
+			has_touched_wall = true
 		move_and_slide()
 		
 	if cling and Input.is_action_just_pressed("ui_accept"):
 		velocity.y = wall_jump_speed
 		velocity.x = -wall_direction * 600
+		$AudioWallJump.play()
 		cling = false
 		can_wall_jump = false
 		gravity = 2000
@@ -348,20 +355,17 @@ func shoot_shotgun_blasts():
 	
 	
 func launch_shotgun_attack():
+	$AudioSodaSpell.play()
 	freeze()
-	print ("Frozen!")
 	for i in range (pellets):
 		var angle_offset = (i - (pellets / 2.0)) * shotgun_spread
 		var spawn_angle = rotation + deg_to_rad(angle_offset)  # Rotate relative to player
-		print ("Rotation set!")
 		# Spawn the projectile
 		var projectile = projectile_scene.instantiate()
 		get_parent().add_child(projectile)  # Add the projectile to the scene
-		print ("Child successfully set!")
 			# Position the projectile where the player is
 		projectile.position = position  # Spawn at the player's position
 		projectile.position.y -= 5
-		print("Projectile Rotation: ", projectile.rotation)
 		  # Set the projectile's initial rotation
 		var direction = Vector2(cos(spawn_angle), sin(spawn_angle))
 		if overalldirection < 0:
@@ -370,7 +374,7 @@ func launch_shotgun_attack():
 		
 	unfreeze()
 	current_spell = 0
-	print ("Bust is false!")
+
 
 
 
