@@ -154,10 +154,6 @@ func _physics_process(delta: float) -> void:
 	elif not is_on_floor() and not touching_wall:
 		gravity = 2000.0
 		can_wall_jump = true
-		if overalldirection == 1:
-			rotation = lerp_angle(rotation,-90,0.01)
-		elif overalldirection == -1:
-			rotation = lerp_angle(rotation,90,0.01)
 		velocity.y += gravity * delta
 	if is_on_floor():
 		rotation = 0
