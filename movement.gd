@@ -25,52 +25,62 @@ extends CharacterBody2D
 @onready var footstep_audio = $AudioStreamPlayer2D
 
 
+#//////////// ATTACK VARIABLES //////////// 
+var attack_cooldown = 0.5
+var attack_range = 50
+var attack_damage = 10
+var can_attack = true
+@onready var attack_area = $Area2D
+@onready var anim_player = $AnimatedSprite2D
+
 var suicide = true
 
+#//////////// DASHING VARIABLES //////////// 
 var can_dash: bool = true
 var is_dashing: bool = false
 var dash_speed: float = 3500.0  # Adjust speed as needed
 var dash_time: float = 0.2  # Duration of dash in seconds
 var dash_cooldown: float = 1.0  # Cooldown time in seconds
-
 var dash_timer: float = 0.0
 var cooldown_timer: float = 0.
 
 var is_jumping = false
 
+#//////////// SPELL VARIABLES //////////// 
 var shotgun_spread = 3
 var pellets = 50
 var overalldirection = 1
+var is_shooting: bool = false
+var current_spell = 0
 
 
+#//////////// WALLJUMP VARIABLES //////////// 
 var wall_jump_speed = -600
 var can_wall_jump = false
 var touching_wall = false
 var cling = false
 var cling_timer = 0.0
 var wall_direction = 0
-
 var wall_ray_left : RayCast2D
 var wall_ray_right : RayCast2D
+var has_touched_wall = false
 
-
-var is_shooting: bool = false
-
-var current_spell = 0
-
-
+#//////////// PLAYER VARIABLES //////////// 
 var skibidi = 5
 var toilet = 5
 var max_oil = 3
 var current_oil = 3
 var immunity = 0
+var dead = false
+var dying = false
 
-var has_touched_wall = false
 
+#//////////// MOVEMENT VARIABLES //////////// 
 var frozen: bool = false
-const SPEED = 200.0
-const JUMP_VELOCITY = -600.0
-var gravity = 2000.0
+const SPEED = 100.0
+const JUMP_VELOCITY = -300.0
+const GRAVITY = 1000.0
+var gravity = 1500.0
 
 var is_knocked_back = false
 var knockback_timer = 0.0
@@ -93,6 +103,11 @@ func _ready():
 
 
 func _process(_delta):
+	if Input.is_action_pressed("attack") and can_attack and not dead:
+		take_damage(1)
+		attack()
+	if Input.is_action_pressed("DIE"):
+		take_damage(5)
 	if Input.is_action_just_pressed("spell"):
 		if current_oil > 0:
 			current_oil -= 1
@@ -113,10 +128,10 @@ func _physics_process(delta: float) -> void:
 	wall_direction = 0
 	
 	
-	if wall_ray_left.is_colliding():
+	if wall_ray_left.is_colliding() and can_wall_jump:
 		touching_wall = true
 		wall_direction = -1
-	elif wall_ray_right.is_colliding():
+	elif wall_ray_right.is_colliding() and can_wall_jump:
 		touching_wall = true
 		wall_direction = 1
 	else:
@@ -127,7 +142,6 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
 	if touching_wall and not is_on_floor() and can_wall_jump:
-		
 		rotation = 0
 		cling = true
 		velocity.x = 0
@@ -137,37 +151,40 @@ func _physics_process(delta: float) -> void:
 		if not has_touched_wall:
 			$AudioWallJump.play()
 			has_touched_wall = true
-		move_and_slide()
 		
-	if cling and Input.is_action_just_pressed("ui_accept"):
-		velocity.y = wall_jump_speed
-		velocity.x = -wall_direction * 600
+		
+	if cling and Input.is_action_just_pressed("ui_accept") and not dead:
+		velocity.y -= 300
 		$AudioWallJump.play()
 		cling = false
 		can_wall_jump = false
-		gravity = 2000
+		gravity = GRAVITY
 		if wall_direction == 1:
-			velocity.x += 100
+			velocity.x -= 150
 		elif wall_direction == -1: 
-			velocity.x -= 100
-			
+			velocity.x += 150
+		move_and_slide()
 	elif not is_on_floor() and not touching_wall:
-		gravity = 2000.0
+		gravity = GRAVITY
 		can_wall_jump = true
 		velocity.y += gravity * delta
-	if is_on_floor():
-		rotation = 0
 	#but if you press E while in the air, trigger the cannon
 	if cling_timer > 0:
 		cling_timer -= delta
 	else:
 		cling = false
 	#if floating is set to true, decrease gravity, start the timer
-		
+	
 	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+	
+	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not dead:
 		$AnimatedSprite2D.play("jump")
+		$Jump.play()
 		velocity.y = JUMP_VELOCITY
+	elif Input.is_action_just_pressed("ui_accept") and dead:
+		$death_screen.visible = false
+		dead = false
+		dying = false
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if Input.is_action_pressed("ui_left"):
@@ -175,23 +192,35 @@ func _physics_process(delta: float) -> void:
 		
 	elif Input.is_action_pressed("ui_right"):  # Move right		
 		overalldirection = -1
-		
+	if not is_on_floor():
+		footstep_audio.stop()
+			
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if not frozen:
+	if not frozen and not dead:
 		if direction and can_wall_jump:
 			velocity.x = direction * SPEED
+			move_and_slide()	
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
+			move_and_slide()	
 			footstep_audio.play()
+		
+		
 			
-			if !(is_on_floor()):
-				footstep_audio.stop()
-				
 	if velocity.x != 0:
 		$AnimatedSprite2D.flip_h = velocity.x > 0
 	
-	
-	if cling:
+	if dying:
+		$AnimatedSprite2D.play("grave")
+		await $AnimatedSprite2D.animation_finished
+		dead = true
+		dying = false
+	elif dead:
+		$death_screen.visible = true
+		$AnimatedSprite2D.play("dead_idle")
+	elif not can_attack:
+		$AnimatedSprite2D.play("attack")
+	elif cling:
 		$AnimatedSprite2D.play("cling")
 	elif current_spell == 1:
 		$AnimatedSprite2D.play("bust")
@@ -237,6 +266,22 @@ func _physics_process(delta: float) -> void:
 			can_dash = true  # Reset dash ability
 	
 	move_and_slide()
+
+func attack():
+	can_attack = false
+	$/root/Node2D/Player/Area2D/ColorRect.visible = true
+	attack_area.set_position(Vector2(attack_range,0))
+	attack_area.connect("area_entered", Callable(self, "_on_attack_area_entered"))
+	await anim_player.animation_finished
+	attack_area.set_position(Vector2(0,0))
+	attack_area.disconnect("area_entered", Callable(self, "_on_attack_area_entered"))
+	$/root/Node2D/Player/Area2D/ColorRect.visible = false
+	can_attack = true
+	
+func _on_attack_area_entered(area):
+	if area.is_in_group("enemies"):
+		area.take_damage(attack_damage)
+
 
 func create_afterimages():
 	for i in range (afterimage_sprites.size()):
@@ -306,13 +351,17 @@ func heal(amount: int):
 	update_health_ui()
 	
 func update_health_ui():
+	if toilet <= 0:
+		die()
 	for i in range (skibidi):
 		var heart = heart_container.get_child(i)
 		if i < toilet:
 			heart.texture = preload("res://rat_heart_full.png")
 		else:
 			heart.texture = preload("res://rat_heart_empty.png")
-
+func die():
+	dying = true
+	
 func update_oil_ui():
 	var oil = oil_container.get_child(5)
 	if current_oil == 3:

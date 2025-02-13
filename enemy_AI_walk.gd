@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 @export var knockback_force = 200.0
 @export var knockback_duration = 0.2
-
+var health = 10
 
 # Speed and direction variables
 var speed = 100
@@ -51,7 +51,15 @@ func _on_area_entered(area):
 		area.apply_knockback(knockback_force, knockback_duration, global_position)
 	else:
 		printerr("Colliding area does not have 'apply_knockback' function")
-
+func take_damage(damage):
+	print ("I was hit!")
+	health -= damage
+	if health <= 0:
+		die()
+		
+func die():
+	print ("I died!")
+	queue_free()
 
 func _on_player_detected(_area: Area2D) -> void:
 	pass # Replace with function body.
