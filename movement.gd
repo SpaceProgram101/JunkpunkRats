@@ -30,9 +30,8 @@ var attack_cooldown = 0.5
 var attack_range = 50
 var attack_damage = 10
 var can_attack = true
-@onready var attack_area = $Area2D
-@onready var anim_player = $AnimatedSprite2D
-
+var attack_area : Area2D
+@onready var attack_timer = $Attack_Timer
 var suicide = true
 
 #//////////// DASHING VARIABLES //////////// 
@@ -88,7 +87,9 @@ var knockback_direction = Vector2.ZERO
 
 
 func _ready():
-	
+	attack_area = $Area2D
+	attack_area.hide()
+	attack_timer.connect("timeout",Callable(self, "_on_attack_cooldown_timeout"))
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
 
@@ -103,9 +104,9 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_pressed("attack") and can_attack and not dead:
-		print (can_attack)
-		attack()
+	if Input.is_action_pressed("attack") and not dead:
+		if can_attack:
+			attack()
 		
 	if Input.is_action_pressed("DIE"):
 		take_damage(5)
@@ -269,34 +270,25 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-var timer_attack = Timer.new()
-
 func attack():
 
 	can_attack = false
+	print ("Attack started")
+	attack_area.position = position
 	$/root/Node2D/Player/Area2D/ColorRect.visible = true
-	attack_area.set_position(Vector2(attack_range,0))
-	attack_area.connect("area_entered", Callable(self, "_on_attack_area_entered"))
-	await anim_player.animation_finished
-	attack_area.set_position(Vector2(0,0))
-	attack_area.disconnect("area_entered", Callable(self, "_on_attack_area_entered"))
-	$/root/Node2D/Player/Area2D/ColorRect.visible = false
-	timer_attack.connect("timeout", Callable(self, "cooldown_off"))
-	timer_attack.wait_time = 0.3
-	timer_attack.one_shot = true
-	add_child(timer_attack)
-	timer_attack.start()
-
-
-func cooldown_off():
-	print ("Can attack again!")
-	can_attack = true
-	timer_attack.queue_free()
+	print ($/root/Node2D/Player/Area2D/ColorRect.visible)
+	attack_area.show()
 	
-func _on_attack_area_entered(area):
-	if area.is_in_group("enemies"):
-		area.take_damage(attack_damage)
+	attack_timer.start(0.2)
+	await attack_timer.timeout
+	$/root/Node2D/Player/Area2D/ColorRect.visible = false
+	attack_area.hide()
 
+	attack_timer.start(attack_cooldown)
+func _on_attack_cooldown_timeout():
+	print ("Attack ended")
+	can_attack = true
+	
 
 func create_afterimages():
 	for i in range (afterimage_sprites.size()):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=229 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=230 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -56,6 +56,7 @@
 [ext_resource type="Texture2D" uid="uid://cghg0vgenxalt" path="res://player animations/player_dead_rise.png" id="42_2rdbn"]
 [ext_resource type="AudioStream" uid="uid://l8qgupckiaw1" path="res://sfx.mp3" id="43_4ofrc"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
+[ext_resource type="Script" path="res://attack.gd" id="51_b4dqb"]
 [ext_resource type="AudioStream" uid="uid://383swah0x7s0" path="res://tiles/walk-on-grass-1-291984.mp3" id="55_2mlpi"]
 [ext_resource type="AudioStream" uid="uid://bp3ao8m5s1bb" path="res://tiles/grass-44887.mp3" id="55_ysse7"]
 [ext_resource type="Script" path="res://platform.gd" id="57_aui5p"]
@@ -1622,17 +1623,8 @@ position = Vector2(-893, 472)
 scale = Vector2(1, 1.11064)
 collision_mask = 7
 script = ExtResource("2_50bmu")
-float_duration = null
-float_gravity = null
 bullet_scene = ExtResource("3_ng311")
-spread_angle = null
-num_projectiles = null
-fire_frame = null
-fire_frame_1 = null
-sex_force = null
 projectile_scene = ExtResource("5_qtrld")
-knockback_force = null
-knockback_duration = null
 
 [node name="death_screen" type="AnimatedSprite2D" parent="Player"]
 visible = false
@@ -1654,12 +1646,13 @@ shape = SubResource("RectangleShape2D_ehqqx")
 position = Vector2(21, 0.900382)
 collision_layer = 2
 collision_mask = 2
+script = ExtResource("51_b4dqb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
 shape = SubResource("RectangleShape2D_h6ioy")
 
 [node name="ColorRect" type="ColorRect" parent="Player/Area2D"]
-visible = false
+z_index = 2
 offset_left = -10.0
 offset_top = -7.20306
 offset_right = 30.0
@@ -1712,6 +1705,9 @@ volume_db = 24.0
 [node name="Jump" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("55_2mlpi")
 
+[node name="Attack_Timer" type="Timer" parent="Player"]
+one_shot = true
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.33
 blend_mode = 1
@@ -1743,7 +1739,7 @@ script = ExtResource("57_aui5p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1r1k4")
-frame_progress = 0.872177
+frame_progress = 0.0210655
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 4)
