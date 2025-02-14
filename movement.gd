@@ -104,8 +104,9 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_pressed("attack") and can_attack and not dead:
-		take_damage(1)
+		print (can_attack)
 		attack()
+		
 	if Input.is_action_pressed("DIE"):
 		take_damage(5)
 	if Input.is_action_just_pressed("spell"):
@@ -267,7 +268,11 @@ func _physics_process(delta: float) -> void:
 	
 	move_and_slide()
 
+
+var timer_attack = Timer.new()
+
 func attack():
+
 	can_attack = false
 	$/root/Node2D/Player/Area2D/ColorRect.visible = true
 	attack_area.set_position(Vector2(attack_range,0))
@@ -276,7 +281,17 @@ func attack():
 	attack_area.set_position(Vector2(0,0))
 	attack_area.disconnect("area_entered", Callable(self, "_on_attack_area_entered"))
 	$/root/Node2D/Player/Area2D/ColorRect.visible = false
+	timer_attack.connect("timeout", Callable(self, "cooldown_off"))
+	timer_attack.wait_time = 0.3
+	timer_attack.one_shot = true
+	add_child(timer_attack)
+	timer_attack.start()
+
+
+func cooldown_off():
+	print ("Can attack again!")
 	can_attack = true
+	timer_attack.queue_free()
 	
 func _on_attack_area_entered(area):
 	if area.is_in_group("enemies"):

@@ -969,7 +969,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"attack",
-"speed": 15.0
+"speed": 16.0
 }, {
 "frames": [{
 "duration": 3.0,
@@ -1622,8 +1622,17 @@ position = Vector2(-893, 472)
 scale = Vector2(1, 1.11064)
 collision_mask = 7
 script = ExtResource("2_50bmu")
+float_duration = null
+float_gravity = null
 bullet_scene = ExtResource("3_ng311")
+spread_angle = null
+num_projectiles = null
+fire_frame = null
+fire_frame_1 = null
+sex_force = null
 projectile_scene = ExtResource("5_qtrld")
+knockback_force = null
+knockback_duration = null
 
 [node name="death_screen" type="AnimatedSprite2D" parent="Player"]
 visible = false
@@ -1634,7 +1643,7 @@ sprite_frames = SubResource("SpriteFrames_y10kx")
 position = Vector2(1, 0.900381)
 scale = Vector2(0.384468, 0.3189)
 sprite_frames = SubResource("SpriteFrames_inw14")
-animation = &"grave"
+animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
 position = Vector2(0.999999, 0)
@@ -1734,7 +1743,7 @@ script = ExtResource("57_aui5p")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1r1k4")
-frame_progress = 0.833333
+frame_progress = 0.872177
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(-0.5, 4)
