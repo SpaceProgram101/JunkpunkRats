@@ -23,7 +23,7 @@ extends CharacterBody2D
 ]
 
 @onready var footstep_audio = $AudioStreamPlayer2D
-
+@onready var boing = $AudioBoing
 
 #//////////// ATTACK VARIABLES //////////// 
 var attack_cooldown = 0.5
@@ -247,6 +247,14 @@ func _physics_process(delta: float) -> void:
 				immunity = 1
 			else:
 				immunity -= delta
+		
+		
+		if collider and collider.is_in_group("bouncy"):  # Check if it's a bounce block
+			$AnimatedSprite2D.play("jump")
+			$Jump.play()
+			velocity.y = JUMP_VELOCITY*2
+			$AudioBoing.play()
+		
 	
 	
 	if Input.is_action_just_pressed("dash") and can_dash and overalldirection != 0:
