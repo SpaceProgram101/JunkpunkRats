@@ -19,10 +19,10 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if player.position.distance_to(king_position) >= 1600:
+		print ("Waking up...")
 		if not awake:
-			print ("Timer started.")
-			timer.start(5)
 			awake = true
+			timer.start(5)
 			await timer.timeout
 			wake_up()
 			
@@ -37,18 +37,17 @@ func _process(delta):
 	# 	Set the sprite's rotation to the calculated angle
 			rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
 			
-			print ("Playing music!")
 			
 
 	
 
 
 func wake_up():
-	awake = true
 	music_played_before = true
 	$PointLight2D.enabled = true
 	play("awake")
 	if not music_player.playing:
+		awake = true
 		music_player.play()
 	
 	
