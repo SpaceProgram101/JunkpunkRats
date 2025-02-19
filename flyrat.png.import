@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ccxfujmtr50h5"
-path="res://.godot/imported/ActualPurpleBouncebounce.png-fae546ba07b71734a5e3fa0c22422dc7.ctex"
+uid="uid://ddkbupy8plvi4"
+path="res://.godot/imported/flyrat.png-77162e7b6a77edd03025d4896f73d876.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ActualPurpleBouncebounce.png"
-dest_files=["res://.godot/imported/ActualPurpleBouncebounce.png-fae546ba07b71734a5e3fa0c22422dc7.ctex"]
+source_file="res://flyrat.png"
+dest_files=["res://.godot/imported/flyrat.png-77162e7b6a77edd03025d4896f73d876.ctex"]
 
 [params]
 
