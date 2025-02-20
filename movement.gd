@@ -251,9 +251,12 @@ func _physics_process(delta: float) -> void:
 		
 		if collider and collider.is_in_group("bouncy"):  # Check if it's a bounce block
 			$AnimatedSprite2D.play("jump")
+			$/root/Node2D/BounceBounce/Sprite2D.play("boing")
 			$Jump.play()
 			velocity.y = JUMP_VELOCITY*2
 			$AudioBoing.play()
+			await $/root/Node2D/BounceBounce/Sprite2D.animation_finished
+			$/root/Node2D/BounceBounce/Sprite2D.play("idle")
 		
 	
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=269 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=281 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -69,6 +69,7 @@
 [ext_resource type="Texture2D" uid="uid://62srwv5q5hs8" path="res://RatKing/rat_king_parts-3.png (1).png" id="62_ovymv"]
 [ext_resource type="Texture2D" uid="uid://g8w4rtjchqnw" path="res://RatKing/rat_king_parts-3.png.png" id="62_ykm6e"]
 [ext_resource type="Texture2D" uid="uid://deiw5tkyp4imv" path="res://RatKing/rat_king_parts-1.png.png" id="63_hkvy6"]
+[ext_resource type="Script" path="res://rat_king_soundtrack.gd" id="63_m201v"]
 [ext_resource type="Script" path="res://head_followPlayer.gd" id="64_q1uuq"]
 [ext_resource type="Texture2D" uid="uid://dx4vj0kvtx3hf" path="res://RatKing/rat_king_parts-1.png (1).png" id="64_q7aeq"]
 [ext_resource type="Texture2D" uid="uid://bjkk5nn6161va" path="res://RatKing/rat_king_parts-8.png.png" id="64_rk7q7"]
@@ -77,8 +78,8 @@
 [ext_resource type="Texture2D" uid="uid://c6jg2cr1g8cb2" path="res://RatKing/rat_king_parts-2.png (1).png" id="68_ag5k1"]
 [ext_resource type="AudioStream" uid="uid://cqqokqmtb6ecs" path="res://RatKing/RATKINGOST.mp3" id="70_p6wst"]
 [ext_resource type="Script" path="res://bounce_bounce.gd" id="76_p7i4f"]
-[ext_resource type="Texture2D" uid="uid://f0td2y4lcq0a" path="res://BouncyBouncy.png" id="77_6j26b"]
 [ext_resource type="Texture2D" uid="uid://ccxfujmtr50h5" path="res://ActualPurpleBouncebounce.png" id="79_0k1an"]
+[ext_resource type="Texture2D" uid="uid://dg3jhk87xwm8p" path="res://rat_king_ost/bouncy_pad_animations.png" id="79_fppp4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlq6x"]
 texture = ExtResource("1_fbnev")
@@ -1469,7 +1470,90 @@ sources/0 = SubResource("TileSetAtlasSource_0q5io")
 size = Vector2(749, 25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmngl"]
-size = Vector2(94.5, 16)
+size = Vector2(41, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wayk2"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dkx6t"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yfhsu"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7bb4r"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o6q33"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_33eed"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tce63"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5fai0"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8abrm"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yc4pt"]
+atlas = ExtResource("79_fppp4")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_uycj1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wayk2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dkx6t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yfhsu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7bb4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o6q33")
+}],
+"loop": false,
+"name": &"boing",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_33eed")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tce63")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5fai0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8abrm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yc4pt")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 11.0
+}]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o3qxn"]
 size = Vector2(51.75, 20)
@@ -1935,6 +2019,9 @@ one_shot = true
 [node name="AudioBoing" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("62_m5qij")
 
+[node name="RatKingSOUNDTRACK" type="AudioStreamPlayer2D" parent="Player"]
+script = ExtResource("63_m201v")
+
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 energy = 0.33
 blend_mode = 1
@@ -2103,16 +2190,19 @@ position = Vector2(208.5, 7.5)
 shape = SubResource("RectangleShape2D_qa26n")
 
 [node name="BounceBounce" type="StaticBody2D" parent="."]
+texture_filter = 1
 script = ExtResource("76_p7i4f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceBounce"]
-position = Vector2(-519.75, 481)
+position = Vector2(-546.5, 485.5)
 shape = SubResource("RectangleShape2D_lmngl")
 
-[node name="Sprite2D" type="Sprite2D" parent="BounceBounce"]
-position = Vector2(-520, 483)
-scale = Vector2(0.193532, 0.0756881)
-texture = ExtResource("77_6j26b")
+[node name="Sprite2D" type="AnimatedSprite2D" parent="BounceBounce"]
+position = Vector2(-545.5, 466.5)
+scale = Vector2(0.671875, 0.734375)
+sprite_frames = SubResource("SpriteFrames_uycj1")
+animation = &"boing"
+autoplay = "idle"
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="BounceBounce"]
 position = Vector2(-223, 146)

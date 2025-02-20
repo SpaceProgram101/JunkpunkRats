@@ -3,6 +3,7 @@ extends StaticBody2D
 @onready var controller = get_node("Head")
 @onready var breakable = get_node("platform_break_RATKING")
 @onready var breakable_collider = get_node("platform_break_RATKING/CollisionShape2D")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass

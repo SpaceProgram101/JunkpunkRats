@@ -1,5 +1,6 @@
 extends AnimatedSprite2D
 @onready var player = get_node("/root/Node2D/Player")
+@onready var phase = 0;
 
 var rotation_speed = 1.0
 var rotation_offset = -PI / 2
@@ -8,7 +9,18 @@ var music_played_before = false
 var waking = false
 var king_position = global_transform.origin
 @onready var music_player = get_node("/root/Node2D/TheRatKing/AudioStreamPlayer2D")
+
 @onready var timer : Timer
+var musicPhase : Array = [
+	preload("res://0-1RK.mp3"),
+	preload("res://1-2RK.mp3"),
+	preload("res://2-3RK.mp3"),
+	preload("res://3-4RK.mp3"),
+	preload("res://FINAL_RK.mp3"),
+	preload("res://INTERMISSION_RK.mp3"),
+]
+
+
 
 func _ready():
 	play("asleep")
@@ -18,6 +30,17 @@ func _ready():
 	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if Input.is_action_just_pressed("Toggle Phase Up"):
+		phase += 1
+		music_player.stop()
+		music_player.stream = musicPhase[phase]
+		music_player.play()
+	elif Input.is_action_just_pressed("Toggle Phase Down"):
+		phase -= 1
+		music_player.stop()
+		music_player.stream = musicPhase[phase]
+		music_player.play()
+	print(phase)
 	if player.position.distance_to(king_position) >= 1600:
 		print ("Waking up...")
 		if not awake:
@@ -48,6 +71,7 @@ func wake_up():
 	play("awake")
 	if not music_player.playing:
 		awake = true
+		music_player.stream = musicPhase[phase]
 		music_player.play()
 	
 	
