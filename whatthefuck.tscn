@@ -1,4 +1,4 @@
-[gd_scene load_steps=289 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=288 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -65,7 +65,6 @@
 [ext_resource type="AudioStream" uid="uid://383swah0x7s0" path="res://tiles/walk-on-grass-1-291984.mp3" id="55_2mlpi"]
 [ext_resource type="AudioStream" uid="uid://bp3ao8m5s1bb" path="res://tiles/grass-44887.mp3" id="55_ysse7"]
 [ext_resource type="Script" path="res://platform.gd" id="57_aui5p"]
-[ext_resource type="Texture2D" uid="uid://br11wi0lovwmv" path="res://tiles/moving_platform.png" id="57_vqr1h"]
 [ext_resource type="AudioStream" uid="uid://kxm4cr3uxs11" path="res://boing_lmke36X.mp3" id="62_m5qij"]
 [ext_resource type="Texture2D" uid="uid://62srwv5q5hs8" path="res://RatKing/rat_king_parts-3.png (1).png" id="62_ovymv"]
 [ext_resource type="Texture2D" uid="uid://g8w4rtjchqnw" path="res://RatKing/rat_king_parts-3.png.png" id="62_ykm6e"]
@@ -140,6 +139,51 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6ytfm"]
 size = Vector2(85, 7.99994)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2aivf"]
+size = Vector2(176, 216.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvfhg"]
+size = Vector2(36, 189)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsny5"]
+atlas = ExtResource("2_lwwrl")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4ltqe"]
+atlas = ExtResource("2_lwwrl")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ckppu"]
+atlas = ExtResource("2_lwwrl")
+region = Rect2(0, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5u2l"]
+atlas = ExtResource("2_lwwrl")
+region = Rect2(0, 96, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1r1k4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsny5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4ltqe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ckppu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5u2l")
+}],
+"loop": true,
+"name": &"default",
+"speed": 15.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlekh"]
+size = Vector2(41, 12)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_706ym"]
 
@@ -1363,59 +1407,6 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aq6jw"]
 size = Vector2(38, 95)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_o37m1"]
-atlas = ExtResource("57_vqr1h")
-region = Rect2(0, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_oeb6i"]
-atlas = ExtResource("57_vqr1h")
-region = Rect2(64, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kpoeh"]
-atlas = ExtResource("57_vqr1h")
-region = Rect2(0, 32, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_a1o3t"]
-atlas = ExtResource("57_vqr1h")
-region = Rect2(64, 32, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w2vaw"]
-atlas = ExtResource("57_vqr1h")
-region = Rect2(0, 64, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jjkce"]
-atlas = ExtResource("57_vqr1h")
-region = Rect2(64, 64, 64, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_1r1k4"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o37m1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_oeb6i")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kpoeh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_a1o3t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w2vaw")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jjkce")
-}],
-"loop": true,
-"name": &"default",
-"speed": 50.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nlekh"]
-size = Vector2(41, 12)
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_j8nxd"]
 animations = [{
 "frames": [{
@@ -1601,7 +1592,7 @@ texture_filter = 1
 position = Vector2(-1352, 901)
 
 [node name="TileMapLayer" type="TileMapLayer" parent="FoundryBase"]
-tile_map_data = PackedByteArray("AADl////AAAAAAAAAADn////AAABAAAAAADp////AAAAAAEAAADv////AAAAAAEAAAD1////AAAAAAEAAADz////AAABAAAAAADt////AAABAAAAAADx////AAAAAAAAAADr////AAAAAAAAAAD3////AAAAAAAAAAD5////AAABAAAAAAD7////AAABAAAAABD9////AAABAAAAAAD/////AAABAAAAABABAP//AAAAAAAAABADAP//AAAAAAAAAAAFAP//AAABAAAAAAAHAP//AAABAAAAABALAP//AAABAAAAABAPAP//AAABAAAAABAJAP//AAABAAAAAAANAP//AAABAAAAAAARAP//AAABAAAAAAATAP//AAAAAAEAAAAVAP//AAAAAAEAABAXAP//AAAAAAEAAAAZAP//AAAAAAEAABAbAP//AAAAAAEAAAA=")
+tile_map_data = PackedByteArray("AADl////AAAAAAAAAADn////AAABAAAAAADp////AAAAAAEAAADv////AAAAAAEAAAD1////AAAAAAEAAADz////AAABAAAAAADt////AAABAAAAAADx////AAAAAAAAAADr////AAAAAAAAAAD3////AAAAAAAAAAD5////AAABAAAAAAD7////AAABAAAAABD9////AAABAAAAAAD/////AAABAAAAABABAP//AAAAAAAAABADAP//AAAAAAAAAAAFAP//AAABAAAAAAAHAP//AAABAAAAABALAP//AAABAAAAABAPAP//AAABAAAAABAJAP//AAABAAAAAAANAP//AAABAAAAAAARAP//AAABAAAAAAATAP//AAAAAAEAAAAVAP//AAAAAAEAABAXAP//AAAAAAEAAAAZAP//AAAAAAEAABAbAP//AAAAAAEAAAAwAAkAAAAAAAAAAGAwAAcAAAAAAAAAAGAwAAUAAAAAAAAAAGAwAAMAAAAAAAAAAGAwAAEAAAAAAAAAAGAwAP//AAAAAAAAAGAsAAQAAAAAAAAAAFAsAAIAAAAAAAAAAFAsAAAAAAAAAAAAAFAsAP7/AAAAAAAAAFAwAP3/AAAAAAAAAAAsAPz/AAAAAAAAAFAsAPr/AAAAAAAAAFAyAP3/AAAAAAAAAAA0AP3/AAAAAAAAAAA2AP3/AAAAAAAAAAA4AP3/AAAAAAAAAAA6AP3/AAAAAAAAAABMAP3/AAAAAAAAAABOAP3/AAAAAAAAAABQAP3/AAAAAAAAAABSAP3/AAAAAAAAAABUAP3/AAAAAAAAAABWAP3/AAAAAAAAAABKAP3/AAAAAAAAAABpAP3/AAAAAAAAAABrAP3/AAAAAAAAAABtAP3/AAAAAAAAAABvAP3/AAAAAAAAAAA=")
 tile_set = SubResource("TileSet_tx17p")
 
 [node name="CollisionShape2D14" type="CollisionShape2D" parent="FoundryBase"]
@@ -1609,7 +1600,7 @@ position = Vector2(8, -6)
 shape = SubResource("RectangleShape2D_5d4v8")
 
 [node name="Platform1" type="StaticBody2D" parent="FoundryBase"]
-position = Vector2(569, -27)
+position = Vector2(140, 246)
 scale = Vector2(1.90625, 1.5625)
 collision_layer = 3
 collision_mask = 3
@@ -1626,21 +1617,91 @@ scale = Vector2(0.52459, 0.64)
 shape = SubResource("RectangleShape2D_6ytfm")
 
 [node name="Platform2" type="StaticBody2D" parent="FoundryBase"]
-position = Vector2(727, -8)
+position = Vector2(312, 191)
 scale = Vector2(1.90625, 1.5625)
 collision_layer = 3
 collision_mask = 3
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FoundryBase/Platform2"]
+position = Vector2(-1.52588e-05, 3.84)
 sprite_frames = SubResource("SpriteFrames_6to3i")
 animation = &"float"
 autoplay = "float"
 frame_progress = 0.904719
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase/Platform2"]
-position = Vector2(-0.262299, -4.47998)
+position = Vector2(0.524567, 1.52588e-05)
 scale = Vector2(0.52459, 0.64)
 shape = SubResource("RectangleShape2D_6ytfm")
+
+[node name="Platform3" type="StaticBody2D" parent="FoundryBase"]
+position = Vector2(470, 245)
+scale = Vector2(1.90625, 1.5625)
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FoundryBase/Platform3"]
+position = Vector2(-1.52588e-05, 3.84)
+sprite_frames = SubResource("SpriteFrames_6to3i")
+animation = &"float"
+autoplay = "float"
+frame_progress = 0.904719
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase/Platform3"]
+position = Vector2(0.524567, 1.52588e-05)
+scale = Vector2(0.52459, 0.64)
+shape = SubResource("RectangleShape2D_6ytfm")
+
+[node name="Platform4" type="StaticBody2D" parent="FoundryBase"]
+position = Vector2(647, 204)
+scale = Vector2(1.90625, 1.5625)
+collision_layer = 3
+collision_mask = 3
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FoundryBase/Platform4"]
+position = Vector2(-1.52588e-05, 3.84)
+sprite_frames = SubResource("SpriteFrames_6to3i")
+animation = &"float"
+autoplay = "float"
+frame_progress = 0.904719
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase/Platform4"]
+position = Vector2(0.524567, 1.52588e-05)
+scale = Vector2(0.52459, 0.64)
+shape = SubResource("RectangleShape2D_6ytfm")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase"]
+position = Vector2(855, 54.75)
+shape = SubResource("RectangleShape2D_2aivf")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="FoundryBase"]
+position = Vector2(711, -6.5)
+shape = SubResource("RectangleShape2D_vvfhg")
+
+[node name="Area2D" type="CharacterBody2D" parent="."]
+position = Vector2(-645, 109)
+script = ExtResource("57_aui5p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1r1k4")
+frame_progress = 0.456839
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_nlekh")
+
+[node name="Area2D3" type="CharacterBody2D" parent="."]
+position = Vector2(171, 849)
+script = ExtResource("57_aui5p")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D3"]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_1r1k4")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D3"]
+position = Vector2(-0.5, 4)
+shape = SubResource("RectangleShape2D_nlekh")
 
 [node name="floor1" type="StaticBody2D" parent="."]
 texture_filter = 1
@@ -2088,17 +2149,16 @@ color = Color(0.865752, 0.531115, 0.486206, 1)
 energy = 1.47
 height = 1.0
 
-[node name="Area2D" type="CharacterBody2D" parent="."]
-position = Vector2(-645, 109)
+[node name="Area2D2" type="CharacterBody2D" parent="."]
+position = Vector2(-266, 850)
 script = ExtResource("57_aui5p")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D"]
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Area2D2"]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_1r1k4")
-frame_progress = 0.035849
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(-0.5, 4)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D2"]
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_nlekh")
 
 [node name="TheRatKing" type="StaticBody2D" parent="."]
@@ -2195,13 +2255,13 @@ offset = Vector2(0, 75)
 texture_scale = 0.5
 
 [node name="smallLight4" type="AnimatedSprite2D" parent="TheRatKing"]
-position = Vector2(499, 230)
+position = Vector2(488, 201)
 sprite_frames = SubResource("SpriteFrames_b7otp")
 animation = &"asleep"
 script = ExtResource("64_q1uuq")
 
 [node name="PointLight2D" type="PointLight2D" parent="TheRatKing/smallLight4"]
-position = Vector2(2, -192)
+position = Vector2(2, -191)
 scale = Vector2(2.23438, 4.65625)
 energy = 6.1
 blend_mode = 2

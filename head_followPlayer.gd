@@ -40,7 +40,6 @@ func _process(delta):
 		music_player.stop()
 		music_player.stream = musicPhase[phase]
 		music_player.play()
-	print(phase)
 	if player.position.distance_to(king_position) >= 1600:
 		print ("Waking up...")
 		if not awake:
