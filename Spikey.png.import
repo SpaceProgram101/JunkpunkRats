@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5bfc1iwomg1g"
-path="res://.godot/imported/ActualPurpleBouncebounce.png-fae546ba07b71734a5e3fa0c22422dc7.ctex"
+uid="uid://dyb55twfuxyrg"
+path="res://.godot/imported/Spikey.png-c8f7032ccf740a54404134bd91c26e17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ActualPurpleBouncebounce.png"
-dest_files=["res://.godot/imported/ActualPurpleBouncebounce.png-fae546ba07b71734a5e3fa0c22422dc7.ctex"]
+source_file="res://Spikey.png"
+dest_files=["res://.godot/imported/Spikey.png-c8f7032ccf740a54404134bd91c26e17.ctex"]
 
 [params]
 
