@@ -1,4 +1,4 @@
-[gd_scene load_steps=288 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=290 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -1492,6 +1492,11 @@ sources/0 = SubResource("TileSetAtlasSource_0q5io")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qa26n"]
 size = Vector2(749, 25)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lxkbb"]
+size = Vector2(40, 34)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_k2qe7"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmngl"]
 size = Vector2(41, 7)
 
@@ -2225,7 +2230,7 @@ parameters/looping = false
 [node name="Timer" type="Timer" parent="TheRatKing"]
 
 [node name="smallLight3" type="AnimatedSprite2D" parent="TheRatKing"]
-position = Vector2(339, 235)
+position = Vector2(1410, -16)
 sprite_frames = SubResource("SpriteFrames_b7otp")
 animation = &"asleep"
 script = ExtResource("64_q1uuq")
@@ -2255,7 +2260,7 @@ offset = Vector2(0, 75)
 texture_scale = 0.5
 
 [node name="smallLight4" type="AnimatedSprite2D" parent="TheRatKing"]
-position = Vector2(488, 201)
+position = Vector2(917, 188)
 sprite_frames = SubResource("SpriteFrames_b7otp")
 animation = &"asleep"
 script = ExtResource("64_q1uuq")
@@ -2290,6 +2295,16 @@ tile_set = SubResource("TileSet_pcxgy")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="TheRatKing/Platforms"]
 position = Vector2(208.5, 7.5)
 shape = SubResource("RectangleShape2D_qa26n")
+
+[node name="Area2D" type="Area2D" parent="TheRatKing"]
+position = Vector2(231, 330)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TheRatKing/Area2D"]
+position = Vector2(1, -2)
+shape = SubResource("RectangleShape2D_lxkbb")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TheRatKing/Area2D"]
+sprite_frames = SubResource("SpriteFrames_k2qe7")
 
 [node name="BounceBounce" type="StaticBody2D" parent="."]
 texture_filter = 1
