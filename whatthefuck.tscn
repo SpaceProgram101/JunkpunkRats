@@ -2079,6 +2079,7 @@ texture = ExtResource("32_kc4s7")
 
 [node name="Hell" type="Sprite2D" parent="Camera2D/ParallaxBackground"]
 modulate = Color(0.842448, 0.0585065, 1.92523e-07, 1)
+z_index = -3
 texture_filter = 1
 position = Vector2(1092, 392)
 scale = Vector2(-19.9453, 17.4849)
