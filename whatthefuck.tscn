@@ -1,4 +1,4 @@
-[gd_scene load_steps=290 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=292 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -82,6 +82,8 @@
 [ext_resource type="Texture2D" uid="uid://dg3jhk87xwm8p" path="res://rat_king_ost/bouncy_pad_animations.png" id="79_fppp4"]
 [ext_resource type="Script" path="res://spikey.gd" id="80_p5oj2"]
 [ext_resource type="Texture2D" uid="uid://dyb55twfuxyrg" path="res://Spikey.png" id="81_tagsr"]
+[ext_resource type="VideoStream" path="res://Cutscene-placeholder.ogv" id="83_66o6c"]
+[ext_resource type="Script" path="res://cuttingmyballsoffwithscissors.gd" id="84_v5lqf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlq6x"]
 texture = ExtResource("1_fbnev")
@@ -2341,6 +2343,17 @@ shape = SubResource("RectangleShape2D_o2dxk")
 position = Vector2(-286.5, 478.125)
 scale = Vector2(0.0556701, 0.0509708)
 texture = ExtResource("81_tagsr")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+script = ExtResource("84_v5lqf")
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer2"]
+top_level = true
+offset_top = -1.0
+offset_right = 1603.0
+offset_bottom = 904.0
+stream = ExtResource("83_66o6c")
+expand = true
 
 [connection signal="area_entered" from="ratmadillo/Area2D" to="Crawler" method="_on_player_detected"]
 [connection signal="area_exited" from="ratmadillo/Area2D" to="Crawler" method="_on_player_lost"]
