@@ -1,4 +1,5 @@
-[gd_scene load_steps=292 format=4 uid="uid://bxnxqqch8tqh6"]
+
+[gd_scene load_steps=298 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -61,7 +62,8 @@
 [ext_resource type="Texture2D" uid="uid://cghg0vgenxalt" path="res://player animations/player_dead_rise.png" id="42_2rdbn"]
 [ext_resource type="AudioStream" uid="uid://l8qgupckiaw1" path="res://sfx.mp3" id="43_4ofrc"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
-[ext_resource type="Script" path="res://attack.gd" id="51_b4dqb"]
+[ext_resource type="Texture2D" uid="uid://b72aluni64d0k" path="res://gun.png" id="45_a0t25"]
+[ext_resource type="Script" path="res://cannon.gd" id="46_p1my7"]
 [ext_resource type="AudioStream" uid="uid://383swah0x7s0" path="res://tiles/walk-on-grass-1-291984.mp3" id="55_2mlpi"]
 [ext_resource type="AudioStream" uid="uid://bp3ao8m5s1bb" path="res://tiles/grass-44887.mp3" id="55_ysse7"]
 [ext_resource type="Script" path="res://platform.gd" id="57_aui5p"]
@@ -75,6 +77,7 @@
 [ext_resource type="Texture2D" uid="uid://bjkk5nn6161va" path="res://RatKing/rat_king_parts-8.png.png" id="64_rk7q7"]
 [ext_resource type="Texture2D" uid="uid://jo2tqsntfjx8" path="res://RatKing/rat_king_parts-2.png.png" id="66_2ksjf"]
 [ext_resource type="Script" path="res://RAT_KING_LOGIC.gd" id="66_e05cu"]
+[ext_resource type="Texture2D" uid="uid://s5t3e6sbkkwu" path="res://strap.png" id="66_mswg3"]
 [ext_resource type="Texture2D" uid="uid://c6jg2cr1g8cb2" path="res://RatKing/rat_king_parts-2.png (1).png" id="68_ag5k1"]
 [ext_resource type="AudioStream" uid="uid://cqqokqmtb6ecs" path="res://RatKing/RATKINGOST.mp3" id="70_p6wst"]
 [ext_resource type="Script" path="res://bounce_bounce.gd" id="76_p7i4f"]
@@ -936,6 +939,61 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hptjh"]
 radius = 755.891
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8l45"]
+atlas = ExtResource("45_a0t25")
+region = Rect2(64, 0, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tgrix"]
+atlas = ExtResource("45_a0t25")
+region = Rect2(0, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vtqcr"]
+atlas = ExtResource("45_a0t25")
+region = Rect2(64, 32, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wrtnw"]
+atlas = ExtResource("45_a0t25")
+region = Rect2(0, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ga5os"]
+atlas = ExtResource("45_a0t25")
+region = Rect2(64, 64, 64, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ww5ee"]
+atlas = ExtResource("45_a0t25")
+region = Rect2(0, 0, 64, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xe0pq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8l45")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tgrix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vtqcr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wrtnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ga5os")
+}],
+"loop": true,
+"name": &"firing",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ww5ee")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_o38wu"]
 atlas = ExtResource("37_mjvve")
 region = Rect2(0, 0, 64, 32)
@@ -1280,8 +1338,6 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehqqx"]
 size = Vector2(15, 6.14146)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_h6ioy"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vkins"]
 shader = ExtResource("38_6v1qq")
@@ -2044,13 +2100,28 @@ script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
 projectile_scene = ExtResource("5_qtrld")
 
+[node name="Cannon" type="AnimatedSprite2D" parent="Player"]
+position = Vector2(1, -7.20306)
+scale = Vector2(0.316661, 0.273359)
+sprite_frames = SubResource("SpriteFrames_xe0pq")
+animation = &"firing"
+frame_progress = 0.277565
+offset = Vector2(-10, 0)
+flip_h = true
+script = ExtResource("46_p1my7")
+
+[node name="Sprite2D" type="Sprite2D" parent="Player"]
+position = Vector2(1, -1.80072)
+scale = Vector2(0.3125, 0.3125)
+texture = ExtResource("66_mswg3")
+
 [node name="death_screen" type="AnimatedSprite2D" parent="Player"]
 visible = false
 scale = Vector2(4.70339, 4.4091)
 sprite_frames = SubResource("SpriteFrames_y10kx")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player"]
-position = Vector2(1, 0.900381)
+position = Vector2(1, -6.55651e-07)
 scale = Vector2(0.384468, 0.3189)
 sprite_frames = SubResource("SpriteFrames_inw14")
 animation = &"attack"
@@ -2059,23 +2130,6 @@ animation = &"attack"
 position = Vector2(0.999999, 0)
 scale = Vector2(1, 1.02625)
 shape = SubResource("RectangleShape2D_ehqqx")
-
-[node name="Area2D" type="Area2D" parent="Player"]
-position = Vector2(21, 0.900382)
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("51_b4dqb")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-shape = SubResource("RectangleShape2D_h6ioy")
-
-[node name="ColorRect" type="ColorRect" parent="Player/Area2D"]
-z_index = 2
-offset_left = -10.0
-offset_top = -7.20306
-offset_right = 30.0
-offset_bottom = 32.7969
-scale = Vector2(0.431645, 0.317393)
 
 [node name="KnockbackTimer" type="Timer" parent="Player"]
 

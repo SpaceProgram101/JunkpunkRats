@@ -48,25 +48,27 @@ animations = [{
 }],
 "loop": true,
 "name": &"fireball",
-"speed": 16.0
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i055n"]
 size = Vector2(1.81953, 0.178158)
 
-[node name="Area2D" type="Area2D"]
-scale = Vector2(36.2672, 34.3246)
+[node name="Area2D" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(78.8481, 184.28)
+collision_layer = 32768
 script = ExtResource("2_edfso")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0.0275731, -1.77636e-15)
-scale = Vector2(0.00684342, 0.00964759)
+position = Vector2(-0.0253652, 2.11758e-22)
+scale = Vector2(0.00541903, -0.00200587)
 sprite_frames = SubResource("SpriteFrames_joxid")
 animation = &"fireball"
-frame = 4
-frame_progress = 0.288328
+frame_progress = 0.594052
+flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-0.0413597, -0.0145668)
-scale = Vector2(0.136386, 0.49058)
+position = Vector2(-3.72529e-09, 9.31323e-10)
+scale = Vector2(0.0681872, 0.0812269)
 shape = SubResource("RectangleShape2D_i055n")
