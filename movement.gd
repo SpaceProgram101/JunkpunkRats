@@ -34,6 +34,8 @@ var attack_area : Area2D
 @onready var attack_timer = $Attack_Timer
 var suicide = true
 
+@onready var strap = $Sprite2D
+
 #//////////// DASHING VARIABLES //////////// 
 var can_dash: bool = true
 var is_dashing: bool = false
@@ -87,9 +89,6 @@ var knockback_direction = Vector2.ZERO
 
 
 func _ready():
-	attack_area = $Area2D
-	attack_area.hide()
-	attack_timer.connect("timeout",Callable(self, "_on_attack_cooldown_timeout"))
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
 
@@ -104,9 +103,6 @@ func _ready():
 
 
 func _process(_delta):
-	if Input.is_action_pressed("attack") and not dead:
-		if can_attack:
-			attack()
 		
 	if Input.is_action_pressed("DIE"):
 		take_damage(5)
@@ -180,6 +176,8 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not dead:
+		$Sprite2D.visible = false
+		$Cannon.visible = false
 		$AnimatedSprite2D.play("jump")
 		$Jump.play()
 		velocity.y = JUMP_VELOCITY
@@ -210,8 +208,8 @@ func _physics_process(delta: float) -> void:
 		
 			
 	if velocity.x != 0:
+		$Sprite2D.flip_h = velocity.x > 0
 		$AnimatedSprite2D.flip_h = velocity.x > 0
-	
 	if dying:
 		$AnimatedSprite2D.play("grave")
 		await $AnimatedSprite2D.animation_finished
@@ -258,7 +256,9 @@ func _physics_process(delta: float) -> void:
 			await $/root/Node2D/BounceBounce/Sprite2D.animation_finished
 			$/root/Node2D/BounceBounce/Sprite2D.play("idle")
 		
-	
+	if is_on_floor():
+		$Sprite2D.visible = true
+		$Cannon.visible = true
 	
 	if Input.is_action_just_pressed("dash") and can_dash and overalldirection != 0:
 		is_dashing = true
