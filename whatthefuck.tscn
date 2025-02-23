@@ -1,5 +1,6 @@
 [gd_scene load_steps=301 format=4 uid="uid://dwyg1wehj7f5g"]
 
+
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
 [ext_resource type="Texture2D" uid="uid://dxi1qaw1f5jb7" path="res://player animations/player_idle.png" id="2_23lgj"]
@@ -53,7 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://bh8hifppvhkaj" path="res://rat_heart_full.png" id="37_ryose"]
 [ext_resource type="Script" path="res://rat_king.gd" id="38_1wqn7"]
 [ext_resource type="Shader" path="res://fade.gdshader" id="38_6v1qq"]
-[ext_resource type="Texture2D" uid="uid://daepfu7jiok2d" path="res://player_dash-1.png.png" id="38_j1gh1"]
+[ext_resource type="Texture2D" uid="uid://daepfu7jiok2d" path="res://player_dash-1.png.png" id="38_j1gh1"]HEAD
 [ext_resource type="Texture2D" uid="uid://ctrm6vxrsmfm8" path="res://rat_king.png" id="38_m2foi"]
 [ext_resource type="Texture2D" uid="uid://bf0adetma3tof" path="res://tiles/foundry_background-1.png.png" id="38_sqvic"]
 [ext_resource type="Texture2D" uid="uid://b1njyvjr7012k" path="res://tiles/foundry_background-2.png.png" id="39_l514x"]

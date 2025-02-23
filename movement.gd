@@ -184,6 +184,9 @@ func _physics_process(delta: float) -> void:
 		$death_screen.visible = false
 		dead = false
 		dying = false
+		
+		get_tree().reload_current_scene() # Restarts the scene as a respawn mechanic upon pressing space post mortem  
+		
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if Input.is_action_pressed("ui_left"):
