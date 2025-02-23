@@ -87,7 +87,6 @@ var is_knocked_back = false
 var knockback_timer = 0.0
 var knockback_direction = Vector2.ZERO
 
-
 func _ready():
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight

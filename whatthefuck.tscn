@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=298 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=301 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -85,8 +84,8 @@
 [ext_resource type="Texture2D" uid="uid://dg3jhk87xwm8p" path="res://rat_king_ost/bouncy_pad_animations.png" id="79_fppp4"]
 [ext_resource type="Script" path="res://spikey.gd" id="80_p5oj2"]
 [ext_resource type="Texture2D" uid="uid://dyb55twfuxyrg" path="res://Spikey.png" id="81_tagsr"]
-[ext_resource type="VideoStream" path="res://Cutscene-placeholder.ogv" id="83_66o6c"]
 [ext_resource type="Script" path="res://cuttingmyballsoffwithscissors.gd" id="84_v5lqf"]
+[ext_resource type="VideoStream" path="res://cutscene_but_real.ogv" id="86_008ij"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlq6x"]
 texture = ExtResource("1_fbnev")
@@ -1555,6 +1554,14 @@ size = Vector2(40, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k2qe7"]
 
+[sub_resource type="SpriteFrames" id="SpriteFrames_aw7yp"]
+animations = [{
+"frames": [],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmngl"]
 size = Vector2(41, 7)
 
@@ -2362,6 +2369,10 @@ shape = SubResource("RectangleShape2D_lxkbb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TheRatKing/Area2D"]
 sprite_frames = SubResource("SpriteFrames_k2qe7")
 
+[node name="Pipe 1" type="AnimatedSprite2D" parent="TheRatKing"]
+sprite_frames = SubResource("SpriteFrames_aw7yp")
+animation = &"idle"
+
 [node name="BounceBounce" type="StaticBody2D" parent="."]
 texture_filter = 1
 script = ExtResource("76_p7i4f")
@@ -2406,7 +2417,7 @@ top_level = true
 offset_top = -1.0
 offset_right = 1603.0
 offset_bottom = 904.0
-stream = ExtResource("83_66o6c")
+stream = ExtResource("86_008ij")
 expand = true
 
 [connection signal="area_entered" from="ratmadillo/Area2D" to="Crawler" method="_on_player_detected"]
