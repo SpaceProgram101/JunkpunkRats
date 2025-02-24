@@ -16,7 +16,7 @@ func _ready():
 	# Optionally add a visual or sprite for the projectile
 	# e.g., preload a texture
 	var sprite = $Sprite2D
-	sprite.texture = preload("res://player animations/bubble-1.png.png")
+	sprite.texture = preload("res://player animations/bubble.png")
 	
 	var random_scale = randf_range(min_size, max_size)
 	scale = Vector2(random_scale, random_scale)

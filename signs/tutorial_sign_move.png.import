@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://nklvob0bpk2c"
-path="res://.godot/imported/bubble-1.png.png-34a28c81cb208a80dae95520c1f87168.ctex"
+uid="uid://bx88o2jbddlld"
+path="res://.godot/imported/tutorial_sign_move.png-689a4139c69fae13bf50d259ba66f687.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://player animations/bubble-1.png.png"
-dest_files=["res://.godot/imported/bubble-1.png.png-34a28c81cb208a80dae95520c1f87168.ctex"]
+source_file="res://signs/tutorial_sign_move.png"
+dest_files=["res://.godot/imported/tutorial_sign_move.png-689a4139c69fae13bf50d259ba66f687.ctex"]
 
 [params]
 

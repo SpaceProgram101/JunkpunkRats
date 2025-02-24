@@ -16,21 +16,19 @@ func _ready():
 		play()
 		volume_db = start_volume  # Set the initial volume to silent
 
-func _process(delta: float) -> void:
+#func _process(delta: float) -> void:
 	# Get the distance between the player and the NPC
-	var distance_to_player = global_position.distance_to(player.global_position)
+	#var distance_to_player = global_position.distance_to(player.global_position)
 
 	# Calculate how much of the fade-in effect should occur based on the distance
-	if distance_to_player < max_distance:
-		# Start fading in
-		var fade_progress = 1.0 - (distance_to_player / max_distance)  # Fade progress (0 to 1)
-		fade_progress = clamp(fade_progress, 0.0, 1.0)  # Make sure the progress is between 0 and 1
+	#if distance_to_player < max_distance:
+		#var fade_progress = 1.0 - (distance_to_player / max_distance)  # Fade progress (0 to 1)
+		#fade_progress = clamp(fade_progress, 0.0, 1.0)  # Make sure the progress is between 0 and 1
 
-		# Calculate target volume: Lerp between start_volume (-80) and target_volume (0)
-		target_volume = lerp(start_volume, 0.0, fade_progress)
-	else:
+		#target_volume = lerp(start_volume, 0.0, fade_progress)
+	#else:
 		# If the player is far enough away, set volume to silent
-		target_volume = start_volume
+		#target_volume = start_volume
 
 	# Smoothly update the volume towards target volume using lerp
-	volume_db = lerp(volume_db, target_volume, delta / fade_duration)
+	#volume_db = lerp(volume_db, target_volume, delta / fade_duration)

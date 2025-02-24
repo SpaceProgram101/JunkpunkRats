@@ -239,7 +239,7 @@ func _physics_process(delta: float) -> void:
 
 		if collider and collider.is_in_group("enemies"):  # Check if it's an enemy
 			if immunity <= 0:
-				$AnimatedSprite2D.play("hit")
+				#$AnimatedSprite2D.play("hit")
 				take_damage(1)
 				apply_knockback(collider.global_position)
 				immunity = 1
