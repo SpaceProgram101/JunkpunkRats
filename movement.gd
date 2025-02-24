@@ -237,27 +237,29 @@ func _physics_process(delta: float) -> void:
 	
 	for index in range(get_slide_collision_count()):  # Loop through all collisions
 		var collision = get_slide_collision(index)
-		var collider = collision.get_collider()
+		
+		if collision:
+			var collider = collision.get_collider()
 
-		if collider and collider.is_in_group("enemies"):  # Check if it's an enemy
-			if immunity <= 0:
-				$AnimatedSprite2D.play("hit")
-				take_damage(1)
-				apply_knockback(collider.global_position)
-				immunity = 1
-			else:
-				immunity -= delta
-		
-		
-		if collider and collider.is_in_group("bouncy"):  # Check if it's a bounce block
-			$AnimatedSprite2D.play("jump")
-			$/root/Node2D/BounceBounce/Sprite2D.play("boing")
-			$Jump.play()
-			velocity.y = JUMP_VELOCITY*2
-			$AudioBoing.play()
-			await $/root/Node2D/BounceBounce/Sprite2D.animation_finished
-			$/root/Node2D/BounceBounce/Sprite2D.play("idle")
-		
+			if collider and collider.is_in_group("enemies"):  # Check if it's an enemy
+				if immunity <= 0:
+					$AnimatedSprite2D.play("hit")
+					take_damage(1)
+					apply_knockback(collider.global_position)
+					immunity = 1
+				else:
+					immunity -= delta
+			
+			
+			if collider and collider.is_in_group("bouncy"):  # Check if it's a bounce block
+				$AnimatedSprite2D.play("jump")
+				$/root/Node2D/BounceBounce/Sprite2D.play("boing")
+				$Jump.play()
+				velocity.y = JUMP_VELOCITY*2
+				$AudioBoing.play()
+				await $/root/Node2D/BounceBounce/Sprite2D.animation_finished
+				$/root/Node2D/BounceBounce/Sprite2D.play("idle")
+			
 	
 	
 	if Input.is_action_just_pressed("dash") and can_dash and overalldirection != 0:
