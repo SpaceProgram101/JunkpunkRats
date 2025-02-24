@@ -78,10 +78,10 @@ var dying = false
 
 #//////////// MOVEMENT VARIABLES //////////// 
 var frozen: bool = false
-const SPEED = 100.0
+const SPEED = 75.0
 const JUMP_VELOCITY = -300.0
 const GRAVITY = 1000.0
-var gravity = 1500.0
+var gravity = 1000.0
 
 var is_knocked_back = false
 var knockback_timer = 0.0
@@ -236,7 +236,6 @@ func _physics_process(delta: float) -> void:
 	for index in range(get_slide_collision_count()):  # Loop through all collisions
 		var collision = get_slide_collision(index)
 		var collider = collision.get_collider()
-
 		if collider and collider.is_in_group("enemies"):  # Check if it's an enemy
 			if immunity <= 0:
 				#$AnimatedSprite2D.play("hit")
@@ -245,8 +244,6 @@ func _physics_process(delta: float) -> void:
 				immunity = 1
 			else:
 				immunity -= delta
-		
-		
 		if collider and collider.is_in_group("bouncy"):  # Check if it's a bounce block
 			$AnimatedSprite2D.play("jump")
 			$/root/Node2D/BounceBounce/Sprite2D.play("boing")
