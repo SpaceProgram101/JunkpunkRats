@@ -1,4 +1,4 @@
-[gd_scene load_steps=292 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=291 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -78,9 +78,9 @@
 [ext_resource type="Texture2D" uid="uid://c6jg2cr1g8cb2" path="res://RatKing/rat_king_parts-2.png (1).png" id="68_ag5k1"]
 [ext_resource type="AudioStream" uid="uid://cqqokqmtb6ecs" path="res://RatKing/RATKINGOST.mp3" id="70_p6wst"]
 [ext_resource type="Script" path="res://bounce_bounce.gd" id="76_p7i4f"]
-[ext_resource type="Texture2D" uid="uid://5bfc1iwomg1g" path="res://ActualPurpleBouncebounce.png" id="79_0k1an"]
 [ext_resource type="Texture2D" uid="uid://dg3jhk87xwm8p" path="res://rat_king_ost/bouncy_pad_animations.png" id="79_fppp4"]
 [ext_resource type="Script" path="res://spikey.gd" id="80_p5oj2"]
+[ext_resource type="Texture2D" uid="uid://dpwb50qxk33jn" path="res://Screenshot 2025-02-23 211807.png" id="80_thclu"]
 [ext_resource type="Texture2D" uid="uid://dyb55twfuxyrg" path="res://Spikey.png" id="81_tagsr"]
 [ext_resource type="VideoStream" path="res://Cutscene-placeholder.ogv" id="83_66o6c"]
 [ext_resource type="Script" path="res://cuttingmyballsoffwithscissors.gd" id="84_v5lqf"]
@@ -1585,9 +1585,6 @@ animations = [{
 "speed": 11.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3qxn"]
-size = Vector2(51.75, 20)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2dxk"]
 size = Vector2(28, 26.5)
 
@@ -1767,6 +1764,10 @@ shape = SubResource("RectangleShape2D_60rk2")
 
 [node name="CollisionShape2D11" type="CollisionShape2D" parent="floor1"]
 position = Vector2(-664, -397)
+shape = SubResource("RectangleShape2D_60rk2")
+
+[node name="CollisionShape2D14" type="CollisionShape2D" parent="floor1"]
+position = Vector2(-1488, -827)
 shape = SubResource("RectangleShape2D_60rk2")
 
 [node name="CollisionShape2D12" type="CollisionShape2D" parent="floor1"]
@@ -2316,6 +2317,18 @@ script = ExtResource("76_p7i4f")
 position = Vector2(-546.5, 485.5)
 shape = SubResource("RectangleShape2D_lmngl")
 
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="BounceBounce"]
+position = Vector2(-1105.5, 458.5)
+shape = SubResource("RectangleShape2D_lmngl")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="BounceBounce"]
+position = Vector2(-1247.5, 184.5)
+shape = SubResource("RectangleShape2D_lmngl")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="BounceBounce"]
+position = Vector2(-1419.5, -70.5)
+shape = SubResource("RectangleShape2D_lmngl")
+
 [node name="Sprite2D" type="AnimatedSprite2D" parent="BounceBounce"]
 position = Vector2(-545.5, 466.5)
 scale = Vector2(0.671875, 0.734375)
@@ -2323,14 +2336,31 @@ sprite_frames = SubResource("SpriteFrames_uycj1")
 animation = &"boing"
 autoplay = "idle"
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="BounceBounce"]
-position = Vector2(-223, 146)
-shape = SubResource("RectangleShape2D_o3qxn")
+[node name="Sprite2D2" type="AnimatedSprite2D" parent="BounceBounce"]
+position = Vector2(-1105.5, 438.5)
+scale = Vector2(0.671875, 0.734375)
+sprite_frames = SubResource("SpriteFrames_uycj1")
+animation = &"boing"
+autoplay = "idle"
 
-[node name="Sprite2D2" type="Sprite2D" parent="BounceBounce"]
-position = Vector2(-222.75, 146.5)
-scale = Vector2(0.105533, 0.088785)
-texture = ExtResource("79_0k1an")
+[node name="Sprite2D3" type="AnimatedSprite2D" parent="BounceBounce"]
+position = Vector2(-1247.5, 165.5)
+scale = Vector2(0.671875, 0.734375)
+sprite_frames = SubResource("SpriteFrames_uycj1")
+animation = &"boing"
+autoplay = "idle"
+
+[node name="Sprite2D4" type="AnimatedSprite2D" parent="BounceBounce"]
+position = Vector2(-1420.5, -90.4999)
+scale = Vector2(0.671875, 0.734375)
+sprite_frames = SubResource("SpriteFrames_uycj1")
+animation = &"boing"
+autoplay = "idle"
+
+[node name="secret" type="Sprite2D" parent="BounceBounce"]
+position = Vector2(-1269, -334.5)
+scale = Vector2(0.143552, 0.159524)
+texture = ExtResource("80_thclu")
 
 [node name="Spikey" type="StaticBody2D" parent="."]
 script = ExtResource("80_p5oj2")
@@ -2349,8 +2379,9 @@ script = ExtResource("84_v5lqf")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer2"]
 top_level = true
+offset_left = -44.0
 offset_top = -1.0
-offset_right = 1603.0
+offset_right = 1607.0
 offset_bottom = 904.0
 stream = ExtResource("83_66o6c")
 expand = true
