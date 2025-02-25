@@ -1,0 +1,5 @@
+Layer 1: Floor
+Layer 2: Walls
+Layer 3: Enemies
+Layer 9: Probably for music idrk
+Layer 10: The Player (projectile -> player)

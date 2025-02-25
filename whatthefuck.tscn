@@ -1,4 +1,4 @@
-[gd_scene load_steps=314 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=315 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -91,6 +91,7 @@
 [ext_resource type="Texture2D" uid="uid://bx88o2jbddlld" path="res://signs/tutorial_sign_move.png" id="86_b53ie"]
 [ext_resource type="Texture2D" uid="uid://d4hejwt0j8eol" path="res://signs/tutorial_sign_interact.png" id="87_vgo36"]
 [ext_resource type="Texture2D" uid="uid://dw3i7s34xrw6c" path="res://signs/tutorial_sign_jump.png" id="88_yqp85"]
+[ext_resource type="Script" path="res://spawner.gd" id="92_7q5b0"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlq6x"]
 texture = ExtResource("1_fbnev")
@@ -2029,7 +2030,6 @@ animation = &"pure_shock"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="rat_stick"]
 position = Vector2(-1.20776, -0.981689)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_20euh")
 
 [node name="ratmadillo" type="CharacterBody2D" parent="."]
@@ -2515,6 +2515,9 @@ texture = ExtResource("87_vgo36")
 position = Vector2(13, 32)
 scale = Vector2(0.3453, 0.3453)
 texture = ExtResource("88_yqp85")
+
+[node name="Spawner" type="Node2D" parent="."]
+script = ExtResource("92_7q5b0")
 
 [connection signal="area_entered" from="ratmadillo/Area2D" to="Crawler" method="_on_player_detected"]
 [connection signal="area_exited" from="ratmadillo/Area2D" to="Crawler" method="_on_player_lost"]

@@ -103,9 +103,8 @@ func _ready():
 
 
 func _process(_delta):
+	
 		
-	if Input.is_action_pressed("DIE"):
-		take_damage(5)
 	if Input.is_action_just_pressed("spell"):
 		if current_oil > 0:
 			current_oil -= 1
@@ -119,6 +118,7 @@ func _process(_delta):
 			current_spell = 2
 			trigger_spell()
 		update_oil_ui()
+
 
 func _physics_process(delta: float) -> void:
 	
