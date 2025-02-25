@@ -23,6 +23,7 @@ func _physics_process(delta: float) -> void:
 	if position.distance_to(player.position) < 100:
 		crash_out()
 	elif position.distance_to(player.position) > 100:
+		can_attack = true
 		$AnimatedSprite2D.play("flying")
 		position.x += SPEED * direction * delta
 		

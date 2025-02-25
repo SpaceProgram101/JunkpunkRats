@@ -1,4 +1,4 @@
-[gd_scene load_steps=315 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=325 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -92,6 +92,7 @@
 [ext_resource type="Texture2D" uid="uid://d4hejwt0j8eol" path="res://signs/tutorial_sign_interact.png" id="87_vgo36"]
 [ext_resource type="Texture2D" uid="uid://dw3i7s34xrw6c" path="res://signs/tutorial_sign_jump.png" id="88_yqp85"]
 [ext_resource type="Script" path="res://spawner.gd" id="92_7q5b0"]
+[ext_resource type="Texture2D" uid="uid://dxf5modmvut4s" path="res://enemy_spritesheets/rat_dropship.png" id="93_1pro7"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlq6x"]
 texture = ExtResource("1_fbnev")
@@ -1717,6 +1718,80 @@ size = Vector2(51.75, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2dxk"]
 size = Vector2(28, 26.5)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_awipl"]
+atlas = ExtResource("93_1pro7")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o8dv"]
+atlas = ExtResource("93_1pro7")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxjg1"]
+atlas = ExtResource("93_1pro7")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3s0r"]
+atlas = ExtResource("93_1pro7")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a72h7"]
+atlas = ExtResource("93_1pro7")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyhe2"]
+atlas = ExtResource("93_1pro7")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yafd5"]
+atlas = ExtResource("93_1pro7")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ektrq"]
+atlas = ExtResource("93_1pro7")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wu0hr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awipl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o8dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxjg1")
+}],
+"loop": true,
+"name": &"approach",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3s0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a72h7")
+}],
+"loop": true,
+"name": &"drop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyhe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yafd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ektrq")
+}],
+"loop": true,
+"name": &"leave",
+"speed": 5.0
+}]
+
 [node name="Node2D" type="Node2D"]
 position = Vector2(1666, 296)
 
@@ -2516,8 +2591,14 @@ position = Vector2(13, 32)
 scale = Vector2(0.3453, 0.3453)
 texture = ExtResource("88_yqp85")
 
-[node name="Spawner" type="Node2D" parent="."]
+[node name="Spawner" type="CharacterBody2D" parent="."]
+texture_filter = 1
+position = Vector2(-1445, 13)
 script = ExtResource("92_7q5b0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Spawner"]
+sprite_frames = SubResource("SpriteFrames_wu0hr")
+animation = &"leave"
 
 [connection signal="area_entered" from="ratmadillo/Area2D" to="Crawler" method="_on_player_detected"]
 [connection signal="area_exited" from="ratmadillo/Area2D" to="Crawler" method="_on_player_lost"]
