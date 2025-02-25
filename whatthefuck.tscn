@@ -1,4 +1,4 @@
-[gd_scene load_steps=325 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=325 format=4 uid="uid://bxnxqqch8tqh6"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -2564,13 +2564,12 @@ script = ExtResource("84_v5lqf")
 
 [node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="CanvasLayer2"]
 top_level = true
-offset_left = 103.0
-offset_top = 188.0
-offset_right = 1706.0
-offset_bottom = 1093.0
+offset_left = -6.0
+offset_top = -2.0
+offset_right = 1597.0
+offset_bottom = 913.0
 stream = ExtResource("86_23el0")
 expand = true
-metadata/_edit_lock_ = true
 
 [node name="Node2D" type="Node2D" parent="."]
 texture_filter = 1
