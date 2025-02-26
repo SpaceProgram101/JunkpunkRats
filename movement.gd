@@ -91,7 +91,6 @@ var knockback_direction = Vector2.ZERO
 func _ready():
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
-
 	if $KnockbackTimer:
 		$KnockbackTimer.connect("timeout", Callable(self, "_on_KnockbackTimer_timeout"))
 	else:
@@ -110,14 +109,12 @@ func _process(_delta):
 			current_oil -= 1
 			current_spell = 1
 			trigger_spell()
-		update_oil_ui()
 		
 	if not is_on_floor() and Input.is_action_just_pressed("up_spell"):
 		if current_oil > 0:
 			current_oil -= 1
 			current_spell = 2
 			trigger_spell()
-		update_oil_ui()
 
 
 func _physics_process(delta: float) -> void:
@@ -349,7 +346,7 @@ func trigger_spell():
 	#set total velocity to 0, tell the player to float, and that you're no longer shooting
 	freeze()
 	is_shooting = false
-	update_oil_ui()
+
 
 
 
@@ -377,17 +374,7 @@ func update_health_ui():
 func die():
 	dying = true
 	
-func update_oil_ui():
-	var oil = oil_container.get_child(5)
-	if current_oil == 3:
-		oil.texture = preload("res://oil_bar/oil_bar_full.png")
-	elif current_oil == 2:
-		oil.texture = preload("res://oil_bar/oil_bar_2.png")
-	elif current_oil == 1:
-		oil.texture = preload("res://oil_bar/oil_bar_1.png")
-	else: 
-		oil.texture = preload("res://oil_bar/oil_bar_empty.png")
-		
+
 	
 func shoot_shotgun_blasts():
 	#im gonna be honest this entire thing is jank as fuck
@@ -469,9 +456,6 @@ func _on_frame_changed():
 	if $AnimatedSprite2D.frame == fire_frame_1 and current_spell == 1:
 		launch_shotgun_attack()
 		is_shooting = true
-
-
-		
 
 
 func _on_Area2D_body_entered(_Node) -> void:

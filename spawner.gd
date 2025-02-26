@@ -63,6 +63,7 @@ func spawn_enemy():
 	await $AnimatedSprite2D.animation_finished
 	var enemy = enemy_scene.instantiate()
 	get_parent().add_child(enemy)
+	enemy.add_to_group("enemies")
 	$AnimatedSprite2D.play("leave")
 	wait_timer.start()
 	await wait_timer.timeout

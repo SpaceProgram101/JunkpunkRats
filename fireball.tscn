@@ -54,10 +54,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_i055n"]
 size = Vector2(1.81953, 0.178158)
 
-[node name="Area2D" type="CharacterBody2D"]
+[node name="Area2D" type="Area2D" groups=["bullet", "bullets"]]
 texture_filter = 1
 scale = Vector2(78.8481, 184.28)
 collision_layer = 32768
+collision_mask = 5
 script = ExtResource("2_edfso")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -72,3 +73,5 @@ flip_h = true
 position = Vector2(-3.72529e-09, 9.31323e-10)
 scale = Vector2(0.0681872, 0.0812269)
 shape = SubResource("RectangleShape2D_i055n")
+
+[connection signal="body_entered" from="." to="." method="_on_bullet_body_entered"]

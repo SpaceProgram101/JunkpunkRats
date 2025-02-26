@@ -3,9 +3,6 @@
 [ext_resource type="Script" path="res://bullet.gd" id="1_v51x5"]
 [ext_resource type="Texture2D" uid="uid://xmbx3j67rsm4" path="res://enemy_spritesheets/bullet_flying_rat.png" id="1_vjias"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejb3x"]
-size = Vector2(20, 6)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_ygaan"]
 atlas = ExtResource("1_vjias")
 region = Rect2(0, 0, 32, 32)
@@ -56,17 +53,20 @@ animations = [{
 "speed": 15.0
 }]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ejb3x"]
+size = Vector2(20, 6)
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 texture_filter = 1
 collision_layer = 512
 collision_mask = 512
 script = ExtResource("1_v51x5")
 
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_op3yh")
+frame_progress = 0.732012
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1)
 scale = Vector2(1.04464, 1.00997)
 shape = SubResource("RectangleShape2D_ejb3x")
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_op3yh")
-frame_progress = 0.732012
