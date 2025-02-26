@@ -1,4 +1,4 @@
-[gd_scene load_steps=325 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=324 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -20,7 +20,6 @@
 [ext_resource type="Script" path="res://enemy_AI_walk.gd" id="7_mitai"]
 [ext_resource type="Texture2D" uid="uid://biw3q45nsk6td" path="res://sheet_crawler.png" id="7_oeoj5"]
 [ext_resource type="Texture2D" uid="uid://oittfojgq8wk" path="res://tiles/moving_platform_sign-1.png.png" id="7_qfshv"]
-[ext_resource type="Texture2D" uid="uid://1588eudwbijm" path="res://oil_bar/oil_bar_full.png" id="11_f43ly"]
 [ext_resource type="Script" path="res://wizard_AI.gd" id="12_mwc2y"]
 [ext_resource type="Texture2D" uid="uid://btfaxtn6ik3pw" path="res://sheet_wizard_angy.png" id="12_nn6wy"]
 [ext_resource type="AudioStream" uid="uid://c3rwv0kdift04" path="res://gleb (1).mp3" id="12_t4eks"]
@@ -2202,11 +2201,6 @@ texture = ExtResource("37_ryose")
 position = Vector2(182.802, 132.046)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("37_ryose")
-
-[node name="OilBar" type="Sprite2D" parent="CanvasLayer/HealthUI"]
-position = Vector2(136.851, 148.288)
-scale = Vector2(0.249946, 0.262625)
-texture = ExtResource("11_f43ly")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1361, 79)

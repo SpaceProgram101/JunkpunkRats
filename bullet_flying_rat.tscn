@@ -69,4 +69,4 @@ shape = SubResource("RectangleShape2D_ejb3x")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_op3yh")
-frame_progress = 0.186178
+frame_progress = 0.732012
