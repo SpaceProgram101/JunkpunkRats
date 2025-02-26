@@ -15,7 +15,8 @@ var idle = true
 
 func _ready():
 	position = spawner.position
-	position.y -= 50
+	position.y += 50
+
 	start_position = spawner.position
 	$AnimatedSprite2D.play("flying")
 	

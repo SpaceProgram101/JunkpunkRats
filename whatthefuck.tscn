@@ -1,4 +1,4 @@
-[gd_scene load_steps=325 format=4 uid="uid://bxnxqqch8tqh6"]
+[gd_scene load_steps=325 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -1764,7 +1764,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"approach",
-"speed": 5.0
+"speed": 30.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -1773,7 +1773,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_a72h7")
 }],
-"loop": true,
+"loop": false,
 "name": &"drop",
 "speed": 5.0
 }, {
@@ -1789,7 +1789,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"leave",
-"speed": 5.0
+"speed": 30.0
 }]
 
 [node name="Node2D" type="Node2D"]
@@ -2592,12 +2592,15 @@ texture = ExtResource("88_yqp85")
 
 [node name="Spawner" type="CharacterBody2D" parent="."]
 texture_filter = 1
-position = Vector2(-1445, 13)
+position = Vector2(-1273, -56)
+scale = Vector2(0.571166, 0.571166)
 script = ExtResource("92_7q5b0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Spawner"]
 sprite_frames = SubResource("SpriteFrames_wu0hr")
-animation = &"leave"
+animation = &"drop"
+frame = 1
+frame_progress = 1.0
 
 [connection signal="area_entered" from="ratmadillo/Area2D" to="Crawler" method="_on_player_detected"]
 [connection signal="area_exited" from="ratmadillo/Area2D" to="Crawler" method="_on_player_lost"]
