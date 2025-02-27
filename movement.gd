@@ -101,22 +101,6 @@ func _ready():
 	#connect("area_entered", Callable(self, "_on_area_entered"))  # Connect area collision
 
 
-func _process(_delta):
-	
-		
-	if Input.is_action_just_pressed("spell"):
-		if current_oil > 0:
-			current_oil -= 1
-			current_spell = 1
-			trigger_spell()
-		
-	if not is_on_floor() and Input.is_action_just_pressed("up_spell"):
-		if current_oil > 0:
-			current_oil -= 1
-			current_spell = 2
-			trigger_spell()
-
-
 func _physics_process(delta: float) -> void:
 	
 	
@@ -275,25 +259,7 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-func attack():
 
-	can_attack = false
-	print ("Attack started")
-	attack_area.position = position
-	$/root/Node2D/Player/Area2D/ColorRect.visible = true
-	print ($/root/Node2D/Player/Area2D/ColorRect.visible)
-	attack_area.show()
-	
-	attack_timer.start(0.2)
-	await attack_timer.timeout
-	$/root/Node2D/Player/Area2D/ColorRect.visible = false
-	attack_area.hide()
-
-	attack_timer.start(attack_cooldown)
-func _on_attack_cooldown_timeout():
-	print ("Attack ended")
-	can_attack = true
-	
 
 func create_afterimages():
 	for i in range (afterimage_sprites.size()):
@@ -320,6 +286,7 @@ func _on_afterimage_timeout(afterimage,timer):
 	afterimage.visible = false
 	afterimage.modulate = Color(1, 1, 1, 1) 
 	timer.queue_free()
+	
 func apply_knockback(enemy_position: Vector2):
 	knockback_direction = (global_position - enemy_position).normalized()
 
@@ -341,11 +308,6 @@ func apply_knockback(enemy_position: Vector2):
 	else:
 		printerr("ERROR: KnockbackTimer node not found!")
 
-
-func trigger_spell():
-	#set total velocity to 0, tell the player to float, and that you're no longer shooting
-	freeze()
-	is_shooting = false
 
 
 
@@ -371,91 +333,12 @@ func update_health_ui():
 			heart.texture = preload("res://rat_heart_full.png")
 		else:
 			heart.texture = preload("res://rat_heart_empty.png")
+			
+			
 func die():
 	dying = true
 	
 
-	
-func shoot_shotgun_blasts():
-	#im gonna be honest this entire thing is jank as fuck
-	#projectiles are made with a certain degree, then converted to radians
-	#then we use unit circle to aim them
-	#tbh idfk what's going on here it just works sometimes
-	is_shooting = false
-	spread_angle = randf_range(-90,90)
-	var start_angle = -spread_angle / 2
-	for i in range(num_projectiles):
-		
-		var angle_offset = start_angle + (i * (spread_angle / (num_projectiles -1)))
-		var angle_rad = deg_to_rad(angle_offset)
-		
-		var bullet = bullet_scene.instantiate()
-		
-		if bullet is Area2D:
-			
-			var direction = Vector2(sin(angle_rad), -cos(angle_rad))
-			bullet.direction = direction
-
-			var bullet_position = position + Vector2(0,-5)
-			bullet.position = bullet_position
-			
-			var bullet_sprite = bullet.get_child(0)	
-			var rotation_angle = direction.angle()
-			bullet_sprite.rotation = rotation_angle
-				
-			get_parent().add_child(bullet)
-			
-	
-	unfreeze()
-	current_spell = 0
-	
-	
-func launch_shotgun_attack():
-	$AudioSodaSpell.play()
-	freeze()
-	for i in range (pellets):
-		var angle_offset = (i - (pellets / 2.0)) * shotgun_spread
-		var spawn_angle = rotation + deg_to_rad(angle_offset)  # Rotate relative to player
-		# Spawn the projectile
-		var projectile = projectile_scene.instantiate()
-		get_parent().add_child(projectile)  # Add the projectile to the scene
-			# Position the projectile where the player is
-		projectile.position = position  # Spawn at the player's position
-		projectile.position.y -= 5
-		  # Set the projectile's initial rotation
-		var direction = Vector2(cos(spawn_angle), sin(spawn_angle))
-		if overalldirection < 0:
-			direction.x = -direction.x
-		projectile.speed = direction * randf_range(800,1200)
-		
-	unfreeze()
-	current_spell = 0
-
-
-
-
-func freeze():
-	velocity.x = 0
-	velocity.y = 0
-	gravity = 0
-	frozen = true
-
-func unfreeze():
-	frozen = false
-	gravity = 2500
-
-
-
-func _on_frame_changed():
-	if is_shooting:
-		return
-		
-	if $AnimatedSprite2D.frame == fire_frame and current_spell == 2:
-		shoot_shotgun_blasts()
-		is_shooting = true
-	if $AnimatedSprite2D.frame == fire_frame_1 and current_spell == 1:
-		launch_shotgun_attack()
-		is_shooting = true
 
 
 func _on_Area2D_body_entered(_Node) -> void:

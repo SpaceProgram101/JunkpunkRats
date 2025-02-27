@@ -54,7 +54,6 @@ func take_damage(damage : int):
 func die():
 	if not dead:
 		dead = true
-		print ("I am dead. Not big soup rice.")
 		$AnimatedSprite2D.play("dead")
 		await $AnimatedSprite2D.animation_finished
 		queue_free()

@@ -36,12 +36,12 @@ func _process(delta):
 		phase += 1
 		music_player.stop()
 		music_player.stream = musicPhase[phase]
-		music_player.play()
+		#music_player.play()
 	elif Input.is_action_just_pressed("Toggle Phase Down"):
 		phase -= 1
 		music_player.stop()
 		music_player.stream = musicPhase[phase]
-		music_player.play()
+		#music_player.play()
 	if player.position.distance_to(boss_pos) <= 300:
 		if not awake:
 			awake = true

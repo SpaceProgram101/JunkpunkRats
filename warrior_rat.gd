@@ -5,21 +5,28 @@ const SPEED = 50.0
 const CHARGE_SPEED = 65
 const JUMP_VELOCITY = -400.0
 var direction = 1
+var health = 10
 var attacking = false
 var start_position = Vector2()
+var dead = false
+@onready var spawner = get_node("/root/Node2D/Spawner")
 @onready var player = get_node("/root/Node2D/Player")
 
 func _ready():
-	start_position = position
+	health = 10
+	position = spawner.position
+	position.y += 50
+	start_position = spawner.position
 	$AnimatedSprite2D.play("idle")
 
 func _physics_process(delta: float) -> void:
-	if position.distance_to(player.position) < 100:
-		crash_out(delta)
-	elif position.distance_to(player.position) > 100:
-		attacking = false
-		$AnimatedSprite2D.play("idle")
-		position.x += SPEED * direction * delta
+	if not dead:
+		if position.distance_to(player.position) < 100:
+			crash_out(delta)
+		elif position.distance_to(player.position) > 100:
+			attacking = false
+			$AnimatedSprite2D.play("idle")
+			position.x += SPEED * direction * delta
 		
 		
 	# Add the gravity.
@@ -42,14 +49,27 @@ func _physics_process(delta: float) -> void:
 		direction = 1  # Move right
 	if not attacking:
 		move_and_slide()	
-
+		
+		
+func take_damage(damage : int):
+	if not dead:
+		health -= damage
+		if health <= 0:
+			die()
+		
+func die():
+	if not dead:
+		dead = true
+		$AnimatedSprite2D.play("annihilation")
+		await $AnimatedSprite2D.animation_finished
+		queue_free()
 
 func crash_out(delta: float):
-	if not attacking:
+	if not attacking and not dead:
 		$AnimatedSprite2D.play("pure_shock")
 		await $AnimatedSprite2D.animation_finished
 		attacking = true
-	elif attacking:
+	elif attacking and not dead:
 		velocity.x += CHARGE_SPEED * direction * delta
 		$AnimatedSprite2D.play("attack")
 		if player.position.x > position.x:
