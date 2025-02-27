@@ -43,8 +43,10 @@ func _process(delta):
 	rotation += rotation_speed * delta
 
 
-func _on_Projectile_body_entered(body: Node) -> void:
-	if body.is_in_group("enemies"):
-		body.take_damage(damage)
+
+func _on_bullet_body_entered(area: Area2D) -> void:
+	if area.is_in_group("enemies"):
+		print ("Hit enemy!")
+		area.take_damage(damage)
 		queue_free()
 		 

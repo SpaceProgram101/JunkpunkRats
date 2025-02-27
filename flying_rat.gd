@@ -12,18 +12,15 @@ var direction = 1
 @onready var spawner = get_node("/root/Node2D/Spawner")
 @onready var bullet_scene = preload("res://bullet_flying_rat.tscn")
 var can_attack = true
-@onready var detection_area = $Area2D
 var idle = true
 var dead = false
 
 func _ready():
-	detection_area.connect("body_entered", Callable(self, "_on_detection_area_body_entered"))
 	health = 10
 	position = spawner.position
 	position.y += 50
 	start_position = spawner.position
 	$AnimatedSprite2D.play("flying")
-	die()
 	
 func _physics_process(delta: float) -> void:
 	if not dead:
@@ -47,16 +44,20 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()	
 
 func take_damage(damage : int):
-	print (health)
-	health -= damage
-	if health <= 0:
-		die()
+	if not dead:
+		$AnimatedSprite2D.play("hurt")
+		health -= damage
+		$AnimatedSprite2D.play("flying")
+		if health <= 0:
+			die()
+		
 func die():
-	dead = true
-	print ("I am dead. Not big soup rice.")
-	$AnimatedSprite2D.play("dead")
-	await $AnimatedSprite2D.animation_finished
-	queue_free()
+	if not dead:
+		dead = true
+		print ("I am dead. Not big soup rice.")
+		$AnimatedSprite2D.play("dead")
+		await $AnimatedSprite2D.animation_finished
+		queue_free()
 	
 func crash_out():
 	if player.position.x > position.x:
@@ -82,11 +83,4 @@ func crash_out():
 		timer.start()
 		await timer.timeout
 		can_attack = true
-		
-		
-func _on_detection_area_body_entered(body):
-	if body.is_in_group("bullet"):
-		print ("bullet hit 2")
-		take_damage(body.damage)
-		body.queue_free()
 		
