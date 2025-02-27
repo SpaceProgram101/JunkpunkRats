@@ -192,11 +192,11 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20euh"]
 size = Vector2(22.4156, 49.0952)
 
-[node name="rat_stick" type="CharacterBody2D"]
+[node name="rat_stick" type="CharacterBody2D" groups=["enemies"]]
 texture_filter = 1
 scale = Vector2(0.483264, 0.509215)
 collision_layer = 32768
-collision_mask = 129
+collision_mask = 641
 slide_on_ceiling = false
 script = ExtResource("1_obx7d")
 

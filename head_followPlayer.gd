@@ -33,7 +33,6 @@ func _ready():
 func _process(delta):
 	var boss_pos = boss.position
 	if Input.is_action_just_pressed("Toggle Phase Up"):
-		phase += 1
 		music_player.stop()
 		music_player.stream = musicPhase[phase]
 		#music_player.play()

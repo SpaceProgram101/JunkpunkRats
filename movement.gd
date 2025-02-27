@@ -72,6 +72,7 @@ var toilet = 5
 var max_oil = 3
 var current_oil = 3
 var immunity = 0
+var immune = false
 var dead = false
 var dying = false
 
@@ -217,15 +218,7 @@ func _physics_process(delta: float) -> void:
 	for index in range(get_slide_collision_count()):  # Loop through all collisions
 		var collision = get_slide_collision(index)
 		var collider = collision.get_collider()
-		if collider and collider.is_in_group("enemies"):  # Check if it's an enemy
-			if immunity <= 0:
-				#$AnimatedSprite2D.play("hit")
-				take_damage(1)
-				apply_knockback(collider.global_position)
-				immunity = 1
-			else:
-				immunity -= delta
-		if collider and collider.is_in_group("bouncy"):  # Check if it's a bounce block
+		if collider.is_in_group("bouncy"):  # Check if it's a bounce block
 			$AnimatedSprite2D.play("jump")
 			$/root/Node2D/BounceBounce/Sprite2D.play("boing")
 			$Jump.play()
@@ -317,6 +310,15 @@ func take_damage(amount: int):
 	if toilet < 0:
 		toilet = 0
 	update_health_ui()
+	immune = true
+	var immunity_timer = Timer.new()
+	add_child(immunity_timer)
+	immunity_timer.wait_time = 0.3
+	immunity_timer.one_shot = true
+	immunity_timer.start()
+	await immunity_timer.timeout
+	immune = false
+		
 	
 func heal(amount: int):
 	toilet += amount
@@ -338,12 +340,3 @@ func update_health_ui():
 func die():
 	dying = true
 	
-
-
-
-func _on_Area2D_body_entered(_Node) -> void:
-	pass 
-
-
-func _on_Area2D_body_exited(_Node) -> void:
-	pass 

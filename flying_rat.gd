@@ -43,6 +43,7 @@ func _physics_process(delta: float) -> void:
 	if not attacking and not dead:
 		move_and_slide()	
 
+
 func take_damage(damage : int):
 	if not dead:
 		$AnimatedSprite2D.play("hurt")

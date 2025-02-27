@@ -7,7 +7,7 @@ var direction = 1
 var left = false
 var right = false
 var up = false
-var cooldown = 0.1
+var cooldown = 0.3
 var last_shot_time = 0.0
 var shooting = false
 

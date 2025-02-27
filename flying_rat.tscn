@@ -205,7 +205,7 @@ size = Vector2(14.2144, 20)
 texture_filter = 1
 scale = Vector2(2.11053, 2.11053)
 collision_layer = 32768
-collision_mask = 128
+collision_mask = 512
 script = ExtResource("1_m0ad5")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemies"]]
@@ -215,5 +215,4 @@ animation = &"hurt"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.473815, 0)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_tpnd1")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=313 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=315 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -58,6 +58,7 @@
 [ext_resource type="Texture2D" uid="uid://bwhgxc7xfcj1j" path="res://player animations/player_dead_idle.png" id="40_cswio"]
 [ext_resource type="Texture2D" uid="uid://cghg0vgenxalt" path="res://player animations/player_dead_rise.png" id="42_2rdbn"]
 [ext_resource type="AudioStream" uid="uid://l8qgupckiaw1" path="res://sfx.mp3" id="43_4ofrc"]
+[ext_resource type="Script" path="res://collision.gd" id="44_codg7"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
 [ext_resource type="Texture2D" uid="uid://b72aluni64d0k" path="res://gun.png" id="45_a0t25"]
 [ext_resource type="Script" path="res://cannon.gd" id="46_p1my7"]
@@ -940,6 +941,9 @@ animations = [{
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_hptjh"]
 radius = 755.891
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vrn5m"]
+size = Vector2(20, 14.5019)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_j8l45"]
 atlas = ExtResource("45_a0t25")
@@ -2171,10 +2175,20 @@ texture = ExtResource("39_l514x")
 texture_filter = 1
 position = Vector2(-1592, 94)
 scale = Vector2(1, 1.11064)
+collision_layer = 33281
 collision_mask = 3
 script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
 projectile_scene = ExtResource("5_qtrld")
+
+[node name="Area2D" type="Area2D" parent="Player"]
+collision_layer = 513
+collision_mask = 33281
+script = ExtResource("44_codg7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
+position = Vector2(0, -2.74911)
+shape = SubResource("RectangleShape2D_vrn5m")
 
 [node name="Cannon" type="AnimatedSprite2D" parent="Player"]
 position = Vector2(1, -7.20306)
@@ -2520,3 +2534,4 @@ frame_progress = 1.0
 [connection signal="area_exited" from="ratmadillo/Area2D" to="Crawler" method="_on_player_lost"]
 [connection signal="child_entered_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="child_exiting_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_exited"]
+[connection signal="body_entered" from="Player/Area2D" to="Player/Area2D" method="_on_body_entered"]

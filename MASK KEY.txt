@@ -4,6 +4,9 @@ Layer 3: Enemies
 Layer 9: Probably for music idrk
 Layer 10: The Player (projectile -> player)
 
+All floors should have their layer and mask set to 1.
+All walls should have their layer set to 2, and their mask set to 1.
+All enemies should have their collision mask set to 10, and collision layer set to 16.
 
 If a node's mask is this value:
 Mask 1: Can collide with floors
