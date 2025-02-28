@@ -2,8 +2,9 @@ extends Area2D
 @onready var player = get_node("/root/Node2D/Player")
 @onready var spawn = preload("res://spawner.tscn")
 @onready var timer = get_node("Timer")
+@onready var sprite = $AnimatedSprite2D
 var arena_progress = 0
-var arena_max = 5.0
+var arena_max = 1.0
 var spawn_count = 0
 @export var progress_bar : ProgressBar
 var spawntype = 1
@@ -11,8 +12,10 @@ var arena_started_yet = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$AnimatedSprite2D.play("default")
 	progress_bar.value = 0
-	$Sprite2D/PointLight2D.visible = false
+	$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D/PointLight2D.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -37,7 +40,16 @@ func begin_arena():
 	if arena_progress < arena_max:
 		begin_arena()
 		
-
+func arena_complete():
+	$death.visible = true
+	$death.play("default")
+	$AnimatedSprite2D.play("death")
+	await $death.animation_finished
+	$AnimatedSprite2D.visible = false
+	$death.visible = false
+	
+	
+	
 func update_arena(progress : int):
 	arena_progress += progress
 	print (arena_progress)
@@ -48,12 +60,12 @@ func update_arena(progress : int):
 	
 	print (progress_bar.value)
 	if arena_progress >= arena_max:
-		print ("Arena complete!")
+		arena_complete()
 	
 func _on_body_entered(body: Node2D) -> void:
 	print ("Player detected!")
 	if body.is_in_group("player") and not arena_started_yet:
-		$Sprite2D/PointLight2D.visible = true
+		$AnimatedSprite2D/PointLight2D.visible = true
 		begin_arena()
 		arena_started_yet = true
 	
