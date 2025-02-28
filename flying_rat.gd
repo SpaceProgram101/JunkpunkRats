@@ -14,12 +14,11 @@ var direction = 1
 var can_attack = true
 var idle = true
 var dead = false
+var arena_node : Area2D
 
 func _ready():
 	health = 10
-	position = spawner.position
-	position.y += 50
-	start_position = spawner.position
+	position.y += 30
 	$AnimatedSprite2D.play("flying")
 	
 func _physics_process(delta: float) -> void:
@@ -53,7 +52,10 @@ func take_damage(damage : int):
 			die()
 		
 func die():
+	var arenas = get_tree().get_nodes_in_group("arenas")
 	if not dead:
+		for arena in arenas:
+			arena.update_arena(1)
 		dead = true
 		$AnimatedSprite2D.play("dead")
 		await $AnimatedSprite2D.animation_finished

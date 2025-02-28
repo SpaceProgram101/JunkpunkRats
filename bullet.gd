@@ -11,7 +11,7 @@ func _ready():
 	$AnimatedSprite2D.play("default")
 	
 	
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	if not dead:
 		velocity = direction * speed
 		move_and_slide()

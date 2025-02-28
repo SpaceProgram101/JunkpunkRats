@@ -1,0 +1,89 @@
+[gd_scene load_steps=12 format=3 uid="uid://cid8527bjciwk"]
+
+[ext_resource type="Script" path="res://spawner.gd" id="1_dn8p0"]
+[ext_resource type="Texture2D" uid="uid://dxf5modmvut4s" path="res://enemy_spritesheets/rat_dropship.png" id="2_pd6wo"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_awipl"]
+atlas = ExtResource("2_pd6wo")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8o8dv"]
+atlas = ExtResource("2_pd6wo")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uxjg1"]
+atlas = ExtResource("2_pd6wo")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v3s0r"]
+atlas = ExtResource("2_pd6wo")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a72h7"]
+atlas = ExtResource("2_pd6wo")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_oyhe2"]
+atlas = ExtResource("2_pd6wo")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yafd5"]
+atlas = ExtResource("2_pd6wo")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ektrq"]
+atlas = ExtResource("2_pd6wo")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wu0hr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_awipl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8o8dv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uxjg1")
+}],
+"loop": true,
+"name": &"approach",
+"speed": 30.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v3s0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a72h7")
+}],
+"loop": false,
+"name": &"drop",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_oyhe2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yafd5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ektrq")
+}],
+"loop": true,
+"name": &"leave",
+"speed": 30.0
+}]
+
+[node name="Spawner" type="CharacterBody2D"]
+texture_filter = 1
+scale = Vector2(0.571166, 0.571166)
+script = ExtResource("1_dn8p0")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_wu0hr")
+animation = &"drop"
+frame = 1
+frame_progress = 1.0

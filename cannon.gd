@@ -1,6 +1,6 @@
 extends AnimatedSprite2D
 
-@onready var player = get_parent()
+@onready var player = get_node("/root/Node2D/Player")
 var fireball_scene = preload("res://fireball.tscn")
 
 var direction = 1
@@ -21,7 +21,7 @@ func _ready() -> void:
 func shoot():
 	shooting = true
 	var fireball = fireball_scene.instantiate()
-	fireball.position.y -= 7
+	fireball.position = position
 	fireball.global_rotation = global_rotation
 	get_parent().add_child(fireball)
 
@@ -29,6 +29,8 @@ func shoot():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:	
+	position = player.position
+	position.y -= 5
 	if shooting:
 		play("firing")
 	else:

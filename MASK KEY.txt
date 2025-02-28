@@ -8,9 +8,5 @@ All floors should have their layer and mask set to 1.
 All walls should have their layer set to 2, and their mask set to 1.
 All enemies should have their collision mask set to 10, and collision layer set to 16.
 
-If a node's mask is this value:
-Mask 1: Can collide with floors
-Mask 2: Can collide with walls
-Mask 3: Enemies can collide with you
-Mask 4: Enemy PROJECTILES can collide with you
-Mask 16: Player projectiles can collide with you
+Non-collidable entities (arena spawners etc.) should have their LAYER set to 5, and their MASK set to 10.
+This way, the MASK can detect the player, and the player will not be obstructed by the collision shape 2D.

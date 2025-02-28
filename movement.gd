@@ -159,7 +159,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not dead:
 		$Sprite2D.visible = false
-		$Cannon.visible = false
+		$/root/Node2D/Cannon.visible = false
 		$AnimatedSprite2D.play("jump")
 		$Jump.play()
 		velocity.y = JUMP_VELOCITY
@@ -229,7 +229,7 @@ func _physics_process(delta: float) -> void:
 		
 	if is_on_floor():
 		$Sprite2D.visible = true
-		$Cannon.visible = true
+		$/root/Node2D/Cannon.visible = true
 	
 	if Input.is_action_just_pressed("dash") and can_dash and overalldirection != 0:
 		is_dashing = true

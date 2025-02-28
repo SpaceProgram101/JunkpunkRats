@@ -4,6 +4,7 @@ extends CharacterBody2D
 @onready var flyrat = preload("res://flying_rat.tscn")
 @onready var stickrat = preload("res://rat_stick.tscn")
 var original_position : Vector2
+var begin = false
 var is_flying_to_player : bool = false
 var is_waiting : bool = false
 var is_flying_away : bool = false
@@ -13,22 +14,12 @@ var enemytype = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	$AnimatedSprite2D.play("approach")
-	original_position = position
-	visible = false
 	wait_timer.wait_time = 3.0
 	add_child(wait_timer)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	if Input.is_action_just_pressed("DIE"):
-		enemytype = 1
-		is_flying_to_player = true
-		visible = true
-	elif Input.is_action_just_pressed("Toggle Phase Up"):
-		enemytype = 2
-		is_flying_to_player = true
-		visible = true
+func _process(_delta: float) -> void:
 	if is_flying_to_player:
 		fly_towards_player()
 	elif is_waiting:
@@ -48,6 +39,7 @@ func fly_towards_player():
 	var direction = (target_position-position).normalized()
 	
 	velocity = direction * speed
+	
 	move_and_slide()
 	
 	if position.distance_to(target_position) < 10:
@@ -61,19 +53,21 @@ func fly_away():
 	move_and_slide()
 	if position.distance_to(original_position) < 10:
 		is_flying_away = false
+		queue_free()
 	
 	
-func spawn_enemy(enemytype : int):
-	visible = true
+func spawn_enemy(type : int):
 	$AnimatedSprite2D.play("drop")
 	await $AnimatedSprite2D.animation_finished
 	var enemy
-	if enemytype == 1:
+	if type == 1:
 		enemy = flyrat.instantiate()
-	elif enemytype == 2:
+	elif type == 2:
 		enemy = stickrat.instantiate()
 	get_parent().add_child(enemy)
 	enemy.add_to_group("enemies")
+	enemy.position = position
+	enemy.position.y += 50
 	$AnimatedSprite2D.play("leave")
 	wait_timer.start()
 	await wait_timer.timeout

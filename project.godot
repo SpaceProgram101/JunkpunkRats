@@ -31,6 +31,7 @@ version_control/autoload_on_startup=true
 enemies="all enemies that can take damage"
 bullet="player_projectiles"
 enemy_projectile=""
+arenas=""
 
 [input]
 
