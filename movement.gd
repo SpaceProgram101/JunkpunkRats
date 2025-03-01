@@ -39,8 +39,8 @@ var suicide = true
 #//////////// DASHING VARIABLES //////////// 
 var can_dash: bool = true
 var is_dashing: bool = false
-var dash_speed: float = 3500.0  # Adjust speed as needed
-var dash_time: float = 0.2  # Duration of dash in seconds
+var dash_speed: float = 250.0  # Adjust speed as needed
+var dash_time: float = 0.35  # Duration of dash in seconds
 var dash_cooldown: float = 1.0  # Cooldown time in seconds
 var dash_timer: float = 0.0
 var cooldown_timer: float = 0.
@@ -178,7 +178,7 @@ func _physics_process(delta: float) -> void:
 		footstep_audio.stop()
 			
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if not frozen and not dead:
+	if not frozen and not dead and not is_dashing:
 		if direction and can_wall_jump:
 			velocity.x = direction * SPEED
 			move_and_slide()	
@@ -186,7 +186,14 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			move_and_slide()	
 			footstep_audio.play()
-		
+	else:
+		if direction and can_wall_jump and can_dash:
+			velocity.x += (direction * SPEED)/200.0
+			move_and_slide()	
+		else:
+			velocity.x += (move_toward(velocity.x, 0, SPEED))/200.0
+			move_and_slide()	
+			footstep_audio.play()
 		
 			
 	if velocity.x != 0:
@@ -234,12 +241,12 @@ func _physics_process(delta: float) -> void:
 		$Sprite2D.visible = true
 		$/root/Node2D/Cannon.visible = true
 	
-	if Input.is_action_just_pressed("dash") and can_dash and overalldirection != 0:
+	if Input.is_action_just_pressed("dash") and can_dash and is_on_floor():
 		is_dashing = true
 		can_dash = false
 		dash_timer = dash_time
 		create_afterimages()
-		position.x += (overalldirection*-1) * dash_speed * delta
+		velocity.x += (overalldirection*-1) * dash_speed
 		  # Set velocity in dash direction
 	
 	if is_dashing:
