@@ -3,6 +3,13 @@ extends Area2D
 @onready var spawn = preload("res://spawner.tscn")
 @onready var timer = get_node("Timer")
 @onready var sprite = $AnimatedSprite2D
+
+@onready var left_wall = $Wall_Left
+@onready var right_wall = $Wall_Right
+@onready var left_tree = $Wall_Left/left_anim
+@onready var right_tree = $Wall_Right/right_anim
+
+
 var arena_progress = 0
 var arena_max = 1.0
 var spawn_count = 0
@@ -12,6 +19,9 @@ var arena_started_yet = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	left_wall.visible = false
+	right_wall.visible = false
+	
 	$AnimatedSprite2D.play("default")
 	progress_bar.value = 0
 	$AnimatedSprite2D.visible = true
@@ -33,7 +43,6 @@ func spawn_enemies():
 	
 
 func begin_arena():
-	print ("Beginning arena.")
 	spawn_enemies()
 	timer.start()
 	await timer.timeout
@@ -68,4 +77,10 @@ func _on_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D/PointLight2D.visible = true
 		begin_arena()
 		arena_started_yet = true
+		left_tree.play("spawning")
+		right_tree.play("spawning")
+		left_wall.visible = true
+		right_wall.visible = true
+		left_tree.play("idle")
+		right_tree.play("idle")
 	

@@ -15,6 +15,8 @@ var symbol_shown = false
 @onready var symbol_1_display = $Symbol1
 @onready var symbol_2_display = $Symbol2
 
+
+
 var fade_time : float = 1.0
 var fade_timer : float = 0.0
 var is_fading_in : bool = false
