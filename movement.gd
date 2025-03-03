@@ -103,7 +103,8 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	
+	if Input.is_action_just_pressed("DIE"):
+		die()
 	
 	wall_direction = 0
 	
@@ -207,8 +208,6 @@ func _physics_process(delta: float) -> void:
 	elif dead:
 		$death_screen.visible = true
 		$AnimatedSprite2D.play("dead_idle")
-	elif not can_attack:
-		$AnimatedSprite2D.play("attack")
 	elif cling:
 		$AnimatedSprite2D.play("cling")
 	elif current_spell == 1:

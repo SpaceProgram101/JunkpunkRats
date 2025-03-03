@@ -19,8 +19,8 @@ var arena_started_yet = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	left_wall.visible = false
-	right_wall.visible = false
+	left_wall.disabled = true
+	right_wall.disabled = true
 	
 	$AnimatedSprite2D.play("default")
 	progress_bar.value = 0
@@ -77,10 +77,11 @@ func _on_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D/PointLight2D.visible = true
 		begin_arena()
 		arena_started_yet = true
+		left_wall.disabled = true
+		right_wall.disabled = true
 		left_tree.play("spawning")
 		right_tree.play("spawning")
-		left_wall.visible = true
-		right_wall.visible = true
+		await left_tree.animation_finished
 		left_tree.play("idle")
 		right_tree.play("idle")
 	
