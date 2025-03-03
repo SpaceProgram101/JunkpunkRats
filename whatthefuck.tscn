@@ -205,7 +205,7 @@ size = Vector2(41, 7)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gtsne"]
 texture = ExtResource("4_odkf6")
-texture_region_size = Vector2i(1, 1)
+texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.0208, -12.7279, 16.0867, -12.9047, 16.617, 7.42462, -1.06066, 8)
 0:1/0 = 0
@@ -2661,7 +2661,7 @@ collision_mask = 512
 position = Vector2(222.948, 1.13843)
 scale = Vector2(11.5894, 1)
 sprite_frames = SubResource("SpriteFrames_r34pl")
-frame_progress = 0.259185
+frame_progress = 0.542579
 
 [node name="laser_collider" type="CollisionShape2D" parent="rat_staff/laser_detection"]
 position = Vector2(221.811, 1.13842)
