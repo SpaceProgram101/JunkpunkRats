@@ -11,6 +11,8 @@ var is_flying_to_player : bool = false
 var is_waiting : bool = false
 var is_flying_away : bool = false
 var speed = 150
+var saved_position = Vector2(0, 0)
+var target_locked = false
 @onready var wait_timer = Timer.new()
 var enemytype = 1
 # Called when the node enters the scene tree for the first time.
@@ -19,6 +21,7 @@ func _ready() -> void:
 	wait_timer.wait_time = 3.0
 	add_child(wait_timer)
 	enemytype = randi_range(1,4)
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -41,8 +44,14 @@ func fly_towards_player():
 	var target_position = player.position + Vector2(0, -80)
 	var direction = (target_position-position).normalized()
 	
+	if position.distance_to(target_position) < 30 and not target_locked:
+		saved_position = target_position
+		target_locked = true
+	if target_locked:
+		direction = (saved_position-position).normalized()
+	else:
+		direction = (target_position-position).normalized()
 	velocity = direction * speed
-	
 	move_and_slide()
 	
 	if position.distance_to(target_position) < 10:

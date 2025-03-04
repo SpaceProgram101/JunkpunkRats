@@ -220,21 +220,6 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("run")
 	else:
 		$AnimatedSprite2D.play("idle")
-	
-	#for index in range(get_slide_collision_count()):  # Loop through all collisions
-		#var collision = get_slide_collision(index)
-		#
-		#if collision:  # Check if collision is not null
-			#var collider = collision.get_collider()
-		#
-			#if collider.is_in_group("bouncy"):  # Check if it's a bounce block
-				#$AnimatedSprite2D.play("jump")
-				#$/root/Node2D/BounceBounce/Sprite2D.play("boing")
-				#$Jump.play()
-				#velocity.y = JUMP_VELOCITY*2
-				#$AudioBoing.play()
-				#await $/root/Node2D/BounceBounce/Sprite2D.animation_finished
-				#$/root/Node2D/BounceBounce/Sprite2D.play("idle")
 		
 	if is_on_floor():
 		$Sprite2D.visible = true

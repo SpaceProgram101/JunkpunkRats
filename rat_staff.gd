@@ -35,15 +35,7 @@ func _physics_process(delta: float) -> void:
 	# Move the enemy back and forth
 	if not is_player_detected:
 		position.x += SPEED * direction * delta
-	# Update position based on velocity
-	
-	# Flip sprite based on direction
-	if direction == -1 and not attacking:
-		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
-	elif direction == 1 and not attacking:
-		$AnimatedSprite2D.flip_h = false  # Flip sprite horizontally to face right
-
-	# Flip direction when reaching a certain distance
+		
 	if position.x > start_position.x + 25 and not attacking:  # Move right 200 pixels from start position
 		direction = -1  # Move left
 	elif position.x < start_position.x - 25 and not attacking: # Move left 200 pixels from start position
@@ -53,6 +45,13 @@ func _physics_process(delta: float) -> void:
 		direction = 1
 	else:
 		direction = -1
+	# Flip sprite based on direction
+	if direction == -1 and not attacking:
+		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
+	elif direction == 1 and not attacking:
+		$AnimatedSprite2D.flip_h = false  # Flip sprite horizontally to face right
+
+	
 	if not attacking:
 		move_and_slide()	
 		
@@ -86,10 +85,10 @@ func crash_out():
 	if is_player_detected and player and can_attack and not dead:
 		can_attack = false
 		attacking = true
-		direction = (player.position - position).normalized()
+		var attack_direction = (player.position - position).normalized()
 		$AnimatedSprite2D.play("aim")
 		await $AnimatedSprite2D.animation_finished
-		detector.rotation = direction.angle()
+		detector.rotation = attack_direction.angle()
 		
 		
 		$AnimatedSprite2D.play("fire")
