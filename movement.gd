@@ -81,8 +81,8 @@ var dying = false
 var frozen: bool = false
 const SPEED = 75.0
 const JUMP_VELOCITY = -300.0
-const GRAVITY = 1000.0
-var gravity = 1000.0
+const GRAVITY = 880.0
+var gravity = 880.0
 
 var is_knocked_back = false
 var knockback_timer = 0.0

@@ -32,18 +32,18 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-func spawn_enemies():
-	var enemy = spawn.instantiate() 
-	get_parent().add_child(enemy)
-	enemy.position = position
-	enemy.position.y -= 300
-	enemy.enemytype = spawntype
-	enemy.original_position = enemy.position
-	enemy.is_flying_to_player = true
+# func spawn_enemies():
+	#var enemy = spawn.instantiate() 
+	#get_parent().add_child(enemy)
+	#enemy.position = position
+	#enemy.position.y -= 300
+	#enemy.enemytype = spawntype
+	#enemy.original_position = enemy.position
+	#enemy.is_flying_to_player = true
 	
 
 func begin_arena():
-	spawn_enemies()
+	#spawn_enemies()
 	timer.start()
 	await timer.timeout
 	if arena_progress < arena_max:
