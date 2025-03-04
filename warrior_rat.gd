@@ -58,10 +58,13 @@ func take_damage(damage : int):
 			die()
 		
 func die():
+	var arenas = get_tree().get_nodes_in_group("arenas")
 	if not dead:
 		dead = true
 		$AnimatedSprite2D.play("annihilation")
 		await $AnimatedSprite2D.animation_finished
+		for arena in arenas:
+			arena.update_arena(1)
 		queue_free()
 
 func crash_out(delta: float):

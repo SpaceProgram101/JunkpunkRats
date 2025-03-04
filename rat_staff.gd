@@ -63,10 +63,13 @@ func take_damage(damage : int):
 			die()
 		
 func die():
+	var arenas = get_tree().get_nodes_in_group("arenas")
 	if not dead:
 		dead = true
 		$AnimatedSprite2D.play("dead")
 		await $AnimatedSprite2D.animation_finished
+		for arena in arenas:
+			arena.update_arena(1)
 		queue_free()
 
 
@@ -83,7 +86,7 @@ func crash_out():
 	if is_player_detected and player and can_attack and not dead:
 		can_attack = false
 		attacking = true
-		var direction = (player.position - position).normalized()
+		direction = (player.position - position).normalized()
 		$AnimatedSprite2D.play("aim")
 		await $AnimatedSprite2D.animation_finished
 		detector.rotation = direction.angle()

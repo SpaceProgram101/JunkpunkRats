@@ -11,10 +11,9 @@ extends Area2D
 
 
 var arena_progress = 0
-var arena_max = 1.0
+var arena_max = 5.0
 var spawn_count = 0
 @export var progress_bar : ProgressBar
-var spawntype = 1
 var arena_started_yet = false
 
 # Called when the node enters the scene tree for the first time.
@@ -32,18 +31,17 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
-# func spawn_enemies():
-	#var enemy = spawn.instantiate() 
-	#get_parent().add_child(enemy)
-	#enemy.position = position
-	#enemy.position.y -= 300
-	#enemy.enemytype = spawntype
-	#enemy.original_position = enemy.position
-	#enemy.is_flying_to_player = true
+func spawn_enemies():
+	var enemy = spawn.instantiate() 
+	get_parent().add_child(enemy)
+	enemy.position = position
+	enemy.position.y -= 300
+	enemy.original_position = enemy.position
+	enemy.is_flying_to_player = true
 	
 
 func begin_arena():
-	#spawn_enemies()
+	spawn_enemies()
 	timer.start()
 	await timer.timeout
 	if arena_progress < arena_max:
@@ -77,8 +75,6 @@ func _on_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D/PointLight2D.visible = true
 		begin_arena()
 		arena_started_yet = true
-		left_wall.disabled = true
-		right_wall.disabled = true
 		left_tree.play("spawning")
 		right_tree.play("spawning")
 		await left_tree.animation_finished

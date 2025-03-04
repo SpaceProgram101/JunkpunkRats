@@ -1,0 +1,112 @@
+[gd_scene load_steps=13 format=3 uid="uid://cxkr62ebb1upd"]
+
+[ext_resource type="Script" path="res://rat_rocketeer.gd" id="1_le61l"]
+[ext_resource type="Texture2D" uid="uid://bq1dftwc1j55i" path="res://enemy_spritesheets/rat_rocketeer.png" id="2_womk3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsqeh"]
+atlas = ExtResource("2_womk3")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_165wb"]
+atlas = ExtResource("2_womk3")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ehxm"]
+atlas = ExtResource("2_womk3")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iq1f"]
+atlas = ExtResource("2_womk3")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uvsco"]
+atlas = ExtResource("2_womk3")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q803v"]
+atlas = ExtResource("2_womk3")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i5xtr"]
+atlas = ExtResource("2_womk3")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ekye4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wsqeh")
+}],
+"loop": false,
+"name": &"aim",
+"speed": 5.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"dead",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_165wb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ehxm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4iq1f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uvsco")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q803v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i5xtr")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_obx1o"]
+radius = 54.1823
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wgs1b"]
+size = Vector2(6.97581, 8.85786)
+
+[node name="rat_rocketeer" type="CharacterBody2D" groups=["enemies"]]
+texture_filter = 1
+position = Vector2(-1543, 91)
+scale = Vector2(2.48589, 3.3672)
+collision_layer = 32769
+collision_mask = 513
+script = ExtResource("1_le61l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.250178, 0.177425)
+sprite_frames = SubResource("SpriteFrames_ekye4")
+animation = &"aim"
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 32784
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0.820686, 0.474525)
+scale = Vector2(1, 0.810189)
+shape = SubResource("CircleShape2D_obx1o")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.205172, 0)
+shape = SubResource("RectangleShape2D_wgs1b")
+
+[node name="Timer" type="Timer" parent="."]
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

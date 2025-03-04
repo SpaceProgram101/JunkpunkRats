@@ -32,14 +32,7 @@ func _physics_process(delta: float) -> void:
 	# Move the enemy back and forth
 	
 	# Update position based on velocity
-	
-	# Flip sprite based on direction
-	if direction == -1 and not attacking:
-		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
-	elif direction == 1 and not attacking:
-		$AnimatedSprite2D.flip_h = false  # Flip sprite horizontally to face right
-
-	# Flip direction when reaching a certain distance
+		# Flip direction when reaching a certain distance
 	if position.x > start_position.x + 100 and not attacking:  # Move right 200 pixels from start position
 		direction = -1  # Move left
 	elif position.x < start_position.x - 100 and not attacking: # Move left 200 pixels from start position
@@ -49,6 +42,13 @@ func _physics_process(delta: float) -> void:
 		direction = 1
 	else:
 		direction = -1
+	# Flip sprite based on direction
+	if direction == -1 and not attacking:
+		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
+	elif direction == 1 and not attacking:
+		$AnimatedSprite2D.flip_h = false  # Flip sprite horizontally to face right
+
+
 	if not attacking:
 		$AnimatedSprite2D.play("idle")
 		position.x += SPEED * direction * delta
@@ -61,9 +61,12 @@ func take_damage(damage : int):
 			die()
 		
 func die():
+	var arenas = get_tree().get_nodes_in_group("arenas")
 	if not dead:
 		dead = true
 		print ("Add animation soon.")
+		for arena in arenas:
+			arena.update_arena(1)
 		queue_free()
 
 
@@ -80,7 +83,7 @@ func crash_out():
 	if is_player_detected and player and can_attack:
 		can_attack = false
 		attacking = true
-		var direction = (player.position - position).normalized()
+		var attack_direction = (player.position - position).normalized()
 		$AnimatedSprite2D.play("aim")
 		await $AnimatedSprite2D.animation_finished
 		print ("Ready to fire")
@@ -91,7 +94,7 @@ func crash_out():
 		print ("Firing!")
 		$AnimatedSprite2D.play("fire")
 		var projectile = rocket.instantiate()
-		projectile.rotation = direction.angle()
+		projectile.rotation = attack_direction.angle()
 		add_child(projectile)
 		await $AnimatedSprite2D.animation_finished
 		$AnimatedSprite2D.play("aim")

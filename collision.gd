@@ -23,5 +23,12 @@ func _on_body_entered(body: Node2D) -> void:
 			print ("Bullet SHOULD have been deleted")
 		elif body.is_in_group("enemies"):
 			player.take_damage(1)
-		
+		elif body.is_in_group("bounce bounce"):
+			$/root/Node2D/Player/AnimatedSprite2D.play("jump")
+			$/root/Node2D/BounceBounce/Sprite2D.play("boing")
+			$/root/Node2D/Player/Jump.play()
+			player.velocity.y = player.JUMP_VELOCITY*2
+			$/root/Node2D/Player/AudioBoing.play()
+			await $/root/Node2D/BounceBounce/Sprite2D.animation_finished
+			$/root/Node2D/BounceBounce/Sprite2D.play("idle")
 		

@@ -3,6 +3,8 @@ extends CharacterBody2D
 @onready var player = get_node("/root/Node2D/Player")
 @onready var flyrat = preload("res://flying_rat.tscn")
 @onready var stickrat = preload("res://rat_stick.tscn")
+@onready var staffrat = preload("res://rat_staff.tscn")
+@onready var rocketrat = preload("res://rat_rocketeer.tscn")
 var original_position : Vector2
 var begin = false
 var is_flying_to_player : bool = false
@@ -16,6 +18,7 @@ func _ready() -> void:
 	$AnimatedSprite2D.play("approach")
 	wait_timer.wait_time = 3.0
 	add_child(wait_timer)
+	enemytype = randi_range(1,4)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -64,6 +67,10 @@ func spawn_enemy(type : int):
 		enemy = flyrat.instantiate()
 	elif type == 2:
 		enemy = stickrat.instantiate()
+	elif type == 3:
+		enemy = staffrat.instantiate()
+	elif type == 4:
+		enemy = rocketrat.instantiate()
 	get_parent().add_child(enemy)
 	enemy.add_to_group("enemies")
 	enemy.position = position
