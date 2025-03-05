@@ -33,8 +33,7 @@ var can_attack = true
 var attack_area : Area2D
 @onready var attack_timer = $Attack_Timer
 var suicide = true
-
-@onready var strap = $Sprite2D
+@onready var cannon = get_node("/root/Node2D/Cannon")
 
 #//////////// DASHING VARIABLES //////////// 
 var can_dash: bool = true
@@ -75,7 +74,7 @@ var immunity = 0
 var immune = false
 var dead = false
 var dying = false
-
+var idle = false
 
 #//////////// MOVEMENT VARIABLES //////////// 
 var frozen: bool = false
@@ -159,7 +158,6 @@ func _physics_process(delta: float) -> void:
 	# Handle jump.
 	
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor() and not dead:
-		$Sprite2D.visible = false
 		$/root/Node2D/Cannon.visible = false
 		$AnimatedSprite2D.play("jump")
 		$Jump.play()
@@ -175,6 +173,8 @@ func _physics_process(delta: float) -> void:
 		
 	elif Input.is_action_pressed("ui_right"):  # Move right		
 		overalldirection = -1
+		
+		
 	if not is_on_floor():
 		footstep_audio.stop()
 			
@@ -195,11 +195,24 @@ func _physics_process(delta: float) -> void:
 			velocity.x += (move_toward(velocity.x, 0, SPEED))/200.0
 			move_and_slide()	
 			footstep_audio.play()
+	
+	if velocity.x == 0 and not cannon.shooting and abs(velocity.y) == 0:
+		idle = true
+	elif abs(velocity.x) > 0 or cannon.shooting or abs(velocity.y) > 0:
+		idle = false
 		
-			
-	if velocity.x != 0:
-		$Sprite2D.flip_h = velocity.x > 0
-		$AnimatedSprite2D.flip_h = velocity.x > 0
+	if overalldirection == -1 and not cling:
+		#$Sprite2D.flip_h = true
+		$AnimatedSprite2D.flip_h = true
+	elif overalldirection == 1 and not cling:
+		#$Sprite2D.flip_h  = false
+		$AnimatedSprite2D.flip_h = false
+	elif overalldirection == -1 and cling:
+		#$Sprite2D.flip_h = false
+		$AnimatedSprite2D.flip_h = false
+	elif overalldirection == 1 and cling:
+		#$Sprite2D.flip_h = true
+		$AnimatedSprite2D.flip_h = true
 	if dying:
 		$AnimatedSprite2D.play("grave")
 		await $AnimatedSprite2D.animation_finished
@@ -218,11 +231,13 @@ func _physics_process(delta: float) -> void:
 		$AnimatedSprite2D.play("fall")
 	elif abs(velocity.x) > 0:
 		$AnimatedSprite2D.play("run")
+	elif cannon.shooting:
+		$AnimatedSprite2D.play("shoot")
 	else:
 		$AnimatedSprite2D.play("idle")
 		
 	if is_on_floor():
-		$Sprite2D.visible = true
+		#$Sprite2D.visible = true
 		$/root/Node2D/Cannon.visible = true
 	
 	if Input.is_action_just_pressed("dash") and can_dash and is_on_floor():
