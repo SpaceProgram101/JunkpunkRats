@@ -5,20 +5,24 @@ extends Area2D  # Or Area2D, depending on your choice
 @export var damage: int = 2
 @onready var speed = 600 # Bullet speed
 var direction: Vector2 = Vector2.ZERO  # Direction of the bullet movement # Reference to the AnimatedSprite2D
-var delete_time = 2.0
+@onready var delete_time = 2.0
 var contact = false
+@onready var sprite = $AnimatedSprite2D
 
 
 func _ready():
 	direction = Vector2(cos(global_rotation), sin(global_rotation)) * -1
 	#normalize the direction, idrk what this means but it should be included ig
 	direction = direction.normalized()
+	sprite.modulate.a = 5
 	$AnimatedSprite2D.play("fireball")  
 	
 func _process(delta):
 	if not contact:
 		position += direction * speed * delta
-	
+	delete_time -= delta
+	if delete_time <= 0:
+		queue_free()
 	#increment distance by multiplying direction, speed, and the current time.
 
 func _on_body_entered(body: Node2D) -> void:

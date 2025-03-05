@@ -25,6 +25,7 @@ func shoot():
 		fireball.position = position
 		fireball.rotation = rotation
 		get_parent().add_child(fireball)
+		
 
 	
 

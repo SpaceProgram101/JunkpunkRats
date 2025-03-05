@@ -38,15 +38,15 @@ func _process(delta: float) -> void:
 		if fade_timer >= fade_time:
 			fade_timer = fade_timer
 			is_fading_in = false
-		symbol_1_display.modulate.a = fade_timer / fade_time
-		symbol_2_display.modulate.a = fade_timer / fade_time
+		symbol_1_display.modulate.a = (fade_timer / fade_time) + 3
+		symbol_2_display.modulate.a = (fade_timer / fade_time) + 3
 	elif is_fading_out:
 		fade_timer += delta
 		if fade_timer >= fade_time:
 			fade_timer = fade_timer
 			is_fading_out = false
-		symbol_1_display.modulate.a = 1.0 - (fade_timer / fade_time)
-		symbol_2_display.modulate.a = 1.0 - (fade_timer / fade_time)
+		symbol_1_display.modulate.a = 1 - (fade_timer / fade_time)
+		symbol_2_display.modulate.a = 1 - (fade_timer / fade_time)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
@@ -63,6 +63,7 @@ func _on_body_exited(body: Node2D) -> void:
 		
 func show_symbols():
 	if not symbol_shown:
+		sprite.modulate.a = 2
 		$AudioStreamPlayer2D.play()
 		symbol_1_display.texture = symbol_1
 		symbol_2_display.texture = symbol_2
@@ -76,6 +77,9 @@ func show_symbols():
 		
 func hide_symbols():
 	if symbol_shown:
+		symbol_1_display.modulate.a = 1
+		symbol_2_display.modulate.a = 1
+		sprite.modulate.a = 1
 		fade_timer = 0.0
 		is_fading_out = true
 		

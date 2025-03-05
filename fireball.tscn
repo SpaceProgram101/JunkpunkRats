@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://bel852y212xra"]
+[gd_scene load_steps=16 format=3 uid="uid://bel852y212xra"]
 
 [ext_resource type="Texture2D" uid="uid://dwnrpveqajdlc" path="res://sheet_fireball.png" id="1_b0hxv"]
 [ext_resource type="Script" path="res://fireball.gd" id="2_edfso"]
 [ext_resource type="Texture2D" uid="uid://o6psii2jsfwd" path="res://enemy_spritesheets/bullet_explosion.png" id="2_qobko"]
+[ext_resource type="Texture2D" uid="uid://bamlwf7bg0xsy" path="res://tiles/light_source_2-1.png.png" id="4_4xewp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ohd5a"]
 atlas = ExtResource("2_qobko")
@@ -94,14 +95,20 @@ script = ExtResource("2_edfso")
 position = Vector2(-0.0253652, 2.11758e-22)
 scale = Vector2(0.00541903, -0.00200587)
 sprite_frames = SubResource("SpriteFrames_joxid")
-animation = &"explode"
-frame = 3
-frame_progress = 1.0
+animation = &"fireball"
+frame_progress = 0.988426
 flip_h = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-3.72529e-09, 9.31323e-10)
 scale = Vector2(0.0681872, 0.0812269)
 shape = SubResource("RectangleShape2D_i055n")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(2.98023e-08, 0)
+scale = Vector2(0.487173, 0.212329)
+energy = 2.0
+texture = ExtResource("4_4xewp")
+texture_scale = 0.01
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
