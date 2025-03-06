@@ -4,10 +4,10 @@ extends Area2D
 @onready var timer = get_node("Timer")
 @onready var sprite = $AnimatedSprite2D
 
-@onready var left_wall = $Wall_Left
-@onready var right_wall = $Wall_Right
-@onready var left_tree = $Wall_Left/left_anim
-@onready var right_tree = $Wall_Right/right_anim
+@onready var left_wall = $left_area/left_wall
+@onready var right_wall = $right_area/right_wall
+@onready var left_tree = $left_area/left_anim
+@onready var right_tree = $right_area/right_anim
 
 
 var arena_progress = 0
@@ -70,7 +70,6 @@ func update_arena(progress : int):
 		arena_complete()
 	
 func _on_body_entered(body: Node2D) -> void:
-	print ("Player detected!")
 	if body.is_in_group("player") and not arena_started_yet:
 		$AnimatedSprite2D/PointLight2D.visible = true
 		begin_arena()
@@ -78,6 +77,14 @@ func _on_body_entered(body: Node2D) -> void:
 		left_tree.play("spawning")
 		right_tree.play("spawning")
 		await left_tree.animation_finished
+		left_wall.disabled = false
+		right_wall.disabled = false
+		print (left_wall.disabled)
 		left_tree.play("idle")
 		right_tree.play("idle")
 	
+
+
+func _on_left_area_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		print ("A player is trying to leave the arena!")

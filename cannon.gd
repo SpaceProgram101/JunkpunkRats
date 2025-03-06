@@ -31,9 +31,6 @@ func shoot():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:	
-	print (player.idle)
-	print (rotation)
-	print (aiming)
 	if not player.idle:
 		position = player.position
 		position.y -= 3
