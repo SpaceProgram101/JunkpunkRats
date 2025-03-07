@@ -20,6 +20,7 @@ func _ready():
 	$AnimatedSprite2D.play("idle")
 
 func _physics_process(delta: float) -> void:
+
 	if not dead:
 		if position.distance_to(player.position) < 100:
 			crash_out(delta)
@@ -73,7 +74,6 @@ func crash_out(delta: float):
 		await $AnimatedSprite2D.animation_finished
 		attacking = true
 	elif attacking and not dead:
-		velocity.x += CHARGE_SPEED * direction * delta
 		$AnimatedSprite2D.play("attack")
 		if player.position.x > position.x:
 			direction = 1

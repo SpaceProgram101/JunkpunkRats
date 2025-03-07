@@ -14,7 +14,7 @@ var can_attack = true
 @onready var area : Area2D = $Area2D
 @onready var laser = $laser_detection/laser
 @onready var detector = $laser_detection
-
+@onready var spawner = get_node("/root/Node2D/Spawner")
 
 var is_player_detected = false
 
@@ -22,14 +22,16 @@ var is_player_detected = false
 
 func _ready():
 	health = 10
+	position = spawner.position
+	position.y += 50
 	start_position = position
 	laser.play("default")
 	laser.visible = false
+	$laser_detection/laser_collider.disabled = true
 	$AnimatedSprite2D.play("idle")
 
 
 func _physics_process(delta: float) -> void:
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	# Move the enemy back and forth
@@ -93,6 +95,7 @@ func crash_out():
 		
 		$AnimatedSprite2D.play("fire")
 		laser.visible = true
+		$laser_detection/laser_collider.disabled = false
 		await $AnimatedSprite2D.animation_finished
 		
 		laser.visible = false

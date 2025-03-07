@@ -12,15 +12,19 @@ var is_waiting : bool = false
 var is_flying_away : bool = false
 var speed = 150
 var saved_position = Vector2(0, 0)
+var target_position = Vector2(0,0)
 var target_locked = false
 @onready var wait_timer = Timer.new()
 var enemytype = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	target_position = Vector2(0,position.y - 230)
 	$AnimatedSprite2D.play("approach")
+	if enemytype == 0:
+		queue_free()
 	wait_timer.wait_time = 3.0
 	add_child(wait_timer)
-	enemytype = randi_range(1,4)
+	
 	
 
 
@@ -29,8 +33,9 @@ func _process(_delta: float) -> void:
 	if is_flying_to_player:
 		fly_towards_player()
 	elif is_waiting:
-		spawn_enemy(enemytype)
-		is_waiting = false
+		if enemytype != 0:
+			spawn_enemy(enemytype)
+			is_waiting = false
 	elif is_flying_away:
 		fly_away()
 
@@ -41,22 +46,14 @@ func start_flying_to_player():
 	is_flying_away = false
 	
 func fly_towards_player():
-	var target_position = player.position + Vector2(0, -80)
-	var direction = (target_position-position).normalized()
-	
-	if position.distance_to(target_position) < 30 and not target_locked:
-		saved_position = target_position
-		target_locked = true
-	if target_locked:
-		direction = (saved_position-position).normalized()
-	else:
-		direction = (target_position-position).normalized()
-	velocity = direction * speed
+	velocity.y = speed
+	speed -= 1
 	move_and_slide()
 	
-	if position.distance_to(target_position) < 10:
+	if speed <= 0:
 		is_flying_to_player = false
 		is_waiting = true
+		speed = 150
 		wait_timer.start()
 		
 func fly_away():
@@ -80,10 +77,11 @@ func spawn_enemy(type : int):
 		enemy = staffrat.instantiate()
 	elif type == 4:
 		enemy = rocketrat.instantiate()
+	else:
+		print ("Enemy type is not in range.")
 	get_parent().add_child(enemy)
 	enemy.add_to_group("enemies")
 	enemy.position = position
-	enemy.position.y += 50
 	$AnimatedSprite2D.play("leave")
 	wait_timer.start()
 	await wait_timer.timeout

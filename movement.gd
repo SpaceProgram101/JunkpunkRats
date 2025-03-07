@@ -108,10 +108,10 @@ func _physics_process(delta: float) -> void:
 	wall_direction = 0
 	
 	
-	if wall_ray_left.is_colliding() and can_wall_jump:
+	if wall_ray_left.is_colliding() and can_wall_jump and wall_ray_left.get_collider().is_in_group("wall"):
 		touching_wall = true
 		wall_direction = -1
-	elif wall_ray_right.is_colliding() and can_wall_jump:
+	elif wall_ray_right.is_colliding() and can_wall_jump and wall_ray_right.get_collider().is_in_group("wall"):
 		touching_wall = true
 		wall_direction = 1
 	else:

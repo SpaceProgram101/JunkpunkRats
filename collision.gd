@@ -20,7 +20,6 @@ func _on_body_entered(body: Node2D) -> void:
 			body.sprite.play("death")
 			await body.sprite.animation_finished
 			body.queue_free()
-			print ("Bullet SHOULD have been deleted")
 		elif body.is_in_group("enemies"):
 			player.take_damage(1)
 		elif body.is_in_group("bounce bounce"):

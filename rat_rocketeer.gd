@@ -10,7 +10,7 @@ var attacking = false
 var start_position = Vector2()
 var dead = false
 var can_attack = true
-
+@onready var spawner = get_node("/root/Node2D/Spawner")
 @onready var area : Area2D = $Area2D
 
 
@@ -21,12 +21,13 @@ var is_player_detected = false
 
 func _ready():
 	health = 10
+	position = spawner.position
+	position.y += 50
 	start_position = position
 	$AnimatedSprite2D.play("idle")
 
 
 func _physics_process(delta: float) -> void:
-	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 	# Move the enemy back and forth
@@ -86,12 +87,10 @@ func crash_out():
 		var attack_direction = (player.position - position).normalized()
 		$AnimatedSprite2D.play("aim")
 		await $AnimatedSprite2D.animation_finished
-		print ("Ready to fire")
 		var timer = $Timer
 		timer.wait_time = 1.0
 		timer.start()
 		await timer.timeout
-		print ("Firing!")
 		$AnimatedSprite2D.play("fire")
 		var projectile = rocket.instantiate()
 		projectile.rotation = attack_direction.angle()

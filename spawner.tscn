@@ -78,8 +78,11 @@ animations = [{
 }]
 
 [node name="Spawner" type="CharacterBody2D"]
+z_index = 2
 texture_filter = 1
 scale = Vector2(0.571166, 0.571166)
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_dn8p0")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

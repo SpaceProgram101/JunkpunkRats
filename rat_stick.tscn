@@ -193,10 +193,11 @@ animations = [{
 size = Vector2(22.4156, 49.0952)
 
 [node name="rat_stick" type="CharacterBody2D" groups=["enemies"]]
+z_index = 2
 texture_filter = 1
 scale = Vector2(0.483264, 0.509215)
 collision_layer = 32768
-collision_mask = 641
+collision_mask = 513
 slide_on_ceiling = false
 script = ExtResource("1_obx7d")
 

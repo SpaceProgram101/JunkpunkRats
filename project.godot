@@ -33,6 +33,7 @@ bullet="player_projectiles"
 enemy_projectile=""
 arenas=""
 "bounce bounce"=""
+wall="wall"
 
 [input]
 
