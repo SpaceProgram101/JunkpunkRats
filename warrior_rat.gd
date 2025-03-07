@@ -14,20 +14,17 @@ var dead = false
 
 func _ready():
 	health = 10
-	position = spawner.position
-	position.y += 50
 	start_position = spawner.position
 	$AnimatedSprite2D.play("idle")
 
 func _physics_process(delta: float) -> void:
 
 	if not dead:
-		if position.distance_to(player.position) < 100:
+		if position.distance_to(player.position) < 200:
 			crash_out(delta)
-		elif position.distance_to(player.position) > 100:
+		elif position.distance_to(player.position) > 200:
 			attacking = false
 			$AnimatedSprite2D.play("idle")
-			position.x += SPEED * direction * delta
 		
 		
 	# Add the gravity.

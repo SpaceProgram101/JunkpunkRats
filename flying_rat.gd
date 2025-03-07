@@ -16,19 +16,14 @@ var idle = true
 var dead = false
 var arena_node : Area2D
 var hover_height = 0
+var hover = false
 func _ready():
 	health = 10
-	position.y += 30
-	hover_height = position.y + 50
+	position.y += 50
+	hover_height = position.y + 20
 	$AnimatedSprite2D.play("flying")
 	
-func _physics_process(delta: float) -> void:
-	if position.y > hover_height:
-		velocity.y += 5
-		move_and_slide()
-	elif position.y <= hover_height:
-		velocity.y = 0
-		move_and_slide()
+func _physics_process(delta: float) -> void:	
 	if not dead:
 		if position.distance_to(player.position) < 100:
 			crash_out()
@@ -47,8 +42,7 @@ func _physics_process(delta: float) -> void:
 	elif position.x < start_position.x - 100 and not attacking: # Move left 200 pixels from start position
 		direction = 1  # Move right
 	if not attacking and not dead:
-		move_and_slide()	
-
+		move_and_slide()
 
 func take_damage(damage : int):
 	if not dead:

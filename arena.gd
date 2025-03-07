@@ -108,9 +108,17 @@ func arena_complete():
 	$death.visible = true
 	$death.play("default")
 	$AnimatedSprite2D.play("death")
+	
 	await $death.animation_finished
+	$ProgressBar.visible = false
 	$AnimatedSprite2D.visible = false
 	$death.visible = false
+	left_tree.play("despawn")
+	right_tree.play("despawn")
+	await left_tree.animation_finished
+	left_wall.disabled = true
+	right_wall.disabled = true
+	
 	
 	
 	

@@ -1542,53 +1542,53 @@ texture = ExtResource("90_he5c8")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lmt0i"]
 size = Vector2(38.5176, 240.736)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tv5lw"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_u1bfi"]
 atlas = ExtResource("91_t5h1p")
-region = Rect2(0, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mxkct"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(32, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qgmp4"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(64, 0, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_pyhri"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(0, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ipf68"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(32, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w80ta"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(64, 32, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_yw13x"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(0, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_6tot6"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(32, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_abcl3"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(64, 64, 32, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_fr7uf"]
-atlas = ExtResource("91_t5h1p")
-region = Rect2(0, 96, 32, 32)
+region = Rect2(64, 96, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tp13i"]
 atlas = ExtResource("91_t5h1p")
 region = Rect2(32, 96, 32, 32)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_u1bfi"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_fr7uf"]
 atlas = ExtResource("91_t5h1p")
-region = Rect2(64, 96, 32, 32)
+region = Rect2(0, 96, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_abcl3"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(64, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6tot6"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(32, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw13x"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(0, 64, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w80ta"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(64, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipf68"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(32, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pyhri"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qgmp4"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mxkct"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ft8iy"]
+atlas = ExtResource("91_t5h1p")
+region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lg7pn"]
 animations = [{
@@ -1599,7 +1599,45 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tv5lw")
+"texture": SubResource("AtlasTexture_u1bfi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tp13i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fr7uf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_abcl3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6tot6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw13x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w80ta")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipf68")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pyhri")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qgmp4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mxkct")
+}],
+"loop": false,
+"name": &"despawn",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ft8iy")
 }],
 "loop": true,
 "name": &"idle",
@@ -2558,6 +2596,7 @@ shape = SubResource("RectangleShape2D_lmt0i")
 position = Vector2(11.3794, 4.37692)
 scale = Vector2(3.55632, 6.8938)
 sprite_frames = SubResource("SpriteFrames_lg7pn")
+animation = &"despawn"
 
 [node name="right_area" type="StaticBody2D" parent="Arena_Spawner_1"]
 z_index = -1
@@ -2573,6 +2612,7 @@ shape = SubResource("RectangleShape2D_sd84x")
 position = Vector2(11.3803, 17.5082)
 scale = Vector2(3.55632, 6.8938)
 sprite_frames = SubResource("SpriteFrames_lg7pn")
+animation = &"despawn"
 
 [node name="CheeseShrine" type="Area2D" parent="."]
 show_behind_parent = true

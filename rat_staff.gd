@@ -22,8 +22,6 @@ var is_player_detected = false
 
 func _ready():
 	health = 10
-	position = spawner.position
-	position.y += 50
 	start_position = position
 	laser.play("default")
 	laser.visible = false

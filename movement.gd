@@ -240,7 +240,7 @@ func _physics_process(delta: float) -> void:
 		#$Sprite2D.visible = true
 		$/root/Node2D/Cannon.visible = true
 	
-	if Input.is_action_just_pressed("dash") and can_dash and is_on_floor():
+	if Input.is_action_just_pressed("dash") and can_dash:
 		is_dashing = true
 		can_dash = false
 		dash_timer = dash_time
@@ -249,6 +249,7 @@ func _physics_process(delta: float) -> void:
 		  # Set velocity in dash direction
 	
 	if is_dashing:
+		velocity.x -= 15
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false

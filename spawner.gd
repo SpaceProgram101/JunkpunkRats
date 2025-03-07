@@ -33,6 +33,8 @@ func _process(_delta: float) -> void:
 	if is_flying_to_player:
 		fly_towards_player()
 	elif is_waiting:
+		if enemytype == 0:
+			queue_free()
 		if enemytype != 0:
 			spawn_enemy(enemytype)
 			is_waiting = false
@@ -82,6 +84,8 @@ func spawn_enemy(type : int):
 	get_parent().add_child(enemy)
 	enemy.add_to_group("enemies")
 	enemy.position = position
+	if type == 2:
+		enemy.position.y += 50 
 	$AnimatedSprite2D.play("leave")
 	wait_timer.start()
 	await wait_timer.timeout
