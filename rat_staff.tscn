@@ -212,7 +212,6 @@ animation = &"fire"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1.25623, 3.41525)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_kkwfx")
 
 [node name="Area2D" type="Area2D" parent="."]
