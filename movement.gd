@@ -38,7 +38,7 @@ var suicide = true
 #//////////// DASHING VARIABLES //////////// 
 var can_dash: bool = true
 var is_dashing: bool = false
-var dash_speed: float = 250.0  # Adjust speed as needed
+var dash_speed: float = 500.0  # Adjust speed as needed
 var dash_time: float = 0.35  # Duration of dash in seconds
 var dash_cooldown: float = 1.0  # Cooldown time in seconds
 var dash_timer: float = 0.0
@@ -79,7 +79,7 @@ var idle = false
 #//////////// MOVEMENT VARIABLES //////////// 
 var frozen: bool = false
 const SPEED = 75.0
-const JUMP_VELOCITY = -300.0
+const JUMP_VELOCITY = -200.0
 const GRAVITY = 880.0
 var gravity = 880.0
 
@@ -187,12 +187,12 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			move_and_slide()	
 			footstep_audio.play()
-	else:
-		if direction and can_wall_jump and can_dash:
-			velocity.x += (direction * SPEED)/200.0
+	#else:
+		if direction and can_wall_jump and is_dashing and can_dash:
+			velocity.x += (direction * SPEED)/100.0
 			move_and_slide()	
 		else:
-			velocity.x += (move_toward(velocity.x, 0, SPEED))/200.0
+			velocity.x += (move_toward(velocity.x, 0, SPEED))/100.0
 			move_and_slide()	
 			footstep_audio.play()
 	
@@ -249,7 +249,6 @@ func _physics_process(delta: float) -> void:
 		  # Set velocity in dash direction
 	
 	if is_dashing:
-		velocity.x -= 15
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
