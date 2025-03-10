@@ -85,7 +85,7 @@ func spawn_enemy(type : int):
 	enemy.add_to_group("enemies")
 	enemy.position = position
 	if type == 2:
-		enemy.position.y += 50 
+		enemy.position.y += 50  
 	$AnimatedSprite2D.play("leave")
 	wait_timer.start()
 	await wait_timer.timeout

@@ -4,8 +4,10 @@ extends CharacterBody2D
 @export var speed : float = 75
 var direction : Vector2
 var dead = false
+
+
 func _ready():
-	var player = get_parent().get_node("Player")
+	var player = get_node("/root/Node2D/Player")
 	direction = (player.position - position).normalized()
 	rotation = direction.angle()
 	$AnimatedSprite2D.play("default")
