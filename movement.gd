@@ -13,9 +13,11 @@ extends CharacterBody2D
 @export var knockback_force = 200.0  # Adjust the knockback strength
 @export var knockback_duration = 0.2  # Adjust the knockback duration (in seconds)
 
+@onready var dash_effect = preload("res://afterimage.tscn")
 @onready var heart_container = $/root/Node2D/CanvasLayer/HealthUI
 @onready var oil_container = $/root/Node2D/CanvasLayer/HealthUI
 
+@onready var smoke = $Smoke_Bomb
 @onready var afterimage_sprites = [
 	$afterimage_1,
 	$afterimage_2,
@@ -38,12 +40,12 @@ var suicide = true
 #//////////// DASHING VARIABLES //////////// 
 var can_dash: bool = true
 var is_dashing: bool = false
-var dash_speed: float = 500.0  # Adjust speed as needed
+var dash_speed: float = 150.0  # Adjust speed as needed
 var dash_time: float = 0.35  # Duration of dash in seconds
 var dash_cooldown: float = 1.0  # Cooldown time in seconds
 var dash_timer: float = 0.0
 var cooldown_timer: float = 0.
-
+var dash_clone = 10
 var is_jumping = false
 
 #//////////// SPELL VARIABLES //////////// 
@@ -77,6 +79,7 @@ var dying = false
 var idle = false
 
 #//////////// MOVEMENT VARIABLES //////////// 
+var prev_velocity = Vector2(0,0)
 var frozen: bool = false
 const SPEED = 75.0
 const JUMP_VELOCITY = -200.0
@@ -89,6 +92,7 @@ var knockback_direction = Vector2.ZERO
 
 
 func _ready():
+	smoke.visible = false
 	#connect("area_entered", Callable(self, "_on_area_entered"))
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
@@ -188,14 +192,6 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			move_and_slide()	
 			footstep_audio.play()
-	#else:
-		if direction and can_wall_jump and is_dashing and can_dash:
-			velocity.x += (direction * SPEED)/100.0
-			move_and_slide()	
-		else:
-			velocity.x += (move_toward(velocity.x, 0, SPEED))/100.0
-			move_and_slide()	
-			footstep_audio.play()
 	
 	if velocity.x == 0 and not cannon.shooting and abs(velocity.y) == 0:
 		idle = true
@@ -245,8 +241,18 @@ func _physics_process(delta: float) -> void:
 		is_dashing = true
 		can_dash = false
 		dash_timer = dash_time
+		smoke.visible = true
+		smoke.position = position
+		smoke.play("default")
+		smoke.top_level = true
+		prev_velocity = velocity
+		velocity = Vector2(0,0)
+		position.x += (overalldirection*-1) * dash_speed
 		create_afterimages()
-		velocity.x += (overalldirection*-1) * dash_speed
+		velocity = prev_velocity
+		await smoke.animation_finished
+		smoke.visible = false
+		
 		  # Set velocity in dash direction
 	
 	if is_dashing:
@@ -267,24 +273,18 @@ func _on_area_entered(area):
 		die()
 
 func create_afterimages():
-	for i in range (afterimage_sprites.size()):
-		var afterimage = afterimage_sprites[i]
-		var offset = Vector2(-20 * (i+1), 0)
-		afterimage.position = position + offset
-		afterimage.visible = true
-		afterimage.modulate = Color(1, 1, 1, 1) 
-		print("Afterimage Position: ", afterimage.position)
-		print ("Player position: ", position)
-		afterimage.z_index = 10
-		
-		
-		
-		var timer = Timer.new()
-		add_child(timer)
-		timer.wait_time = 0.8 * (i + 1)
-		timer.one_shot = true
-		timer.connect("timeout", Callable(self,"_on_afterimage_timeout").bind(afterimage, timer))
+	var dash = dash_effect.instantiate()
+	dash.top_level = true
+	add_child(dash)
+	dash_clone -= 1
+	if dash_clone > 0:
+		var timer = $Timer
+		timer.wait_time = 0.1
+		timer.one_shot = false
 		timer.start()
+		
+		await timer.timeout
+		create_afterimages()
 		
 func _on_afterimage_timeout(afterimage,timer):
 	print ("Sprite no longer visible")

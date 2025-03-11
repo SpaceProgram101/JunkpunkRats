@@ -1,4 +1,4 @@
-[gd_scene load_steps=365 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=374 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -70,6 +70,7 @@
 [ext_resource type="Script" path="res://RAT_KING_LOGIC.gd" id="66_e05cu"]
 [ext_resource type="Texture2D" uid="uid://c6jg2cr1g8cb2" path="res://RatKing/rat_king_parts-2.png (1).png" id="68_ag5k1"]
 [ext_resource type="AudioStream" uid="uid://cqqokqmtb6ecs" path="res://RatKing/RATKINGOST.mp3" id="70_p6wst"]
+[ext_resource type="Texture2D" uid="uid://dbdrmqo6q3o7o" path="res://enemy_spritesheets/totem_explode (1).png" id="75_mvbpn"]
 [ext_resource type="Script" path="res://bounce_bounce.gd" id="76_p7i4f"]
 [ext_resource type="Texture2D" uid="uid://ggdfsi1k48v8" path="res://monolith/monolith_deactive.png" id="77_e844n"]
 [ext_resource type="Texture2D" uid="uid://b5exj2xww5jc8" path="res://monolith/monolith_arrow.png" id="78_0bw18"]
@@ -1208,6 +1209,63 @@ animations = [{
 "loop": true,
 "name": &"default",
 "speed": 20.0
+}]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nyrkv"]
+atlas = ExtResource("75_mvbpn")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fldgd"]
+atlas = ExtResource("75_mvbpn")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qo8x"]
+atlas = ExtResource("75_mvbpn")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_os5re"]
+atlas = ExtResource("75_mvbpn")
+region = Rect2(0, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s6wwl"]
+atlas = ExtResource("75_mvbpn")
+region = Rect2(128, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i18bu"]
+atlas = ExtResource("75_mvbpn")
+region = Rect2(256, 128, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1qa8b"]
+atlas = ExtResource("75_mvbpn")
+region = Rect2(0, 256, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qrjts"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nyrkv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fldgd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qo8x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_os5re")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s6wwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i18bu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1qa8b")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrn5m"]
@@ -2748,6 +2806,14 @@ script = ExtResource("2_50bmu")
 bullet_scene = ExtResource("3_ng311")
 projectile_scene = ExtResource("5_qtrld")
 
+[node name="Smoke_Bomb" type="AnimatedSprite2D" parent="Player"]
+z_index = 5
+position = Vector2(0, -2.46985)
+scale = Vector2(0.35658, 0.35658)
+sprite_frames = SubResource("SpriteFrames_qrjts")
+frame = 6
+frame_progress = 1.0
+
 [node name="Area2D" type="Area2D" parent="Player" groups=["player"]]
 collision_layer = 529
 collision_mask = 33297
@@ -2828,6 +2894,8 @@ stream = ExtResource("62_m5qij")
 
 [node name="RatKingSOUNDTRACK" type="AudioStreamPlayer2D" parent="Player"]
 script = ExtResource("63_m201v")
+
+[node name="Timer" type="Timer" parent="Player"]
 
 [node name="DirectionalLight2D2" type="DirectionalLight2D" parent="."]
 color = Color(0.669934, 0.469536, 0.230502, 1)
