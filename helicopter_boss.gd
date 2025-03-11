@@ -28,41 +28,45 @@ var rotation_offset = -PI / 2
 var missiles_firing = false
 
 func _ready():
-	body.play("default")
+	pass
 	
-	var timer2 = Timer.new()
-	add_child(timer2)
-	timer2.wait_time = 5
-	timer2.start()
-	await timer2.timeout
-	can_attack = true
+	#body.play("default")
+	
+	#var timer2 = Timer.new()
+	#add_child(timer2)
+	#timer2.wait_time = 5
+	#timer2.start()
+	#await timer2.timeout
+	#can_attack = true
 
 
 
 func _physics_process(delta: float) -> void:
-	if player.position.x > position.x:
-		direction = 1
-	else:
-		direction = -1
+	pass
 	
-	var cannon_direction = player.global_position - global_position
-	if cannon_direction.length() > 0:	
-		var target_angle = cannon_direction.angle() + rotation_offset
-		Rcannon.rotation = lerp_angle(Rcannon.rotation, target_angle, rotation_speed * delta)
-		Lcannon.rotation = lerp_angle(Lcannon.rotation, target_angle, rotation_speed * delta)
-	if not missiles_firing:
-		overhead()
-	if can_attack:
-		missiles()
-	if direction == 1 and not hover :
-		body.flip_h = true
-		main.flip_h = true # Flip sprite horizontally to face left
-	elif direction == -1 and not hover:
-		body.flip_h = false
-		main.flip_h = false  # Flip sprite horizontally to face right
+	#if player.position.x > position.x:
+	#	direction = 1
+	#else:
+	#	direction = -1
 	
-	if not attacking and not dead:
-		move_and_slide()
+	#var cannon_direction = player.global_position - global_position
+	#if cannon_direction.length() > 0:	
+	#	var target_angle = cannon_direction.angle() + rotation_offset
+	#	Rcannon.rotation = lerp_angle(Rcannon.rotation, target_angle, rotation_speed * delta)
+	#	Lcannon.rotation = lerp_angle(Lcannon.rotation, target_angle, rotation_speed * delta)
+	#if not missiles_firing:
+	#	overhead()
+	#if can_attack:
+	#	missiles()
+	#if direction == 1 and not hover :
+	#	body.flip_h = true
+	#	main.flip_h = true # Flip sprite horizontally to face left
+	#elif direction == -1 and not hover:
+	#	body.flip_h = false
+	#	main.flip_h = false  # Flip sprite horizontally to face right
+	#
+	#if not attacking and not dead:
+	#	move_and_slide()
 
 func missiles():
 	velocity = Vector2(0,0)

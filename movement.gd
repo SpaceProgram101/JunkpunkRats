@@ -89,6 +89,7 @@ var knockback_direction = Vector2.ZERO
 
 
 func _ready():
+	connect("area_entered", Callable(self, "_on_area_entered"))
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
 	if $KnockbackTimer:
@@ -102,12 +103,12 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
-	if Input.is_action_just_pressed("DIE"):
+	if Input.is_action_just_pressed("DIE") or position.y > 1000.0:
 		die()
+		take_damage(5)
 	
 	wall_direction = 0
-	
-	
+
 	if wall_ray_left.is_colliding() and can_wall_jump and wall_ray_left.get_collider().is_in_group("wall"):
 		touching_wall = true
 		wall_direction = -1
@@ -261,7 +262,9 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 
 
-
+func _on_area_entered(area):
+	if area.is_in_group("void"):
+		die()
 
 func create_afterimages():
 	for i in range (afterimage_sprites.size()):

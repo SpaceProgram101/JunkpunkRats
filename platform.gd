@@ -4,14 +4,17 @@ var origin = position
 var speed = 30
 var direction = 1
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	origin = position
 	$AnimatedSprite2D.play("default")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	# Move the enemy back and forth
-	position.x += speed * direction * delta
+	velocity.x = speed * direction 
+	move_and_slide()
 	
 	# Update position based on velocity
 	if direction == -1:
