@@ -1,4 +1,4 @@
-[gd_scene load_steps=350 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=365 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -28,6 +28,7 @@
 [ext_resource type="Texture2D" uid="uid://c2nmnwvo68tr7" path="res://text_collector.png" id="23_m348c"]
 [ext_resource type="AudioStream" uid="uid://dbuwplqxx0g6b" path="res://collectors_stash.mp3" id="27_y51m0"]
 [ext_resource type="Script" path="res://collector_music.gd" id="28_mbbb7"]
+[ext_resource type="Script" path="res://progress_bar.gd" id="28_qskxx"]
 [ext_resource type="Texture2D" uid="uid://ikrn6jtmvhm1" path="res://tiles/night_sky.png" id="29_ldha7"]
 [ext_resource type="Texture2D" uid="uid://c214sc5ygy3ey" path="res://player_bust_spell (1).png" id="30_l1cg2"]
 [ext_resource type="Texture2D" uid="uid://siompig61qhu" path="res://player_jump (1).png" id="31_32rmk"]
@@ -50,7 +51,10 @@
 [ext_resource type="Script" path="res://cannon.gd" id="46_p1my7"]
 [ext_resource type="Script" path="res://helicopter_boss.gd" id="47_dlftf"]
 [ext_resource type="Texture2D" uid="uid://c8kxy3hd6x4ee" path="res://enemy_spritesheets/boss_helicopter.png" id="47_wa7t2"]
+[ext_resource type="Texture2D" uid="uid://d3updn54v7kq5" path="res://enemy_spritesheets/boss_helicopter (1).png" id="48_5jkd5"]
 [ext_resource type="Texture2D" uid="uid://d3gxoisxhyq76" path="res://player animations/rat_2.png" id="48_xmi2c"]
+[ext_resource type="Texture2D" uid="uid://d0hqhdjh5ge8p" path="res://enemy_spritesheets/boss_helicopter_dropper (1).png" id="49_14sgy"]
+[ext_resource type="Texture2D" uid="uid://blluat8qb6mqe" path="res://enemy_spritesheets/boss_helicopter_dropper.png" id="49_nvbej"]
 [ext_resource type="AudioStream" uid="uid://383swah0x7s0" path="res://tiles/walk-on-grass-1-291984.mp3" id="55_2mlpi"]
 [ext_resource type="AudioStream" uid="uid://bp3ao8m5s1bb" path="res://tiles/grass-44887.mp3" id="55_ysse7"]
 [ext_resource type="Script" path="res://platform.gd" id="57_aui5p"]
@@ -716,6 +720,37 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_hptjh"]
 radius = 755.891
 
+[sub_resource type="Theme" id="Theme_mlebm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjove"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhmhd"]
+bg_color = Color(0.456602, 0.648441, 0.578599, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw707"]
+bg_color = Color(0.226707, 0.226708, 0.226707, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t4y3"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_bcdx4"]
 rayleigh_coefficient = 0.0
 turbidity = 0.0
@@ -797,8 +832,74 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0w1p"]
+atlas = ExtResource("49_14sgy")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xtkg5"]
+atlas = ExtResource("49_14sgy")
+region = Rect2(128, 0, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0gux"]
+atlas = ExtResource("49_14sgy")
+region = Rect2(0, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcryu"]
+atlas = ExtResource("49_14sgy")
+region = Rect2(128, 64, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e2ium"]
+atlas = ExtResource("49_14sgy")
+region = Rect2(0, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl2ej"]
+atlas = ExtResource("49_14sgy")
+region = Rect2(128, 128, 128, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6sn1n"]
+atlas = ExtResource("49_nvbej")
+region = Rect2(0, 0, 128, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fup7v"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0w1p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xtkg5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0gux")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pcryu")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_e2ium")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl2ej")
+}],
+"loop": false,
+"name": &"fire",
+"speed": 7.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6sn1n")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ld4ib"]
 size = Vector2(114.964, 41.9875)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6a8n1"]
+atlas = ExtResource("48_5jkd5")
+region = Rect2(256, 384, 128, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ho6ea"]
 atlas = ExtResource("47_wa7t2")
@@ -814,6 +915,14 @@ region = Rect2(128, 320, 128, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_bkxsx"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6a8n1")
+}],
+"loop": true,
+"name": &"aim",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_ho6ea")
@@ -837,6 +946,10 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ceh1"]
+atlas = ExtResource("48_5jkd5")
+region = Rect2(256, 384, 128, 64)
+
 [sub_resource type="AtlasTexture" id="AtlasTexture_yf8ej"]
 atlas = ExtResource("47_wa7t2")
 region = Rect2(256, 320, 128, 64)
@@ -857,6 +970,14 @@ region = Rect2(0, 320, 128, 64)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": SubResource("AtlasTexture_5ceh1")
+}],
+"loop": true,
+"name": &"aim",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_yf8ej")
 }, {
 "duration": 1.0,
@@ -872,43 +993,6 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_cds4m")
-}],
-"loop": true,
-"name": &"idle",
-"speed": 5.0
-}]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_77u7u"]
-atlas = ExtResource("47_wa7t2")
-region = Rect2(0, 256, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jh2vc"]
-atlas = ExtResource("47_wa7t2")
-region = Rect2(128, 256, 128, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_sjaq5"]
-atlas = ExtResource("47_wa7t2")
-region = Rect2(256, 256, 128, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_fup7v"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_77u7u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jh2vc")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sjaq5")
-}],
-"loop": false,
-"name": &"fire",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_77u7u")
 }],
 "loop": true,
 "name": &"idle",
@@ -2384,6 +2468,38 @@ position = Vector2(182.802, 132.046)
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("37_ryose")
 
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+texture_filter = 1
+offset_left = 568.0
+offset_top = 780.0
+offset_right = 1080.0
+offset_bottom = 812.0
+scale = Vector2(1.01961, 0.789326)
+theme = SubResource("Theme_mlebm")
+theme_override_styles/background = SubResource("StyleBoxEmpty_hjove")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rhmhd")
+value = 60.0
+show_percentage = false
+script = ExtResource("28_qskxx")
+
+[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/ProgressBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_mw707")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0t4y3")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="CanvasLayer/ProgressBar"]
+wait_time = 0.4
+one_shot = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x7ngx")
 
@@ -2546,13 +2662,27 @@ offset = Vector2(-10, 0)
 flip_h = true
 script = ExtResource("46_p1my7")
 
-[node name="helicopter_boss" type="CharacterBody2D" parent="."]
+[node name="helicopter_boss" type="CharacterBody2D" parent="." groups=["enemies"]]
 texture_filter = 1
 position = Vector2(3185, -2175)
 scale = Vector2(0.939803, 1.03407)
 collision_layer = 32768
 collision_mask = 512
 script = ExtResource("47_dlftf")
+
+[node name="main_cannon" type="AnimatedSprite2D" parent="helicopter_boss"]
+position = Vector2(1.06396, -0.967041)
+sprite_frames = SubResource("SpriteFrames_fup7v")
+animation = &"fire"
+frame = 5
+frame_progress = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="helicopter_boss/main_cannon"]
+position = Vector2(-4.25639, 80.2654)
+scale = Vector2(0.692994, 1.05414)
+energy = 7.03
+blend_mode = 2
+texture = ExtResource("64_rk7q7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="helicopter_boss"]
 position = Vector2(2.46863, -2.46982)
@@ -2562,22 +2692,27 @@ shape = SubResource("RectangleShape2D_ld4ib")
 position = Vector2(-40.2023, 8.02702)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_bkxsx")
-animation = &"fire"
-frame = 2
-frame_progress = 1.0
+animation = &"aim"
+
+[node name="PointLight2D" type="PointLight2D" parent="helicopter_boss/cannon_left"]
+position = Vector2(-1.85111, 93.5271)
+scale = Vector2(0.321277, 1.50591)
+energy = 6.91
+blend_mode = 2
+texture = ExtResource("64_rk7q7")
 
 [node name="cannon_right" type="AnimatedSprite2D" parent="helicopter_boss"]
 position = Vector2(38.0864, 8.02702)
 scale = Vector2(0.7, 0.7)
 sprite_frames = SubResource("SpriteFrames_ysaap")
-animation = &"fire"
-frame = 2
-frame_progress = 1.0
+animation = &"aim"
 
-[node name="main_cannon" type="AnimatedSprite2D" parent="helicopter_boss"]
-position = Vector2(2.82121, 20.9937)
-sprite_frames = SubResource("SpriteFrames_fup7v")
-animation = &"fire"
+[node name="PointLight2D" type="PointLight2D" parent="helicopter_boss/cannon_right"]
+position = Vector2(0.313965, 89.3826)
+scale = Vector2(0.321277, 1.50591)
+energy = 6.91
+blend_mode = 2
+texture = ExtResource("64_rk7q7")
 
 [node name="missile_left" type="AnimatedSprite2D" parent="helicopter_boss"]
 position = Vector2(-12.6955, 5.55717)
@@ -3079,6 +3214,7 @@ texture = ExtResource("95_roop2")
 
 [connection signal="child_entered_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="child_exiting_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_exited"]
+[connection signal="timeout" from="CanvasLayer/ProgressBar/Timer" to="CanvasLayer/ProgressBar" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_exited"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow2" to="Node2D/Monolith_Arrow2" method="_on_body_entered"]

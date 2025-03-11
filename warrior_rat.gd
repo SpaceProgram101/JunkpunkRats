@@ -65,7 +65,7 @@ func die():
 			arena.update_arena(1)
 		queue_free()
 
-func crash_out(delta: float):
+func crash_out(_delta: float):
 	if not attacking and not dead:
 		$AnimatedSprite2D.play("pure_shock")
 		await $AnimatedSprite2D.animation_finished

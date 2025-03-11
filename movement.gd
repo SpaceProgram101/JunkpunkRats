@@ -89,7 +89,7 @@ var knockback_direction = Vector2.ZERO
 
 
 func _ready():
-	connect("area_entered", Callable(self, "_on_area_entered"))
+	#connect("area_entered", Callable(self, "_on_area_entered"))
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
 	if $KnockbackTimer:

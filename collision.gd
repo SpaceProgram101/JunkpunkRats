@@ -1,6 +1,9 @@
 extends Area2D
 @onready var player = get_parent()
 @onready var immune = get_parent().immune
+@onready var dynamite = preload("res://dynamite.tscn")
+var in_radius = false
+var exploding = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -8,7 +11,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if in_radius and exploding:
+			player.take_damage(1)
+			in_radius = false
 
 
 
