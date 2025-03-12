@@ -14,10 +14,10 @@ var target = CharacterBody2D
 var on_ground = false
 var start_position = Vector2(0,0)
 var not_on_floor = true
+var damage = 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print ("Bomb dropped.")
 	$Label.text = "3"
 	$Label.visible = true
 	sprite.visible = true 

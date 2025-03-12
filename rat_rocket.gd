@@ -6,7 +6,7 @@ const JUMP_VELOCITY = -400.0
 var direction = 1
 var dead = false
 @onready var sprite = $AnimatedSprite2D
-
+var damage = 15
 
 func _ready():
 	$AnimatedSprite2D.play("default")

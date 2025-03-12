@@ -2,6 +2,7 @@ extends Area2D
 @onready var player = get_parent()
 @onready var immune = get_parent().immune
 @onready var dynamite = preload("res://dynamite.tscn")
+@onready var healthbar = get_node("/root/Node2D/CanvasLayer/PlayerBar")
 var in_radius = false
 var exploding = false
 # Called when the node enters the scene tree for the first time.
@@ -13,7 +14,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	immune = get_parent().immune
 	if in_radius and exploding and not immune:
-			player.take_damage(1)
+			player.take_damage(25)
 			in_radius = false
 
 
@@ -22,13 +23,13 @@ func _on_body_entered(body: Node2D) -> void:
 	immune = get_parent().immune
 	if not immune:
 		if body.is_in_group("enemy_projectile"):
-			player.take_damage(1)
+			player.take_damage(body.damage)
 			body.dead = true
 			body.sprite.play("death")
 			await body.sprite.animation_finished
 			body.queue_free()
 		elif body.is_in_group("enemies"):
-			player.take_damage(1)
+			player.take_damage(5)
 		elif body.is_in_group("bounce bounce"):
 			$/root/Node2D/Player/AnimatedSprite2D.play("jump")
 			$/root/Node2D/BounceBounce/Sprite2D.play("boing")

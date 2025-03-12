@@ -14,4 +14,3 @@ func _on_AttackArea_body_entered(body):
 	if body.is_in_group("enemies"):
 		body.take_damage(10)
 		emit_signal("attack_hit", body)
-		print ("Hit an enemy!")

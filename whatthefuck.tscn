@@ -1,4 +1,4 @@
-[gd_scene load_steps=374 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=381 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -30,13 +30,13 @@
 [ext_resource type="Script" path="res://collector_music.gd" id="28_mbbb7"]
 [ext_resource type="Script" path="res://progress_bar.gd" id="28_qskxx"]
 [ext_resource type="Texture2D" uid="uid://ikrn6jtmvhm1" path="res://tiles/night_sky.png" id="29_ldha7"]
+[ext_resource type="Script" path="res://player_bar.gd" id="29_v5oaw"]
 [ext_resource type="Texture2D" uid="uid://c214sc5ygy3ey" path="res://player_bust_spell (1).png" id="30_l1cg2"]
 [ext_resource type="Texture2D" uid="uid://siompig61qhu" path="res://player_jump (1).png" id="31_32rmk"]
 [ext_resource type="Script" path="res://camera_follow.gd" id="32_dmc0x"]
 [ext_resource type="Texture2D" uid="uid://bjtamw2jenxel" path="res://skylayer1.png" id="32_kc4s7"]
 [ext_resource type="Texture2D" uid="uid://beir8cak7gdyh" path="res://player animations/player_upspell.png" id="35_udoj1"]
 [ext_resource type="Texture2D" uid="uid://cwr8ww4bg2rgm" path="res://player animations/you_died!.png" id="37_mjvve"]
-[ext_resource type="Texture2D" uid="uid://bh8hifppvhkaj" path="res://rat_heart_full.png" id="37_ryose"]
 [ext_resource type="Shader" path="res://fade.gdshader" id="38_6v1qq"]
 [ext_resource type="Texture2D" uid="uid://daepfu7jiok2d" path="res://player_dash-1.png.png" id="38_j1gh1"]
 [ext_resource type="Texture2D" uid="uid://bf0adetma3tof" path="res://tiles/foundry_background-1.png.png" id="38_sqvic"]
@@ -726,7 +726,7 @@ radius = 755.891
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjove"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhmhd"]
-bg_color = Color(0.456602, 0.648441, 0.578599, 1)
+bg_color = Color(0.876207, 0.459933, 0.44081, 1)
 border_width_left = 5
 border_width_top = 5
 border_width_bottom = 5
@@ -750,6 +750,44 @@ shadow_offset = Vector2(0, 1)
 bg_color = Color(1, 1, 1, 1)
 border_width_top = 5
 border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uyd64"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clnia"]
+bg_color = Color(0.454902, 0.647059, 0.580392, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkd0o"]
+bg_color = Color(0.332881, 0.332881, 0.332881, 1)
+border_width_top = 5
+border_width_right = 7
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2su5n"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 5
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rvxa"]
+bg_color = Color(0.219501, 0.219501, 0.219501, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v61u"]
+bg_color = Color(0.467174, 0.76424, 0.88005, 1)
 border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_bcdx4"]
@@ -1269,7 +1307,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrn5m"]
-size = Vector2(20, 14.5019)
+size = Vector2(14.106, 5.11924)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o38wu"]
 atlas = ExtResource("37_mjvve")
@@ -1578,7 +1616,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ehqqx"]
-size = Vector2(15.5, 7.45748)
+size = Vector2(12.8474, 4.21184)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_vkins"]
 shader = ExtResource("38_6v1qq")
@@ -1770,6 +1808,9 @@ size = Vector2(51.75, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o2dxk"]
 size = Vector2(28, 26.5)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eu588"]
+size = Vector2(591, 215)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8plcy"]
 size = Vector2(696.82, 222.352)
@@ -2490,42 +2531,6 @@ autostart = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="HealthUI" type="Control" parent="CanvasLayer"]
-texture_filter = 1
-layout_mode = 3
-anchors_preset = 0
-offset_left = -592.0
-offset_top = -708.0
-offset_right = -494.0
-offset_bottom = -638.0
-scale = Vector2(5.99565, 6.14424)
-metadata/_edit_use_anchors_ = true
-
-[node name="heart1" type="Sprite2D" parent="CanvasLayer/HealthUI"]
-position = Vector2(112.882, 132.046)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("37_ryose")
-
-[node name="heart2" type="Sprite2D" parent="CanvasLayer/HealthUI"]
-position = Vector2(129.862, 132.046)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("37_ryose")
-
-[node name="heart3" type="Sprite2D" parent="CanvasLayer/HealthUI"]
-position = Vector2(146.842, 132.046)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("37_ryose")
-
-[node name="heart4" type="Sprite2D" parent="CanvasLayer/HealthUI"]
-position = Vector2(164.822, 132.046)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("37_ryose")
-
-[node name="heart5" type="Sprite2D" parent="CanvasLayer/HealthUI"]
-position = Vector2(182.802, 132.046)
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("37_ryose")
-
 [node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
 z_index = 1
 texture_filter = 1
@@ -2557,6 +2562,45 @@ show_percentage = false
 [node name="Timer" type="Timer" parent="CanvasLayer/ProgressBar"]
 wait_time = 0.4
 one_shot = true
+
+[node name="PlayerBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+texture_filter = 1
+offset_left = 58.0
+offset_top = 32.0
+offset_right = 570.0
+offset_bottom = 64.0
+scale = Vector2(1.19999, 1.47818)
+theme_override_styles/background = SubResource("StyleBoxEmpty_uyd64")
+theme_override_styles/fill = SubResource("StyleBoxFlat_clnia")
+value = 60.0
+show_percentage = false
+script = ExtResource("29_v5oaw")
+
+[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/PlayerBar"]
+z_index = -1
+texture_filter = 1
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nkd0o")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2su5n")
+value = 80.0
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayerBar"]
+custom_minimum_size = Vector2(256, 16)
+layout_mode = 0
+offset_left = 5.00004
+offset_top = 39.2375
+offset_right = 405.0
+offset_bottom = 55.2375
+theme_override_styles/background = SubResource("StyleBoxFlat_5rvxa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5v61u")
+value = 100.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="CanvasLayer/PlayerBar"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x7ngx")
@@ -2799,7 +2843,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(3106, -2143)
+position = Vector2(2863, -2107)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -2821,7 +2865,8 @@ collision_mask = 33297
 script = ExtResource("44_codg7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-position = Vector2(0, -2.74911)
+position = Vector2(0.705322, 1.94226)
+scale = Vector2(1.19963, 1.19963)
 shape = SubResource("RectangleShape2D_vrn5m")
 
 [node name="death_screen" type="AnimatedSprite2D" parent="Player"]
@@ -2837,7 +2882,7 @@ animation = &"shoot"
 frame_progress = 0.363499
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player"]
-position = Vector2(1.25, -0.675293)
+position = Vector2(-0.0761719, 1.54358)
 scale = Vector2(1, 1.02625)
 shape = SubResource("RectangleShape2D_ehqqx")
 
@@ -3136,6 +3181,14 @@ position = Vector2(-286.5, 478.125)
 scale = Vector2(0.0556701, 0.0509708)
 texture = ExtResource("81_tagsr")
 
+[node name="boss_arena" type="Area2D" parent="."]
+position = Vector2(3143, -2201)
+collision_layer = 128
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss_arena"]
+position = Vector2(58.5, 5.5)
+shape = SubResource("RectangleShape2D_eu588")
+
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 script = ExtResource("84_v5lqf")
 
@@ -3284,6 +3337,7 @@ texture = ExtResource("95_roop2")
 [connection signal="child_entered_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="child_exiting_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_exited"]
 [connection signal="timeout" from="CanvasLayer/ProgressBar/Timer" to="CanvasLayer/ProgressBar" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/PlayerBar/Timer" to="CanvasLayer/PlayerBar" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_exited"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow2" to="Node2D/Monolith_Arrow2" method="_on_body_entered"]
@@ -3291,4 +3345,5 @@ texture = ExtResource("95_roop2")
 [connection signal="body_entered" from="Node2D/Monolith_Arrow3" to="Node2D/Monolith_Arrow3" method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D/Monolith_Arrow3" to="Node2D/Monolith_Arrow3" method="_on_body_exited"]
 [connection signal="body_entered" from="Player/Area2D" to="Player/Area2D" method="_on_body_entered"]
+[connection signal="body_entered" from="boss_arena" to="CanvasLayer2" method="_on_boss_arena_body_entered"]
 [connection signal="body_entered" from="Arena_Spawner_1" to="Arena_Spawner_1" method="_on_body_entered"]

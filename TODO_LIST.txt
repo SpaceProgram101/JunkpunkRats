@@ -1,0 +1,17 @@
+HIGH PRIORITY
+-SFX
+-VFX
+-Music? Ambient sound at least.
+
+
+-make new health bar
+-finish levels
+-enemy placements?
+-npcs?
+
+
+LOW PRIORITY
+
+
+
+SHITS AND GIGGLES

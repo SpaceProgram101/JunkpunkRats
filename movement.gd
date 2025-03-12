@@ -14,8 +14,6 @@ extends CharacterBody2D
 @export var knockback_duration = 0.2  # Adjust the knockback duration (in seconds)
 
 @onready var dash_effect = preload("res://afterimage.tscn")
-@onready var heart_container = $/root/Node2D/CanvasLayer/HealthUI
-@onready var oil_container = $/root/Node2D/CanvasLayer/HealthUI
 
 @onready var smoke = $Smoke_Bomb
 @onready var afterimage_sprites = [
@@ -47,6 +45,7 @@ var dash_timer: float = 0.0
 var cooldown_timer: float = 0.
 var dash_clone = 10
 var is_jumping = false
+var recharging = false
 
 #//////////// SPELL VARIABLES //////////// 
 var shotgun_spread = 3
@@ -68,6 +67,7 @@ var wall_ray_right : RayCast2D
 var has_touched_wall = false
 
 #//////////// PLAYER VARIABLES //////////// 
+@onready var healthbar = get_node("/root/Node2D/CanvasLayer/PlayerBar")
 var skibidi = 5
 var toilet = 5
 var max_oil = 3
@@ -92,8 +92,11 @@ var knockback_direction = Vector2.ZERO
 
 
 func _ready():
+	skibidi = 100
+	healthbar.init_health(skibidi)
+	
+	
 	smoke.visible = false
-	#connect("area_entered", Callable(self, "_on_area_entered"))
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
 	if $KnockbackTimer:
@@ -102,12 +105,9 @@ func _ready():
 		printerr("ERROR: KnockbackTimer node not found in _ready()!")
 	
 	$AnimatedSprite2D.connect("frame_changed", Callable(self, "_on_frame_changed"))
-	#connect("body_entered", Callable(self, "_on_body_entered"))  # Connect body collision
-	#connect("area_entered", Callable(self, "_on_area_entered"))  # Connect area collision
 
 
 func _physics_process(delta: float) -> void:
-	print ("DEBUG: ", immune)
 	if Input.is_action_just_pressed("DIE") or position.y > 1000.0:
 		die()
 		take_damage(5)
@@ -181,7 +181,7 @@ func _physics_process(delta: float) -> void:
 		overalldirection = -1
 		
 		
-	if not is_on_floor():
+	if not is_on_floor() or frozen:
 		footstep_audio.stop()
 			
 	var direction := Input.get_axis("ui_left", "ui_right")
@@ -193,7 +193,8 @@ func _physics_process(delta: float) -> void:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 			move_and_slide()	
 			footstep_audio.play()
-	
+	if frozen:
+		velocity = Vector2(0,0)
 	if velocity.x == 0 and not cannon.shooting and abs(velocity.y) == 0:
 		idle = true
 	elif abs(velocity.x) > 0 or cannon.shooting or abs(velocity.y) > 0:
@@ -262,15 +263,15 @@ func _physics_process(delta: float) -> void:
 			is_dashing = false
 			immune = false
 			cooldown_timer = dash_cooldown  # Start cooldown
-	if not can_dash:
+	if not can_dash and not is_dashing:
 		cooldown_timer -= delta
 		if cooldown_timer <= 0:
-			print ("Dash ended, immunity: ", immune)
+			healthbar.dash = 100
 			can_dash = true  # Reset dash ability
 	
 	move_and_slide()
 
-
+	
 func _on_area_entered(area):
 	if area.is_in_group("void"):
 		die()
@@ -323,10 +324,10 @@ func apply_knockback(enemy_position: Vector2):
 
 func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
-	toilet -= amount
-	if toilet < 0:
-		toilet = 0
-	update_health_ui()
+	skibidi -= amount
+	healthbar.health = skibidi
+	if skibidi <= 0:
+		die()
 	immune = true
 	var immunity_timer = Timer.new()
 	add_child(immunity_timer)
@@ -341,19 +342,8 @@ func heal(amount: int):
 	toilet += amount
 	if toilet > skibidi:
 		toilet = skibidi
-	update_health_ui()
-	
-func update_health_ui():
-	if toilet <= 0:
-		die()
-	for i in range (skibidi):
-		var heart = heart_container.get_child(i)
-		if i < toilet:
-			heart.texture = preload("res://rat_heart_full.png")
-		else:
-			heart.texture = preload("res://rat_heart_empty.png")
-			
-			
+		
+		
 func die():
 	dying = true
 	

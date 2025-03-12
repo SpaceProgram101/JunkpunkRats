@@ -124,13 +124,10 @@ func arena_complete():
 	
 func update_arena(progress : int):
 	arena_progress += progress
-	print (arena_progress)
 	var progress_percent = (float(arena_progress) / arena_max) * 100
-	print (progress_percent, "%")
 	
 	progress_bar.value = progress_percent
 	
-	print (progress_bar.value)
 	if arena_progress >= arena_max:
 		arena_complete()
 	

@@ -10,7 +10,13 @@ var attacking = false
 var direction = 1
 @onready var player = get_node("/root/Node2D/Player")
 @export var bullet_scene = preload("res://bullet_flying_rat.tscn")
+@export var bullet_damage = 5
+@export var missile_damage = 3
+@export var big_bomb_damage = 20
+
+
 @onready var healthbar = get_node("/root/Node2D/CanvasLayer/ProgressBar")
+@onready var cutscene = get_node("/root/Node2D/CanvasLayer2")
 @onready var body = $body
 @onready var Lcannon = $cannon_left
 @onready var Rcannon = $cannon_right
@@ -24,6 +30,7 @@ var direction = 1
 
 
 var can_attack = false
+var active = false
 var idle = true
 var dead = false
 var arena_node : Area2D
@@ -44,12 +51,7 @@ func _ready():
 	main.play("idle")
 	Lcannon.play("aim")
 	Rcannon.play("aim")
-	var timer2 = Timer.new()
-	add_child(timer2)
-	timer2.wait_time = 2
-	timer2.start()
-	await timer2.timeout
-	can_attack = true
+	can_attack = false
 
 
 
@@ -64,9 +66,9 @@ func _physics_process(delta: float) -> void:
 		var target_angle = cannon_direction.angle() + rotation_offset
 		Rcannon.rotation = lerp_angle(Rcannon.rotation, target_angle, rotation_speed * delta)
 		Lcannon.rotation = lerp_angle(Lcannon.rotation, target_angle, rotation_speed * delta)
-	if not can_attack:
+	if not can_attack and active:
 		overhead()
-	if can_attack:
+	elif can_attack and not dead:
 		if attack_type == 1:
 			cannons()
 		elif attack_type == 2:
@@ -86,9 +88,9 @@ func _physics_process(delta: float) -> void:
 		move_and_slide()
 
 func drop_bombs():
+	can_attack = false
 	attack_type+=1
 	velocity = Vector2(0,0)
-	can_attack = false
 	main.play("fire")
 	await main.animation_finished
 	main_light.enabled = true
@@ -108,11 +110,10 @@ func drop_bombs():
 	can_attack = true
 
 func missiles():
+	can_attack = false
 	attack_type+=1
 	velocity = Vector2(0,0)
 	missiles_firing = true
-	can_attack = false
-	print ("Missiles launched.")
 	Lmissile.play("active")
 	Rmissile.play("active")
 	await Lmissile.animation_finished
@@ -160,8 +161,8 @@ func missiles():
 	
 	
 func cannons():
-	attack_type+=1
 	can_attack = false
+	attack_type+=1
 	Lcannon.play("fire")
 	Rcannon.play("fire")
 	var bullet = bullet_scene.instantiate()
@@ -197,16 +198,18 @@ func overhead():
 		velocity.x = 0
 		velocity.y = 0
 
-		
-
-func cooldown():
-	can_attack = false
-	timer.wait_time = 5.0
-	timer.start()
-	await timer.timeout
-	can_attack = true
 	
 func take_damage(damage):
 	health -= damage
 	healthbar.health = health
+	if health <= 0:
+		cutscene.boss_dead_yet = true
+		die()
+		
+	
+func die():
+	active = false
+	can_attack = false
+	dead = true
+	queue_free()
 	

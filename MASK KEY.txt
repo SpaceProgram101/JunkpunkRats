@@ -10,3 +10,13 @@ All enemies should have their collision mask set to 10, and collision layer set 
 
 Non-collidable entities (arena spawners etc.) should have their LAYER set to 5, and their MASK set to 10.
 This way, the MASK can detect the player, and the player will not be obstructed by the collision shape 2D.
+
+
+TAGS:
+
+Each projectile has a 'tag' value associated with it, to tell the player how much damage to take.
+
+1: Bullets
+2: Rockets
+3: Boss Dynamite
+4: Staff Laser

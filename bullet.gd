@@ -4,7 +4,7 @@ extends CharacterBody2D
 @export var speed : float = 75
 var direction : Vector2
 var dead = false
-
+var damage = 10
 
 func _ready():
 	var player = get_node("/root/Node2D/Player")
