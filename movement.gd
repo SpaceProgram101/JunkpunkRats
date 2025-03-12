@@ -107,6 +107,7 @@ func _ready():
 
 
 func _physics_process(delta: float) -> void:
+	print ("DEBUG: ", immune)
 	if Input.is_action_just_pressed("DIE") or position.y > 1000.0:
 		die()
 		take_damage(5)
@@ -238,31 +239,33 @@ func _physics_process(delta: float) -> void:
 		$/root/Node2D/Cannon.visible = true
 	
 	if Input.is_action_just_pressed("dash") and can_dash:
+		immune = true
+		print ("Dash started, immunity: ", immune)
 		is_dashing = true
 		can_dash = false
 		dash_timer = dash_time
+		smoke.top_level = true
 		smoke.visible = true
 		smoke.position = position
 		smoke.play("default")
-		smoke.top_level = true
-		prev_velocity = velocity
-		velocity = Vector2(0,0)
-		position.x += (overalldirection*-1) * dash_speed
-		create_afterimages()
-		velocity = prev_velocity
+		velocity.x += (overalldirection*-1) * (dash_speed * 4)
+		velocity.y -= dash_speed
 		await smoke.animation_finished
 		smoke.visible = false
 		
 		  # Set velocity in dash direction
 	
 	if is_dashing:
+		create_afterimages()
 		dash_timer -= delta
 		if dash_timer <= 0:
 			is_dashing = false
+			immune = false
 			cooldown_timer = dash_cooldown  # Start cooldown
 	if not can_dash:
 		cooldown_timer -= delta
 		if cooldown_timer <= 0:
+			print ("Dash ended, immunity: ", immune)
 			can_dash = true  # Reset dash ability
 	
 	move_and_slide()
@@ -274,7 +277,8 @@ func _on_area_entered(area):
 
 func create_afterimages():
 	var dash = dash_effect.instantiate()
-	dash.top_level = true
+	
+	dash.position = position
 	add_child(dash)
 	dash_clone -= 1
 	if dash_clone > 0:
@@ -318,6 +322,7 @@ func apply_knockback(enemy_position: Vector2):
 
 
 func take_damage(amount: int):
+	print ("Damage was taken, immunity status: ", immune)
 	toilet -= amount
 	if toilet < 0:
 		toilet = 0

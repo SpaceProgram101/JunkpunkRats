@@ -36,12 +36,13 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 2.0
+"speed": 15.0
 }]
 
 [node name="Afterimage" type="AnimatedSprite2D"]
-modulate = Color(0.556094, 0.911367, 0.991931, 1)
+modulate = Color(0.556863, 0.909804, 0.992157, 1)
 texture_filter = 1
+scale = Vector2(0.392248, 0.392248)
 sprite_frames = SubResource("SpriteFrames_m5ram")
 frame = 3
 frame_progress = 1.0

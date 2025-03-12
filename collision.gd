@@ -11,13 +11,15 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	if in_radius and exploding:
+	immune = get_parent().immune
+	if in_radius and exploding and not immune:
 			player.take_damage(1)
 			in_radius = false
 
 
 
 func _on_body_entered(body: Node2D) -> void:
+	immune = get_parent().immune
 	if not immune:
 		if body.is_in_group("enemy_projectile"):
 			player.take_damage(1)
