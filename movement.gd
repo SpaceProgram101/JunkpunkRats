@@ -167,7 +167,7 @@ func _physics_process(delta: float) -> void:
 		$/root/Node2D/Cannon.visible = false
 		$AnimatedSprite2D.play("jump")
 		$Jump.play()
-		velocity.y = JUMP_VELOCITY
+		velocity.y = JUMP_VELOCITY * 1.2
 	elif Input.is_action_just_pressed("ui_accept") and dead:
 		$death_screen.visible = false
 		dead = false

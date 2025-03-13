@@ -239,6 +239,7 @@ texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, 4, -12, -12, 16, -12, 16, 16, -12, 16)
 1:1/0 = 0
+1:1/0/z_index = -3
 
 [sub_resource type="TileSet" id="TileSet_4ipcd"]
 physics_layer_0/collision_layer = 1
@@ -2843,7 +2844,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(2863, -2107)
+position = Vector2(-2, -519)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -3284,6 +3285,88 @@ scale = Vector2(3.55632, 6.8938)
 sprite_frames = SubResource("SpriteFrames_lg7pn")
 animation = &"despawn"
 
+[node name="Arena_Spawner_2" type="Area2D" parent="." node_paths=PackedStringArray("progress_bar") groups=["arenas"]]
+texture_filter = 1
+position = Vector2(1684, -741)
+scale = Vector2(0.571166, 0.571166)
+collision_layer = 128
+script = ExtResource("83_i57pl")
+warrior = 3
+helicopter = 3
+staff = 1
+rocket = 1
+progress_bar = NodePath("ProgressBar")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Arena_Spawner_2"]
+position = Vector2(7.00317, 55.1503)
+shape = SubResource("RectangleShape2D_8plcy")
+
+[node name="Timer" type="Timer" parent="Arena_Spawner_2"]
+wait_time = 10.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Arena_Spawner_2"]
+z_index = 1
+material = SubResource("ShaderMaterial_u0me8")
+position = Vector2(66.5305, 92.7926)
+scale = Vector2(2.05931, 2.36023)
+sprite_frames = SubResource("SpriteFrames_i3jep")
+
+[node name="PointLight2D" type="PointLight2D" parent="Arena_Spawner_2/AnimatedSprite2D"]
+z_index = 3
+position = Vector2(-5.10114, -16.3195)
+scale = Vector2(2.17381, 1.79814)
+color = Color(0.398434, 0.253525, 0.723913, 1)
+energy = 7.79
+texture = ExtResource("85_wnqnm")
+
+[node name="death" type="AnimatedSprite2D" parent="Arena_Spawner_2"]
+position = Vector2(66.5305, 92.7926)
+scale = Vector2(2.05931, 2.36023)
+sprite_frames = SubResource("SpriteFrames_x7k7f")
+frame = 31
+frame_progress = 1.0
+
+[node name="ProgressBar" type="ProgressBar" parent="Arena_Spawner_2"]
+offset_left = -5.25238
+offset_top = -33.2653
+offset_right = 286.747
+offset_bottom = -5.26527
+scale = Vector2(0.472813, 2.52561)
+theme = SubResource("Theme_hhokb")
+theme_override_styles/background = SubResource("StyleBoxTexture_vbkvx")
+theme_override_styles/fill = SubResource("StyleBoxTexture_1bcl2")
+value = 100.0
+rounded = true
+show_percentage = false
+
+[node name="left_area" type="StaticBody2D" parent="Arena_Spawner_2"]
+z_index = -1
+position = Vector2(-313.394, 61.2782)
+
+[node name="left_wall" type="CollisionShape2D" parent="Arena_Spawner_2/left_area"]
+position = Vector2(7.00317, 12.6932)
+shape = SubResource("RectangleShape2D_lmt0i")
+
+[node name="left_anim" type="AnimatedSprite2D" parent="Arena_Spawner_2/left_area"]
+position = Vector2(11.3794, 4.37692)
+scale = Vector2(3.55632, 6.8938)
+sprite_frames = SubResource("SpriteFrames_lg7pn")
+animation = &"despawn"
+
+[node name="right_area" type="StaticBody2D" parent="Arena_Spawner_2"]
+z_index = -1
+position = Vector2(306.391, 50.7733)
+
+[node name="right_wall" type="CollisionShape2D" parent="Arena_Spawner_2/right_area"]
+position = Vector2(5.25258, 18.3835)
+shape = SubResource("RectangleShape2D_sd84x")
+
+[node name="right_anim" type="AnimatedSprite2D" parent="Arena_Spawner_2/right_area"]
+position = Vector2(11.3803, 17.5082)
+scale = Vector2(3.55632, 6.8938)
+sprite_frames = SubResource("SpriteFrames_lg7pn")
+animation = &"despawn"
+
 [node name="CheeseShrine" type="Area2D" parent="."]
 show_behind_parent = true
 texture_filter = 1
@@ -3347,3 +3430,4 @@ texture = ExtResource("95_roop2")
 [connection signal="body_entered" from="Player/Area2D" to="Player/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="boss_arena" to="CanvasLayer2" method="_on_boss_arena_body_entered"]
 [connection signal="body_entered" from="Arena_Spawner_1" to="Arena_Spawner_1" method="_on_body_entered"]
+[connection signal="body_entered" from="Arena_Spawner_2" to="Arena_Spawner_2" method="_on_body_entered"]
