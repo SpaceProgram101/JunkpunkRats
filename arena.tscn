@@ -1,6 +1,6 @@
 
-[gd_scene load_steps=51 format=3 uid="uid://ccfljgro8v406"]
 
+[gd_scene load_steps=51 format=3 uid="uid://ccfljgro8v406"]
 
 [ext_resource type="Script" path="res://arena.gd" id="1_ygmlu"]
 [ext_resource type="Texture2D" uid="uid://df7t33xg87x08" path="res://enemy_spritesheets/totem_explode_self.png" id="2_4j1xk"]
