@@ -9,7 +9,6 @@ var start_position = Vector2()
 var attacking = false
 var direction = 1
 @onready var player = get_node("/root/Node2D/Player")
-@onready var spawner = get_node("/root/Node2D/Spawner")
 @onready var bullet_scene = preload("res://bullet_flying_rat.tscn")
 var can_attack = true
 var idle = true
@@ -19,8 +18,6 @@ var hover_height = 0
 var hover = false
 func _ready():
 	health = 10
-	position.y += 50
-	hover_height = position.y + 20
 	$AnimatedSprite2D.play("flying")
 	
 func _physics_process(delta: float) -> void:	

@@ -10,10 +10,12 @@ extends Area2D
 @onready var right_tree = $right_area/right_anim
 
 #Decide how many enemies to spawn of what type depending on the specific arena.
-@export var warrior : int
-@export var helicopter : int
-@export var staff : int
-@export var rocket : int
+var helicopter = 0
+var warrior = 0
+var staff = 0
+var rocket = 0
+var increase = false
+var target = 0
 
 
 var should_continue = true
@@ -25,10 +27,13 @@ var arena_started_yet = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	arena_progress = 0
 	arena_max = warrior + helicopter + staff + rocket
-	print (arena_max)
+	print ("Arena max: ", arena_max)
 	left_wall.disabled = true
 	right_wall.disabled = true
+	left_tree.visible = false
+	right_tree.visible = false
 	
 	$AnimatedSprite2D.play("default")
 	progress_bar.value = 0
@@ -38,8 +43,13 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
-
+	if increase:
+		print ("Increasing.")
+		progress_bar.value = lerp(arena_progress, float(target), get_process_delta_time() * 2.0)
+		arena_progress = (target / 100) * arena_max 
+		if progress_bar.value >= target:
+			progress_bar.value = target
+			increase = false
 #rand number 1-4
 #if number = X, reduce the # of that type of enemy by 1
 #then, return the random number
@@ -89,10 +99,9 @@ func spawn_enemies():
 		enemy.position = position
 		var offset = randf_range(-7,7) * 10
 		enemy.position.x += offset
-		enemy.position.y -= 200
+		enemy.position.y -= 150
 		enemy.original_position = enemy.position
 		var enemy_to_spawn = decide_enemy()
-		print ("Enemy spawning:", enemy_to_spawn)
 		enemy.enemytype = enemy_to_spawn
 		enemy.is_flying_to_player = true
 	
@@ -118,16 +127,15 @@ func arena_complete():
 	await left_tree.animation_finished
 	left_wall.disabled = true
 	right_wall.disabled = true
+	queue_free()
 	
 	
 	
 	
 func update_arena(progress : int):
-	arena_progress += progress
-	var progress_percent = (float(arena_progress) / arena_max) * 100
-	
-	progress_bar.value = progress_percent
-	
+	target = (float(arena_progress + progress) / arena_max) * 100
+	print ("Target: ", target)
+	increase = true
 	if arena_progress >= arena_max:
 		arena_complete()
 	
@@ -136,6 +144,8 @@ func _on_body_entered(body: Node2D) -> void:
 		$AnimatedSprite2D/PointLight2D.visible = true
 		begin_arena()
 		arena_started_yet = true
+		left_tree.visible = true
+		right_tree.visible = true
 		left_tree.play("spawning")
 		right_tree.play("spawning")
 		await left_tree.animation_finished
