@@ -10,7 +10,6 @@ var attacking = false
 var start_position = Vector2()
 var dead = false
 var can_attack = true
-@onready var spawner = get_node("/root/Node2D/Spawner")
 @onready var area : Area2D = $Area2D
 
 
@@ -28,13 +27,16 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		move_and_slide()
 	# Move the enemy back and forth
-	
-	# Update position based on velocity
-		# Flip direction when reaching a certain distance
-	if position.x > start_position.x + 100 and not attacking:  # Move right 200 pixels from start position
+	if not is_player_detected:
+		$AnimatedSprite2D.play("idle")
+		position.x += SPEED * direction * delta
+		
+		
+	if position.x > start_position.x + 25 and not attacking:  # Move right 200 pixels from start position
 		direction = -1  # Move left
-	elif position.x < start_position.x - 100 and not attacking: # Move left 200 pixels from start position
+	elif position.x < start_position.x - 25 and not attacking: # Move left 200 pixels from start position
 		direction = 1  # Move right
 		
 	if player.position.x > position.x:
@@ -42,16 +44,11 @@ func _physics_process(delta: float) -> void:
 	else:
 		direction = -1
 	# Flip sprite based on direction
-	if direction == -1 and not attacking:
+	if direction == -1:
 		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
-	elif direction == 1 and not attacking:
+	elif direction == 1:
 		$AnimatedSprite2D.flip_h = false  # Flip sprite horizontally to face right
 
-
-	if not attacking:
-		$AnimatedSprite2D.play("idle")
-		position.x += SPEED * direction * delta
-		move_and_slide()	
 		
 func take_damage(damage : int):
 	if not dead:

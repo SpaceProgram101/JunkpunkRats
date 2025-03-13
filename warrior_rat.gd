@@ -9,16 +9,13 @@ var health = 10
 var attacking = false
 var start_position = Vector2()
 var dead = false
-@onready var spawner = get_node("/root/Node2D/Spawner")
 @onready var player = get_node("/root/Node2D/Player")
 
 func _ready():
 	health = 10
-	start_position = spawner.position
 	$AnimatedSprite2D.play("idle")
 
 func _physics_process(delta: float) -> void:
-
 	if not dead:
 		if position.distance_to(player.position) < 200:
 			crash_out(delta)
@@ -45,7 +42,9 @@ func _physics_process(delta: float) -> void:
 		direction = -1  # Move left
 	elif position.x < start_position.x - 100 and not attacking: # Move left 200 pixels from start position
 		direction = 1  # Move right
-	if not attacking:
+	if not attacking and not dead:
+		$AnimatedSprite2D.play("idle")
+		position.x += SPEED * direction * delta	
 		move_and_slide()	
 		
 		
@@ -62,10 +61,11 @@ func die():
 		$AnimatedSprite2D.play("annihilation")
 		await $AnimatedSprite2D.animation_finished
 		for arena in arenas:
-			arena.update_arena(1)
+			if arena != null:
+				arena.update_arena(1)
 		queue_free()
 
-func crash_out(_delta: float):
+func crash_out(delta: float):
 	if not attacking and not dead:
 		$AnimatedSprite2D.play("pure_shock")
 		await $AnimatedSprite2D.animation_finished
@@ -80,6 +80,7 @@ func crash_out(_delta: float):
 			$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
 		elif direction == 1:
 			$AnimatedSprite2D.flip_h = false
+		position.x += SPEED * 3 * direction * delta	
 		
 	
 		move_and_slide()

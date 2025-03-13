@@ -324,8 +324,9 @@ func apply_knockback(enemy_position: Vector2):
 
 func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
-	skibidi -= amount
-	healthbar.health = skibidi
+	if not dead:
+		skibidi -= amount
+		healthbar.health = skibidi
 	if skibidi <= 0:
 		die()
 	immune = true

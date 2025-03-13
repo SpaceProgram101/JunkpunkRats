@@ -30,7 +30,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	var target = health
 	if reduce:
 		damage_bar.value = lerp(damage_bar.value, target, get_process_delta_time() * lerp_speed)		

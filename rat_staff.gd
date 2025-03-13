@@ -14,7 +14,6 @@ var can_attack = true
 @onready var area : Area2D = $Area2D
 @onready var laser = $laser_detection/laser
 @onready var detector = $laser_detection
-@onready var spawner = get_node("/root/Node2D/Spawner")
 
 var is_player_detected = false
 
@@ -32,8 +31,10 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
+		move_and_slide()
 	# Move the enemy back and forth
 	if not is_player_detected:
+		$AnimatedSprite2D.play("idle")
 		position.x += SPEED * direction * delta
 		
 	if position.x > start_position.x + 25 and not attacking:  # Move right 200 pixels from start position
@@ -123,4 +124,4 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_laser_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body.take_damage(1)
+		body.take_damage(3)

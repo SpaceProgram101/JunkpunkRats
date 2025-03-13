@@ -14,11 +14,14 @@ var speed = 150
 var saved_position = Vector2(0, 0)
 var target_position = Vector2(0,0)
 var target_locked = false
+var kill_yourself = false
+
+
 @onready var wait_timer = Timer.new()
 var enemytype = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	target_position = Vector2(0,position.y - 230)
+	target_position = Vector2(0,position.y - 50)
 	$AnimatedSprite2D.play("approach")
 	if enemytype == 0:
 		queue_free()
@@ -34,8 +37,10 @@ func _process(_delta: float) -> void:
 		fly_towards_player()
 	elif is_waiting:
 		if enemytype == 0:
-			queue_free()
+			fly_away()
+			kill_yourself = true
 		if enemytype != 0:
+			velocity = Vector2(0,0)
 			spawn_enemy(enemytype)
 			is_waiting = false
 	elif is_flying_away:
@@ -53,10 +58,13 @@ func fly_towards_player():
 	move_and_slide()
 	
 	if speed <= 0:
-		is_flying_to_player = false
-		is_waiting = true
-		speed = 150
-		wait_timer.start()
+		if not kill_yourself:
+			is_flying_to_player = false
+			is_waiting = true
+			speed = 150
+			wait_timer.start()
+		elif kill_yourself:
+			queue_free()
 		
 func fly_away():
 	var direction = (original_position - position).normalized()
@@ -71,9 +79,9 @@ func spawn_enemy(type : int):
 	$AnimatedSprite2D.play("drop")
 	await $AnimatedSprite2D.animation_finished
 	var enemy
-	if type == 1:
+	if type == 2:
 		enemy = flyrat.instantiate()
-	elif type == 2:
+	elif type == 1:
 		enemy = stickrat.instantiate()
 	elif type == 3:
 		enemy = staffrat.instantiate()
