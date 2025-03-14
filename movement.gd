@@ -340,10 +340,10 @@ func take_damage(amount: int):
 		
 	
 func heal(amount: int):
-	toilet += amount
-	if toilet > skibidi:
-		toilet = skibidi
-		
+	skibidi += amount
+	if skibidi > 100:
+		skibidi = 100
+	healthbar.health = skibidi
 		
 func die():
 	dying = true

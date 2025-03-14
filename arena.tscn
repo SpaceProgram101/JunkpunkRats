@@ -450,7 +450,6 @@ offset_bottom = 17.7508
 theme = SubResource("Theme_hhokb")
 theme_override_styles/background = SubResource("StyleBoxFlat_mbc11")
 theme_override_styles/fill = SubResource("StyleBoxFlat_bdgwa")
-rounded = true
 show_percentage = false
 
 [node name="left_area" type="StaticBody2D" parent="."]

@@ -23,7 +23,7 @@ func _set_health(new_health):
 		timer.start()
 		
 		
-func _process (delta : float) -> void:
+func _process (_delta : float) -> void:
 	var target = health
 	if health_reduce:	
 		value = lerp(value, target, get_process_delta_time() * lerp_speed * 25)
@@ -31,7 +31,6 @@ func _process (delta : float) -> void:
 		dash_bar.value = lerp(dash_bar.value, 0.0, get_process_delta_time() * lerp_speed * 2)
 	elif not player.can_dash and not player.is_dashing:
 		dash_bar.value = 100 - (100.0 * (player.cooldown_timer / player.dash_cooldown))
-		print (dash_bar.value)
 	if player.can_dash:
 		dash_bar.value = 100
 	if reduce:

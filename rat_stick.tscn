@@ -196,8 +196,8 @@ size = Vector2(22.4156, 49.0952)
 z_index = 2
 texture_filter = 1
 scale = Vector2(0.483264, 0.509215)
-collision_layer = 32768
-collision_mask = 513
+collision_layer = 33024
+collision_mask = 769
 slide_on_ceiling = false
 script = ExtResource("1_obx7d")
 

@@ -27,16 +27,14 @@ var arena_started_yet = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	arena_progress = 0
-	arena_max = warrior + helicopter + staff + rocket
 	print ("Arena max: ", arena_max)
+	progress_bar.value = 0
 	left_wall.disabled = true
 	right_wall.disabled = true
 	left_tree.visible = false
 	right_tree.visible = false
 	
 	$AnimatedSprite2D.play("default")
-	progress_bar.value = 0
 	$AnimatedSprite2D.visible = true
 	$AnimatedSprite2D/PointLight2D.visible = false
 
@@ -44,12 +42,11 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if increase:
-		print ("Increasing.")
-		progress_bar.value = lerp(arena_progress, float(target), get_process_delta_time() * 2.0)
-		arena_progress = (target / 100) * arena_max 
+		progress_bar.value = lerp(progress_bar.value, float(target), get_process_delta_time() * 2.0)
 		if progress_bar.value >= target:
-			progress_bar.value = target
 			increase = false
+			
+			
 #rand number 1-4
 #if number = X, reduce the # of that type of enemy by 1
 #then, return the random number
@@ -134,10 +131,13 @@ func arena_complete():
 	
 func update_arena(progress : int):
 	target = (float(arena_progress + progress) / arena_max) * 100
-	print ("Target: ", target)
-	increase = true
+	arena_progress += progress
 	if arena_progress >= arena_max:
 		arena_complete()
+	print (target)
+	print (progress_bar.value)
+	increase = true
+	
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not arena_started_yet:

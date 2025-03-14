@@ -13,6 +13,8 @@ func _ready() -> void:
 	spawn.helicopter = helicopter
 	spawn.staff = staff
 	spawn.rocket = rocket
+	spawn.arena_progress = 0
+	spawn.arena_max = warrior + helicopter + staff + rocket
 	add_child(spawn)
 	
 

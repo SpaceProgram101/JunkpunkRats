@@ -17,12 +17,11 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if not dead:
-		if position.distance_to(player.position) < 200:
+		if global_position.distance_to(player.global_position) < 100:
+			attacking = true
 			crash_out(delta)
-		elif position.distance_to(player.position) > 200:
+		elif global_position.distance_to(player.global_position) > 150:
 			attacking = false
-			$AnimatedSprite2D.play("idle")
-		
 		
 	# Add the gravity.
 	if not is_on_floor():
@@ -32,9 +31,9 @@ func _physics_process(delta: float) -> void:
 	# Update position based on velocity
 	
 	# Flip sprite based on direction
-	if direction == -1:
+	if direction == -1 and not attacking:
 		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
-	elif direction == 1:
+	elif direction == 1 and not attacking:
 		$AnimatedSprite2D.flip_h = false  # Flip sprite horizontally to face right
 
 	# Flip direction when reaching a certain distance
@@ -72,7 +71,7 @@ func crash_out(delta: float):
 		attacking = true
 	elif attacking and not dead:
 		$AnimatedSprite2D.play("attack")
-		if player.position.x > position.x:
+		if player.global_position.x > global_position.x:
 			direction = 1
 		else:
 			direction = -1
@@ -80,7 +79,7 @@ func crash_out(delta: float):
 			$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
 		elif direction == 1:
 			$AnimatedSprite2D.flip_h = false
-		position.x += SPEED * 3 * direction * delta	
+		position.x += SPEED * 1.5 * direction * delta	
 		
 	
 		move_and_slide()
