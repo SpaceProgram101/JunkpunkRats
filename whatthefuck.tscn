@@ -2500,7 +2500,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(-1806, 73)
+position = Vector2(100, -438)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -2850,11 +2850,13 @@ shape = SubResource("RectangleShape2D_eu588")
 position = Vector2(361, -417)
 script = ExtResource("90_jlorv")
 warrior = 5
+arenatype = 1
 
 [node name="Arena_2" type="Node2D" parent="."]
 position = Vector2(1138, -635)
 script = ExtResource("90_jlorv")
 rocket = 5
+arenatype = 2
 
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 script = ExtResource("84_v5lqf")

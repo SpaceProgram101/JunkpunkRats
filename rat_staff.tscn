@@ -202,8 +202,8 @@ size = Vector2(368.31, 14.5536)
 z_index = 2
 texture_filter = 1
 scale = Vector2(0.714334, 0.713756)
-collision_layer = 32768
-collision_mask = 513
+collision_layer = 33024
+collision_mask = 769
 script = ExtResource("1_2p4a8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

@@ -4,6 +4,8 @@ extends Area2D
 @onready var timer = get_node("Timer")
 @onready var sprite = $AnimatedSprite2D
 
+var arenatype = 0 
+
 @onready var left_wall = $left_area/left_wall
 @onready var right_wall = $right_area/right_wall
 @onready var left_tree = $left_area/left_anim
@@ -27,7 +29,6 @@ var arena_started_yet = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	print ("Arena max: ", arena_max)
 	progress_bar.value = 0
 	left_wall.disabled = true
 	right_wall.disabled = true
@@ -95,6 +96,7 @@ func spawn_enemies():
 		get_parent().add_child(enemy)
 		enemy.position = position
 		var offset = randf_range(-7,7) * 10
+		enemy.arenatype = arenatype
 		enemy.position.x += offset
 		enemy.position.y -= 150
 		enemy.original_position = enemy.position
@@ -111,6 +113,8 @@ func begin_arena():
 		begin_arena()
 		
 func arena_complete():
+	should_continue = false
+	print ("Arena complete!")
 	$death.visible = true
 	$death.play("default")
 	$AnimatedSprite2D.play("death")
@@ -134,8 +138,6 @@ func update_arena(progress : int):
 	arena_progress += progress
 	if arena_progress >= arena_max:
 		arena_complete()
-	print (target)
-	print (progress_bar.value)
 	increase = true
 	
 	

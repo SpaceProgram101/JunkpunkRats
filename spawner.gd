@@ -15,7 +15,7 @@ var saved_position = Vector2(0, 0)
 var target_position = Vector2(0,0)
 var target_locked = false
 var kill_yourself = false
-
+var arenatype = 0
 
 @onready var wait_timer = Timer.new()
 var enemytype = 1
@@ -91,6 +91,7 @@ func spawn_enemy(type : int):
 		print ("Enemy type is not in range.")
 	get_parent().add_child(enemy)
 	enemy.add_to_group("enemies")
+	enemy.arenatype = arenatype
 	enemy.position = position
 	if type == 2:
 		enemy.position.y += 50  

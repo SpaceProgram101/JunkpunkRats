@@ -9,6 +9,7 @@ var health = 10
 var attacking = false
 var start_position = Vector2()
 var dead = false
+var arenatype = 0
 @onready var player = get_node("/root/Node2D/Player")
 
 func _ready():
@@ -60,7 +61,7 @@ func die():
 		$AnimatedSprite2D.play("annihilation")
 		await $AnimatedSprite2D.animation_finished
 		for arena in arenas:
-			if arena != null:
+			if arena != null and arena.arenatype == arenatype:
 				arena.update_arena(1)
 		queue_free()
 

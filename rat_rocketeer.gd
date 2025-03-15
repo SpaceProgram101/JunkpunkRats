@@ -11,7 +11,7 @@ var start_position = Vector2()
 var dead = false
 var can_attack = true
 @onready var area : Area2D = $Area2D
-
+var arenatype = 0
 
 
 var is_player_detected = false
@@ -62,7 +62,8 @@ func die():
 		dead = true
 		print ("Add animation soon.")
 		for arena in arenas:
-			arena.update_arena(1)
+			if arena != null and arena.arenatype == arenatype:
+				arena.update_arena(1)
 		queue_free()
 
 

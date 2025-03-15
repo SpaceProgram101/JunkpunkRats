@@ -10,6 +10,8 @@ var attacking = false
 var start_position = Vector2()
 var dead = false
 var can_attack = true
+var arenatype = 0
+
 
 @onready var area : Area2D = $Area2D
 @onready var laser = $laser_detection/laser
@@ -69,7 +71,8 @@ func die():
 		$AnimatedSprite2D.play("dead")
 		await $AnimatedSprite2D.animation_finished
 		for arena in arenas:
-			arena.update_arena(1)
+			if arena != null and arena.arenatype == arenatype:
+				arena.update_arena(1)
 		queue_free()
 
 

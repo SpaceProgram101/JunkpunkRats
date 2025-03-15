@@ -403,7 +403,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sd84x"]
-size = Vector2(101.547, 220.601)
+size = Vector2(47.2717, 256.493)
 
 [node name="Arena_Spawner_1" type="Area2D" node_paths=PackedStringArray("progress_bar") groups=["arenas"]]
 texture_filter = 1
@@ -455,6 +455,7 @@ show_percentage = false
 [node name="left_area" type="StaticBody2D" parent="."]
 z_index = -1
 position = Vector2(-313.394, 61.2782)
+collision_layer = 32769
 
 [node name="left_wall" type="CollisionShape2D" parent="left_area"]
 position = Vector2(7.00317, 12.6932)
@@ -469,9 +470,11 @@ animation = &"spawning"
 [node name="right_area" type="StaticBody2D" parent="."]
 z_index = -1
 position = Vector2(306.391, 50.7733)
+collision_layer = 32769
 
 [node name="right_wall" type="CollisionShape2D" parent="right_area"]
-position = Vector2(5.25258, 18.3835)
+position = Vector2(2.6261, 36.3293)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_sd84x")
 
 [node name="right_anim" type="AnimatedSprite2D" parent="right_area"]

@@ -5,7 +5,7 @@ extends Node2D
 @export var helicopter : int
 @export var staff : int
 @export var rocket : int
-
+@export var arenatype : int
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var spawn = arena.instantiate()
@@ -13,6 +13,7 @@ func _ready() -> void:
 	spawn.helicopter = helicopter
 	spawn.staff = staff
 	spawn.rocket = rocket
+	spawn.arenatype = arenatype
 	spawn.arena_progress = 0
 	spawn.arena_max = warrior + helicopter + staff + rocket
 	add_child(spawn)

@@ -8,6 +8,7 @@ const JUMP_VELOCITY = -400.0
 var start_position = Vector2()
 var attacking = false
 var direction = 1
+var arenatype = 0
 @onready var player = get_node("/root/Node2D/Player")
 @onready var bullet_scene = preload("res://bullet_flying_rat.tscn")
 var can_attack = true
@@ -53,7 +54,8 @@ func die():
 	var arenas = get_tree().get_nodes_in_group("arenas")
 	if not dead:
 		for arena in arenas:
-			arena.update_arena(1)
+			if arena != null and arena.arenatype == arenatype:
+				arena.update_arena(1)
 		dead = true
 		$AnimatedSprite2D.play("dead")
 		await $AnimatedSprite2D.animation_finished
