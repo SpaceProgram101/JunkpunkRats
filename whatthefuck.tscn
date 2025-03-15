@@ -1,4 +1,4 @@
-[gd_scene load_steps=330 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=333 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://3dvjioas8aoo" path="res://tiles/trees.png" id="3_djhqd"]
 [ext_resource type="PackedScene" uid="uid://bel852y212xra" path="res://fireball.tscn" id="3_ng311"]
 [ext_resource type="Texture2D" uid="uid://4hhd7lngnw2y" path="res://tiles/platforms.png" id="4_odkf6"]
+[ext_resource type="Texture2D" uid="uid://bmucjhqivy63u" path="res://lamp.png" id="4_qu3ct"]
 [ext_resource type="PackedScene" uid="uid://cg2w86vgbvq04" path="res://projectile.tscn" id="5_qtrld"]
 [ext_resource type="Texture2D" uid="uid://dnkw46k4vhogl" path="res://tile_platform.png" id="6_wvem4"]
 [ext_resource type="Script" path="res://enemy_AI_walk.gd" id="7_mitai"]
@@ -36,6 +37,7 @@
 [ext_resource type="Script" path="res://camera_follow.gd" id="32_dmc0x"]
 [ext_resource type="Texture2D" uid="uid://bjtamw2jenxel" path="res://skylayer1.png" id="32_kc4s7"]
 [ext_resource type="Texture2D" uid="uid://beir8cak7gdyh" path="res://player animations/player_upspell.png" id="35_udoj1"]
+[ext_resource type="Texture2D" uid="uid://b2ovvgwy8bw63" path="res://lightmap.png" id="36_1d65v"]
 [ext_resource type="Texture2D" uid="uid://cwr8ww4bg2rgm" path="res://player animations/you_died!.png" id="37_mjvve"]
 [ext_resource type="Shader" path="res://fade.gdshader" id="38_6v1qq"]
 [ext_resource type="Texture2D" uid="uid://daepfu7jiok2d" path="res://player_dash-1.png.png" id="38_j1gh1"]
@@ -47,6 +49,7 @@
 [ext_resource type="Script" path="res://collision.gd" id="44_codg7"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
 [ext_resource type="Texture2D" uid="uid://b72aluni64d0k" path="res://gun.png" id="45_a0t25"]
+[ext_resource type="Texture2D" uid="uid://eus2wqmako2i" path="res://Moon.png" id="45_yayod"]
 [ext_resource type="Texture2D" uid="uid://cdq0mgiob8gxx" path="res://player animations/rat_2 (2).png" id="46_6hmm2"]
 [ext_resource type="Script" path="res://cannon.gd" id="46_p1my7"]
 [ext_resource type="Script" path="res://helicopter_boss.gd" id="47_dlftf"]
@@ -232,7 +235,7 @@ texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, 4, -12, -12, 16, -12, 16, 16, -12, 16)
 1:1/0 = 0
-1:1/0/z_index = -3
+1:1/0/z_index = 1
 
 [sub_resource type="TileSet" id="TileSet_4ipcd"]
 physics_layer_0/collision_layer = 1
@@ -2007,6 +2010,19 @@ shape = SubResource("RectangleShape2D_nlekh")
 position = Vector2(4625, -2626)
 shape = SubResource("RectangleShape2D_nlekh")
 
+[node name="Lamp_test" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(-833, -156)
+scale = Vector2(3.91819, 3.91819)
+texture = ExtResource("4_qu3ct")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lamp_test"]
+position = Vector2(-8.67747, -0.510439)
+scale = Vector2(0.302191, 0.302191)
+color = Color(1, 0.772549, 0.564706, 1)
+energy = 25.0
+texture = ExtResource("36_1d65v")
+
 [node name="floor1" type="StaticBody2D" parent="." groups=["wall"]]
 texture_filter = 1
 position = Vector2(219, 513)
@@ -2245,6 +2261,11 @@ shape = SubResource("RectangleShape2D_pim01")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node2D/Monolith_Arrow"]
 stream = ExtResource("82_yc8gm")
 
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/Monolith_Arrow"]
+scale = Vector2(0.392465, 0.392465)
+color = Color(0.47451, 1, 1, 1)
+texture = ExtResource("36_1d65v")
+
 [node name="Monolith_Arrow2" type="Area2D" parent="Node2D"]
 z_index = -1
 position = Vector2(-56, 22)
@@ -2272,6 +2293,10 @@ shape = SubResource("RectangleShape2D_pim01")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node2D/Monolith_Arrow2"]
 stream = ExtResource("82_yc8gm")
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/Monolith_Arrow2"]
+color = Color(0.47451, 1, 1, 1)
+texture = ExtResource("36_1d65v")
 
 [node name="Monolith_Arrow3" type="Area2D" parent="Node2D"]
 z_index = -1
@@ -2301,6 +2326,10 @@ shape = SubResource("RectangleShape2D_pim01")
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node2D/Monolith_Arrow3"]
 stream = ExtResource("82_yc8gm")
 
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/Monolith_Arrow3"]
+color = Color(0.47451, 1, 1, 1)
+texture = ExtResource("36_1d65v")
+
 [node name="LOUIS MAKE THIS SIGN FOR SHIFT-DASH" type="Sprite2D" parent="Node2D"]
 position = Vector2(1339.79, -466.204)
 scale = Vector2(-0.335193, 0.268813)
@@ -2329,6 +2358,19 @@ position = Vector2(-51, -181)
 scale = Vector2(8.6906, 8.70805)
 texture = ExtResource("29_ldha7")
 centered = false
+
+[node name="Moon" type="Sprite2D" parent="Camera2D/ParallaxBackground"]
+z_index = 1
+texture_filter = 1
+position = Vector2(1441, 143)
+scale = Vector2(8.6906, 8.70805)
+texture = ExtResource("45_yayod")
+
+[node name="PointLight2D" type="PointLight2D" parent="Camera2D/ParallaxBackground/Moon"]
+z_index = -1
+scale = Vector2(0.265512, 0.265512)
+energy = 25.0
+texture = ExtResource("36_1d65v")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
 visible = false
@@ -2370,6 +2412,13 @@ frame_progress = 0.277565
 offset = Vector2(-10, 0)
 flip_h = true
 script = ExtResource("46_p1my7")
+
+[node name="PointLight2D" type="PointLight2D" parent="Cannon"]
+position = Vector2(-22.9367, -41.7212)
+scale = Vector2(0.753802, 0.753802)
+color = Color(1, 0.627451, 0.380392, 1)
+energy = 5.0
+texture = ExtResource("36_1d65v")
 
 [node name="helicopter_boss" type="CharacterBody2D" parent="." groups=["enemies"]]
 texture_filter = 1
@@ -2451,7 +2500,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(2566, -1733)
+position = Vector2(-1806, 73)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -2798,7 +2847,7 @@ position = Vector2(58.5, 5.5)
 shape = SubResource("RectangleShape2D_eu588")
 
 [node name="Arena_1" type="Node2D" parent="."]
-position = Vector2(2395, -1724)
+position = Vector2(361, -417)
 script = ExtResource("90_jlorv")
 warrior = 5
 

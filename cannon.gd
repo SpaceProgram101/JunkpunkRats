@@ -13,7 +13,7 @@ var shooting = false
 var aiming = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	$PointLight2D.enabled = false
 	
 	
 
@@ -21,6 +21,7 @@ func _ready() -> void:
 func shoot():
 	shooting = true
 	if not player.idle:
+		$PointLight2D.enabled = true
 		var fireball = fireball_scene.instantiate()
 		fireball.position = position
 		fireball.rotation = rotation
@@ -59,6 +60,7 @@ func _process(_delta: float) -> void:
 		if current_time - last_shot_time > cooldown:
 			shoot()
 			last_shot_time = current_time
+			$PointLight2D.enabled = false
 	if not Input.is_action_pressed("attack"):
 		shooting = false
 			

@@ -14,7 +14,7 @@ var symbol_shown = false
 @onready var sprite = $Sprite2D
 @onready var symbol_1_display = $Symbol1
 @onready var symbol_2_display = $Symbol2
-
+@onready var light = $PointLight2D
 
 
 var fade_time : float = 1.0
@@ -24,6 +24,7 @@ var is_fading_out : bool = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	light.enabled = false 
 	symbol_1_display.visible = false
 	symbol_2_display.visible = false
 	symbol_1_display.modulate.a = 0.0
@@ -63,7 +64,7 @@ func _on_body_exited(body: Node2D) -> void:
 		
 func show_symbols():
 	if not symbol_shown:
-		sprite.modulate.a = 2
+		light.enabled = true
 		$AudioStreamPlayer2D.play()
 		symbol_1_display.texture = symbol_1
 		symbol_2_display.texture = symbol_2

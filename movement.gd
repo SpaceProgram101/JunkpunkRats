@@ -39,8 +39,8 @@ var suicide = true
 var can_dash: bool = true
 var is_dashing: bool = false
 var dash_speed: float = 150.0  # Adjust speed as needed
-var dash_time: float = 0.35  # Duration of dash in seconds
-var dash_cooldown: float = 1.0  # Cooldown time in seconds
+var dash_time: float = 0.25  # Duration of dash in seconds
+var dash_cooldown: float = 0.5  # Cooldown time in seconds
 var dash_timer: float = 0.0
 var cooldown_timer: float = 0.
 var dash_clone = 10
@@ -241,7 +241,6 @@ func _physics_process(delta: float) -> void:
 	
 	if Input.is_action_just_pressed("dash") and can_dash:
 		immune = true
-		print ("Dash started, immunity: ", immune)
 		is_dashing = true
 		can_dash = false
 		dash_timer = dash_time
@@ -249,7 +248,7 @@ func _physics_process(delta: float) -> void:
 		smoke.visible = true
 		smoke.position = position
 		smoke.play("default")
-		velocity.x += (overalldirection*-1) * (dash_speed * 4)
+		velocity.x += (overalldirection*-1) * (dash_speed * 2)
 		velocity.y -= dash_speed
 		await smoke.animation_finished
 		smoke.visible = false
