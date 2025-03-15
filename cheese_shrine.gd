@@ -3,6 +3,7 @@ extends Area2D
 @onready var full = $FullShrine
 @onready var player = null
 var usedUp = false
+var respawn_position: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +12,9 @@ func _ready() -> void:
 	full.play("active")
 	$PointLight2D.enabled = true
 	$PointLight2D.energy = 3.5
+	respawn_position = position
+	print("casfadf")
+	print(respawn_position)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -29,7 +33,7 @@ func _on_body_entered(body):
 func _on_body_exited(body):
 	if body.is_in_group("player"):
 		$PointLight2D.energy = 3.5
-		player = body
+		player = null
 
 
 
@@ -38,7 +42,15 @@ func _input(event):
 		full.play("consume")
 		await full.animation_finished
 		$PointLight2D.energy = 3.5
-		player.heal(1)
+		player.heal(50)
 		print ("Healed the player.")
 		usedUp = true
+		
+		respawn_position = player.position
+		
+		print("Setting respawn point:", respawn_position)
+		if player:
+			player.set_respawn_point(respawn_position)
+		else:
+			print("Error: Player is null!")
 		

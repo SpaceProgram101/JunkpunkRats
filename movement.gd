@@ -90,6 +90,10 @@ var is_knocked_back = false
 var knockback_timer = 0.0
 var knockback_direction = Vector2.ZERO
 
+# Respawn vars
+var respawn_position: Vector2
+var has_respawn_point: bool = false
+
 
 func _ready():
 	skibidi = 100
@@ -325,7 +329,7 @@ func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
 	if not dead:
 		skibidi -= amount
-		healthbar.health = skibidi
+		#healthbar.health = skibidi
 	if skibidi <= 0:
 		die()
 	immune = true
@@ -346,4 +350,30 @@ func heal(amount: int):
 		
 func die():
 	dying = true
+	await get_tree().create_timer(1.5).timeout  # Delay before showing respawn screen
+	dead = true
+	show_respawn_screen()
 	
+func set_respawn_point(new_position: Vector2):
+	respawn_position = new_position
+	has_respawn_point = true
+	print("Respawn point set at: ", respawn_position)
+	
+func show_respawn_screen():
+	$death_screen.visible = true
+	while dead:
+		await get_tree().process_frame
+		if Input.is_action_just_pressed("ui_accept"):
+			respawn()
+
+func respawn():
+	if has_respawn_point:
+		position = respawn_position
+		skibidi = 100  # Reset health
+		healthbar.health = skibidi
+		$death_screen.visible = false
+		dead = false
+		dying = false
+		print("Player respawned at: ", respawn_position)
+	else:
+		print("No respawn point set!")
