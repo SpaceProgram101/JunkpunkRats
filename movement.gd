@@ -82,7 +82,7 @@ var idle = false
 var prev_velocity = Vector2(0,0)
 var frozen: bool = false
 const SPEED = 75.0
-const JUMP_VELOCITY = -200.0
+const JUMP_VELOCITY = -205.0
 const GRAVITY = 880.0
 var gravity = 880.0
 
