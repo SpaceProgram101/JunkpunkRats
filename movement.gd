@@ -12,6 +12,7 @@ extends CharacterBody2D
 @export var projectile_scene: PackedScene
 @export var knockback_force = 200.0  # Adjust the knockback strength
 @export var knockback_duration = 0.2  # Adjust the knockback duration (in seconds)
+@onready var powerTimer = $powerTimer  # Powerup timer
 
 @onready var dash_effect = preload("res://afterimage.tscn")
 
@@ -81,8 +82,8 @@ var idle = false
 #//////////// MOVEMENT VARIABLES //////////// 
 var prev_velocity = Vector2(0,0)
 var frozen: bool = false
-const SPEED = 75.0
-const JUMP_VELOCITY = -205.0
+var SPEED = 75.0 #WHEN CHANGING REMEMBER TO CHANGE IN POWERUP FUNCTIONS TOO
+var JUMP_VELOCITY = -205.0 #WHEN CHANGING REMEMBER TO CHANGE IN POWERUP FUNCTIONS TOO
 const GRAVITY = 880.0
 var gravity = 880.0
 
@@ -109,7 +110,8 @@ func _ready():
 		printerr("ERROR: KnockbackTimer node not found in _ready()!")
 	
 	$AnimatedSprite2D.connect("frame_changed", Callable(self, "_on_frame_changed"))
-
+	
+	powerTimer.connect("timeout", Callable(self, "_on_timer_timeout")) 
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("DIE") or position.y > 1000.0:
@@ -377,3 +379,15 @@ func respawn():
 		print("Player respawned at: ", respawn_position)
 	else:
 		print("No respawn point set!")
+
+func iwanttokillmyselfsomuchyoudontevenunderstandlikewhyareweevendoingthiswecouldhaveboughtourowntriptoshanghaiandnotbotheredwithallofthismesslikeholyshitihategodotsomuchitisaterribledeviceformakinggameswhydidntwejustlearnunity():
+	JUMP_VELOCITY -= 100.0
+	powerTimer.start()
+
+func highSpeed():
+	SPEED += 50.0
+	powerTimer.start()
+
+func _on_timer_timeout():
+	SPEED = 75.0 
+	JUMP_VELOCITY = -205.0 
