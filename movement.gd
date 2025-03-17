@@ -119,16 +119,11 @@ func _physics_process(delta: float) -> void:
 	
 	wall_direction = 0
 
-	if wall_ray_left.is_colliding() and can_wall_jump and wall_ray_left.get_collider().is_in_group("wall"):
-		touching_wall = true
-		wall_direction = -1
-	elif wall_ray_right.is_colliding() and can_wall_jump and wall_ray_right.get_collider().is_in_group("wall"):
-		touching_wall = true
-		wall_direction = 1
-	else:
+	if is_on_wall():
+		if not touching_wall:
+			touching_wall = true
+	elif not is_on_wall():
 		touching_wall = false
-		wall_direction = 0
-		
 
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
@@ -142,17 +137,16 @@ func _physics_process(delta: float) -> void:
 		if not has_touched_wall:
 			$AudioWallJump.play()
 			has_touched_wall = true
-		
-		
+	
 	if cling and Input.is_action_just_pressed("ui_accept") and not dead:
 		velocity.y -= 300
 		$AudioWallJump.play()
 		cling = false
 		can_wall_jump = false
 		gravity = GRAVITY
-		if wall_direction == 1:
+		if overalldirection == 1:
 			velocity.x -= 150
-		elif wall_direction == -1: 
+		elif overalldirection == -1: 
 			velocity.x += 150
 		move_and_slide()
 	elif not is_on_floor() and not touching_wall and not dead:
@@ -190,7 +184,7 @@ func _physics_process(delta: float) -> void:
 		footstep_audio.stop()
 			
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if not frozen and not dead and not is_dashing:
+	if not frozen and not dead and not is_dashing and not is_on_wall:
 		if direction and can_wall_jump:
 			velocity.x = direction * SPEED
 			move_and_slide()	
