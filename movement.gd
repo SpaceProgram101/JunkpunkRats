@@ -99,7 +99,7 @@ var has_respawn_point: bool = false
 func _ready():
 	skibidi = 100
 	healthbar.init_health(skibidi)
-	
+	take_damage(25)
 	
 	smoke.visible = false
 	wall_ray_left = $WallRayLeft

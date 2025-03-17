@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=336 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=324 format=4 uid="uid://ddm0w7fn3atef"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -93,77 +92,12 @@
 [ext_resource type="Script" path="res://cuttingmyballsoffwithscissors.gd" id="84_v5lqf"]
 [ext_resource type="Texture2D" uid="uid://cvbk4aofqefdi" path="res://monolith/monolith_shoot.png" id="85_fw4ng"]
 [ext_resource type="VideoStream" path="res://cutscene_but_real.ogv" id="86_23el0"]
-[ext_resource type="Texture2D" uid="uid://bx88o2jbddlld" path="res://signs/tutorial_sign_move.png" id="86_b53ie"]
-[ext_resource type="Texture2D" uid="uid://d4hejwt0j8eol" path="res://signs/tutorial_sign_interact.png" id="87_vgo36"]
 [ext_resource type="Script" path="res://cheese_shrine.gd" id="90_cr4y3"]
 [ext_resource type="Script" path="res://arena_1.gd" id="90_jlorv"]
 [ext_resource type="Texture2D" uid="uid://dscwkh15jbcwb" path="res://tiles/cheese_shrine.png" id="93_nnc2o"]
 [ext_resource type="Texture2D" uid="uid://dp6n5f5mx4nq2" path="res://light_source.png" id="95_roop2"]
 [ext_resource type="Script" path="res://high_jump_powerup.gd" id="98_k1glc"]
 [ext_resource type="Script" path="res://high_speed_powerup.gd" id="99_cqmmu"]
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tlq6x"]
-texture = ExtResource("1_fbnev")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-1:0/0 = 0
-0:1/0 = 0
-1:1/0 = 0
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ti54e"]
-texture = ExtResource("2_lwwrl")
-
-[sub_resource type="TileSet" id="TileSet_tx17p"]
-sources/0 = SubResource("TileSetAtlasSource_tlq6x")
-sources/1 = SubResource("TileSetAtlasSource_ti54e")
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5d4v8"]
-size = Vector2(901.5, 28)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lrqmv"]
-atlas = ExtResource("2_lwwrl")
-region = Rect2(0, 0, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_vgdcn"]
-atlas = ExtResource("2_lwwrl")
-region = Rect2(0, 32, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rmjon"]
-atlas = ExtResource("2_lwwrl")
-region = Rect2(0, 64, 64, 32)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hhduj"]
-atlas = ExtResource("2_lwwrl")
-region = Rect2(0, 96, 64, 32)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_6to3i"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lrqmv")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_vgdcn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_rmjon")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hhduj")
-}],
-"loop": true,
-"name": &"float",
-"speed": 35.0
-}]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_6ytfm"]
-size = Vector2(85, 7.99994)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_2aivf"]
-size = Vector2(176, 216.5)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_vvfhg"]
-size = Vector2(36, 189)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsny5"]
 atlas = ExtResource("2_lwwrl")
@@ -220,35 +154,12 @@ texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
 2:0/0 = 0
-3:0/0 = 0
-4:0/0 = 0
-5:0/0 = 0
 0:1/0 = 0
 1:1/0 = 0
 2:1/0 = 0
-3:1/0 = 0
-4:1/0 = 0
-5:1/0 = 0
 0:2/0 = 0
 1:2/0 = 0
 2:2/0 = 0
-3:2/0 = 0
-4:2/0 = 0
-5:2/0 = 0
-0:3/0 = 0
-1:3/0 = 0
-2:3/0 = 0
-3:3/0 = 0
-4:3/0 = 0
-5:3/0 = 0
-0:4/0 = 0
-1:4/0 = 0
-2:4/0 = 0
-3:4/0 = 0
-0:5/0 = 0
-1:5/0 = 0
-2:5/0 = 0
-3:5/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7s1vj"]
 texture = ExtResource("3_djhqd")
@@ -1918,97 +1829,7 @@ size = Vector2(65, 64.5)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(1666, 296)
-
-[node name="FoundryBase" type="StaticBody2D" parent="."]
-texture_filter = 1
-position = Vector2(-1352, 901)
-
-[node name="TileMapLayer" type="TileMapLayer" parent="FoundryBase"]
-tile_map_data = PackedByteArray("AADl////AAAAAAAAAADn////AAABAAAAAADp////AAAAAAEAAADv////AAAAAAEAAAD1////AAAAAAEAAADz////AAABAAAAAADt////AAABAAAAAADx////AAAAAAAAAADr////AAAAAAAAAAD3////AAAAAAAAAAD5////AAABAAAAAAD7////AAABAAAAABD9////AAABAAAAAAD/////AAABAAAAABABAP//AAAAAAAAABADAP//AAAAAAAAAAAFAP//AAABAAAAAAAHAP//AAABAAAAABALAP//AAABAAAAABAPAP//AAABAAAAABAJAP//AAABAAAAAAANAP//AAABAAAAAAARAP//AAABAAAAAAATAP//AAAAAAEAAAAVAP//AAAAAAEAABAXAP//AAAAAAEAAAAZAP//AAAAAAEAABAbAP//AAAAAAEAAAAwAAkAAAAAAAAAAGAwAAcAAAAAAAAAAGAwAAUAAAAAAAAAAGAwAAMAAAAAAAAAAGAwAAEAAAAAAAAAAGAwAP//AAAAAAAAAGAsAAQAAAAAAAAAAFAsAAIAAAAAAAAAAFAsAAAAAAAAAAAAAFAsAP7/AAAAAAAAAFAwAP3/AAAAAAAAAAAsAPz/AAAAAAAAAFAsAPr/AAAAAAAAAFAyAP3/AAAAAAAAAAA0AP3/AAAAAAAAAAA2AP3/AAAAAAAAAAA4AP3/AAAAAAAAAAA6AP3/AAAAAAAAAABMAP3/AAAAAAAAAABOAP3/AAAAAAAAAABQAP3/AAAAAAAAAABSAP3/AAAAAAAAAABUAP3/AAAAAAAAAABWAP3/AAAAAAAAAABKAP3/AAAAAAAAAABpAP3/AAAAAAAAAABrAP3/AAAAAAAAAABtAP3/AAAAAAAAAABvAP3/AAAAAAAAAAA=")
-tile_set = SubResource("TileSet_tx17p")
-
-[node name="CollisionShape2D14" type="CollisionShape2D" parent="FoundryBase"]
-position = Vector2(8, -6)
-shape = SubResource("RectangleShape2D_5d4v8")
-
-[node name="Platform1" type="StaticBody2D" parent="FoundryBase"]
-position = Vector2(140, 246)
-scale = Vector2(1.90625, 1.5625)
-collision_layer = 3
-collision_mask = 3
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FoundryBase/Platform1"]
-sprite_frames = SubResource("SpriteFrames_6to3i")
-animation = &"float"
-autoplay = "float"
-frame_progress = 0.069252
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase/Platform1"]
-position = Vector2(-1.04918, -3.83998)
-scale = Vector2(0.52459, 0.64)
-shape = SubResource("RectangleShape2D_6ytfm")
-
-[node name="Platform2" type="StaticBody2D" parent="FoundryBase"]
-position = Vector2(312, 191)
-scale = Vector2(1.90625, 1.5625)
-collision_layer = 3
-collision_mask = 3
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FoundryBase/Platform2"]
-position = Vector2(-1.52588e-05, 3.84)
-sprite_frames = SubResource("SpriteFrames_6to3i")
-animation = &"float"
-autoplay = "float"
-frame_progress = 0.904719
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase/Platform2"]
-position = Vector2(0.524567, 1.52588e-05)
-scale = Vector2(0.52459, 0.64)
-shape = SubResource("RectangleShape2D_6ytfm")
-
-[node name="Platform3" type="StaticBody2D" parent="FoundryBase"]
-position = Vector2(470, 245)
-scale = Vector2(1.90625, 1.5625)
-collision_layer = 3
-collision_mask = 3
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FoundryBase/Platform3"]
-position = Vector2(-1.52588e-05, 3.84)
-sprite_frames = SubResource("SpriteFrames_6to3i")
-animation = &"float"
-autoplay = "float"
-frame_progress = 0.904719
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase/Platform3"]
-position = Vector2(0.524567, 1.52588e-05)
-scale = Vector2(0.52459, 0.64)
-shape = SubResource("RectangleShape2D_6ytfm")
-
-[node name="Platform4" type="StaticBody2D" parent="FoundryBase"]
-position = Vector2(647, 204)
-scale = Vector2(1.90625, 1.5625)
-collision_layer = 3
-collision_mask = 3
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="FoundryBase/Platform4"]
-position = Vector2(-1.52588e-05, 3.84)
-sprite_frames = SubResource("SpriteFrames_6to3i")
-animation = &"float"
-autoplay = "float"
-frame_progress = 0.904719
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase/Platform4"]
-position = Vector2(0.524567, 1.52588e-05)
-scale = Vector2(0.52459, 0.64)
-shape = SubResource("RectangleShape2D_6ytfm")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="FoundryBase"]
-position = Vector2(855, 54.75)
-shape = SubResource("RectangleShape2D_2aivf")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="FoundryBase"]
-position = Vector2(711, -6.5)
-shape = SubResource("RectangleShape2D_vvfhg")
+metadata/_edit_horizontal_guides_ = [-1044.0]
 
 [node name="Area2D" type="CharacterBody2D" parent="."]
 position = Vector2(-1048, 164)
@@ -2061,6 +1882,19 @@ scale = Vector2(3.91819, 3.91819)
 texture = ExtResource("4_qu3ct")
 
 [node name="PointLight2D" type="PointLight2D" parent="Lamp_test"]
+position = Vector2(-8.67747, -0.510439)
+scale = Vector2(0.302191, 0.302191)
+color = Color(1, 0.772549, 0.564706, 1)
+energy = 25.0
+texture = ExtResource("36_1d65v")
+
+[node name="Lamp_test" type="Sprite2D" parent="Lamp_test"]
+texture_filter = 1
+position = Vector2(608.955, -143.178)
+scale = Vector2(1.09836, 1.09836)
+texture = ExtResource("4_qu3ct")
+
+[node name="PointLight2D" type="PointLight2D" parent="Lamp_test/Lamp_test"]
 position = Vector2(-8.67747, -0.510439)
 scale = Vector2(0.302191, 0.302191)
 color = Color(1, 0.772549, 0.564706, 1)
@@ -2375,21 +2209,11 @@ position = Vector2(-2.37901, 2.77044)
 color = Color(0.47451, 1, 1, 1)
 texture = ExtResource("36_1d65v")
 
-[node name="LOUIS MAKE THIS SIGN FOR SHIFT-DASH" type="Sprite2D" parent="Node2D"]
-position = Vector2(1339.79, -466.204)
-scale = Vector2(-0.335193, 0.268813)
-texture = ExtResource("86_b53ie")
-
-[node name="T_Sign_Interact" type="Sprite2D" parent="Node2D"]
-position = Vector2(342, -177)
-scale = Vector2(0.3453, 0.3453)
-texture = ExtResource("87_vgo36")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1361, 79)
 scale = Vector2(1, 1.11064)
 offset = Vector2(0, -75)
-zoom = Vector2(5, 5)
+zoom = Vector2(4, 4)
 position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("32_dmc0x")
@@ -2399,7 +2223,7 @@ script = ExtResource("32_dmc0x")
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/ParallaxBackground"]
 z_index = -2
 texture_filter = 1
-position = Vector2(-51, -181)
+position = Vector2(-204, -238)
 scale = Vector2(8.6906, 8.70805)
 texture = ExtResource("29_ldha7")
 centered = false
@@ -2545,7 +2369,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(7029, -2220)
+position = Vector2(-1806, 95)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
