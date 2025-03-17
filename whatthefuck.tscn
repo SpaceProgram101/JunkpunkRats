@@ -1,4 +1,4 @@
-[gd_scene load_steps=324 format=4 uid="uid://ddm0w7fn3atef"]
+[gd_scene load_steps=330 format=4 uid="uid://ddm0w7fn3atef"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -46,7 +46,9 @@
 [ext_resource type="Texture2D" uid="uid://b1njyvjr7012k" path="res://tiles/foundry_background-2.png.png" id="39_l514x"]
 [ext_resource type="Texture2D" uid="uid://bwhgxc7xfcj1j" path="res://player animations/player_dead_idle.png" id="40_cswio"]
 [ext_resource type="Texture2D" uid="uid://cghg0vgenxalt" path="res://player animations/player_dead_rise.png" id="42_2rdbn"]
+[ext_resource type="Texture2D" uid="uid://2g15dsca2hb7" path="res://monolith/monolith_shift.png" id="42_ke3a6"]
 [ext_resource type="AudioStream" uid="uid://l8qgupckiaw1" path="res://sfx.mp3" id="43_4ofrc"]
+[ext_resource type="Texture2D" uid="uid://b174pfsjn7r1w" path="res://monolith/monolith_dash.png" id="43_y7fua"]
 [ext_resource type="Script" path="res://collision.gd" id="44_codg7"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
 [ext_resource type="Texture2D" uid="uid://b72aluni64d0k" path="res://gun.png" id="45_a0t25"]
@@ -96,8 +98,12 @@
 [ext_resource type="Script" path="res://arena_1.gd" id="90_jlorv"]
 [ext_resource type="Texture2D" uid="uid://dscwkh15jbcwb" path="res://tiles/cheese_shrine.png" id="93_nnc2o"]
 [ext_resource type="Texture2D" uid="uid://dp6n5f5mx4nq2" path="res://light_source.png" id="95_roop2"]
+[ext_resource type="Texture2D" uid="uid://fw7mglit7l7q" path="res://tiles/shrine_jump.png" id="98_blqiu"]
 [ext_resource type="Script" path="res://high_jump_powerup.gd" id="98_k1glc"]
 [ext_resource type="Script" path="res://high_speed_powerup.gd" id="99_cqmmu"]
+[ext_resource type="Texture2D" uid="uid://bqn3sbtsmesij" path="res://tiles/symbol_jump.png" id="99_i0nxv"]
+[ext_resource type="Texture2D" uid="uid://ddcurkvokn4w2" path="res://tiles/shrine_move.png" id="101_sf27p"]
+[ext_resource type="Texture2D" uid="uid://dr2c5x2mnrg7v" path="res://tiles/symbol_move.png" id="102_croxh"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_nsny5"]
 atlas = ExtResource("2_lwwrl")
@@ -144,9 +150,9 @@ size = Vector2(41, 7)
 texture = ExtResource("4_odkf6")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.0208, -12.7279, 16.0867, -12.9047, 16.617, 7.42462, -1.06066, 8)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12, -12, 16, -12, 16.617, 7.42462, -1.06066, 8)
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.75, -12.75, 16.2635, -13.0815, 15.5564, 8.3085, -17.5009, 7.95495)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -12, 16, -12, 16, 8, -16, 8)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_la8xl"]
 texture = ExtResource("7_a6vvk")
@@ -756,7 +762,7 @@ sky = SubResource("Sky_su47q")
 sky_custom_fov = 51.6
 ambient_light_source = 3
 ambient_light_color = Color(0, 0.521569, 1, 1)
-ambient_light_energy = 2.23
+ambient_light_energy = 1.05
 glow_enabled = true
 glow_intensity = 0.5
 glow_bloom = 1.0
@@ -1825,7 +1831,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tso1n"]
-size = Vector2(65, 64.5)
+size = Vector2(71.2959, 64.5)
 
 [node name="Node2D" type="Node2D"]
 position = Vector2(1666, 296)
@@ -1877,7 +1883,7 @@ shape = SubResource("RectangleShape2D_nlekh")
 
 [node name="Lamp_test" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-833, -156)
+position = Vector2(-484, -198)
 scale = Vector2(3.91819, 3.91819)
 texture = ExtResource("4_qu3ct")
 
@@ -1890,7 +1896,7 @@ texture = ExtResource("36_1d65v")
 
 [node name="Lamp_test" type="Sprite2D" parent="Lamp_test"]
 texture_filter = 1
-position = Vector2(608.955, -143.178)
+position = Vector2(576.031, -130.673)
 scale = Vector2(1.09836, 1.09836)
 texture = ExtResource("4_qu3ct")
 
@@ -2209,6 +2215,39 @@ position = Vector2(-2.37901, 2.77044)
 color = Color(0.47451, 1, 1, 1)
 texture = ExtResource("36_1d65v")
 
+[node name="Monolith_Arrow4" type="Area2D" parent="Node2D"]
+z_index = -1
+position = Vector2(525, -182)
+scale = Vector2(2.10171, 1.80477)
+collision_layer = 17
+collision_mask = 513
+script = ExtResource("78_sljor")
+symbol_1 = ExtResource("42_ke3a6")
+symbol_2 = ExtResource("43_y7fua")
+active = ExtResource("80_mcgou")
+deactive = ExtResource("77_e844n")
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D/Monolith_Arrow4"]
+texture = ExtResource("77_e844n")
+
+[node name="Symbol1" type="Sprite2D" parent="Node2D/Monolith_Arrow4"]
+position = Vector2(-15.7015, -24.9339)
+
+[node name="Symbol2" type="Sprite2D" parent="Node2D/Monolith_Arrow4"]
+position = Vector2(17.1289, -24.9339)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Monolith_Arrow4"]
+position = Vector2(1.42741, -5.81792)
+shape = SubResource("RectangleShape2D_pim01")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="Node2D/Monolith_Arrow4"]
+stream = ExtResource("82_yc8gm")
+
+[node name="PointLight2D" type="PointLight2D" parent="Node2D/Monolith_Arrow4"]
+position = Vector2(-2.37901, 2.77044)
+color = Color(0.47451, 1, 1, 1)
+texture = ExtResource("36_1d65v")
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1361, 79)
 scale = Vector2(1, 1.11064)
@@ -2229,16 +2268,16 @@ texture = ExtResource("29_ldha7")
 centered = false
 
 [node name="Moon" type="Sprite2D" parent="Camera2D/ParallaxBackground"]
-z_index = 1
+z_index = -1
 texture_filter = 1
 position = Vector2(1441, 143)
 scale = Vector2(8.6906, 8.70805)
 texture = ExtResource("45_yayod")
 
 [node name="PointLight2D" type="PointLight2D" parent="Camera2D/ParallaxBackground/Moon"]
-z_index = -1
+z_index = -2
 scale = Vector2(0.265512, 0.265512)
-energy = 25.0
+energy = 2.02
 texture = ExtResource("36_1d65v")
 
 [node name="ParallaxLayer" type="ParallaxLayer" parent="Camera2D/ParallaxBackground"]
@@ -2369,7 +2408,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(-1806, 95)
+position = Vector2(840, -702)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -2836,7 +2875,7 @@ warrior = 5
 arenatype = 1
 
 [node name="Arena_2" type="Node2D" parent="."]
-position = Vector2(1138, -635)
+position = Vector2(1139, -627)
 script = ExtResource("90_jlorv")
 rocket = 5
 arenatype = 2
@@ -2907,14 +2946,15 @@ texture = ExtResource("95_roop2")
 [node name="CheeseShrine3" type="Area2D" parent="."]
 show_behind_parent = true
 texture_filter = 1
+position = Vector2(7145, -2192)
 script = ExtResource("90_cr4y3")
 
 [node name="cheeseShrine" type="CollisionShape2D" parent="CheeseShrine3"]
-position = Vector2(7166.2, -2163.8)
+position = Vector2(37.4038, 25.4037)
 shape = SubResource("RectangleShape2D_gsxlv")
 
 [node name="FullShrine" type="AnimatedSprite2D" parent="CheeseShrine3"]
-position = Vector2(7165.2, -2153.8)
+position = Vector2(36.4038, 35.4035)
 scale = Vector2(0.624467, 0.663579)
 sprite_frames = SubResource("SpriteFrames_22tg5")
 animation = &"consume"
@@ -2922,7 +2962,7 @@ frame = 3
 frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="CheeseShrine3"]
-position = Vector2(7166, -2163)
+position = Vector2(37.2036, 26.2038)
 scale = Vector2(0.282046, 0.282046)
 color = Color(0.871828, 0.790567, 0.389753, 1)
 energy = 3.42
@@ -2930,50 +2970,67 @@ blend_mode = 2
 texture = ExtResource("95_roop2")
 
 [node name="HighJumpPowerup" type="Area2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(6956, -2167)
 script = ExtResource("98_k1glc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighJumpPowerup"]
-position = Vector2(6954, -2161)
+position = Vector2(3.2041, 8.20361)
 shape = SubResource("RectangleShape2D_tso1n")
 
-[node name="FullShrine" type="AnimatedSprite2D" parent="HighJumpPowerup"]
-position = Vector2(6956, -2151)
-scale = Vector2(0.624467, 0.663579)
-sprite_frames = SubResource("SpriteFrames_22tg5")
-animation = &"consume"
-frame = 3
-frame_progress = 1.0
-
 [node name="PointLight2D" type="PointLight2D" parent="HighJumpPowerup"]
-position = Vector2(6955, -2157)
+position = Vector2(3, 26)
 scale = Vector2(0.282046, 0.282046)
-color = Color(0.871828, 0.790567, 0.389753, 1)
-energy = 3.42
-blend_mode = 2
-texture = ExtResource("95_roop2")
+color = Color(0.693108, 0.842006, 0.837265, 1)
+energy = 0.05
+texture = ExtResource("36_1d65v")
+texture_scale = 1.72
+
+[node name="Sprite2D" type="Sprite2D" parent="HighJumpPowerup"]
+position = Vector2(3, 24)
+texture = ExtResource("98_blqiu")
+
+[node name="symbol" type="Sprite2D" parent="HighJumpPowerup"]
+position = Vector2(2, -23)
+texture = ExtResource("99_i0nxv")
+
+[node name="PointLight2D" type="PointLight2D" parent="HighJumpPowerup/symbol"]
+scale = Vector2(0.652945, 0.652945)
+color = Color(0.298039, 1, 1, 1)
+energy = 2.0
+texture = ExtResource("36_1d65v")
 
 [node name="HighSpeedPowerup" type="Area2D" parent="."]
+z_index = -1
+texture_filter = 1
+position = Vector2(7052, -2154)
 script = ExtResource("99_cqmmu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighSpeedPowerup"]
-position = Vector2(7045, -2160)
+position = Vector2(8.35156, -4.79614)
 shape = SubResource("RectangleShape2D_tso1n")
 
-[node name="FullShrine" type="AnimatedSprite2D" parent="HighSpeedPowerup"]
-position = Vector2(7045, -2152)
-scale = Vector2(0.624467, 0.663579)
-sprite_frames = SubResource("SpriteFrames_22tg5")
-animation = &"consume"
-frame = 3
-frame_progress = 1.0
-
 [node name="PointLight2D" type="PointLight2D" parent="HighSpeedPowerup"]
-position = Vector2(7049, -2156)
+position = Vector2(9, 8)
 scale = Vector2(0.282046, 0.282046)
-color = Color(0.871828, 0.790567, 0.389753, 1)
-energy = 3.42
-blend_mode = 2
-texture = ExtResource("95_roop2")
+color = Color(0.464958, 0.947364, 0.570809, 1)
+energy = 5.04
+texture = ExtResource("36_1d65v")
+
+[node name="symbol" type="Sprite2D" parent="HighSpeedPowerup"]
+position = Vector2(8, -41)
+texture = ExtResource("102_croxh")
+
+[node name="PointLight2D" type="PointLight2D" parent="HighSpeedPowerup/symbol"]
+scale = Vector2(0.652945, 0.652945)
+color = Color(0.742452, 0.945468, 0.805799, 1)
+energy = 2.0
+texture = ExtResource("36_1d65v")
+
+[node name="Sprite2D" type="Sprite2D" parent="HighSpeedPowerup"]
+position = Vector2(8, 11)
+texture = ExtResource("101_sf27p")
 
 [connection signal="child_entered_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_entered"]
 [connection signal="child_exiting_tree" from="Collector/music_radius" to="Player" method="_on_Area2D_body_exited"]
@@ -2985,5 +3042,7 @@ texture = ExtResource("95_roop2")
 [connection signal="body_exited" from="Node2D/Monolith_Arrow2" to="Node2D/Monolith_Arrow2" method="_on_body_exited"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow3" to="Node2D/Monolith_Arrow3" method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D/Monolith_Arrow3" to="Node2D/Monolith_Arrow3" method="_on_body_exited"]
+[connection signal="body_entered" from="Node2D/Monolith_Arrow4" to="Node2D/Monolith_Arrow4" method="_on_body_entered"]
+[connection signal="body_exited" from="Node2D/Monolith_Arrow4" to="Node2D/Monolith_Arrow4" method="_on_body_exited"]
 [connection signal="body_entered" from="Player/Area2D" to="Player/Area2D" method="_on_body_entered"]
 [connection signal="body_entered" from="boss_arena" to="CanvasLayer2" method="_on_boss_arena_body_entered"]

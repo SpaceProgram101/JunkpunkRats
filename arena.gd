@@ -125,9 +125,9 @@ func arena_complete():
 	$death.visible = false
 	left_tree.play("despawn")
 	right_tree.play("despawn")
-	await left_tree.animation_finished
 	left_wall.disabled = true
 	right_wall.disabled = true
+	await left_tree.animation_finished
 	queue_free()
 	
 	

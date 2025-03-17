@@ -116,7 +116,6 @@ func _ready():
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("DIE") or position.y > 1000.0:
 		die()
-		take_damage(5)
 	
 	wall_direction = 0
 
@@ -156,7 +155,7 @@ func _physics_process(delta: float) -> void:
 		elif wall_direction == -1: 
 			velocity.x += 150
 		move_and_slide()
-	elif not is_on_floor() and not touching_wall:
+	elif not is_on_floor() and not touching_wall and not dead:
 		gravity = GRAVITY
 		can_wall_jump = true
 		velocity.y += gravity * delta
@@ -331,7 +330,7 @@ func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
 	if not dead:
 		skibidi -= amount
-		#healthbar.health = skibidi
+		healthbar.health = skibidi
 	if skibidi <= 0:
 		die()
 	immune = true
@@ -351,15 +350,16 @@ func heal(amount: int):
 	healthbar.health = skibidi
 		
 func die():
-	dying = true
-	await get_tree().create_timer(1.5).timeout  # Delay before showing respawn screen
-	dead = true
-	show_respawn_screen()
+	if not dead:
+		dying = true
+		await get_tree().create_timer(1.5).timeout  # Delay before showing respawn screen
+		dead = true
+		velocity = Vector2(0,0)
+		show_respawn_screen()
 	
 func set_respawn_point(new_position: Vector2):
 	respawn_position = new_position
 	has_respawn_point = true
-	print("Respawn point set at: ", respawn_position)
 	
 func show_respawn_screen():
 	$death_screen.visible = true
@@ -376,7 +376,6 @@ func respawn():
 		$death_screen.visible = false
 		dead = false
 		dying = false
-		print("Player respawned at: ", respawn_position)
 	else:
 		print("No respawn point set!")
 

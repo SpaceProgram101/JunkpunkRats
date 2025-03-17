@@ -21,7 +21,7 @@ var arenatype = 0
 var enemytype = 1
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	target_position = Vector2(0,position.y - 50)
+	target_position = Vector2(0,position.y - 20)
 	$AnimatedSprite2D.play("approach")
 	if enemytype == 0:
 		queue_free()

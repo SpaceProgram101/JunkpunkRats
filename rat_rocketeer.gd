@@ -38,17 +38,15 @@ func _physics_process(delta: float) -> void:
 		direction = -1  # Move left
 	elif position.x < start_position.x - 25 and not attacking: # Move left 200 pixels from start position
 		direction = 1  # Move right
-		
-	if player.position.x > position.x:
-		direction = 1
-	else:
-		direction = -1
+	
 	# Flip sprite based on direction
 	if direction == -1:
 		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
 	elif direction == 1:
 		$AnimatedSprite2D.flip_h = false  # Flip sprite horizontally to face right
-
+	
+	if not attacking:
+		move_and_slide()
 		
 func take_damage(damage : int):
 	if not dead:

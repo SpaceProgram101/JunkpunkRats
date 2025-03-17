@@ -17,10 +17,11 @@ offset_left = -689.0
 offset_top = -213.0
 offset_right = 279.0
 offset_bottom = 335.0
-scale = Vector2(0.433065, 0.433065)
+scale = Vector2(0.482857, 0.482857)
 icon = ExtResource("2_01jtf")
 flat = true
 alignment = 0
+expand_icon = true
 script = ExtResource("3_sdkyk")
 
 [node name="Button2" type="Button" parent="."]

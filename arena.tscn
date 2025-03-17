@@ -9,7 +9,7 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8plcy"]
 resource_local_to_scene = true
-size = Vector2(696.82, 222.352)
+size = Vector2(532.245, 222.352)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_u0me8"]
 
@@ -414,7 +414,8 @@ script = ExtResource("1_ygmlu")
 progress_bar = NodePath("ProgressBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(7.00317, 55.1503)
+position = Vector2(-1.41859e-05, 55.1503)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8plcy")
 
 [node name="Timer" type="Timer" parent="."]

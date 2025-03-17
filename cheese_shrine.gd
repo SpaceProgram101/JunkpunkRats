@@ -38,6 +38,7 @@ func _on_body_exited(body):
 
 func _input(event):
 	if event.is_action_pressed("interact") and player and !usedUp:
+		player.set_respawn_point(position)
 		full.play("consume")
 		await full.animation_finished
 		$PointLight2D.energy = 3.5
