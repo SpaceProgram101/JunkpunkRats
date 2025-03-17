@@ -100,8 +100,10 @@ func _ready():
 	skibidi = 100
 	healthbar.init_health(skibidi)
 	take_damage(25)
-	
+	respawn_position = position
+	has_respawn_point = true
 	smoke.visible = false
+	
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
 	if $KnockbackTimer:
@@ -184,7 +186,7 @@ func _physics_process(delta: float) -> void:
 		footstep_audio.stop()
 			
 	var direction := Input.get_axis("ui_left", "ui_right")
-	if not frozen and not dead and not is_dashing and not is_on_wall:
+	if not frozen and not dead and not is_dashing:
 		if direction and can_wall_jump:
 			velocity.x = direction * SPEED
 			move_and_slide()	

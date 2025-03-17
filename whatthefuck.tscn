@@ -2408,7 +2408,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(-1520, 66)
+position = Vector2(-1787, 81)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
