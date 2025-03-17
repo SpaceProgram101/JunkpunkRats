@@ -474,7 +474,6 @@ collision_layer = 32769
 
 [node name="right_wall" type="CollisionShape2D" parent="right_area"]
 position = Vector2(2.6261, 36.3293)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_sd84x")
 
 [node name="right_anim" type="AnimatedSprite2D" parent="right_area"]

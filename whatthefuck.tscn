@@ -1,4 +1,4 @@
-[gd_scene load_steps=333 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=335 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -11,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://bmucjhqivy63u" path="res://lamp.png" id="4_qu3ct"]
 [ext_resource type="PackedScene" uid="uid://cg2w86vgbvq04" path="res://projectile.tscn" id="5_qtrld"]
 [ext_resource type="Texture2D" uid="uid://dnkw46k4vhogl" path="res://tile_platform.png" id="6_wvem4"]
+[ext_resource type="Texture2D" uid="uid://d1w63thnyvl7k" path="res://tiles.png" id="7_a6vvk"]
 [ext_resource type="Script" path="res://enemy_AI_walk.gd" id="7_mitai"]
 [ext_resource type="Texture2D" uid="uid://biw3q45nsk6td" path="res://sheet_crawler.png" id="7_oeoj5"]
 [ext_resource type="Texture2D" uid="uid://oittfojgq8wk" path="res://tiles/moving_platform_sign-1.png.png" id="7_qfshv"]
@@ -210,6 +211,42 @@ texture_region_size = Vector2i(32, 32)
 0:1/0 = 0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16.75, -12.75, 16.2635, -13.0815, 15.5564, 8.3085, -17.5009, 7.95495)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_la8xl"]
+texture = ExtResource("7_a6vvk")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+0:2/0 = 0
+1:2/0 = 0
+2:2/0 = 0
+3:2/0 = 0
+4:2/0 = 0
+5:2/0 = 0
+0:3/0 = 0
+1:3/0 = 0
+2:3/0 = 0
+3:3/0 = 0
+4:3/0 = 0
+5:3/0 = 0
+0:4/0 = 0
+1:4/0 = 0
+2:4/0 = 0
+3:4/0 = 0
+0:5/0 = 0
+1:5/0 = 0
+2:5/0 = 0
+3:5/0 = 0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7s1vj"]
 texture = ExtResource("3_djhqd")
 texture_region_size = Vector2i(32, 64)
@@ -243,6 +280,7 @@ sources/2 = SubResource("TileSetAtlasSource_7s1vj")
 sources/6 = SubResource("TileSetAtlasSource_57ohj")
 sources/7 = SubResource("TileSetAtlasSource_567nb")
 sources/0 = SubResource("TileSetAtlasSource_gtsne")
+sources/1 = SubResource("TileSetAtlasSource_la8xl")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4y6qv"]
 resource_name = "<null>"
