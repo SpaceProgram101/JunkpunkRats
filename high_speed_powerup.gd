@@ -75,3 +75,4 @@ func _input(event):
 			is_fading_in = true
 			symbol_shown = true
 		usedUp = true
+		player.highSpeed()
