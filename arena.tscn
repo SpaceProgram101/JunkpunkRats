@@ -415,7 +415,6 @@ progress_bar = NodePath("ProgressBar")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.41859e-05, 55.1503)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_8plcy")
 
 [node name="Timer" type="Timer" parent="."]

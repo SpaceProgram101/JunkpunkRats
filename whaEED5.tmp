@@ -2271,7 +2271,7 @@ show_behind_parent = true
 top_level = true
 z_index = 1
 texture_filter = 1
-position = Vector2(-3014, -744)
+position = Vector2(830, 83)
 rotation = -0.270675
 scale = Vector2(48.1852, 2.44232)
 amount = 128
@@ -2287,14 +2287,13 @@ gravity = Vector2(-500, 500)
 angular_velocity_min = 100.0
 angular_velocity_max = 250.0
 damping_max = 10.0
-scale_amount_min = 2.0
-scale_amount_max = 2.5
+scale_amount_max = 2.0
 script = ExtResource("31_tx0g4")
 
 [node name="Sprite2D" type="Sprite2D" parent="Camera2D/ParallaxBackground"]
 z_index = -2
 texture_filter = 1
-position = Vector2(-3973, -1055)
+position = Vector2(-202, -313)
 scale = Vector2(8.6906, 8.70805)
 texture = ExtResource("29_ldha7")
 centered = false
@@ -2302,7 +2301,7 @@ centered = false
 [node name="Moon" type="Sprite2D" parent="Camera2D/ParallaxBackground"]
 z_index = -1
 texture_filter = 1
-position = Vector2(-2009, -846)
+position = Vector2(1441, 143)
 scale = Vector2(8.6906, 8.70805)
 texture = ExtResource("45_yayod")
 
@@ -2440,7 +2439,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(471, -667)
+position = Vector2(1556.48, -679.714)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
