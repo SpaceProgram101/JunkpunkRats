@@ -8,7 +8,7 @@ var direction: Vector2 = Vector2.ZERO  # Direction of the bullet movement # Refe
 @onready var delete_time = 2.0
 var contact = false
 @onready var sprite = $AnimatedSprite2D
-
+@onready var kurtKobain = $gunshot
 
 func _ready():
 	direction = Vector2(cos(global_rotation), sin(global_rotation)) * -1
@@ -16,6 +16,7 @@ func _ready():
 	direction = direction.normalized()
 	sprite.modulate.a = 5
 	$AnimatedSprite2D.play("fireball")  
+	kurtKobain.play()
 	
 func _process(delta):
 	if not contact:

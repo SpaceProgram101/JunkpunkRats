@@ -126,7 +126,7 @@ func _physics_process(delta: float) -> void:
 			touching_wall = true
 	elif not is_on_wall():
 		touching_wall = false
-
+		
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
 	if touching_wall and not is_on_floor() and can_wall_jump:
@@ -241,6 +241,7 @@ func _physics_process(delta: float) -> void:
 		$/root/Node2D/Cannon.visible = true
 	
 	if Input.is_action_just_pressed("dash") and can_dash:
+		$squeak.play()
 		immune = true
 		is_dashing = true
 		can_dash = false
