@@ -2357,7 +2357,7 @@ texture = ExtResource("39_l514x")
 
 [node name="Cannon" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
-position = Vector2(1539.48, -672.714)
+position = Vector2(7646, -3994)
 scale = Vector2(0.392384, 0.455404)
 sprite_frames = SubResource("SpriteFrames_xe0pq")
 animation = &"firing"
