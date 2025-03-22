@@ -77,6 +77,7 @@ func fly_away():
 	
 func spawn_enemy(type : int):
 	$AnimatedSprite2D.play("drop")
+	$AudioStreamPlayer2D.play()
 	await $AnimatedSprite2D.animation_finished
 	var enemy
 	if type == 2:

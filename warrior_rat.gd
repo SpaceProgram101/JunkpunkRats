@@ -59,6 +59,7 @@ func die():
 	if not dead:
 		dead = true
 		$AnimatedSprite2D.play("annihilation")
+		$mewhenicanttakeitnomore.play()
 		await $AnimatedSprite2D.animation_finished
 		for arena in arenas:
 			if arena != null and arena.arenatype == arenatype:

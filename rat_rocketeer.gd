@@ -55,10 +55,10 @@ func take_damage(damage : int):
 			die()
 		
 func die():
+	$whycantheywalkthroughwallsivebeentryingtofixitallmorningwhyyyy.play()
 	var arenas = get_tree().get_nodes_in_group("arenas")
 	if not dead:
 		dead = true
-		print ("Add animation soon.")
 		for arena in arenas:
 			if arena != null and arena.arenatype == arenatype:
 				arena.update_arena(1)

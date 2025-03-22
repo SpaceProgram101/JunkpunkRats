@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://ca4l4i7kv22yp"]
+[gd_scene load_steps=31 format=3 uid="uid://ca4l4i7kv22yp"]
 
 [ext_resource type="Script" path="res://warrior_rat.gd" id="1_obx7d"]
 [ext_resource type="Texture2D" uid="uid://b5oht28xibi75" path="res://signs/rat_warrior.png" id="2_01knj"]
 [ext_resource type="Texture2D" uid="uid://cre4feuoi7l4i" path="res://enemy_spritesheets/explosion.png" id="2_g7mhx"]
 [ext_resource type="Texture2D" uid="uid://c114q6s7ia6c7" path="res://signs/rat_warrior-2.png.png" id="3_fs2cm"]
+[ext_resource type="AudioStream" uid="uid://bs5clyaxbq44e" path="res://explosion-312361.mp3" id="5_immen"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_foqnq"]
 atlas = ExtResource("2_g7mhx")
@@ -203,8 +204,11 @@ script = ExtResource("1_obx7d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_i6pq4")
-animation = &"pure_shock"
+animation = &"annihilation"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1.20776, -0.981689)
 shape = SubResource("RectangleShape2D_20euh")
+
+[node name="mewhenicanttakeitnomore" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_immen")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=13 format=3 uid="uid://cxkr62ebb1upd"]
+[gd_scene load_steps=14 format=3 uid="uid://c57vowpxumgld"]
 
 [ext_resource type="Script" path="res://rat_rocketeer.gd" id="1_le61l"]
 [ext_resource type="Texture2D" uid="uid://bq1dftwc1j55i" path="res://enemy_spritesheets/rat_rocketeer.png" id="2_womk3"]
+[ext_resource type="AudioStream" uid="uid://bs5clyaxbq44e" path="res://explosion-312361.mp3" id="3_kumfw"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wsqeh"]
 atlas = ExtResource("2_womk3")
@@ -108,6 +109,9 @@ position = Vector2(0.205172, 0)
 shape = SubResource("RectangleShape2D_wgs1b")
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="whycantheywalkthroughwallsivebeentryingtofixitallmorningwhyyyy" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_kumfw")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

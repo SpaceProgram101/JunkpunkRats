@@ -1,7 +1,8 @@
-[gd_scene load_steps=12 format=3 uid="uid://cid8527bjciwk"]
+[gd_scene load_steps=13 format=3 uid="uid://bhhqwu0j63cgw"]
 
 [ext_resource type="Script" path="res://spawner.gd" id="1_dn8p0"]
 [ext_resource type="Texture2D" uid="uid://dxf5modmvut4s" path="res://enemy_spritesheets/rat_dropship.png" id="2_pd6wo"]
+[ext_resource type="AudioStream" uid="uid://h156dawp7d7f" path="res://window-opening-100430.mp3" id="3_0rbks"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_awipl"]
 atlas = ExtResource("2_pd6wo")
@@ -90,3 +91,7 @@ sprite_frames = SubResource("SpriteFrames_wu0hr")
 animation = &"drop"
 frame = 1
 frame_progress = 1.0
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_0rbks")
+volume_db = -6.225

@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://blk4ca5sudkod"]
+[gd_scene load_steps=28 format=3 uid="uid://5l3a0mnnh61g"]
 
 [ext_resource type="Script" path="res://rat_staff.gd" id="1_2p4a8"]
 [ext_resource type="Texture2D" uid="uid://bm23i5udtqd1f" path="res://enemy_spritesheets/rat_staff.png" id="2_madb8"]

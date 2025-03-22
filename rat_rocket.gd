@@ -12,6 +12,7 @@ func _ready():
 	$AnimatedSprite2D.play("default")
 	direction = Vector2(cos(global_rotation), sin(global_rotation))
 	direction = direction.normalized()
+	$AudioStreamPlayer2D.play()
 
 func _physics_process(delta: float) -> void:
 	if not dead:
