@@ -97,7 +97,7 @@ var has_respawn_point: bool = false
 
 
 func _ready():
-	skibidi = 100
+	skibidi = 124.5
 	healthbar.init_health(skibidi)
 	take_damage(25)
 	respawn_position = position
