@@ -86,7 +86,7 @@ size = Vector2(6.97581, 8.85786)
 z_index = 2
 texture_filter = 1
 scale = Vector2(2.48589, 3.3672)
-collision_layer = 32768
+collision_layer = 32769
 collision_mask = 513
 script = ExtResource("1_le61l")
 
@@ -101,7 +101,7 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 position = Vector2(0.820686, 0.474525)
-scale = Vector2(1, 0.810189)
+scale = Vector2(2.49765, 2.02357)
 shape = SubResource("CircleShape2D_obx1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

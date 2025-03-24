@@ -469,7 +469,7 @@ animation = &"spawning"
 
 [node name="right_area" type="StaticBody2D" parent="."]
 z_index = -1
-position = Vector2(306.391, 50.7733)
+position = Vector2(304.64, 42.0193)
 collision_layer = 32769
 
 [node name="right_wall" type="CollisionShape2D" parent="right_area"]

@@ -29,15 +29,19 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 		move_and_slide()
 	# Move the enemy back and forth
-	if not is_player_detected:
+	if not attacking:
 		$AnimatedSprite2D.play("idle")
 		position.x += SPEED * direction * delta
 		
 		
-	if position.x > start_position.x + 25 and not attacking:  # Move right 200 pixels from start position
-		direction = -1  # Move left
-	elif position.x < start_position.x - 25 and not attacking: # Move left 200 pixels from start position
-		direction = 1  # Move right
+	if player.global_position.x > global_position.x:
+		direction = 1
+	else:
+		direction = -1
+	if direction == -1:
+		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
+	elif direction == 1:
+		$AnimatedSprite2D.flip_h = false
 	
 	# Flip sprite based on direction
 	if direction == -1:
@@ -45,8 +49,7 @@ func _physics_process(delta: float) -> void:
 	elif direction == 1:
 		$AnimatedSprite2D.flip_h = false  # Flip sprite horizontally to face right
 	
-	if not attacking:
-		move_and_slide()
+	move_and_slide()
 		
 func take_damage(damage : int):
 	if not dead:
@@ -66,7 +69,7 @@ func die():
 
 
 func crash_out():
-	if player.position.x > position.x:
+	if player.global_position.x > global_position.x:
 		direction = 1
 	else:
 		direction = -1
@@ -78,7 +81,7 @@ func crash_out():
 	if is_player_detected and player and can_attack:
 		can_attack = false
 		attacking = true
-		var attack_direction = (player.position - position).normalized()
+		var attack_direction = (player.global_position - global_position).normalized()
 		$AnimatedSprite2D.play("aim")
 		await $AnimatedSprite2D.animation_finished
 		var timer = $Timer
