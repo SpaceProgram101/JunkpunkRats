@@ -11,7 +11,6 @@ func _ready():
 	direction = (player.position - position).normalized()
 	rotation = direction.angle()
 	$AnimatedSprite2D.play("default")
-	$gunshot.play()
 	
 func _physics_process(_delta: float) -> void:
 	if not dead:
