@@ -94,7 +94,7 @@ var knockback_direction = Vector2.ZERO
 # Respawn vars
 var respawn_position: Vector2
 var has_respawn_point: bool = false
-
+var kms = false
 
 func _ready():
 	skibidi = 124.5
@@ -117,25 +117,19 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_just_pressed("DIE") or position.y > 1000.0:
-		die()
+		kms = true
 	
 	wall_direction = 0
 
-	if is_on_wall():
-		if not touching_wall:
-			touching_wall = true
-	elif not is_on_wall():
-		touching_wall = false
 		
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
-	if touching_wall and not is_on_floor() and can_wall_jump:
+	if is_on_wall() and not is_on_floor() and can_wall_jump:
 		rotation = 0
 		cling = true
 		velocity.x = 0
 		gravity = 0
-		velocity.y = 5
-		cling_timer = 0.5
+		velocity.y = 1
 		if not has_touched_wall:
 			$AudioWallJump.play()
 			has_touched_wall = true
@@ -147,20 +141,17 @@ func _physics_process(delta: float) -> void:
 		can_wall_jump = false
 		gravity = GRAVITY
 		if overalldirection == 1:
-			velocity.x -= 150
-		elif overalldirection == -1: 
 			velocity.x += 150
+		elif overalldirection == -1: 
+			velocity.x -= 150
 		move_and_slide()
-	elif not is_on_floor() and not touching_wall and not dead:
+	elif not is_on_floor() and not is_on_wall() and not dead:
 		gravity = GRAVITY
+		cling = false
 		can_wall_jump = true
 		velocity.y += gravity * delta
+		
 	#but if you press E while in the air, trigger the cannon
-	if cling_timer > 0:
-		cling_timer -= delta
-	else:
-		cling = false
-	#if floating is set to true, decrease gravity, start the timer
 	
 	# Handle jump.
 	
