@@ -341,10 +341,11 @@ func take_damage(amount: int):
 		
 	
 func heal(amount: int):
-	skibidi += amount
-	if skibidi > 100:
-		skibidi = 100
-	healthbar.health = skibidi
+	if ((skibidi + amount) > 125):
+		skibidi = 125
+	else:
+		skibidi += amount
+		healthbar.health = skibidi
 		
 func die():
 	if not dead:
