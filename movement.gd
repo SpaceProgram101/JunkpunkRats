@@ -82,10 +82,10 @@ var idle = false
 #//////////// MOVEMENT VARIABLES //////////// 
 var prev_velocity = Vector2(0,0)
 var frozen: bool = false
-var SPEED = 75.0 #WHEN CHANGING REMEMBER TO CHANGE IN POWERUP FUNCTIONS TOO
-var JUMP_VELOCITY = -205.0 #WHEN CHANGING REMEMBER TO CHANGE IN POWERUP FUNCTIONS TOO
+var SPEED = 200.0 #WHEN CHANGING REMEMBER TO CHANGE IN POWERUP FUNCTIONS TOO
+var JUMP_VELOCITY = -305.0 #WHEN CHANGING REMEMBER TO CHANGE IN POWERUP FUNCTIONS TOO
 const GRAVITY = 880.0
-var gravity = 880.0
+var gravity = 980.0
 
 var is_knocked_back = false
 var knockback_timer = 0.0
@@ -116,15 +116,15 @@ func _ready():
 	powerTimer.connect("timeout", Callable(self, "_on_timer_timeout")) 
 
 func _physics_process(delta: float) -> void:
+	move_and_slide()
 	if Input.is_action_just_pressed("DIE") or position.y > 1000.0:
 		kms = true
 	
 	wall_direction = 0
-
 		
 	# Add the gravity.
 	#if not on floor, increment velocity by the specified gravity value times the time.
-	if is_on_wall() and not is_on_floor() and can_wall_jump:
+	if is_on_wall() and not is_on_floor():
 		rotation = 0
 		cling = true
 		velocity.x = 0
@@ -138,17 +138,15 @@ func _physics_process(delta: float) -> void:
 		velocity.y -= 300
 		$AudioWallJump.play()
 		cling = false
-		can_wall_jump = false
 		gravity = GRAVITY
 		if overalldirection == 1:
-			velocity.x += 150
+			position.x  += 15
 		elif overalldirection == -1: 
-			velocity.x -= 150
-		move_and_slide()
+			position.x -= 15
+			
 	elif not is_on_floor() and not is_on_wall() and not dead:
 		gravity = GRAVITY
 		cling = false
-		can_wall_jump = true
 		velocity.y += gravity * delta
 		
 	#but if you press E while in the air, trigger the cannon
@@ -178,12 +176,10 @@ func _physics_process(delta: float) -> void:
 			
 	var direction := Input.get_axis("ui_left", "ui_right")
 	if not frozen and not dead and not is_dashing:
-		if direction and can_wall_jump:
+		if direction:
 			velocity.x = direction * SPEED
-			move_and_slide()	
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
-			move_and_slide()	
 			footstep_audio.play()
 	if frozen:
 		velocity = Vector2(0,0)
@@ -261,7 +257,6 @@ func _physics_process(delta: float) -> void:
 			healthbar.dash = 100
 			can_dash = true  # Reset dash ability
 	
-	move_and_slide()
 
 	
 func _on_area_entered(area):
