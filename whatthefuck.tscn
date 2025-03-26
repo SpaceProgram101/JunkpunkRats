@@ -2002,7 +2002,7 @@ position = Vector2(-2.11621, 37.0479)
 scale = Vector2(6.35246, 4.90058)
 sprite_frames = SubResource("SpriteFrames_wlnbu")
 autoplay = "default"
-frame_progress = 0.844466
+frame_progress = 0.0145661
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Lava/AnimatedSprite2D"]
 position = Vector2(-0.111028, -27.4676)
@@ -2041,7 +2041,7 @@ shape = SubResource("RectangleShape2D_qn3gc")
 
 [node name="FINAL_BOSS" type="Node2D" parent="."]
 texture_filter = 1
-position = Vector2(9232, -4820)
+position = Vector2(9252, -4822)
 scale = Vector2(0.419399, 0.419399)
 script = ExtResource("16_68x07")
 
