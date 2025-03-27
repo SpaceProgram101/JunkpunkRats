@@ -19,6 +19,7 @@ script = ExtResource("2_rhjnn")
 position = Vector2(-2, 2.38419e-07)
 rotation = -0.992941
 scale = Vector2(1, -1)
+emitting = false
 amount = 30
 texture = ExtResource("2_f8dqq")
 emission_shape = 3

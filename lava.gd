@@ -10,7 +10,7 @@ var stop_big_lava = false
 var stop_pos = Vector2(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	can_rise = true
+	can_rise = false
 	$AnimatedSprite2D.visible = true
 	$AnimatedSprite2D2.visible = true
 

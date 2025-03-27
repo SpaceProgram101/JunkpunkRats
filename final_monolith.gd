@@ -1,0 +1,33 @@
+extends Area2D
+
+var awake = false
+var dead = false
+var health = 5
+@onready var smoke = $CPUParticles2D
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	health = 5
+	smoke.emitting = false
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if not dead:
+		awake = get_parent().phase1
+	elif dead:
+		awake = false
+	if awake:
+		$AnimatedSprite2D.play("firing")
+	
+		
+func take_damage(damage : int):
+	if not dead:
+		health -= damage
+		if health <= 0:
+			die()
+			
+func die():
+	dead = true
+	awake = false
+	smoke.emitting = true
+	$AnimatedSprite2D.play("fucking dead")

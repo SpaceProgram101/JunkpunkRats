@@ -1,4 +1,4 @@
-[gd_scene load_steps=340 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=370 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -16,16 +16,24 @@
 [ext_resource type="Texture2D" uid="uid://c84gjtgdkqtov" path="res://tiles/New Piskel-1.png (8).png" id="11_q3t4m"]
 [ext_resource type="Script" path="res://final_boss.gd" id="16_68x07"]
 [ext_resource type="Texture2D" uid="uid://cwkqi4v0x45wy" path="res://tiles/LAVA!.png" id="16_087il"]
+[ext_resource type="Texture2D" uid="uid://d3b6qse0hkajq" path="res://tiles/final_arena_turrets.png" id="16_270bl"]
 [ext_resource type="Texture2D" uid="uid://ca0x11lkragr7" path="res://tiles/final_tile-1.png.png" id="16_b0ng3"]
+[ext_resource type="Script" path="res://rocket_turret.gd" id="16_jxmfm"]
+[ext_resource type="Script" path="res://final_arena.gd" id="16_u2a3e"]
 [ext_resource type="Texture2D" uid="uid://cphvx81vtmmoi" path="res://tiles/crossbar-1.png.png" id="16_v6m2k"]
 [ext_resource type="Script" path="res://lava.gd" id="16_wn7qu"]
 [ext_resource type="Script" path="res://final_room.gd" id="16_y0d2g"]
+[ext_resource type="Texture2D" uid="uid://bly4066k1v7de" path="res://tiles/final_monolith.png" id="17_6qjhr"]
 [ext_resource type="Texture2D" uid="uid://cmd5tsq7mr42k" path="res://tiles/climb_background-3.png (1).png" id="17_by4vt"]
+[ext_resource type="Texture2D" uid="uid://bww8ecfe7phl0" path="res://tiles/final_arena_turrets-1.png.png" id="17_e8ksh"]
 [ext_resource type="Script" path="res://light_follow.gd" id="17_jdte5"]
+[ext_resource type="Script" path="res://final_monolith.gd" id="17_qltf4"]
 [ext_resource type="Texture2D" uid="uid://c0dtelh40qyqu" path="res://tiles/final_boss_attacks.png" id="17_s4dhc"]
 [ext_resource type="Texture2D" uid="uid://wweyiqysi1xq" path="res://tiles/firefly-1.png.png" id="17_wjhvk"]
+[ext_resource type="Script" path="res://laser_detector.gd" id="18_cqy4t"]
 [ext_resource type="Texture2D" uid="uid://dohq2pg2e72h7" path="res://tiles/door.png" id="18_gfxaq"]
 [ext_resource type="Texture2D" uid="uid://cb2ir6pcsox1f" path="res://enemy_spritesheets/final_boss_attacks (1).png" id="18_r3wka"]
+[ext_resource type="Texture2D" uid="uid://dloujane5ju5e" path="res://enemy_spritesheets/smoke-1.png.png" id="20_h4pd3"]
 [ext_resource type="Texture2D" uid="uid://b5jq2wmcxvdd5" path="res://tiles/final_back_torso_3.png" id="21_eluqq"]
 [ext_resource type="Texture2D" uid="uid://cmn7dv3sxtykc" path="res://enemy_spritesheets/rat_cannon.png" id="21_wt462"]
 [ext_resource type="Texture2D" uid="uid://cwwewfarx0tvh" path="res://tiles/final_back_torso_2.png" id="22_p6ps6"]
@@ -253,6 +261,164 @@ size = Vector2(749, 25)
 size = Vector2(40, 34)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_k2qe7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_a1nb5"]
+size = Vector2(672, 363)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b18q2"]
+atlas = ExtResource("17_6qjhr")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eqoue"]
+atlas = ExtResource("17_6qjhr")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u7trf"]
+atlas = ExtResource("17_6qjhr")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po7r5"]
+atlas = ExtResource("17_6qjhr")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v2hl7"]
+atlas = ExtResource("17_6qjhr")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hd0vb"]
+atlas = ExtResource("17_6qjhr")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akoar"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b18q2")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eqoue")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u7trf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_po7r5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v2hl7")
+}],
+"loop": true,
+"name": &"firing",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hd0vb")
+}],
+"loop": true,
+"name": &"fucking dead",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ihtn3"]
+size = Vector2(39.1501, 49.1876)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k4qcm"]
+atlas = ExtResource("26_86agr")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pbt6y"]
+atlas = ExtResource("26_86agr")
+region = Rect2(0, 32, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_m3d0t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k4qcm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pbt6y")
+}],
+"loop": true,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_avd7o"]
+size = Vector2(265.976, 6.50574)
+
+[sub_resource type="Gradient" id="Gradient_xexh5"]
+offsets = PackedFloat32Array(0, 0.0146341, 0.658537)
+colors = PackedColorArray(1, 1, 1, 1, 0.960976, 0.960976, 0.960976, 1, 0, 0, 0, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pcuoc"]
+atlas = ExtResource("16_270bl")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sexd0"]
+atlas = ExtResource("16_270bl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7tl2g"]
+atlas = ExtResource("16_270bl")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qs6vq"]
+atlas = ExtResource("16_270bl")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8td44"]
+atlas = ExtResource("16_270bl")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_inm7g"]
+atlas = ExtResource("16_270bl")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3brgi"]
+animations = [{
+"frames": [{
+"duration": 5.0,
+"texture": SubResource("AtlasTexture_pcuoc")
+}],
+"loop": false,
+"name": &"aiming",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sexd0")
+}],
+"loop": false,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7tl2g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qs6vq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8td44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_inm7g")
+}],
+"loop": false,
+"name": &"firing",
+"speed": 10.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mrmi"]
+size = Vector2(50.8867, 38.3142)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_exgjc"]
 size = Vector2(125.977, 30.192)
@@ -1385,7 +1551,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_vrn5m"]
-size = Vector2(14.106, 5.11924)
+size = Vector2(14.106, 8.29644)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_o38wu"]
 atlas = ExtResource("37_mjvve")
@@ -2065,6 +2231,257 @@ shape = SubResource("RectangleShape2D_lxkbb")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="TheRatKing/Area2D"]
 sprite_frames = SubResource("SpriteFrames_k2qe7")
 
+[node name="final_arena" type="Area2D" parent="."]
+position = Vector2(14262, -5056)
+collision_layer = 0
+collision_mask = 17
+script = ExtResource("16_u2a3e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena"]
+position = Vector2(-13, -1.5)
+shape = SubResource("RectangleShape2D_a1nb5")
+
+[node name="final_monolith" type="Area2D" parent="final_arena" groups=["enemies"]]
+texture_filter = 1
+position = Vector2(-3, 33)
+scale = Vector2(1.99237, 1.99237)
+collision_layer = 32768
+collision_mask = 512
+script = ExtResource("17_qltf4")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="final_arena/final_monolith"]
+sprite_frames = SubResource("SpriteFrames_akoar")
+animation = &"firing"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena/final_monolith"]
+position = Vector2(1.00342, -3.01147)
+shape = SubResource("RectangleShape2D_ihtn3")
+
+[node name="laser_detector" type="Area2D" parent="final_arena/final_monolith" groups=["hurt_walls"]]
+position = Vector2(1.00383, -12.5479)
+collision_layer = 32768
+collision_mask = 531
+script = ExtResource("18_cqy4t")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="final_arena/final_monolith/laser_detector"]
+position = Vector2(1.00393, 0)
+scale = Vector2(7.8004, 1.16667)
+sprite_frames = SubResource("SpriteFrames_m3d0t")
+frame_progress = 0.66613
+offset = Vector2(-16, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena/final_monolith/laser_detector"]
+position = Vector2(-123.471, 1.74707)
+shape = SubResource("RectangleShape2D_avd7o")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/final_monolith"]
+position = Vector2(0.502044, 5.01907)
+lifetime = 0.3
+texture = ExtResource("20_h4pd3")
+direction = Vector2(1, 1)
+gravity = Vector2(0, -980)
+angular_velocity_min = 137.14
+angular_velocity_max = 137.14
+radial_accel_min = 2.2
+radial_accel_max = 2.2
+tangential_accel_min = 12.7
+tangential_accel_max = 12.7
+angle_min = -297.1
+angle_max = 411.4
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_xexh5")
+
+[node name="rocket_turret" type="Area2D" parent="final_arena" groups=["enemies"]]
+texture_filter = 1
+position = Vector2(-309, -82)
+scale = Vector2(1.67038, 1.67038)
+collision_layer = 32768
+collision_mask = 512
+script = ExtResource("16_jxmfm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="final_arena/rocket_turret"]
+z_index = 2
+position = Vector2(4.78933, -1.19733)
+sprite_frames = SubResource("SpriteFrames_3brgi")
+animation = &"aiming"
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="final_arena/rocket_turret"]
+z_index = 2
+position = Vector2(1.19733, -6.58532)
+texture = ExtResource("17_e8ksh")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena/rocket_turret"]
+position = Vector2(-2.69336, -7.78223)
+shape = SubResource("RectangleShape2D_7mrmi")
+
+[node name="Timer" type="Timer" parent="final_arena/rocket_turret"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/rocket_turret"]
+position = Vector2(9.57865, -10.1773)
+emitting = false
+lifetime = 0.5
+texture = ExtResource("20_h4pd3")
+direction = Vector2(1, 1)
+gravity = Vector2(0, -980)
+initial_velocity_min = 63.49
+initial_velocity_max = 63.49
+angular_velocity_min = 137.14
+angular_velocity_max = 137.14
+radial_accel_min = 2.2
+radial_accel_max = 2.2
+tangential_accel_min = 12.7
+tangential_accel_max = 12.7
+angle_min = -297.1
+angle_max = 411.4
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_xexh5")
+
+[node name="rocket_turret2" type="Area2D" parent="final_arena" groups=["enemies"]]
+texture_filter = 1
+position = Vector2(-310, 82)
+scale = Vector2(1.67038, 1.67038)
+collision_layer = 32768
+collision_mask = 512
+script = ExtResource("16_jxmfm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="final_arena/rocket_turret2"]
+z_index = 2
+position = Vector2(4.78933, -1.19733)
+sprite_frames = SubResource("SpriteFrames_3brgi")
+animation = &"aiming"
+flip_h = true
+
+[node name="Sprite2D" type="Sprite2D" parent="final_arena/rocket_turret2"]
+z_index = 2
+position = Vector2(1.19733, -6.58532)
+texture = ExtResource("17_e8ksh")
+flip_h = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena/rocket_turret2"]
+position = Vector2(-2.69336, -7.78223)
+shape = SubResource("RectangleShape2D_7mrmi")
+
+[node name="Timer" type="Timer" parent="final_arena/rocket_turret2"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/rocket_turret2"]
+position = Vector2(9.57865, -10.1773)
+emitting = false
+lifetime = 0.5
+texture = ExtResource("20_h4pd3")
+direction = Vector2(1, 1)
+gravity = Vector2(0, -980)
+initial_velocity_min = 63.49
+initial_velocity_max = 63.49
+angular_velocity_min = 137.14
+angular_velocity_max = 137.14
+radial_accel_min = 2.2
+radial_accel_max = 2.2
+tangential_accel_min = 12.7
+tangential_accel_max = 12.7
+angle_min = -297.1
+angle_max = 411.4
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_xexh5")
+
+[node name="rocket_turret3" type="Area2D" parent="final_arena" groups=["enemies"]]
+texture_filter = 1
+position = Vector2(265.001, -82.0005)
+scale = Vector2(1.67038, 1.67038)
+collision_layer = 32768
+collision_mask = 512
+script = ExtResource("16_jxmfm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="final_arena/rocket_turret3"]
+z_index = 2
+position = Vector2(4.78933, -1.19733)
+sprite_frames = SubResource("SpriteFrames_3brgi")
+animation = &"aiming"
+
+[node name="Sprite2D" type="Sprite2D" parent="final_arena/rocket_turret3"]
+z_index = 2
+position = Vector2(1.19733, -6.58532)
+texture = ExtResource("17_e8ksh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena/rocket_turret3"]
+position = Vector2(-2.69336, -7.78223)
+shape = SubResource("RectangleShape2D_7mrmi")
+
+[node name="Timer" type="Timer" parent="final_arena/rocket_turret3"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/rocket_turret3"]
+position = Vector2(9.57865, -10.1773)
+emitting = false
+lifetime = 0.5
+texture = ExtResource("20_h4pd3")
+direction = Vector2(1, 1)
+gravity = Vector2(0, -980)
+initial_velocity_min = 63.49
+initial_velocity_max = 63.49
+angular_velocity_min = 137.14
+angular_velocity_max = 137.14
+radial_accel_min = 2.2
+radial_accel_max = 2.2
+tangential_accel_min = 12.7
+tangential_accel_max = 12.7
+angle_min = -297.1
+angle_max = 411.4
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_xexh5")
+
+[node name="rocket_turret4" type="Area2D" parent="final_arena" groups=["enemies"]]
+texture_filter = 1
+position = Vector2(273, 84)
+scale = Vector2(1.67038, 1.67038)
+collision_layer = 32768
+collision_mask = 512
+script = ExtResource("16_jxmfm")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="final_arena/rocket_turret4"]
+z_index = 2
+position = Vector2(4.78933, -1.19733)
+sprite_frames = SubResource("SpriteFrames_3brgi")
+animation = &"aiming"
+
+[node name="Sprite2D" type="Sprite2D" parent="final_arena/rocket_turret4"]
+z_index = 2
+position = Vector2(1.19733, -6.58532)
+texture = ExtResource("17_e8ksh")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena/rocket_turret4"]
+position = Vector2(-2.69336, -7.78223)
+shape = SubResource("RectangleShape2D_7mrmi")
+
+[node name="Timer" type="Timer" parent="final_arena/rocket_turret4"]
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/rocket_turret4"]
+position = Vector2(9.57865, -10.1773)
+emitting = false
+lifetime = 0.5
+texture = ExtResource("20_h4pd3")
+direction = Vector2(1, 1)
+gravity = Vector2(0, -980)
+initial_velocity_min = 63.49
+initial_velocity_max = 63.49
+angular_velocity_min = 137.14
+angular_velocity_max = 137.14
+radial_accel_min = 2.2
+radial_accel_max = 2.2
+tangential_accel_min = 12.7
+tangential_accel_max = 12.7
+angle_min = -297.1
+angle_max = 411.4
+scale_amount_min = 0.5
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_xexh5")
+
+[node name="Timer" type="Timer" parent="final_arena"]
+
 [node name="Floor_lava" type="StaticBody2D" parent="."]
 texture_filter = 1
 position = Vector2(14259, -4879)
@@ -2547,7 +2964,7 @@ hue_variation_min = 1.0
 hue_variation_max = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="Lava"]
-position = Vector2(63.8496, 8.16022)
+position = Vector2(39.1487, 6.93618)
 scale = Vector2(3.41536, 2.63477)
 color = Color(1, 0.372549, 0, 1)
 energy = 2.45
@@ -3082,7 +3499,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(14259, -5009)
+position = Vector2(14308, -5336)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -3099,13 +3516,13 @@ frame = 6
 frame_progress = 1.0
 
 [node name="Area2D" type="Area2D" parent="Player" groups=["player"]]
-position = Vector2(0.704614, 0)
+position = Vector2(-4.17233e-07, 0.617463)
 collision_layer = 529
 collision_mask = 33297
 script = ExtResource("44_codg7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/Area2D"]
-position = Vector2(0.705322, 1.94226)
+position = Vector2(0.705078, 0.036377)
 scale = Vector2(1.19963, 1.19963)
 shape = SubResource("RectangleShape2D_vrn5m")
 
@@ -3928,6 +4345,11 @@ position = Vector2(6958, -2886)
 scale = Vector2(0.161871, 0.221604)
 texture = ExtResource("104_n7j6x")
 
+[connection signal="body_entered" from="final_arena" to="final_arena" method="_on_body_entered"]
+[connection signal="timeout" from="final_arena/rocket_turret/Timer" to="final_arena/rocket_turret" method="_on_timer_timeout"]
+[connection signal="timeout" from="final_arena/rocket_turret2/Timer" to="final_arena/rocket_turret2" method="_on_timer_timeout"]
+[connection signal="timeout" from="final_arena/rocket_turret3/Timer" to="final_arena/rocket_turret3" method="_on_timer_timeout"]
+[connection signal="timeout" from="final_arena/rocket_turret4/Timer" to="final_arena/rocket_turret4" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Floor_lava/stop_lava" to="Lava" method="_on_stop_lava_body_entered"]
 [connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter2/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter2" method="_on_cooldown_timer_timeout"]

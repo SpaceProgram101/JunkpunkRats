@@ -21,13 +21,12 @@ func _process(_delta: float) -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	immune = get_parent().immune
+	if body.is_in_group("enemy_projectile"):
+		body.dead = true
 	if not immune:
 		if body.is_in_group("enemy_projectile"):
 			player.take_damage(body.damage)
 			body.dead = true
-			body.sprite.play("death")
-			await body.sprite.animation_finished
-			body.queue_free()
 		elif body.is_in_group("enemies"):
 			player.take_damage(5)
 		elif body.is_in_group("bounce bounce"):

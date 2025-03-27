@@ -116,4 +116,5 @@ texture_scale = 0.01
 stream = ExtResource("5_vu35g")
 volume_db = -20.767
 
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
