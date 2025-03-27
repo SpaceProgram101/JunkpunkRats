@@ -6,14 +6,22 @@ var cutscene = true
 var touching_player = false
 var cinema = true
 var damage = 15
+var stop_big_lava = false
+var stop_pos = Vector2(0,0)
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass
+	can_rise = true
+	$AnimatedSprite2D.visible = true
+	$AnimatedSprite2D2.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	can_rise = player.kms
+	if position.y < -5000:
+		if not stop_big_lava:
+			stop_big_lava = true
+			stop_pos = $AnimatedSprite2D.global_position
+		$AnimatedSprite2D.global_position = stop_pos
 	if can_rise:
 		if cinema and cutscene:	
 			cutscene = false
@@ -33,3 +41,8 @@ func _on_body_entered(body: Node2D) -> void:
 
 func _on_body_exited(body: Node2D) -> void:
 	touching_player = false
+
+
+func _on_stop_lava_body_entered(body: Node2D) -> void:
+	if body.is_in_group("player"):
+		can_rise = false

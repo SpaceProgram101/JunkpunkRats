@@ -97,9 +97,8 @@ var has_respawn_point: bool = false
 var kms = false
 
 func _ready():
-	skibidi = 124.5
+	skibidi = 100
 	healthbar.init_health(skibidi)
-	take_damage(25)
 	respawn_position = position
 	has_respawn_point = true
 	smoke.visible = false

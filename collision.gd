@@ -39,3 +39,11 @@ func _on_body_entered(body: Node2D) -> void:
 			await $/root/Node2D/BounceBounce/Sprite2D.animation_finished
 			$/root/Node2D/BounceBounce/Sprite2D.play("idle")
 		
+
+
+func _on_area_entered(area: Area2D) -> void:
+	immune = get_parent().immune
+	
+	if not immune:
+		if area.is_in_group("hurt_walls"):
+			player.take_damage(area.damage)

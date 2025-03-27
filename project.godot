@@ -34,6 +34,7 @@ enemy_projectile=""
 arenas=""
 "bounce bounce"=""
 wall="wall"
+hurt_walls=""
 
 [input]
 
