@@ -46,4 +46,4 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	if not immune:
 		if area.is_in_group("hurt_walls"):
-			player.take_damage(area.damage)
+			player.take_damage(15)

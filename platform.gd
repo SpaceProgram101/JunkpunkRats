@@ -27,7 +27,3 @@ func _process(_delta: float) -> void:
 		direction = -1  # Move left
 	elif position.x < origin.x - 115:  # Move left 200 pixels from start position
 		direction = 1  # Move right
-
-
-func _on_lava_body_entered(body: Node2D) -> void:
-	pass # Replace with function body.

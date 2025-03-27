@@ -2215,6 +2215,7 @@ shape = SubResource("RectangleShape2D_20epb")
 [node name="laser_emitter" type="AnimatedSprite2D" parent="Floor_lava/folder_laser"]
 z_index = 3
 position = Vector2(23.5613, -179.384)
+rotation = -0.303415
 scale = Vector2(0.531681, 0.531681)
 sprite_frames = SubResource("SpriteFrames_3ycm1")
 frame_progress = 1.0
@@ -2260,6 +2261,261 @@ hue_variation_min = -1.0
 hue_variation_max = 0.75
 
 [node name="cooldown_timer" type="Timer" parent="Floor_lava/folder_laser/laser_emitter"]
+wait_time = 5.0
+
+[node name="laser_emitter2" type="AnimatedSprite2D" parent="Floor_lava/folder_laser"]
+z_index = 3
+position = Vector2(22.2339, -267.781)
+rotation = -0.303415
+scale = Vector2(0.531681, 0.531681)
+sprite_frames = SubResource("SpriteFrames_3ycm1")
+frame_progress = 1.0
+script = ExtResource("26_ifb45")
+
+[node name="Area2D" type="Area2D" parent="Floor_lava/folder_laser/laser_emitter2" groups=["hurt_walls"]]
+scale = Vector2(1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Floor_lava/folder_laser/laser_emitter2/Area2D"]
+position = Vector2(-53.6771, -1.39127)
+scale = Vector2(2.63281, 1.03508)
+sprite_frames = SubResource("SpriteFrames_tmqy6")
+frame = 30
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor_lava/folder_laser/laser_emitter2/Area2D"]
+position = Vector2(-47.4365, -1.04346)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tejmc")
+
+[node name="PointLight2D" type="PointLight2D" parent="Floor_lava/folder_laser/laser_emitter2/Area2D"]
+position = Vector2(-18.1004, -2.08695)
+scale = Vector2(0.660828, 0.205762)
+texture = ExtResource("36_1d65v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Floor_lava/folder_laser/laser_emitter2"]
+position = Vector2(-4.9932, -1.3913)
+rotation = 2.14269
+scale = Vector2(1, 1)
+amount = 16
+texture = ExtResource("17_wjhvk")
+direction = Vector2(1, 1)
+spread = 90.0
+gravity = Vector2(-980, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+color = Color(0.792157, 0, 0, 0.862745)
+hue_variation_min = -1.0
+hue_variation_max = 0.75
+
+[node name="cooldown_timer" type="Timer" parent="Floor_lava/folder_laser/laser_emitter2"]
+wait_time = 5.0
+
+[node name="laser_emitter3" type="AnimatedSprite2D" parent="Floor_lava/folder_laser"]
+z_index = 3
+position = Vector2(21.902, -370.603)
+rotation = -0.303415
+scale = Vector2(0.531681, 0.531681)
+sprite_frames = SubResource("SpriteFrames_3ycm1")
+frame_progress = 1.0
+script = ExtResource("26_ifb45")
+
+[node name="Area2D" type="Area2D" parent="Floor_lava/folder_laser/laser_emitter3" groups=["hurt_walls"]]
+scale = Vector2(1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Floor_lava/folder_laser/laser_emitter3/Area2D"]
+position = Vector2(-53.6771, -1.39127)
+scale = Vector2(2.63281, 1.03508)
+sprite_frames = SubResource("SpriteFrames_tmqy6")
+frame = 30
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor_lava/folder_laser/laser_emitter3/Area2D"]
+position = Vector2(-47.4365, -1.04346)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tejmc")
+
+[node name="PointLight2D" type="PointLight2D" parent="Floor_lava/folder_laser/laser_emitter3/Area2D"]
+position = Vector2(-18.1004, -2.08695)
+scale = Vector2(0.660828, 0.205762)
+texture = ExtResource("36_1d65v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Floor_lava/folder_laser/laser_emitter3"]
+position = Vector2(-4.9932, -1.3913)
+rotation = 2.14269
+scale = Vector2(1, 1)
+amount = 16
+texture = ExtResource("17_wjhvk")
+direction = Vector2(1, 1)
+spread = 90.0
+gravity = Vector2(-980, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+color = Color(0.792157, 0, 0, 0.862745)
+hue_variation_min = -1.0
+hue_variation_max = 0.75
+
+[node name="cooldown_timer" type="Timer" parent="Floor_lava/folder_laser/laser_emitter3"]
+wait_time = 5.0
+
+[node name="laser_emitter4" type="AnimatedSprite2D" parent="Floor_lava/folder_laser"]
+z_index = 3
+position = Vector2(-21.5702, -423.494)
+rotation = -3.42085
+scale = Vector2(0.531681, 0.531681)
+sprite_frames = SubResource("SpriteFrames_3ycm1")
+frame_progress = 1.0
+script = ExtResource("26_ifb45")
+
+[node name="Area2D" type="Area2D" parent="Floor_lava/folder_laser/laser_emitter4" groups=["hurt_walls"]]
+scale = Vector2(1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Floor_lava/folder_laser/laser_emitter4/Area2D"]
+position = Vector2(-53.6771, -1.39127)
+scale = Vector2(2.63281, 1.03508)
+sprite_frames = SubResource("SpriteFrames_tmqy6")
+frame = 30
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor_lava/folder_laser/laser_emitter4/Area2D"]
+position = Vector2(-47.4365, -1.04346)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tejmc")
+
+[node name="PointLight2D" type="PointLight2D" parent="Floor_lava/folder_laser/laser_emitter4/Area2D"]
+position = Vector2(-18.1004, -2.08695)
+scale = Vector2(0.660828, 0.205762)
+texture = ExtResource("36_1d65v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Floor_lava/folder_laser/laser_emitter4"]
+position = Vector2(-4.9932, -1.3913)
+rotation = 2.14269
+scale = Vector2(1, 1)
+amount = 16
+texture = ExtResource("17_wjhvk")
+direction = Vector2(1, 1)
+spread = 90.0
+gravity = Vector2(980, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+color = Color(0.792157, 0, 0, 0.862745)
+hue_variation_min = -1.0
+hue_variation_max = 0.75
+
+[node name="cooldown_timer" type="Timer" parent="Floor_lava/folder_laser/laser_emitter4"]
+wait_time = 5.0
+
+[node name="laser_emitter5" type="AnimatedSprite2D" parent="Floor_lava/folder_laser"]
+z_index = 3
+position = Vector2(-20.5746, -310.316)
+rotation = -3.42085
+scale = Vector2(0.531681, 0.531681)
+sprite_frames = SubResource("SpriteFrames_3ycm1")
+frame_progress = 1.0
+script = ExtResource("26_ifb45")
+
+[node name="Area2D" type="Area2D" parent="Floor_lava/folder_laser/laser_emitter5" groups=["hurt_walls"]]
+scale = Vector2(1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Floor_lava/folder_laser/laser_emitter5/Area2D"]
+position = Vector2(-53.6771, -1.39127)
+scale = Vector2(2.63281, 1.03508)
+sprite_frames = SubResource("SpriteFrames_tmqy6")
+frame = 30
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor_lava/folder_laser/laser_emitter5/Area2D"]
+position = Vector2(-47.4365, -1.04346)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tejmc")
+
+[node name="PointLight2D" type="PointLight2D" parent="Floor_lava/folder_laser/laser_emitter5/Area2D"]
+position = Vector2(-18.1004, -2.08695)
+scale = Vector2(0.660828, 0.205762)
+texture = ExtResource("36_1d65v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Floor_lava/folder_laser/laser_emitter5"]
+position = Vector2(-4.9932, -1.3913)
+rotation = 2.14269
+scale = Vector2(1, 1)
+amount = 16
+texture = ExtResource("17_wjhvk")
+direction = Vector2(1, 1)
+spread = 90.0
+gravity = Vector2(980, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+color = Color(0.792157, 0, 0, 0.862745)
+hue_variation_min = -1.0
+hue_variation_max = 0.75
+
+[node name="cooldown_timer" type="Timer" parent="Floor_lava/folder_laser/laser_emitter5"]
+wait_time = 5.0
+
+[node name="laser_emitter6" type="AnimatedSprite2D" parent="Floor_lava/folder_laser"]
+z_index = 3
+position = Vector2(-19.9109, -214.891)
+rotation = -2.82809
+scale = Vector2(0.531681, 0.531681)
+sprite_frames = SubResource("SpriteFrames_3ycm1")
+frame_progress = 1.0
+script = ExtResource("26_ifb45")
+
+[node name="Area2D" type="Area2D" parent="Floor_lava/folder_laser/laser_emitter6" groups=["hurt_walls"]]
+scale = Vector2(1, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Floor_lava/folder_laser/laser_emitter6/Area2D"]
+position = Vector2(-53.6771, -1.39127)
+scale = Vector2(2.63281, 1.03508)
+sprite_frames = SubResource("SpriteFrames_tmqy6")
+frame = 30
+frame_progress = 1.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor_lava/folder_laser/laser_emitter6/Area2D"]
+position = Vector2(-47.4365, -1.04346)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_tejmc")
+
+[node name="PointLight2D" type="PointLight2D" parent="Floor_lava/folder_laser/laser_emitter6/Area2D"]
+position = Vector2(-18.1004, -2.08695)
+scale = Vector2(0.660828, 0.205762)
+texture = ExtResource("36_1d65v")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="Floor_lava/folder_laser/laser_emitter6"]
+position = Vector2(-4.9932, -1.3913)
+rotation = 2.14269
+scale = Vector2(1, 1)
+amount = 16
+texture = ExtResource("17_wjhvk")
+direction = Vector2(1, 1)
+spread = 90.0
+gravity = Vector2(980, 0)
+initial_velocity_min = 50.0
+initial_velocity_max = 50.0
+angle_min = -180.0
+angle_max = 180.0
+scale_amount_min = 0.1
+scale_amount_max = 0.5
+color = Color(0.792157, 0, 0, 0.862745)
+hue_variation_min = -1.0
+hue_variation_max = 0.75
+
+[node name="cooldown_timer" type="Timer" parent="Floor_lava/folder_laser/laser_emitter6"]
 wait_time = 5.0
 
 [node name="Lava" type="Area2D" parent="." groups=["hurt_walls"]]
@@ -3674,6 +3930,11 @@ texture = ExtResource("104_n7j6x")
 
 [connection signal="body_entered" from="Floor_lava/stop_lava" to="Lava" method="_on_stop_lava_body_entered"]
 [connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter2/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter2" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter3/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter3" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter4/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter4" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter5/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter5" method="_on_cooldown_timer_timeout"]
+[connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter6/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter6" method="_on_cooldown_timer_timeout"]
 [connection signal="body_entered" from="Lava" to="Lava" method="_on_body_entered"]
 [connection signal="body_exited" from="Lava" to="Lava" method="_on_body_exited"]
 [connection signal="timeout" from="CanvasLayer/ProgressBar/Timer" to="CanvasLayer/ProgressBar" method="_on_timer_timeout"]

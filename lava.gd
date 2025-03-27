@@ -36,11 +36,13 @@ func _process(delta: float) -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	touching_player = true
+	if body.is_in_group("player"):
+		touching_player = true
 
 
 func _on_body_exited(body: Node2D) -> void:
-	touching_player = false
+	if body.is_in_group("player"):
+		touching_player = false
 
 
 func _on_stop_lava_body_entered(body: Node2D) -> void:

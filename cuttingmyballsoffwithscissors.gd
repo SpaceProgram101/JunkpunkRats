@@ -26,7 +26,7 @@ func _input(event):
 		if theFnafMovie.stream == voicelines[2] and not boss_spawned_yet:
 			start_boss_battle()
 
-func _process(delta):
+func _process(_delta):
 	if boss_dead_yet:
 		death()
 		boss_dead_yet = false
