@@ -14,7 +14,7 @@ var dead = false
 
 func _ready():
 	smoke.emitting = false 
-	health = 15
+	health = 5
 	dead = false
 	room_active = finalarena.phase1
 	anim.play("default")
@@ -50,6 +50,7 @@ func take_damage(damage : int):
 func die():
 	dead = true
 	smoke.emitting = true
+	get_parent().rocketcount -= 1
 	if anim.flip_h:
 		rotation = (PI / 4)
 	else: 

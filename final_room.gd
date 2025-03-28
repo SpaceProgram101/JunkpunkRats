@@ -18,6 +18,7 @@ func _process(delta: float) -> void:
 		door_col.position = door.position + Vector2(-1 ,10)
 		if door.rotation >= PI / 2:
 			open = false
+			get_node("/root/Node2D/Camera2D").cutscene = false
 
 func open_door():
 	open = true

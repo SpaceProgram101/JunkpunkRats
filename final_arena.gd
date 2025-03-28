@@ -9,12 +9,13 @@ var player_in_arena = false
 @onready var flyrat = preload("res://flying_rat.tscn")
 @onready var staffrat = preload("res://rat_staff.tscn")
 @onready var rocketrat = preload("res://rat_rocketeer.tscn")
+@onready var player = get_node("/root/Node2D/Player")
 @onready var monolith = $final_monolith
 @onready var timer = $Timer
 var enemytype = 1
 var can_spawn = false
 var active = false
-var rocketcount = 4
+var rocketcount = 5
 
 
 # Called when the node enters the scene tree for the first time.
@@ -25,10 +26,25 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	if not phase1 and not phase2 and player_in_arena:
+	if rocketcount > 0 and player_in_arena:
 		phase1 = true
-			
-
+	if rocketcount <= 0:
+		get_node("/root/Node2D/Floor_lava").open_door()
+		player_in_arena = false
+		rocketcount = 1
+		phase2 = true
+		phase1 = false	
+	if get_node("/root/Node2D/Floor_lava").open:
+			get_node("/root/Node2D/Lava").can_rise = true
+			get_node("/root/Node2D/Camera2D").cutscene = true
+			player.frozen = true
+			player.position = Vector2(14260, -5144)
+	else:
+		player.frozen = false
+		get_node("/root/Node2D/Floor_lava").open = false
+		get_node("/root/Node2D/Camera2D").cutscene = false
+		
+		
 func _on_timer_timeout():
 	can_spawn = false
 	

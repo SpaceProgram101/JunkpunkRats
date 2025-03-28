@@ -1,4 +1,4 @@
-[gd_scene load_steps=370 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=371 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Texture2D" uid="uid://ba7yxu6ekqvdc" path="res://tiles/tiles_foundry.png" id="1_fbnev"]
 [ext_resource type="Texture2D" uid="uid://dr8t8cyyfvptt" path="res://tile_basic.png" id="1_nugcr"]
@@ -98,6 +98,7 @@
 [ext_resource type="Texture2D" uid="uid://c6jg2cr1g8cb2" path="res://RatKing/rat_king_parts-2.png (1).png" id="68_ag5k1"]
 [ext_resource type="AudioStream" uid="uid://cqqokqmtb6ecs" path="res://RatKing/RATKINGOST.mp3" id="70_p6wst"]
 [ext_resource type="Texture2D" uid="uid://dbdrmqo6q3o7o" path="res://enemy_spritesheets/totem_explode (1).png" id="75_mvbpn"]
+[ext_resource type="Texture2D" uid="uid://cncgba38t76rk" path="res://tiles/cutscenebars.png" id="75_wds0q"]
 [ext_resource type="Script" path="res://bounce_bounce.gd" id="76_p7i4f"]
 [ext_resource type="Texture2D" uid="uid://ggdfsi1k48v8" path="res://monolith/monolith_deactive.png" id="77_e844n"]
 [ext_resource type="Texture2D" uid="uid://b5exj2xww5jc8" path="res://monolith/monolith_arrow.png" id="78_0bw18"]
@@ -2267,7 +2268,7 @@ script = ExtResource("18_cqy4t")
 position = Vector2(1.00393, 0)
 scale = Vector2(7.8004, 1.16667)
 sprite_frames = SubResource("SpriteFrames_m3d0t")
-frame_progress = 0.66613
+frame_progress = 0.00482782
 offset = Vector2(-16, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena/final_monolith/laser_detector"]
@@ -3316,6 +3317,12 @@ position_smoothing_enabled = true
 position_smoothing_speed = 10.0
 script = ExtResource("32_dmc0x")
 
+[node name="cutscenebar" type="Sprite2D" parent="Camera2D"]
+z_index = 10
+position = Vector2(-2, -66.6283)
+scale = Vector2(0.448275, 0.448275)
+texture = ExtResource("75_wds0q")
+
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="Camera2D/ParallaxBackground"]
@@ -3499,7 +3506,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(14308, -5336)
+position = Vector2(14260, -5144)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19

@@ -30,4 +30,5 @@ func die():
 	dead = true
 	awake = false
 	smoke.emitting = true
+	get_parent().rocketcount -= 1
 	$AnimatedSprite2D.play("fucking dead")
