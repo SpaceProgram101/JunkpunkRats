@@ -9,8 +9,10 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	pass
+	if get_node("/root/Node2D/Camera2D").cutscene:
+		stop()
 
 
 func _on_finished() -> void:
-	play()
+	if not get_node("/root/Node2D/Camera2D").cutscene:
+		play()

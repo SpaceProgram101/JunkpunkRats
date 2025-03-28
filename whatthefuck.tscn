@@ -2268,7 +2268,7 @@ script = ExtResource("18_cqy4t")
 position = Vector2(1.00393, 0)
 scale = Vector2(7.8004, 1.16667)
 sprite_frames = SubResource("SpriteFrames_m3d0t")
-frame_progress = 0.00482782
+frame_progress = 0.562137
 offset = Vector2(-16, 0)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="final_arena/final_monolith/laser_detector"]
@@ -2614,7 +2614,7 @@ flip_h = true
 [node name="FinalBackHead" type="Sprite2D" parent="Floor_lava"]
 modulate = Color(1, 1, 1, 0.52549)
 z_index = 5
-position = Vector2(159.619, -452.714)
+position = Vector2(122.12, -430.151)
 scale = Vector2(1.55309, 1.55309)
 texture = ExtResource("24_nv2b8")
 
@@ -2994,6 +2994,7 @@ scale = Vector2(0.705303, 0.617463)
 shape = SubResource("RectangleShape2D_qn3gc")
 
 [node name="lava_delay" type="Timer" parent="Lava"]
+wait_time = 4.0
 
 [node name="FINAL_BOSS" type="Node2D" parent="."]
 texture_filter = 1
@@ -4358,6 +4359,7 @@ texture = ExtResource("104_n7j6x")
 [connection signal="timeout" from="final_arena/rocket_turret3/Timer" to="final_arena/rocket_turret3" method="_on_timer_timeout"]
 [connection signal="timeout" from="final_arena/rocket_turret4/Timer" to="final_arena/rocket_turret4" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Floor_lava/stop_lava" to="Lava" method="_on_stop_lava_body_entered"]
+[connection signal="body_entered" from="Floor_lava/stop_lava" to="Player/RatKingSOUNDTRACK" method="_on_stop_lava_body_entered"]
 [connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter2/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter2" method="_on_cooldown_timer_timeout"]
 [connection signal="timeout" from="Floor_lava/folder_laser/laser_emitter3/cooldown_timer" to="Floor_lava/folder_laser/laser_emitter3" method="_on_cooldown_timer_timeout"]
@@ -4378,5 +4380,6 @@ texture = ExtResource("104_n7j6x")
 [connection signal="body_exited" from="Node2D/Monolith_Arrow4" to="Node2D/Monolith_Arrow4" method="_on_body_exited"]
 [connection signal="area_entered" from="Player/Area2D" to="Player/Area2D" method="_on_area_entered"]
 [connection signal="body_entered" from="Player/Area2D" to="Player/Area2D" method="_on_body_entered"]
+[connection signal="finished" from="Player/RatKingSOUNDTRACK" to="Player/RatKingSOUNDTRACK" method="_on_finished"]
 [connection signal="finished" from="Player/background_music" to="Player/background_music" method="_on_finished"]
 [connection signal="body_entered" from="boss_arena" to="CanvasLayer2" method="_on_boss_arena_body_entered"]

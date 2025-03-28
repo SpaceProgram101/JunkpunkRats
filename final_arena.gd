@@ -35,14 +35,15 @@ func _process(delta: float) -> void:
 		phase2 = true
 		phase1 = false	
 	if get_node("/root/Node2D/Floor_lava").open:
-			get_node("/root/Node2D/Lava").can_rise = true
-			get_node("/root/Node2D/Camera2D").cutscene = true
-			player.frozen = true
-			player.position = Vector2(14260, -5144)
-	else:
+		get_node("/root/Node2D/Lava").can_rise = true
+		get_node("/root/Node2D/Camera2D").cutscene = true
+		player.frozen = true
+		player.position = Vector2(14260, -5144)
+	elif not get_node("/root/Node2D/Floor_lava").open:
 		player.frozen = false
-		get_node("/root/Node2D/Floor_lava").open = false
 		get_node("/root/Node2D/Camera2D").cutscene = false
+		get_node("/root/Node2D/Floor_lava").open = false
+		
 		
 		
 func _on_timer_timeout():

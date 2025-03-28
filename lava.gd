@@ -26,7 +26,6 @@ func _process(delta: float) -> void:
 		if cinema and cutscene:	
 			cutscene = false
 			var timer = $lava_delay
-			timer.wait_time = 2.0
 			timer.one_shot = true
 			timer.start()
 			await timer.timeout
