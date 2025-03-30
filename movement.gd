@@ -116,8 +116,12 @@ func _ready():
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
-	if Input.is_action_just_pressed("DIE") or position.y > 1000.0:
+	if Input.is_action_just_pressed("DIE"):
 		kms = true
+		
+	if position.y > 1000.0:
+		position = respawn_position
+		take_damage(30)
 	
 	wall_direction = 0
 		
@@ -312,7 +316,8 @@ func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
 	if not dead:
 		skibidi -= amount
-		healthbar.health = skibidi
+		if is_instance_valid(healthbar):
+			healthbar.health = skibidi
 	if skibidi <= 0:
 		die()
 	immune = true
@@ -354,8 +359,9 @@ func show_respawn_screen():
 func respawn():
 	if has_respawn_point:
 		position = respawn_position
-		skibidi = 100  # Reset health
-		healthbar.health = skibidi
+		skibidi = 125  # Reset health
+		if is_instance_valid(healthbar):
+			healthbar.health = skibidi
 		$death_screen.visible = false
 		dead = false
 		dying = false
