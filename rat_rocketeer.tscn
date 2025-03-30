@@ -1,64 +1,73 @@
-[gd_scene load_steps=14 format=3 uid="uid://c57vowpxumgld"]
+[gd_scene load_steps=17 format=3 uid="uid://c57vowpxumgld"]
 
 [ext_resource type="Script" path="res://rat_rocketeer.gd" id="1_le61l"]
-[ext_resource type="Texture2D" uid="uid://bq1dftwc1j55i" path="res://enemy_spritesheets/rat_rocketeer.png" id="2_womk3"]
+[ext_resource type="Texture2D" uid="uid://cd1j1pscng4c8" path="res://enemy_spritesheets/rat_rocketeer (1).png" id="2_lvqn3"]
 [ext_resource type="AudioStream" uid="uid://bs5clyaxbq44e" path="res://explosion-312361.mp3" id="3_kumfw"]
+[ext_resource type="Texture2D" uid="uid://wweyiqysi1xq" path="res://tiles/firefly-1.png.png" id="4_aw04p"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_wsqeh"]
-atlas = ExtResource("2_womk3")
-region = Rect2(256, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_ludpp"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_165wb"]
-atlas = ExtResource("2_womk3")
-region = Rect2(0, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_358pm"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(64, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1ehxm"]
-atlas = ExtResource("2_womk3")
-region = Rect2(128, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnkkf"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(64, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4iq1f"]
-atlas = ExtResource("2_womk3")
-region = Rect2(256, 128, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mcuux"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(128, 64, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_uvsco"]
-atlas = ExtResource("2_womk3")
-region = Rect2(0, 256, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_io2qy"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_q803v"]
-atlas = ExtResource("2_womk3")
-region = Rect2(0, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_aqpe3"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_i5xtr"]
-atlas = ExtResource("2_womk3")
-region = Rect2(128, 0, 128, 128)
+[sub_resource type="AtlasTexture" id="AtlasTexture_mqx8v"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0g626"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y21ee"]
+atlas = ExtResource("2_lvqn3")
+region = Rect2(0, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ekye4"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_wsqeh")
+"texture": SubResource("AtlasTexture_ludpp")
 }],
 "loop": false,
 "name": &"aim",
 "speed": 5.0
 }, {
-"frames": [],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_358pm")
+}],
 "loop": true,
 "name": &"dead",
 "speed": 5.0
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_165wb")
+"texture": SubResource("AtlasTexture_bnkkf")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1ehxm")
+"texture": SubResource("AtlasTexture_mcuux")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4iq1f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_uvsco")
+"texture": SubResource("AtlasTexture_io2qy")
 }],
 "loop": false,
 "name": &"fire",
@@ -66,10 +75,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_q803v")
+"texture": SubResource("AtlasTexture_aqpe3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_i5xtr")
+"texture": SubResource("AtlasTexture_mqx8v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0g626")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y21ee")
 }],
 "loop": true,
 "name": &"idle",
@@ -80,7 +95,7 @@ animations = [{
 radius = 17.4174
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgs1b"]
-size = Vector2(6.97581, 8.85786)
+size = Vector2(7.64314, 11.8793)
 
 [node name="rat_rocketeer" type="CharacterBody2D" groups=["enemies"]]
 z_index = 2
@@ -91,12 +106,12 @@ collision_mask = 513
 script = ExtResource("1_le61l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(0.250178, 0.177425)
+scale = Vector2(0.430815, 0.305532)
 sprite_frames = SubResource("SpriteFrames_ekye4")
-animation = &"aim"
+animation = &"dead"
 
 [node name="Area2D" type="Area2D" parent="."]
-collision_layer = 32768
+collision_layer = 0
 collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -105,13 +120,25 @@ scale = Vector2(2.49765, 2.02357)
 shape = SubResource("CircleShape2D_obx1o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0.205172, 0)
+position = Vector2(-0.201135, 1.18793)
 shape = SubResource("RectangleShape2D_wgs1b")
 
 [node name="Timer" type="Timer" parent="."]
 
 [node name="whycantheywalkthroughwallsivebeentryingtofixitallmorningwhyyyy" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kumfw")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+emitting = false
+amount = 64
+one_shot = true
+texture = ExtResource("4_aw04p")
+direction = Vector2(0, 1)
+spread = 180.0
+initial_velocity_min = 100.0
+initial_velocity_max = 250.0
+scale_amount_min = 0.01
+scale_amount_max = 0.1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

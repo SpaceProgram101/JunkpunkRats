@@ -10,6 +10,8 @@ var attacking = false
 var start_position = Vector2()
 var dead = false
 var arenatype = 0
+var fade_timer = 0.0
+var fade_time = 1.0
 @onready var player = get_node("/root/Node2D/Player")
 
 func _ready():
@@ -23,7 +25,11 @@ func _physics_process(delta: float) -> void:
 			crash_out(delta)
 		elif global_position.distance_to(player.global_position) > 150:
 			attacking = false
-		
+	if dead:
+		fade_timer += delta
+		modulate.a = 1 - fade_timer / fade_time
+		if fade_timer >= fade_time:
+			queue_free()
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -64,7 +70,6 @@ func die():
 		for arena in arenas:
 			if arena != null and arena.arenatype == arenatype:
 				arena.update_arena(1)
-		queue_free()
 
 func crash_out(delta: float):
 	if not attacking and not dead:

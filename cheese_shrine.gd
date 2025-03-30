@@ -42,7 +42,8 @@ func _input(event):
 		full.play("consume")
 		await full.animation_finished
 		$PointLight2D.energy = 3.5
-		player.heal(50)
+		if not player.health >= 100:
+			player.heal(50)
 		print ("Healed the player.")
 		usedUp = true
 		

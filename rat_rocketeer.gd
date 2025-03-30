@@ -12,6 +12,8 @@ var dead = false
 var can_attack = true
 @onready var area : Area2D = $Area2D
 var arenatype = 0
+var fade_timer = 0.0
+var fade_time = 1.0
 
 
 var is_player_detected = false
@@ -32,7 +34,11 @@ func _physics_process(delta: float) -> void:
 	if not attacking:
 		$AnimatedSprite2D.play("idle")
 		position.x += SPEED * direction * delta
-		
+	if dead:
+		fade_timer += delta
+		modulate.a = 1 - fade_timer / fade_time
+		if fade_timer >= fade_time:
+			queue_free()	
 		
 	if player.global_position.x > global_position.x:
 		direction = 1
@@ -65,7 +71,10 @@ func die():
 		for arena in arenas:
 			if arena != null and arena.arenatype == arenatype:
 				arena.update_arena(1)
-		queue_free()
+		$AnimatedSprite2D.play("dead")
+		$CPUParticles2D.emitting = true
+		await $CPUParticles2D.finished
+		
 
 
 func crash_out():
