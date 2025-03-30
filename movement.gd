@@ -316,8 +316,7 @@ func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
 	if not dead:
 		skibidi -= amount
-		if is_instance_valid(healthbar):
-			healthbar.health = skibidi
+		healthbar.health = skibidi
 	if skibidi <= 0:
 		die()
 	immune = true
@@ -344,6 +343,7 @@ func die():
 		dead = true
 		velocity = Vector2(0,0)
 		show_respawn_screen()
+		healthbar.health = 0
 	
 func set_respawn_point(new_position: Vector2):
 	respawn_position = new_position
@@ -377,5 +377,5 @@ func highSpeed():
 	powerTimer.start()
 
 func _on_timer_timeout():
-	SPEED = 75.0 
-	JUMP_VELOCITY = -205.0 
+	SPEED = 200.0 
+	JUMP_VELOCITY = -305.0 
