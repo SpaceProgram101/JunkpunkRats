@@ -849,7 +849,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_fxvdv")
 }],
-"loop": false,
+"loop": true,
 "name": &"wake_up",
 "speed": 5.0
 }]
@@ -3108,8 +3108,6 @@ position = Vector2(-14.3063, 240.821)
 scale = Vector2(4.68339, 4.68339)
 sprite_frames = SubResource("SpriteFrames_8hwlu")
 animation = &"wake_up"
-frame = 2
-frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="FINAL_BOSS"]
 position = Vector2(-45.3038, -238.436)
@@ -3477,8 +3475,7 @@ texture = ExtResource("75_wds0q")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="Camera2D"]
 
 [node name="ParticlesFire" type="CPUParticles2D" parent="Camera2D/ParallaxBackground"]
-z_index = 5
-position = Vector2(1349, -171)
+position = Vector2(1350, -170)
 rotation = -1.57079
 emitting = false
 amount = 32

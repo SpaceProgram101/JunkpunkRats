@@ -63,6 +63,8 @@ func _on_boss_arena_body_entered(body: Node2D) -> void:
 
 
 func start_boss_battle():
+	get_node("/root/Node2D/Player/RatKingSOUNDTRACK").gamestate = 1
+	get_node("/root/Node2D/Player/RatKingSOUNDTRACK").play()
 	boss_spawned_yet = true
 	boss.can_attack = false
 	player.frozen = false

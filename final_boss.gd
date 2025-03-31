@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var sprite = $Sprite2D
+@onready var leaves = get_node("/root/Node2D/Camera2D/ParallaxBackground/ParticlesLeaves")
+@onready var fire = get_node("/root/Node2D/Camera2D/ParallaxBackground/ParticlesFire")
 @onready var player = get_node("/root/Node2D/Player")
 @onready var missiles = preload("res://rat_rocket.tscn")
 @onready var dropper = preload("res://dropper.tscn")
@@ -38,7 +40,6 @@ func _process(_delta: float) -> void:
 		wake_up = false
 		sprite.play("wake_up")
 		roar.play()
-		player_audio.chased = true
 		await sprite.animation_finished
 		$PointLight2D.active = true
 		active = true
@@ -64,7 +65,10 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		active = true
 		wake_up = true
+		fire.emitting = true
+		leaves.emitting = false
 		background.visible = true
+		player_audio.chased = true
 
 
 
