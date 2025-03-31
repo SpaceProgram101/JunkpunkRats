@@ -1,7 +1,7 @@
 extends ProgressBar
 
 @onready var timer = $Timer
-@onready var damage_bar = $DamageBar
+@onready var dmge_bar = $DamageBar
 @onready var dash_bar = $ProgressBar
 @onready var player = get_node("/root/Node2D/Player")
 var reduce = false
@@ -34,8 +34,8 @@ func _process (_delta : float) -> void:
 	if player.can_dash:
 		dash_bar.value = 100
 	if reduce:
-		damage_bar.value = lerp(damage_bar.value, target, get_process_delta_time() * lerp_speed)	
-	if damage_bar.value <= target:
+		dmge_bar.value = lerp(dmge_bar.value, target, get_process_delta_time() * lerp_speed)	
+	if dmge_bar.value <= target:
 		reduce = false
 	if value <= target:
 		health_reduce = false
@@ -46,8 +46,8 @@ func init_health(_health):
 	health = _health
 	max_value = health
 	value = health
-	damage_bar.max_value = health
-	damage_bar.value = health
+	dmge_bar.max_value = health
+	dmge_bar.value = health
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
