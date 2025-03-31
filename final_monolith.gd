@@ -6,7 +6,7 @@ var health = 5
 @onready var smoke = $CPUParticles2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health = 5
+	health = 1
 	smoke.emitting = false
 
 

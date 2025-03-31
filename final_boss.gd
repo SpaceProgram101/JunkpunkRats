@@ -4,7 +4,7 @@ extends Node2D
 @onready var player = get_node("/root/Node2D/Player")
 @onready var missiles = preload("res://rat_rocket.tscn")
 @onready var dropper = preload("res://dropper.tscn")
-@onready var background = get_node("/root/Node2D/Camera2D/ParallaxBackground/hell_background")
+@onready var background = get_node("/root/Node2D/Camera2D/ParallaxBackground/hell_backgrouind")
 @onready var timer = $Timer
 var attacktype = 0
 var attack_timer = 0.0
@@ -22,6 +22,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if Input.is_action_just_pressed("interact") and entering_body:
+		get_node("/root/Node2D/CanvasLayer2").entering = true
 		entering_body = false
 		player.frozen = true
 		player.position = Vector2(14260, -5144)

@@ -2136,7 +2136,7 @@ color_ramp = SubResource("Gradient_xexh5")
 
 [node name="rocket_turret" type="Area2D" parent="final_arena" groups=["enemies"]]
 texture_filter = 1
-position = Vector2(-309, -82)
+position = Vector2(-309, -83)
 scale = Vector2(1.67038, 1.67038)
 collision_layer = 32768
 collision_mask = 512
@@ -3016,12 +3016,10 @@ position = Vector2(7763.49, -617.551)
 scale = Vector2(3.21709, 3.21709)
 
 [node name="Cannon" type="AnimatedSprite2D" parent="FINAL_BOSS/Area2D2"]
-scale = Vector2(1, 1)
 sprite_frames = SubResource("SpriteFrames_q8pyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="FINAL_BOSS/Area2D2"]
 position = Vector2(1.1123, 22.7935)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_t0ovp")
 
 [node name="Area2D" type="Area2D" parent="FINAL_BOSS"]
@@ -3522,7 +3520,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(12459, -5042)
+position = Vector2(11554, -4952)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19

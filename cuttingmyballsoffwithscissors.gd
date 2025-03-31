@@ -3,6 +3,7 @@ extends Node
 var has_cutscene_played = false  # This resets when the game restarts
 var boss_spawned_yet = false
 var boss_dead_yet = false
+var entering = false
 @onready var player = get_node("/root/Node2D/Player")
 @onready var theFnafMovie = $VideoStreamPlayer
 @onready var boss = get_node("/root/Node2D/helicopter_boss")
@@ -10,6 +11,7 @@ var voicelines : Array = [
 	preload("res://cutscene_but_real.ogv"),
 	preload("res://boss_death_cutscene.ogv"),
 	preload("res://boss_intro_cutscene.ogv"),
+	preload("res://title_screen/final_boss_entry.ogv")
 ]
 
 func _ready():
@@ -30,6 +32,13 @@ func _process(_delta):
 	if boss_dead_yet:
 		death()
 		boss_dead_yet = false
+	if entering:
+		theFnafMovie.stream = voicelines[3]
+		theFnafMovie.play()
+		player.frozen = true
+		await theFnafMovie.finished
+		entering = false
+		player.frozen = false
 
 func death():
 	theFnafMovie.stream = voicelines[1]

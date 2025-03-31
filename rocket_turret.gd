@@ -6,7 +6,7 @@ extends Area2D
 @onready var rocket = preload("res://rat_rocket.tscn")
 @onready var finalarena = get_node("/root/Node2D/final_arena")
 @onready var smoke = $CPUParticles2D
-var health = 10
+var health = 5
 var can_attack = false
 var room_active = true
 var offset = PI / 2
@@ -14,7 +14,7 @@ var dead = false
 
 func _ready():
 	smoke.emitting = false 
-	health = 5
+	health = 1
 	dead = false
 	room_active = finalarena.phase1
 	anim.play("default")
