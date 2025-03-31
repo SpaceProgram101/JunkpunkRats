@@ -35,6 +35,7 @@ arenas=""
 "bounce bounce"=""
 wall="wall"
 hurt_walls=""
+not_a_wall=""
 
 [input]
 

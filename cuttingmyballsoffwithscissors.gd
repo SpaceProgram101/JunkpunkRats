@@ -55,6 +55,7 @@ func death():
 	
 func _on_boss_arena_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not boss_spawned_yet:
+		boss_spawned_yet = true
 		theFnafMovie.stream = voicelines[2]
 		theFnafMovie.play()
 		player.frozen = true
