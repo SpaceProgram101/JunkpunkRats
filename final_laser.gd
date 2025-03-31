@@ -10,6 +10,7 @@ var can_laser = false
 var firing = false
 var active = false
 var offset = PI / 8
+var dead = false
 var initial_pos = Vector2(0,0)
 var initial_scale = Vector2(0,0)
 
@@ -58,6 +59,8 @@ func _on_timer_timeout() -> void:
 
 
 func _on_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
+	if body.is_in_group("player") and not dead:
 		active = true
 		can_laser = true
+		get_node("/root/Node2D/Player/RatKingSOUNDTRACK").can_play = false
+	

@@ -20,7 +20,7 @@ func _ready():
 	anim.play("default")
 	timer.start()
 
-func _process(delta: float):
+func _process(_delta: float):
 	room_active = finalarena.phase1
 	if can_attack and not dead:	
 		timer.stop()	

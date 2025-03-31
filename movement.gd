@@ -316,7 +316,8 @@ func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
 	if not dead:
 		skibidi -= amount
-		healthbar.health = skibidi
+		if skibidi > 0:
+			healthbar.health = skibidi
 	if skibidi <= 0:
 		die()
 	immune = true

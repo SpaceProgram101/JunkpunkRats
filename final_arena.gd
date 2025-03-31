@@ -25,7 +25,7 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if rocketcount > 0 and player_in_arena:
 		phase1 = true
 	if rocketcount <= 0:

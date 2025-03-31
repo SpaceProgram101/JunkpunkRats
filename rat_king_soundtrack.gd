@@ -27,8 +27,3 @@ func _on_finished() -> void:
 		loop = true
 		stream = climb_loop
 		play()
-
-
-func _on_stop_lava_body_entered(body: Node2D) -> void:
-	if body.is_in_group("player"):
-		can_play = false

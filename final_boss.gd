@@ -25,7 +25,6 @@ func _process(_delta: float) -> void:
 		get_node("/root/Node2D/CanvasLayer2").entering = true
 		entering_body = false
 		player.frozen = true
-		player.position = Vector2(14260, -5144)
 	if active:
 		if not attacking and can_spawn:
 			attacking = true
@@ -48,12 +47,14 @@ func spawn_dropper():
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	active = true
-	background.visible = true
+	if body.is_in_group("player"):
+		active = true
+		background.visible = true
 
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	active = false
+	if body.is_in_group("player"):
+		active = false
 
 
 func _on_area_2d_2_body_entered(body: Node2D) -> void:
