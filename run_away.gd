@@ -13,7 +13,7 @@ func _process(_delta: float) -> void:
 		$AnimatedSprite2D.play("default")
 	if Input.is_action_just_pressed("interact"):
 		if leave:
-			pass
+			get_tree().change_scene_to_file("res://end.tscn")
 
 
 func _on_body_entered(body: Node2D) -> void:

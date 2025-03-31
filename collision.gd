@@ -14,7 +14,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	immune = get_parent().immune
 	if in_radius and exploding and not immune:
-			player.take_damage(25)
+			player.take_damage(3)
 			in_radius = false
 
 
