@@ -1,4 +1,4 @@
-[gd_scene load_steps=384 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=386 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Script" path="res://movement.gd" id="2_50bmu"]
 [ext_resource type="Texture2D" uid="uid://ckk17daearvo7" path="res://tiles/platform_foundry.png" id="2_lwwrl"]
@@ -55,7 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://b4r4mu3akdica" path="res://tiles/final_platform.png" id="31_7ey0w"]
 [ext_resource type="PackedScene" uid="uid://bvwuk7m23cj2r" path="res://lava_pipe.tscn" id="31_7k1t8"]
 [ext_resource type="Texture2D" uid="uid://siompig61qhu" path="res://player_jump (1).png" id="31_32rmk"]
-[ext_resource type="PackedScene" path="res://climb_background.tscn" id="31_ap6u8"]
+[ext_resource type="PackedScene" uid="uid://fhf0q5jlw5l7" path="res://climb_background.tscn" id="31_ap6u8"]
 [ext_resource type="Script" path="res://cpu_particles_2d.gd" id="31_tx0g4"]
 [ext_resource type="Script" path="res://camera_follow.gd" id="32_dmc0x"]
 [ext_resource type="Texture2D" uid="uid://bjtamw2jenxel" path="res://skylayer1.png" id="32_kc4s7"]
@@ -77,7 +77,7 @@
 [ext_resource type="AudioStream" uid="uid://l8qgupckiaw1" path="res://sfx.mp3" id="43_4ofrc"]
 [ext_resource type="Texture2D" uid="uid://b174pfsjn7r1w" path="res://monolith/monolith_dash.png" id="43_y7fua"]
 [ext_resource type="Script" path="res://collision.gd" id="44_codg7"]
-[ext_resource type="PackedScene" path="res://climb_background_escape.tscn" id="44_h6245"]
+[ext_resource type="PackedScene" uid="uid://c75lq35jvpne3" path="res://climb_background_escape.tscn" id="44_h6245"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
 [ext_resource type="Texture2D" uid="uid://b72aluni64d0k" path="res://gun.png" id="45_a0t25"]
 [ext_resource type="Texture2D" uid="uid://eus2wqmako2i" path="res://Moon.png" id="45_yayod"]
@@ -132,6 +132,7 @@
 [ext_resource type="Texture2D" uid="uid://ddcurkvokn4w2" path="res://tiles/shrine_move.png" id="101_sf27p"]
 [ext_resource type="Texture2D" uid="uid://dr2c5x2mnrg7v" path="res://tiles/symbol_move.png" id="102_croxh"]
 [ext_resource type="Texture2D" uid="uid://d0rntwu6g5hn8" path="res://Screenshot_2025-03-22_175631-removebg-preview.png" id="104_n7j6x"]
+[ext_resource type="Texture2D" uid="uid://dwvi6cxdrujx6" path="res://tiles/fucking clump-1.png.png" id="123_46amh"]
 [ext_resource type="Texture2D" uid="uid://bc756vcy5byqv" path="res://mud_heap.png" id="129_rnxbl"]
 [ext_resource type="Texture2D" uid="uid://ciajve31fvral" path="res://twin_spires.png" id="130_wm2f6"]
 [ext_resource type="Texture2D" uid="uid://cppb8tl08tc4k" path="res://crucified_rat.png" id="131_ebauq"]
@@ -2012,6 +2013,9 @@ size = Vector2(28, 26.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eu588"]
 size = Vector2(591, 215)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cpjb5"]
+size = Vector2(27, 203.5)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxlv"]
 size = Vector2(110, 101)
 
@@ -3528,7 +3532,7 @@ texture = ExtResource("36_1d65v")
 
 [node name="helicopter_boss" type="CharacterBody2D" parent="." groups=["enemies"]]
 texture_filter = 1
-position = Vector2(4001, -2175)
+position = Vector2(3141, -2183)
 scale = Vector2(0.939803, 1.03407)
 collision_layer = 32768
 collision_mask = 512
@@ -4051,12 +4055,37 @@ scale = Vector2(0.0556701, 0.0509708)
 texture = ExtResource("81_tagsr")
 
 [node name="boss_arena" type="Area2D" parent="."]
-position = Vector2(3944, -2202)
+position = Vector2(3101, -2192)
 collision_layer = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="boss_arena"]
 position = Vector2(58.5, 5.5)
 shape = SubResource("RectangleShape2D_eu588")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="boss_arena"]
+z_index = -1
+texture_filter = 1
+position = Vector2(567, 70)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="boss_arena/StaticBody2D"]
+z_index = 1
+position = Vector2(0.5, -71.25)
+shape = SubResource("RectangleShape2D_cpjb5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="boss_arena/StaticBody2D"]
+z_index = 1
+position = Vector2(-82, -185)
+rotation = -1.5708
+shape = SubResource("RectangleShape2D_cpjb5")
+
+[node name="Sprite2D" type="Sprite2D" parent="boss_arena/StaticBody2D"]
+position = Vector2(33, -33)
+scale = Vector2(2.37663, 2.37663)
+texture = ExtResource("123_46amh")
+
+[node name="PointLight2D" type="PointLight2D" parent="boss_arena/StaticBody2D"]
+position = Vector2(-9, -67)
+texture = ExtResource("36_1d65v")
 
 [node name="Arena_1" type="Node2D" parent="."]
 position = Vector2(361, -417)
@@ -4401,7 +4430,7 @@ texture = ExtResource("95_roop2")
 [node name="HighJumpPowerup" type="Area2D" parent="."]
 z_index = -1
 texture_filter = 1
-position = Vector2(3746, -2134)
+position = Vector2(4111, -2129)
 script = ExtResource("98_k1glc")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HighJumpPowerup"]

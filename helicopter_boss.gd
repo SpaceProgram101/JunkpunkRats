@@ -213,5 +213,5 @@ func die():
 	dead = true
 	get_node("/root/Node2D/boss_arena/StaticBody2D/CollisionShape2D").disabled = true
 	get_node("/root/Node2D/boss_arena/StaticBody2D/Sprite2D").visible = false
-	queue_free()
+	queue_free() 
 	
