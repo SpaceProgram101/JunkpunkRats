@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlekisrsbtapu"]
+[gd_scene load_steps=3 format=3 uid="uid://dbrh818mlyxl5"]
 
 [ext_resource type="VideoStream" path="res://tiles/final_boss_exit.ogv" id="1_kw22f"]
 [ext_resource type="Texture2D" uid="uid://dkin2kksaew20" path="res://tiles/Untitled presentation (16).png" id="1_l10d2"]

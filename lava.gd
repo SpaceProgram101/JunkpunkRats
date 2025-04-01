@@ -8,8 +8,11 @@ var cinema = true
 var damage = 15
 var stop_big_lava = false
 var stop_pos = Vector2(0,0)
+
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	add_to_group("lava") 
 	can_rise = false
 	$AnimatedSprite2D.visible = true
 	$AnimatedSprite2D2.visible = true
@@ -32,11 +35,14 @@ func _process(_delta: float) -> void:
 			cinema = false
 		if not cinema:
 			position.y -= 0.3
+			
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		touching_player = true
+		body.die()
+		print("ballsack")
 
 
 func _on_body_exited(body: Node2D) -> void:

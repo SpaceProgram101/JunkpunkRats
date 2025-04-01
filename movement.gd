@@ -123,6 +123,7 @@ func _physics_process(delta: float) -> void:
 		position = respawn_position
 		take_damage(30)
 	
+	
 	wall_direction = 0
 		
 	# Add the gravity.
@@ -262,9 +263,11 @@ func _physics_process(delta: float) -> void:
 	
 
 	
-func _on_area_entered(area):
-	if area.is_in_group("void"):
+func _on_area_entered(area): #probably not important, ignore
+	print("entered")
+	if area.is_in_group("lava"):
 		die()
+		print("AAAAAAAAAAA")
 
 func create_afterimages():
 	var dash = dash_effect.instantiate()
