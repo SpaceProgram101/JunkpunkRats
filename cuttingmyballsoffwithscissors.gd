@@ -5,6 +5,7 @@ var boss_spawned_yet = false
 var boss_dead_yet = false
 var entering = false
 var entered = false
+var once = true
 @onready var player = get_node("/root/Node2D/Player")
 @onready var theFnafMovie = $VideoStreamPlayer
 @onready var boss = get_node("/root/Node2D/helicopter_boss")
@@ -30,11 +31,13 @@ func _input(event):
 		player.frozen = false
 		if theFnafMovie.stream == voicelines[2] and not boss_spawned_yet:
 			start_boss_battle()
+			
 		if theFnafMovie.stream == voicelines[3] and not entered:
 			player.position = Vector2(14260, -5144)
 			entered = true
 
 func _process(_delta):
+	
 	if boss_dead_yet:
 		death()
 		boss_dead_yet = false
@@ -49,6 +52,10 @@ func _process(_delta):
 		music.stream = music.final_boss_internal
 		music.play()
 		player.frozen = false
+	
+	if boss_spawned_yet and once:
+		player.set_spawn_point(player.position)
+		once = false
 
 func death():
 	theFnafMovie.stream = voicelines[1]

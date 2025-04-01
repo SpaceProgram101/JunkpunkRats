@@ -54,7 +54,7 @@
 [ext_resource type="Texture2D" uid="uid://b4r4mu3akdica" path="res://tiles/final_platform.png" id="31_7ey0w"]
 [ext_resource type="PackedScene" uid="uid://bvwuk7m23cj2r" path="res://lava_pipe.tscn" id="31_7k1t8"]
 [ext_resource type="Texture2D" uid="uid://siompig61qhu" path="res://player_jump (1).png" id="31_32rmk"]
-[ext_resource type="PackedScene" uid="uid://fhf0q5jlw5l7" path="res://climb_background.tscn" id="31_ap6u8"]
+[ext_resource type="PackedScene" path="res://climb_background.tscn" id="31_ap6u8"]
 [ext_resource type="Script" path="res://cpu_particles_2d.gd" id="31_tx0g4"]
 [ext_resource type="Script" path="res://camera_follow.gd" id="32_dmc0x"]
 [ext_resource type="Texture2D" uid="uid://bjtamw2jenxel" path="res://skylayer1.png" id="32_kc4s7"]
@@ -77,19 +77,19 @@
 [ext_resource type="AudioStream" uid="uid://l8qgupckiaw1" path="res://sfx.mp3" id="43_4ofrc"]
 [ext_resource type="Texture2D" uid="uid://b174pfsjn7r1w" path="res://monolith/monolith_dash.png" id="43_y7fua"]
 [ext_resource type="Script" path="res://collision.gd" id="44_codg7"]
-[ext_resource type="PackedScene" uid="uid://c75lq35jvpne3" path="res://climb_background_escape.tscn" id="44_h6245"]
+[ext_resource type="PackedScene" path="res://climb_background_escape.tscn" id="44_h6245"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
 [ext_resource type="Texture2D" uid="uid://b72aluni64d0k" path="res://gun.png" id="45_a0t25"]
 [ext_resource type="Texture2D" uid="uid://eus2wqmako2i" path="res://Moon.png" id="45_yayod"]
 [ext_resource type="Texture2D" uid="uid://cdq0mgiob8gxx" path="res://player animations/rat_2 (2).png" id="46_6hmm2"]
 [ext_resource type="Script" path="res://cannon.gd" id="46_p1my7"]
-[ext_resource type="PackedScene" uid="uid://dbuo074yyynq6" path="res://tree.tscn" id="46_ulrk7"]
+[ext_resource type="PackedScene" path="res://tree.tscn" id="46_ulrk7"]
 [ext_resource type="Texture2D" uid="uid://c5k2ee1dt5yek" path="res://tiles/climb_background-2.png.png" id="47_6anh5"]
 [ext_resource type="Script" path="res://helicopter_boss.gd" id="47_dlftf"]
-[ext_resource type="PackedScene" uid="uid://dl06ltd7gnpfm" path="res://lamp.tscn" id="47_o7qib"]
+[ext_resource type="PackedScene" path="res://lamp.tscn" id="47_o7qib"]
 [ext_resource type="Texture2D" uid="uid://c8kxy3hd6x4ee" path="res://enemy_spritesheets/boss_helicopter.png" id="47_wa7t2"]
 [ext_resource type="Texture2D" uid="uid://d3updn54v7kq5" path="res://enemy_spritesheets/boss_helicopter (1).png" id="48_5jkd5"]
-[ext_resource type="PackedScene" uid="uid://ue1e0j0wqqhq" path="res://snow_tree.tscn" id="48_iu0nm"]
+[ext_resource type="PackedScene" path="res://snow_tree.tscn" id="48_iu0nm"]
 [ext_resource type="Texture2D" uid="uid://d3gxoisxhyq76" path="res://player animations/rat_2.png" id="48_xmi2c"]
 [ext_resource type="Texture2D" uid="uid://d0hqhdjh5ge8p" path="res://enemy_spritesheets/boss_helicopter_dropper (1).png" id="49_14sgy"]
 [ext_resource type="Texture2D" uid="uid://blluat8qb6mqe" path="res://enemy_spritesheets/boss_helicopter_dropper.png" id="49_nvbej"]
@@ -3382,7 +3382,7 @@ texture = ExtResource("77_e844n")
 position = Vector2(-15.7015, -24.9339)
 
 [node name="Symbol2" type="Sprite2D" parent="Node2D/Monolith_Arrow3"]
-position = Vector2(17.1289, -24.9339)
+position = Vector2(189.37, -250.447)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/Monolith_Arrow3"]
 position = Vector2(1.42741, -5.81792)
@@ -3392,7 +3392,7 @@ shape = SubResource("RectangleShape2D_pim01")
 stream = ExtResource("82_yc8gm")
 
 [node name="PointLight2D" type="PointLight2D" parent="Node2D/Monolith_Arrow3"]
-position = Vector2(-2.37901, 2.77044)
+position = Vector2(-0.4758, 1.10817)
 color = Color(0.47451, 1, 1, 1)
 texture = ExtResource("36_1d65v")
 
@@ -3553,7 +3553,7 @@ show_behind_parent = true
 top_level = true
 z_index = 1
 texture_filter = 1
-position = Vector2(1772, -142)
+position = Vector2(2134, -549)
 rotation = -0.270675
 scale = Vector2(48.1852, 2.44232)
 amount = 32
@@ -3729,7 +3729,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(8935, -4989)
+position = Vector2(12513, -5214)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -3739,7 +3739,7 @@ projectile_scene = ExtResource("5_qtrld")
 
 [node name="Smoke_Bomb" type="AnimatedSprite2D" parent="Player"]
 z_index = 5
-position = Vector2(0, -2.46985)
+position = Vector2(0.705303, 1.23493)
 scale = Vector2(0.35658, 0.35658)
 sprite_frames = SubResource("SpriteFrames_qrjts")
 frame = 6
