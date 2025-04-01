@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dlekisrsbtapu"]
+[gd_scene load_steps=5 format=3 uid="uid://dlekisrsbtapu"]
 
 [ext_resource type="VideoStream" path="res://tiles/final_boss_exit.ogv" id="1_kw22f"]
 [ext_resource type="Texture2D" uid="uid://dkin2kksaew20" path="res://tiles/Untitled presentation (16).png" id="1_l10d2"]
+[ext_resource type="VideoStream" path="res://post-credits.ogv" id="2_j0bw6"]
+[ext_resource type="Script" path="res://video_stream_player_2.gd" id="3_1xh5k"]
 
 [node name="Node2D2" type="Node2D"]
 
@@ -15,6 +17,13 @@ scale = Vector2(0.831396, 0.831396)
 stream = ExtResource("1_kw22f")
 autoplay = true
 
+[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="CanvasLayer"]
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.831, 0.831)
+stream = ExtResource("2_j0bw6")
+script = ExtResource("3_1xh5k")
+
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(776, 466)
 scale = Vector2(1.7531, 1.7531)
@@ -23,3 +32,5 @@ texture = ExtResource("1_l10d2")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(798, 455)
 scale = Vector2(2.47795, 2.57674)
+
+[connection signal="finished" from="CanvasLayer/VideoStreamPlayer" to="CanvasLayer/VideoStreamPlayer2" method="_on_video_stream_player_finished"]
