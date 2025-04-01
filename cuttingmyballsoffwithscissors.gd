@@ -9,6 +9,8 @@ var entered = false
 @onready var theFnafMovie = $VideoStreamPlayer
 @onready var boss = get_node("/root/Node2D/helicopter_boss")
 @onready var music = get_node("/root/Node2D/AudioStreamPlayer")
+@onready var bar = get_node("/root/Node2D/CanvasLayer/ProgressBar")
+
 var voicelines : Array = [
 	preload("res://cutscene_but_real.ogv"),
 	preload("res://boss_death_cutscene.ogv"),
@@ -18,6 +20,7 @@ var voicelines : Array = [
 ]
 
 func _ready():
+	bar.visible = false
 	theFnafMovie.stream = voicelines[0]
 	player.frozen = true
 	theFnafMovie.play()
@@ -69,6 +72,7 @@ func _on_boss_arena_body_entered(body: Node2D) -> void:
 func start_boss_battle():
 	music.stream = music.first
 	music.play()
+	bar.visible = true
 	boss_spawned_yet = true
 	boss.can_attack = false
 	player.frozen = false
