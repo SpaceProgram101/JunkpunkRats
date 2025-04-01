@@ -27,6 +27,8 @@ func die():
 		dead = true
 		get_node("/root/Node2D/final_laser/Node2D").visible = false
 		get_node("/root/Node2D/final_laser/StaticBody2D/Door2-1_png").visible = false
+		get_node("/root/Node2D/Lava/AnimatedSprite2D2").visible = false
+		get_node("/root/Node2D/Lava").visible = false
 		door.set_deferred("disabled",true)
 		get_parent().dead = true
 		$AnimatedSprite2D.play("dead")
