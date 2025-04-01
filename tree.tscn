@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbuo074yyynq6"]
+
+[ext_resource type="Texture2D" uid="uid://cca86i4s8yfdw" path="res://clutter/clutter_tree.png" id="1_odsme"]
+[ext_resource type="Texture2D" uid="uid://dfhs1bloo7g4r" path="res://clutter/petal_tree-1.png.png" id="2_vsndp"]
+
+[node name="Node2D" type="Sprite2D"]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("1_odsme")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(-1, -14)
+speed_scale = 0.3
+texture = ExtResource("2_vsndp")
+emission_shape = 3
+emission_rect_extents = Vector2(50, 1)
+gravity = Vector2(-250, 150)
+initial_velocity_min = 15.0
+initial_velocity_max = 15.0
+angular_velocity_min = 300.0
+angular_velocity_max = 300.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+hue_variation_min = -1.0
+hue_variation_max = 1.0

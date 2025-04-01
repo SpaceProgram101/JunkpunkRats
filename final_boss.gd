@@ -7,7 +7,7 @@ extends Node2D
 @onready var missiles = preload("res://rat_rocket.tscn")
 @onready var dropper = preload("res://dropper.tscn")
 @onready var background = get_node("/root/Node2D/Camera2D/ParallaxBackground/hell_backgrouind")
-@onready var player_audio = get_node("/root/Node2D/Player/RatKingSOUNDTRACK")
+@onready var player_audio = get_node("/root/Node2D/AudioStreamPlayer")
 @onready var roar = $AudioStreamPlayer2D
 @onready var timer = $Timer
 var attacktype = 0
@@ -68,7 +68,8 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		fire.emitting = true
 		leaves.emitting = false
 		background.visible = true
-		player_audio.chased = true
+		player_audio.stream = player_audio.start
+		player_audio.play()
 
 
 

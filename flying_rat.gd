@@ -23,9 +23,9 @@ func _ready():
 	
 func _physics_process(delta: float) -> void:	
 	if not dead:
-		if position.distance_to(player.position) < 100:
+		if global_position.distance_to(player.global_position) < 100:
 			crash_out()
-		elif position.distance_to(player.position) > 100:
+		elif global_position.distance_to(player.global_position) > 100:
 			can_attack = true
 			$AnimatedSprite2D.play("flying")
 			position.x += SPEED * direction * delta
@@ -76,6 +76,7 @@ func crash_out():
 		await $AnimatedSprite2D.animation_finished
 		$AnimatedSprite2D.play("flying")
 		var bullet = bullet_scene.instantiate()
+		bullet.rotation = (player.global_position - global_position).normalized().angle()
 		bullet.position = position + Vector2(0, 10)
 		get_parent().add_child(bullet)
 		

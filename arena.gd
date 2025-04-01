@@ -3,7 +3,9 @@ extends Area2D
 @onready var spawn = preload("res://spawner.tscn")
 @onready var timer = get_node("Timer")
 @onready var sprite = $AnimatedSprite2D
+@onready var siren = $AnimatedSprite2D/PointLight2D
 
+var siren_active = false
 var arenatype = 0 
 
 @onready var left_wall = $left_area/left_wall
@@ -27,6 +29,10 @@ var spawn_count = 0
 @export var progress_bar : ProgressBar
 var arena_started_yet = false
 
+var dead = false
+var fade_timer = 0.0
+var fade_time = 1.0
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	progress_bar.value = 0
@@ -41,13 +47,20 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
+func _process(delta: float) -> void:
 	if increase:
 		progress_bar.value = lerp(progress_bar.value, float(target), get_process_delta_time() * 2.0)
 		if progress_bar.value >= target:
 			increase = false
+	if siren_active:
+		siren.rotation += (PI / 6) * delta 
+	if dead:
+		fade_timer += delta
+		modulate.a = 1 - fade_timer / fade_time
+		if fade_timer >= fade_time:
+			queue_free()	
 			
-			
+				
 #rand number 1-4
 #if number = X, reduce the # of that type of enemy by 1
 #then, return the random number
@@ -114,11 +127,10 @@ func begin_arena():
 		
 func arena_complete():
 	should_continue = false
+	siren_active = false
 	print ("Arena complete!")
 	$death.visible = true
 	$death.play("default")
-	$AnimatedSprite2D.play("death")
-	
 	await $death.animation_finished
 	$ProgressBar.visible = false
 	$AnimatedSprite2D.visible = false
@@ -128,7 +140,7 @@ func arena_complete():
 	left_wall.disabled = true
 	right_wall.disabled = true
 	await left_tree.animation_finished
-	queue_free()
+	dead = true
 	
 	
 	
@@ -143,6 +155,9 @@ func update_arena(progress : int):
 	
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not arena_started_yet:
+		player.respawn_position = player.position
+		$AnimatedSprite2D.play("active")
+		siren_active = true
 		$AnimatedSprite2D/PointLight2D.visible = true
 		begin_arena()
 		arena_started_yet = true

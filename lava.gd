@@ -35,13 +35,14 @@ func _process(_delta: float) -> void:
 			cinema = false
 		if not cinema:
 			position.y -= 0.3
-			
+	if player.dead:
+		position.y = -5000		
 
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		touching_player = true
-		body.die()
+		body.take_damage(15)
 		print("ballsack")
 
 

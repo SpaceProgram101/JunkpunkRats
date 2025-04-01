@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://dl06ltd7gnpfm"]
+
+[ext_resource type="Texture2D" uid="uid://bpmxgoiccrs43" path="res://clutter/clutter_lamp.png" id="1_amlat"]
+[ext_resource type="Texture2D" uid="uid://b2ovvgwy8bw63" path="res://lightmap.png" id="2_4hmy7"]
+
+[node name="Node2D" type="Sprite2D"]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("1_amlat")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(-26, -16)
+scale = Vector2(0.760514, 0.760514)
+color = Color(1, 0.447059, 0, 1)
+energy = 3.0
+texture = ExtResource("2_4hmy7")

@@ -4,7 +4,7 @@ var phase1 = false
 var phase2 = false
 var arenacomplete1 = false
 var player_in_arena = false
-@onready var player_audio = get_node("/root/Node2D/Player/RatKingSOUNDTRACK")
+@onready var player_audio = get_node("/root/Node2D/AudioStreamPlayer")
 @onready var stickrat = preload("res://rat_stick.tscn")
 @onready var flyrat = preload("res://flying_rat.tscn")
 @onready var staffrat = preload("res://rat_staff.tscn")
@@ -35,7 +35,6 @@ func _process(_delta: float) -> void:
 		phase2 = true
 		phase1 = false	
 	if get_node("/root/Node2D/Floor_lava").open:
-		player_audio.chased = false
 		get_node("/root/Node2D/Lava").can_rise = true
 		get_node("/root/Node2D/Camera2D").cutscene = true
 		player.frozen = true

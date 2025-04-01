@@ -2,6 +2,7 @@ extends Area2D
 
 
 @onready var player = get_node("/root/Node2D/Player")
+@onready var music = get_node("/root/Node2D/AudioStreamPlayer")
 @onready var main = $Node2D
 @onready var emitter = $Node2D/AnimatedSprite2D
 @onready var sparks = $CPUParticles2D
@@ -62,5 +63,6 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not dead:
 		active = true
 		can_laser = true
-		get_node("/root/Node2D/Player/RatKingSOUNDTRACK").can_play = false
+		music.stream = music.final_boss_final
+		music.play()
 	

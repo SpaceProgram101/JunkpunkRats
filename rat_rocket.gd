@@ -11,7 +11,7 @@ var damage = 15
 var explosionyet = false
 var fade_timer = 0.0
 var fade_time = 1.0
-
+@onready var timer = $Timer
 
 func _ready():
 	damage = 15
@@ -22,6 +22,7 @@ func _ready():
 	direction = direction.normalized()
 	$AudioStreamPlayer2D.play()
 	self_modulate = 1
+	timer.start()
 
 func _physics_process(delta: float) -> void:
 	if not dead:
@@ -42,3 +43,7 @@ func _physics_process(delta: float) -> void:
 			fade_timer = 1.0
 			queue_free()
 		
+
+
+func _on_timer_timeout() -> void:
+	dead = true

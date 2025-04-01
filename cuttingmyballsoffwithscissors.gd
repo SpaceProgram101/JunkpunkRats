@@ -8,6 +8,7 @@ var entered = false
 @onready var player = get_node("/root/Node2D/Player")
 @onready var theFnafMovie = $VideoStreamPlayer
 @onready var boss = get_node("/root/Node2D/helicopter_boss")
+@onready var music = get_node("/root/Node2D/AudioStreamPlayer")
 var voicelines : Array = [
 	preload("res://cutscene_but_real.ogv"),
 	preload("res://boss_death_cutscene.ogv"),
@@ -45,11 +46,14 @@ func _process(_delta):
 		await theFnafMovie.finished
 		entered = true
 		player.position = Vector2(14260, -5144)
+		music.stream = music.final_boss_internal
+		music.play()
 		player.frozen = false
 
 func death():
 	theFnafMovie.stream = voicelines[1]
 	theFnafMovie.play()
+	music.stop()
 	player.frozen = true
 	
 	
@@ -63,8 +67,8 @@ func _on_boss_arena_body_entered(body: Node2D) -> void:
 
 
 func start_boss_battle():
-	get_node("/root/Node2D/Player/RatKingSOUNDTRACK").gamestate = 1
-	get_node("/root/Node2D/Player/RatKingSOUNDTRACK").play()
+	music.stream = music.first
+	music.play()
 	boss_spawned_yet = true
 	boss.can_attack = false
 	player.frozen = false

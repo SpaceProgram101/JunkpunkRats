@@ -363,7 +363,7 @@ func show_respawn_screen():
 func respawn():
 	if has_respawn_point:
 		position = respawn_position
-		skibidi = 125  # Reset health
+		skibidi = 100  # Reset health
 		if is_instance_valid(healthbar):
 			healthbar.health = skibidi
 		$death_screen.visible = false

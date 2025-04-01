@@ -3,6 +3,7 @@ extends StaticBody2D
 @onready var door = $door
 @onready var door_col = $door_collision
 @onready var lava = get_node("/root/Node2D/Lava")
+@onready var player_audio = get_node("/root/Node2D/AudioStreamPlayer")
 var open = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -25,3 +26,5 @@ func _process(delta: float) -> void:
 
 func open_door():
 	open = true
+	player_audio.stream = player_audio.climb_start
+	player_audio.play()

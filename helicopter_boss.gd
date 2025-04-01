@@ -211,8 +211,6 @@ func die():
 	active = false
 	can_attack = false
 	dead = true
-	music.gamestate = 0
-	music.can_play = true
 	get_node("/root/Node2D/boss_arena/StaticBody2D/CollisionShape2D").set_deferred("disabled",true)
 	get_node("/root/Node2D/boss_arena/StaticBody2D/Sprite2D").visible = false
 	queue_free() 

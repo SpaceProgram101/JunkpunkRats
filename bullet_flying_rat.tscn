@@ -105,3 +105,8 @@ shape = SubResource("RectangleShape2D_ejb3x")
 scale = Vector2(0.403254, 0.370645)
 energy = 1.7
 texture = ExtResource("4_2vapg")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

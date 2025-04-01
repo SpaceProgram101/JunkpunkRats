@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://ue1e0j0wqqhq"]
+
+[ext_resource type="Texture2D" uid="uid://cukdgtmuufu2e" path="res://clutter/clutter-2.png.png" id="1_wn112"]
+[ext_resource type="Texture2D" uid="uid://qiud350dr746" path="res://enemy_spritesheets/snow_particle-1.png.png" id="2_kwfwn"]
+
+[node name="Node2D" type="Sprite2D"]
+z_index = -1
+texture_filter = 1
+texture = ExtResource("1_wn112")
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(3, -21)
+texture = ExtResource("2_kwfwn")
+emission_shape = 3
+emission_rect_extents = Vector2(50, 1)
+gravity = Vector2(-250, 250)
+initial_velocity_max = 50.0
+angular_velocity_min = 50.0
+angular_velocity_max = 250.0
+scale_amount_min = 0.1
+scale_amount_max = 0.2
