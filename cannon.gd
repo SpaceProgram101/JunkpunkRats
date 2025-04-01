@@ -64,20 +64,20 @@ func _process(_delta: float) -> void:
 	if not Input.is_action_pressed("attack"):
 		shooting = false
 			
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		direction = 1
 		left = true
-	if Input.is_action_pressed("ui_right"):
+	if Input.is_action_pressed("right"):
 		direction = -1
 		right = true
-	if Input.is_action_just_pressed("ui_up"):
+	if Input.is_action_just_pressed("up"):
 		up = true
 		aiming = true
-	if Input.is_action_just_released("ui_left"):
+	if Input.is_action_just_released("left"):
 		left = false
-	if Input.is_action_just_released("ui_right"):
+	if Input.is_action_just_released("right"):
 		right = false
-	if Input.is_action_just_released("ui_up"):
+	if Input.is_action_just_released("up"):
 		up = false
 		aiming = false
 	if not player.idle:

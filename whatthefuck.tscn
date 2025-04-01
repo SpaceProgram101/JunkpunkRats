@@ -55,7 +55,7 @@
 [ext_resource type="Texture2D" uid="uid://b4r4mu3akdica" path="res://tiles/final_platform.png" id="31_7ey0w"]
 [ext_resource type="PackedScene" uid="uid://bvwuk7m23cj2r" path="res://lava_pipe.tscn" id="31_7k1t8"]
 [ext_resource type="Texture2D" uid="uid://siompig61qhu" path="res://player_jump (1).png" id="31_32rmk"]
-[ext_resource type="PackedScene" path="res://climb_background.tscn" id="31_ap6u8"]
+[ext_resource type="PackedScene" uid="uid://fhf0q5jlw5l7" path="res://climb_background.tscn" id="31_ap6u8"]
 [ext_resource type="Script" path="res://cpu_particles_2d.gd" id="31_tx0g4"]
 [ext_resource type="Script" path="res://camera_follow.gd" id="32_dmc0x"]
 [ext_resource type="Texture2D" uid="uid://bjtamw2jenxel" path="res://skylayer1.png" id="32_kc4s7"]
@@ -78,7 +78,7 @@
 [ext_resource type="AudioStream" uid="uid://l8qgupckiaw1" path="res://sfx.mp3" id="43_4ofrc"]
 [ext_resource type="Texture2D" uid="uid://b174pfsjn7r1w" path="res://monolith/monolith_dash.png" id="43_y7fua"]
 [ext_resource type="Script" path="res://collision.gd" id="44_codg7"]
-[ext_resource type="PackedScene" path="res://climb_background_escape.tscn" id="44_h6245"]
+[ext_resource type="PackedScene" uid="uid://c75lq35jvpne3" path="res://climb_background_escape.tscn" id="44_h6245"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
 [ext_resource type="Texture2D" uid="uid://b72aluni64d0k" path="res://gun.png" id="45_a0t25"]
 [ext_resource type="Texture2D" uid="uid://eus2wqmako2i" path="res://Moon.png" id="45_yayod"]
@@ -3694,7 +3694,7 @@ texture = ExtResource("95_roop2")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(14352, -6150)
+position = Vector2(-1789, 54)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19

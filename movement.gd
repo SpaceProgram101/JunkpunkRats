@@ -168,17 +168,17 @@ func _physics_process(delta: float) -> void:
 		dying = false
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	if Input.is_action_pressed("ui_left"):
+	if Input.is_action_pressed("left"):
 		overalldirection = 1
 		
-	elif Input.is_action_pressed("ui_right"):  # Move right		
+	elif Input.is_action_pressed("right"):  # Move right		
 		overalldirection = -1
 		
 		
 	if not is_on_floor() or frozen:
 		footstep_audio.stop()
 			
-	var direction := Input.get_axis("ui_left", "ui_right")
+	var direction := Input.get_axis("left", "right")
 	if not frozen and not dead and not is_dashing:
 		if direction:
 			velocity.x = direction * SPEED
