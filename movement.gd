@@ -383,3 +383,6 @@ func highSpeed():
 func _on_timer_timeout():
 	SPEED = 200.0 
 	JUMP_VELOCITY = -305.0 
+
+func isDead():
+	return dead
