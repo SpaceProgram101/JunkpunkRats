@@ -60,11 +60,13 @@ func _physics_process(delta: float) -> void:
 		
 func take_damage(damage : int):
 	if not dead:
+		print("Took damage.")
 		health -= damage
 		if health <= 0:
 			die()
 		
 func die():
+	print("DIED")
 	var arenas = get_tree().get_nodes_in_group("arenas")
 	if not dead:
 		dead = true
@@ -77,19 +79,10 @@ func die():
 
 
 func crash_out():
-	if player.position.x > position.x:
-		direction = 1
-	else:
-		direction = -1
-	if direction == -1:
-		$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
-	elif direction == 1:
-		$AnimatedSprite2D.flip_h = false
-	
 	if is_player_detected and player and can_attack and not dead:
 		can_attack = false
 		attacking = true
-		var attack_direction = (player.position - position).normalized()
+		var attack_direction = (player.global_position - global_position).normalized()
 		$AnimatedSprite2D.play("aim")
 		await $AnimatedSprite2D.animation_finished
 		detector.rotation = attack_direction.angle()
@@ -127,4 +120,4 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 func _on_laser_detection_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
-		body.take_damage(3)
+		body.take_damage(15)

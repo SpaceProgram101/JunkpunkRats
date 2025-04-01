@@ -85,7 +85,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_20euh"]
-size = Vector2(22.4156, 49.0952)
+size = Vector2(25.4258, 54.523)
 
 [node name="rat_stick" type="CharacterBody2D" groups=["enemies"]]
 z_index = 2
@@ -97,13 +97,14 @@ slide_on_ceiling = false
 script = ExtResource("1_obx7d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(0, -5.89142)
-scale = Vector2(1.5266, 1.5266)
+position = Vector2(0, -1.90735e-06)
+scale = Vector2(1.42786, 1.26941)
 sprite_frames = SubResource("SpriteFrames_i6pq4")
 animation = &"attack"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.20776, -0.981689)
+position = Vector2(0, 1.96381)
+scale = Vector2(0.958175, 0.958175)
 shape = SubResource("RectangleShape2D_20euh")
 
 [node name="mewhenicanttakeitnomore" type="AudioStreamPlayer2D" parent="."]

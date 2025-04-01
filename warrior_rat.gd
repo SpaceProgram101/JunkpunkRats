@@ -86,7 +86,7 @@ func crash_out(delta: float):
 			$AnimatedSprite2D.flip_h = true # Flip sprite horizontally to face left
 		elif direction == 1:
 			$AnimatedSprite2D.flip_h = false
-		position.x += SPEED * 1.5 * direction * delta	
+		position.x += SPEED * 1.3 * direction * delta	
 		
 	
 		move_and_slide()

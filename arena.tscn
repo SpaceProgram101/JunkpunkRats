@@ -333,7 +333,7 @@ shape = SubResource("RectangleShape2D_8plcy")
 wait_time = 10.0
 
 [node name="death" type="AnimatedSprite2D" parent="."]
-position = Vector2(64.7798, 152.32)
+position = Vector2(-1.75081, 138.314)
 scale = Vector2(2.05931, 2.36023)
 sprite_frames = SubResource("SpriteFrames_x7k7f")
 frame = 31
