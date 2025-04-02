@@ -140,7 +140,14 @@ func arena_complete():
 	left_wall.disabled = true
 	right_wall.disabled = true
 	await left_tree.animation_finished
+	if arenatype <= 5:
+		get_node("/root/Node2D/cockblocker").arenas_left -= 1
+	if arenatype >= 8 and arenatype < 15:
+		get_node("/root/Node2D/cockblocker2").arenas_left -= 1
+	if arenatype > 15:
+		get_node("/root/Node2D/cockblocker3").arenas_left -= 1
 	dead = true
+	
 	
 	
 	
