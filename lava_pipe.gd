@@ -12,7 +12,8 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	can_pour = room.can_rise
+	if room != null:
+		can_pour = room.can_rise
 	if can_pour:
 		lava.emitting = true
 	else:

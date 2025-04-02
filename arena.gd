@@ -142,9 +142,9 @@ func arena_complete():
 	await left_tree.animation_finished
 	if arenatype <= 5:
 		get_node("/root/Node2D/cockblocker").arenas_left -= 1
-	if arenatype >= 8 and arenatype < 15:
+	if arenatype >= 6 and arenatype < 10:
 		get_node("/root/Node2D/cockblocker2").arenas_left -= 1
-	if arenatype > 15:
+	if arenatype >= 10:
 		get_node("/root/Node2D/cockblocker3").arenas_left -= 1
 	dead = true
 	

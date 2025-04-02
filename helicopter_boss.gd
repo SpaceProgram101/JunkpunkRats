@@ -204,6 +204,7 @@ func take_damage(damage):
 	healthbar.health = health
 	if health <= 0:
 		cutscene.boss_dead_yet = true
+		healthbar.queue_free()
 		die()
 		
 	

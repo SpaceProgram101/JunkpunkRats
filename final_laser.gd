@@ -5,6 +5,8 @@ extends Area2D
 @onready var music = get_node("/root/Node2D/AudioStreamPlayer")
 @onready var main = $Node2D
 @onready var emitter = $Node2D/AnimatedSprite2D
+@onready var door = $StaticBody2D2
+@onready var door_collider = $StaticBody2D2/CollisionShape2D
 @onready var sparks = $CPUParticles2D
 @onready var cooldown = $Timer
 var can_laser = false
@@ -19,9 +21,11 @@ func _ready():
 	sparks.emitting = false
 	initial_pos = emitter.position
 	initial_scale = emitter.scale
+	door.visible = false
+	door_collider.disabled = true
 
 func _process(delta: float):
-	if active:
+	if active and not dead:
 		if can_laser and not firing:
 			shoot_laser()
 		elif not can_laser and firing:
@@ -63,6 +67,9 @@ func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not dead:
 		active = true
 		can_laser = true
-		music.stream = music.final_boss_final
-		music.play()
+		if not active:
+			music.stream = music.final_boss_final
+			music.play()
+		door.visible = true
+		door_collider.set_deferred("disabled", false)
 	

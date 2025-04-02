@@ -2,11 +2,11 @@ extends Area2D
 
 var awake = false
 var dead = false
-var health = 5
+var health = 20
 @onready var smoke = $CPUParticles2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	health = 1
+	health = 20
 	smoke.emitting = false
 
 
@@ -24,6 +24,7 @@ func take_damage(damage : int):
 	if not dead:
 		health -= damage
 		if health <= 0:
+			health = 0
 			die()
 			
 func die():

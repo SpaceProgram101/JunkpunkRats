@@ -1,13 +1,15 @@
-[gd_scene load_steps=406 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=412 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Script" path="res://movement.gd" id="2_50bmu"]
 [ext_resource type="Texture2D" uid="uid://ckk17daearvo7" path="res://tiles/platform_foundry.png" id="2_lwwrl"]
+[ext_resource type="Texture2D" uid="uid://2ak11hd0bo2k" path="res://arena/New Piskel-1.png (10).png" id="3_0hoge"]
 [ext_resource type="PackedScene" uid="uid://bel852y212xra" path="res://fireball.tscn" id="3_ng311"]
 [ext_resource type="Texture2D" uid="uid://4hhd7lngnw2y" path="res://tiles/platforms.png" id="4_odkf6"]
 [ext_resource type="Texture2D" uid="uid://d4laftk0b5c7f" path="res://tiles/final_boss-2.png.png" id="5_ejh27"]
 [ext_resource type="PackedScene" uid="uid://cg2w86vgbvq04" path="res://projectile.tscn" id="5_qtrld"]
 [ext_resource type="Script" path="res://floor_1.gd" id="5_y5bd0"]
 [ext_resource type="Texture2D" uid="uid://cbrlkbeuepc4u" path="res://tiles/tiles_but_better.png" id="9_f5c4o"]
+[ext_resource type="Texture2D" uid="uid://y85seejxk2er" path="res://arena/arena_cockblocker_final.png" id="11_1nutf"]
 [ext_resource type="Script" path="res://final_boss.gd" id="16_68x07"]
 [ext_resource type="Texture2D" uid="uid://cwkqi4v0x45wy" path="res://tiles/LAVA!.png" id="16_087il"]
 [ext_resource type="Texture2D" uid="uid://d3b6qse0hkajq" path="res://tiles/final_arena_turrets.png" id="16_270bl"]
@@ -97,6 +99,7 @@
 [ext_resource type="AudioStream" uid="uid://383swah0x7s0" path="res://tiles/walk-on-grass-1-291984.mp3" id="55_2mlpi"]
 [ext_resource type="AudioStream" uid="uid://bp3ao8m5s1bb" path="res://tiles/grass-44887.mp3" id="55_ysse7"]
 [ext_resource type="Script" path="res://platform.gd" id="57_aui5p"]
+[ext_resource type="Script" path="res://final_bar_2.gd" id="61_5atpp"]
 [ext_resource type="Script" path="res://rat_king_soundtrack.gd" id="63_m201v"]
 [ext_resource type="Texture2D" uid="uid://bjkk5nn6161va" path="res://RatKing/rat_king_parts-8.png.png" id="64_rk7q7"]
 [ext_resource type="Texture2D" uid="uid://d312ybjxk6one" path="res://monolith/checkpoint_system-1.png.png" id="74_h1myx"]
@@ -149,9 +152,100 @@
 [ext_resource type="Texture2D" uid="uid://bnsk8aqlvhh2v" path="res://arena/arena_radar.png" id="132_lgdl8"]
 [ext_resource type="Script" path="res://cockblocker_2.gd" id="134_bwxmr"]
 [ext_resource type="Script" path="res://cockblocker_3.gd" id="135_rhvct"]
-[ext_resource type="Texture2D" uid="uid://dge3tde77kh27" path="res://tiles/door2-1.png.png" id="137_5xwb0"]
 [ext_resource type="Texture2D" uid="uid://bxgdwy5sbjkyr" path="res://purplTlee.png" id="138_xa3x5"]
 [ext_resource type="Script" path="res://area_transition_snow.gd" id="141_joask"]
+
+[sub_resource type="Theme" id="Theme_mlebm"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjove"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhmhd"]
+bg_color = Color(0.941562, 0.512392, 0.64171, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw707"]
+bg_color = Color(0.226707, 0.226708, 0.226707, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+shadow_color = Color(0, 0, 0, 0.27451)
+shadow_offset = Vector2(0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t4y3"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fcpth"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ewoku"]
+bg_color = Color(0.776717, 0.0031581, 0.230698, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l7mf8"]
+bg_color = Color(0.366595, 0.366595, 0.366594, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6ab41"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uyd64"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clnia"]
+bg_color = Color(0.454902, 0.647059, 0.580392, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkd0o"]
+bg_color = Color(0.332881, 0.332881, 0.332881, 1)
+border_width_top = 5
+border_width_right = 7
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2su5n"]
+bg_color = Color(1, 1, 1, 1)
+border_width_top = 5
+border_width_bottom = 6
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rvxa"]
+bg_color = Color(0.219501, 0.219501, 0.219501, 1)
+border_width_left = 5
+border_width_top = 5
+border_width_right = 5
+border_width_bottom = 5
+border_color = Color(0, 0, 0, 1)
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v61u"]
+bg_color = Color(0.467174, 0.76424, 0.88005, 1)
+border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_a1nb5"]
 size = Vector2(672, 363)
@@ -1031,75 +1125,6 @@ sources/11 = SubResource("TileSetScenesCollectionSource_t3rr4")
 sources/1 = SubResource("TileSetAtlasSource_b4cva")
 sources/2 = SubResource("TileSetScenesCollectionSource_vluc2")
 sources/10 = SubResource("TileSetScenesCollectionSource_q8qbu")
-
-[sub_resource type="Theme" id="Theme_mlebm"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hjove"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rhmhd"]
-bg_color = Color(0.876207, 0.459933, 0.44081, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mw707"]
-bg_color = Color(0.226707, 0.226708, 0.226707, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-expand_margin_left = 1.0
-expand_margin_top = 1.0
-expand_margin_right = 1.0
-expand_margin_bottom = 1.0
-shadow_color = Color(0, 0, 0, 0.27451)
-shadow_offset = Vector2(0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0t4y3"]
-bg_color = Color(1, 1, 1, 1)
-border_width_top = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_uyd64"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_clnia"]
-bg_color = Color(0.454902, 0.647059, 0.580392, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_nkd0o"]
-bg_color = Color(0.332881, 0.332881, 0.332881, 1)
-border_width_top = 5
-border_width_right = 7
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2su5n"]
-bg_color = Color(1, 1, 1, 1)
-border_width_top = 5
-border_width_bottom = 6
-border_color = Color(0, 0, 0, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5rvxa"]
-bg_color = Color(0.219501, 0.219501, 0.219501, 1)
-border_width_left = 5
-border_width_top = 5
-border_width_right = 5
-border_width_bottom = 5
-border_color = Color(0, 0, 0, 1)
-expand_margin_left = 5.0
-expand_margin_top = 5.0
-expand_margin_right = 5.0
-expand_margin_bottom = 5.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5v61u"]
-bg_color = Color(0.467174, 0.76424, 0.88005, 1)
-border_color = Color(0, 0, 0, 1)
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_bcdx4"]
 rayleigh_coefficient = 0.0
@@ -2152,6 +2177,110 @@ size = Vector2(1367.18, 93.2651)
 position = Vector2(1666, 296)
 metadata/_edit_horizontal_guides_ = [-1044.0]
 
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+texture_filter = 1
+offset_left = 568.0
+offset_top = 780.0
+offset_right = 1080.0
+offset_bottom = 812.0
+scale = Vector2(1.01961, 0.789326)
+theme = SubResource("Theme_mlebm")
+theme_override_styles/background = SubResource("StyleBoxEmpty_hjove")
+theme_override_styles/fill = SubResource("StyleBoxFlat_rhmhd")
+value = 60.0
+show_percentage = false
+script = ExtResource("28_qskxx")
+
+[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/ProgressBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/background = SubResource("StyleBoxFlat_mw707")
+theme_override_styles/fill = SubResource("StyleBoxFlat_0t4y3")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="CanvasLayer/ProgressBar"]
+wait_time = 0.4
+one_shot = true
+
+[node name="Final_Bar2" type="ProgressBar" parent="CanvasLayer"]
+offset_left = 442.0
+offset_top = 658.0
+offset_right = 954.0
+offset_bottom = 690.0
+scale = Vector2(1.59682, 1.59682)
+theme_override_styles/background = SubResource("StyleBoxEmpty_fcpth")
+theme_override_styles/fill = SubResource("StyleBoxFlat_ewoku")
+value = 60.0
+show_percentage = false
+script = ExtResource("61_5atpp")
+
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Final_Bar2"]
+z_index = -1
+texture_filter = 1
+position = Vector2(260.517, 76.4017)
+scale = Vector2(3.8226, 3.8226)
+texture = ExtResource("3_0hoge")
+
+[node name="damagebar" type="ProgressBar" parent="CanvasLayer/Final_Bar2"]
+z_index = -1
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_l7mf8")
+theme_override_styles/fill = SubResource("StyleBoxFlat_6ab41")
+value = 80.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="CanvasLayer/Final_Bar2"]
+
+[node name="PlayerBar" type="ProgressBar" parent="CanvasLayer"]
+z_index = 1
+texture_filter = 1
+offset_left = 58.0
+offset_top = 32.0
+offset_right = 570.0
+offset_bottom = 64.0
+scale = Vector2(1.19999, 1.47818)
+theme_override_styles/background = SubResource("StyleBoxEmpty_uyd64")
+theme_override_styles/fill = SubResource("StyleBoxFlat_clnia")
+value = 60.0
+show_percentage = false
+script = ExtResource("29_v5oaw")
+
+[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/PlayerBar"]
+z_index = -1
+texture_filter = 1
+layout_mode = 0
+offset_right = 512.0
+offset_bottom = 32.0
+theme_override_styles/background = SubResource("StyleBoxFlat_nkd0o")
+theme_override_styles/fill = SubResource("StyleBoxFlat_2su5n")
+value = 80.0
+show_percentage = false
+
+[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayerBar"]
+custom_minimum_size = Vector2(256, 16)
+layout_mode = 0
+offset_left = 5.00004
+offset_top = 39.2375
+offset_right = 405.0
+offset_bottom = 55.2375
+theme_override_styles/background = SubResource("StyleBoxFlat_5rvxa")
+theme_override_styles/fill = SubResource("StyleBoxFlat_5v61u")
+value = 100.0
+show_percentage = false
+
+[node name="Timer" type="Timer" parent="CanvasLayer/PlayerBar"]
+
 [node name="final_arena" type="Area2D" parent="."]
 position = Vector2(14262, -5056)
 collision_layer = 0
@@ -2415,11 +2544,30 @@ rotation = -3.14159
 scale = Vector2(0.717368, 1.51974)
 
 [node name="Door2-1_png" type="Sprite2D" parent="final_laser/StaticBody2D"]
-z_index = 2
+z_index = -3
 texture_filter = 1
-texture = ExtResource("137_5xwb0")
+rotation = 1.57079
+scale = Vector2(0.526746, 1.14607)
+texture = ExtResource("11_1nutf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="final_laser/StaticBody2D"]
+z_index = 3
+position = Vector2(-0.916992, 0.608276)
+shape = SubResource("RectangleShape2D_120uh")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="final_laser"]
+position = Vector2(-60.9097, -26.815)
+rotation = -3.14159
+scale = Vector2(1.07798, 2.2837)
+
+[node name="Door2-1_png" type="Sprite2D" parent="final_laser/StaticBody2D2"]
+z_index = -3
+texture_filter = 1
+rotation = 1.57079
+scale = Vector2(0.526746, 1.14607)
+texture = ExtResource("11_1nutf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="final_laser/StaticBody2D2"]
 z_index = 3
 position = Vector2(-0.916992, 0.608276)
 shape = SubResource("RectangleShape2D_120uh")
@@ -3185,79 +3333,6 @@ rotation = -1.57079
 scale = Vector2(1.15714, 1.15714)
 texture = ExtResource("52_xfj5r")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer"]
-z_index = 1
-texture_filter = 1
-offset_left = 568.0
-offset_top = 780.0
-offset_right = 1080.0
-offset_bottom = 812.0
-scale = Vector2(1.01961, 0.789326)
-theme = SubResource("Theme_mlebm")
-theme_override_styles/background = SubResource("StyleBoxEmpty_hjove")
-theme_override_styles/fill = SubResource("StyleBoxFlat_rhmhd")
-value = 60.0
-show_percentage = false
-script = ExtResource("28_qskxx")
-
-[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/ProgressBar"]
-z_index = -1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_styles/background = SubResource("StyleBoxFlat_mw707")
-theme_override_styles/fill = SubResource("StyleBoxFlat_0t4y3")
-value = 80.0
-show_percentage = false
-
-[node name="Timer" type="Timer" parent="CanvasLayer/ProgressBar"]
-wait_time = 0.4
-one_shot = true
-
-[node name="PlayerBar" type="ProgressBar" parent="CanvasLayer"]
-z_index = 1
-texture_filter = 1
-offset_left = 58.0
-offset_top = 32.0
-offset_right = 570.0
-offset_bottom = 64.0
-scale = Vector2(1.19999, 1.47818)
-theme_override_styles/background = SubResource("StyleBoxEmpty_uyd64")
-theme_override_styles/fill = SubResource("StyleBoxFlat_clnia")
-value = 60.0
-show_percentage = false
-script = ExtResource("29_v5oaw")
-
-[node name="DamageBar" type="ProgressBar" parent="CanvasLayer/PlayerBar"]
-z_index = -1
-texture_filter = 1
-layout_mode = 0
-offset_right = 512.0
-offset_bottom = 32.0
-theme_override_styles/background = SubResource("StyleBoxFlat_nkd0o")
-theme_override_styles/fill = SubResource("StyleBoxFlat_2su5n")
-value = 80.0
-show_percentage = false
-
-[node name="ProgressBar" type="ProgressBar" parent="CanvasLayer/PlayerBar"]
-custom_minimum_size = Vector2(256, 16)
-layout_mode = 0
-offset_left = 5.00004
-offset_top = 39.2375
-offset_right = 405.0
-offset_bottom = 55.2375
-theme_override_styles/background = SubResource("StyleBoxFlat_5rvxa")
-theme_override_styles/fill = SubResource("StyleBoxFlat_5v61u")
-value = 100.0
-show_percentage = false
-
-[node name="Timer" type="Timer" parent="CanvasLayer/PlayerBar"]
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_x7ngx")
 
@@ -3762,7 +3837,7 @@ texture = ExtResource("36_1d65v")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(7093, -3449)
+position = Vector2(14290, -5163)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -4233,10 +4308,11 @@ scale = Vector2(-0.180751, 0.309058)
 texture = ExtResource("132_lgdl8")
 
 [node name="cockblocker2" type="StaticBody2D" parent="."]
-position = Vector2(12715, -5054)
-rotation = -1.57079
+z_index = -1
+position = Vector2(9238, -5387)
+rotation = -3.14159
 scale = Vector2(2.01667, 2.01667)
-script = ExtResource("134_bwxmr")
+script = ExtResource("135_rhvct")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cockblocker2"]
 position = Vector2(3.5, 0)
@@ -4248,36 +4324,37 @@ texture = ExtResource("131_sb436")
 
 [node name="Label" type="Label" parent="cockblocker2"]
 texture_filter = 1
-offset_left = 11.6035
-offset_top = -63.9667
-offset_right = 51.6035
-offset_bottom = -40.9667
-rotation = 1.57079
+offset_left = 15.8677
+offset_top = 30.2479
+offset_right = 55.8677
+offset_bottom = 53.2479
+rotation = 3.14159
+scale = Vector2(0.689019, 0.689019)
 text = "0
 "
 
 [node name="Label2" type="Label" parent="cockblocker2"]
 texture_filter = 1
-offset_left = 11.4048
-offset_top = -60.0002
-offset_right = 51.4048
-offset_bottom = -37.0002
-rotation = 1.57079
-text = " / 7"
+offset_left = 11.4052
+offset_top = 29.7521
+offset_right = 51.4052
+offset_bottom = 52.7521
+rotation = 3.14159
+scale = Vector2(0.678303, 0.678303)
+text = " / 4"
 
 [node name="ArenaRadar" type="Sprite2D" parent="cockblocker2"]
 texture_filter = 1
-position = Vector2(-2.28049, -20.3307)
-rotation = 2.35619
+position = Vector2(-12.3967, 21.8183)
+rotation = 3.92699
 scale = Vector2(-0.180751, 0.309058)
 texture = ExtResource("132_lgdl8")
 
 [node name="cockblocker3" type="StaticBody2D" parent="."]
-z_index = -1
-position = Vector2(9238, -5387)
-rotation = -3.14159
+position = Vector2(12715, -5054)
+rotation = -1.57079
 scale = Vector2(2.01667, 2.01667)
-script = ExtResource("135_rhvct")
+script = ExtResource("134_bwxmr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="cockblocker3"]
 position = Vector2(3.5, 0)
@@ -4289,29 +4366,27 @@ texture = ExtResource("131_sb436")
 
 [node name="Label" type="Label" parent="cockblocker3"]
 texture_filter = 1
-offset_left = 15.8677
-offset_top = 30.2479
-offset_right = 55.8677
-offset_bottom = 53.2479
-rotation = 3.14159
-scale = Vector2(0.689019, 0.689019)
+offset_left = 11.6035
+offset_top = -63.9667
+offset_right = 51.6035
+offset_bottom = -40.9667
+rotation = 1.57079
 text = "0
 "
 
 [node name="Label2" type="Label" parent="cockblocker3"]
 texture_filter = 1
-offset_left = 11.4052
-offset_top = 29.7521
-offset_right = 51.4052
-offset_bottom = 52.7521
-rotation = 3.14159
-scale = Vector2(0.678303, 0.678303)
-text = " / 4"
+offset_left = 11.4048
+offset_top = -60.0002
+offset_right = 51.4048
+offset_bottom = -37.0002
+rotation = 1.57079
+text = " / 7"
 
 [node name="ArenaRadar" type="Sprite2D" parent="cockblocker3"]
 texture_filter = 1
-position = Vector2(-12.3967, 21.8183)
-rotation = 3.92699
+position = Vector2(-2.28049, -20.3307)
+rotation = 2.35619
 scale = Vector2(-0.180751, 0.309058)
 texture = ExtResource("132_lgdl8")
 
@@ -4320,7 +4395,6 @@ position = Vector2(361, -417)
 script = ExtResource("90_jlorv")
 warrior = 1
 helicopter = 1
-staff = 1
 arenatype = 1
 
 [node name="Arena_2" type="Node2D" parent="."]
@@ -4335,7 +4409,6 @@ arenatype = 2
 position = Vector2(2421, -1715)
 script = ExtResource("90_jlorv")
 warrior = 2
-staff = 1
 rocket = 1
 arenatype = 3
 
@@ -4349,7 +4422,6 @@ arenatype = 4
 position = Vector2(5772, -2929)
 script = ExtResource("90_jlorv")
 warrior = 2
-staff = 1
 arenatype = 5
 
 [node name="Arena_6" type="Node2D" parent="."]
@@ -4357,47 +4429,32 @@ position = Vector2(6110, -5145)
 script = ExtResource("90_jlorv")
 warrior = 5
 helicopter = 3
-arenatype = 16
-
-[node name="Arena_15" type="Node2D" parent="."]
-position = Vector2(7621, -5726)
-script = ExtResource("90_jlorv")
-rocket = 5
-arenatype = 16
-
-[node name="Arena_16" type="Node2D" parent="."]
-position = Vector2(8897, -5712)
-script = ExtResource("90_jlorv")
-helicopter = 3
-rocket = 3
-arenatype = 17
+arenatype = 6
 
 [node name="Arena_7" type="Node2D" parent="."]
 position = Vector2(7096, -5134)
 script = ExtResource("90_jlorv")
 helicopter = 4
 rocket = 4
-arenatype = 15
+arenatype = 7
 
 [node name="Arena_8" type="Node2D" parent="."]
-position = Vector2(11777, -5475)
+position = Vector2(7621, -5726)
 script = ExtResource("90_jlorv")
-warrior = 6
-helicopter = 1
+rocket = 5
 arenatype = 8
 
 [node name="Arena_9" type="Node2D" parent="."]
-position = Vector2(11175, -4942)
+position = Vector2(8897, -5712)
 script = ExtResource("90_jlorv")
-helicopter = 2
+helicopter = 3
 rocket = 3
 arenatype = 9
 
 [node name="Arena_10" type="Node2D" parent="."]
-position = Vector2(11970, -4851)
+position = Vector2(10603, -5318)
 script = ExtResource("90_jlorv")
-warrior = 1
-rocket = 1
+warrior = 3
 arenatype = 10
 
 [node name="Arena_11" type="Node2D" parent="."]
@@ -4407,24 +4464,38 @@ warrior = 7
 arenatype = 11
 
 [node name="Arena_12" type="Node2D" parent="."]
-position = Vector2(10603, -5318)
-script = ExtResource("90_jlorv")
-warrior = 3
-arenatype = 12
-
-[node name="Arena_13" type="Node2D" parent="."]
-position = Vector2(11179, -4464)
-script = ExtResource("90_jlorv")
-helicopter = 2
-staff = 1
-rocket = 2
-arenatype = 13
-
-[node name="Arena_14" type="Node2D" parent="."]
 position = Vector2(10243, -4428)
 script = ExtResource("90_jlorv")
 rocket = 6
+arenatype = 12
+
+[node name="Arena_13" type="Node2D" parent="."]
+position = Vector2(11777, -5475)
+script = ExtResource("90_jlorv")
+warrior = 6
+helicopter = 1
+arenatype = 13
+
+[node name="Arena_14" type="Node2D" parent="."]
+position = Vector2(11175, -4942)
+script = ExtResource("90_jlorv")
+helicopter = 2
+rocket = 3
 arenatype = 14
+
+[node name="Arena_15" type="Node2D" parent="."]
+position = Vector2(11179, -4464)
+script = ExtResource("90_jlorv")
+helicopter = 2
+rocket = 2
+arenatype = 15
+
+[node name="Arena_16" type="Node2D" parent="."]
+position = Vector2(11970, -4851)
+script = ExtResource("90_jlorv")
+warrior = 1
+rocket = 1
+arenatype = 16
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 volume_db = -5.0
@@ -5128,6 +5199,9 @@ position = Vector2(-5.81012, -29.143)
 scale = Vector2(1.79316, 1.68519)
 texture = ExtResource("36_1d65v")
 
+[connection signal="timeout" from="CanvasLayer/ProgressBar/Timer" to="CanvasLayer/ProgressBar" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/Final_Bar2/Timer" to="CanvasLayer/Final_Bar2" method="_on_timer_timeout"]
+[connection signal="timeout" from="CanvasLayer/PlayerBar/Timer" to="CanvasLayer/PlayerBar" method="_on_timer_timeout"]
 [connection signal="body_entered" from="final_arena" to="final_arena" method="_on_body_entered"]
 [connection signal="timeout" from="final_arena/rocket_turret/Timer" to="final_arena/rocket_turret" method="_on_timer_timeout"]
 [connection signal="timeout" from="final_arena/rocket_turret2/Timer" to="final_arena/rocket_turret2" method="_on_timer_timeout"]
@@ -5150,8 +5224,6 @@ texture = ExtResource("36_1d65v")
 [connection signal="body_exited" from="FINAL_BOSS/Area2D" to="FINAL_BOSS" method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="FINAL_BOSS/Area2D3" to="FINAL_BOSS/Area2D3" method="_on_body_entered"]
 [connection signal="body_exited" from="FINAL_BOSS/Area2D3" to="FINAL_BOSS/Area2D3" method="_on_body_exited"]
-[connection signal="timeout" from="CanvasLayer/ProgressBar/Timer" to="CanvasLayer/ProgressBar" method="_on_timer_timeout"]
-[connection signal="timeout" from="CanvasLayer/PlayerBar/Timer" to="CanvasLayer/PlayerBar" method="_on_timer_timeout"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_exited"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow2" to="Node2D/Monolith_Arrow2" method="_on_body_entered"]

@@ -8,27 +8,18 @@ var cinema = true
 var damage = 15
 var stop_big_lava = false
 var stop_pos = Vector2(0,0)
-var startPos = position.y
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_to_group("lava") 
 	can_rise = false
 	$AnimatedSprite2D.visible = true
-	$AnimatedSprite2D2.visible = true	
+	$AnimatedSprite2D2.visible = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
-	print ("y pos: ")
-	print(position.y)
-	print("start pos:")
-	print(startPos)
-	
-	if player.isDead() and position.y != startPos:
-		position.y = startPos
-		print("yay")
-	
 	if position.y < -5000:
 		if not stop_big_lava:
 			stop_big_lava = true
@@ -44,6 +35,8 @@ func _process(_delta: float) -> void:
 			cinema = false
 		if not cinema:
 			position.y -= 0.3
+	if player.dead:
+		position.y = -5000		
 
 
 func _on_body_entered(body: Node2D) -> void:

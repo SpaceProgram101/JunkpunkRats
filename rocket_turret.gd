@@ -6,7 +6,7 @@ extends Area2D
 @onready var rocket = preload("res://rat_rocket.tscn")
 @onready var finalarena = get_node("/root/Node2D/final_arena")
 @onready var smoke = $CPUParticles2D
-var health = 5
+var health = 10
 var can_attack = false
 var room_active = true
 var offset = PI / 2
@@ -14,7 +14,7 @@ var dead = false
 
 func _ready():
 	smoke.emitting = false 
-	health = 1
+	health = 10
 	dead = false
 	room_active = finalarena.phase1
 	anim.play("default")
@@ -37,7 +37,8 @@ func _process(_delta: float):
 		projectile.scale += Vector2(1,1)
 		if not $AnimatedSprite2D.flip_h:
 			projectile.rotation += PI
-		add_child(projectile)
+		if not dead:
+			add_child(projectile)
 		await anim.animation_finished
 		timer.start()
 		anim.play("default")
@@ -46,15 +47,16 @@ func take_damage(damage : int):
 	if not dead:
 		health -= damage
 		if health <= 0:
+			health = 0
 			die()
 func die():
 	dead = true
 	smoke.emitting = true
 	get_parent().rocketcount -= 1
 	if anim.flip_h:
-		rotation = (PI / 4)
+		anim.rotation = (PI / 4)
 	else: 
-		rotation = (-PI / 4)
+		anim.rotation = (-PI / 4)
 	anim.play("default")
 
 func _on_timer_timeout() -> void:
