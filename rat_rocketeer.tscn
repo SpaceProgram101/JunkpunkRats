@@ -1,6 +1,6 @@
 [gd_scene load_steps=17 format=3 uid="uid://c57vowpxumgld"]
 
-[ext_resource type="Script" path="res://rat_rocketeer.gd" id="1_le61l"]
+[ext_resource type="Script" uid="uid://dkr7n353lklu2" path="res://rat_rocketeer.gd" id="1_le61l"]
 [ext_resource type="Texture2D" uid="uid://cd1j1pscng4c8" path="res://enemy_spritesheets/rat_rocketeer (1).png" id="2_lvqn3"]
 [ext_resource type="AudioStream" uid="uid://bs5clyaxbq44e" path="res://explosion-312361.mp3" id="3_kumfw"]
 [ext_resource type="Texture2D" uid="uid://wweyiqysi1xq" path="res://tiles/firefly-1.png.png" id="4_aw04p"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://h287p6l40nl"]
 
-[ext_resource type="Script" path="res://dynamite.gd" id="1_ifaek"]
+[ext_resource type="Script" uid="uid://bxirlab5pp8yt" path="res://dynamite.gd" id="1_ifaek"]
 [ext_resource type="Texture2D" uid="uid://d1lgu6erdeavg" path="res://enemy_spritesheets/Dynamite.png" id="2_ltugn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_bkun7"]

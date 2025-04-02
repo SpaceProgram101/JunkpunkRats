@@ -1,6 +1,6 @@
 [gd_scene load_steps=16 format=3 uid="uid://oxmekw6t2ycx"]
 
-[ext_resource type="Script" path="res://bullet.gd" id="1_v51x5"]
+[ext_resource type="Script" uid="uid://cmnhhel56d52i" path="res://bullet.gd" id="1_v51x5"]
 [ext_resource type="Texture2D" uid="uid://xmbx3j67rsm4" path="res://enemy_spritesheets/bullet_flying_rat.png" id="1_vjias"]
 [ext_resource type="Texture2D" uid="uid://o6psii2jsfwd" path="res://enemy_spritesheets/bullet_explosion.png" id="2_tw7t0"]
 [ext_resource type="Texture2D" uid="uid://bamlwf7bg0xsy" path="res://tiles/light_source_2-1.png.png" id="4_2vapg"]

@@ -1,32 +1,32 @@
 [gd_scene load_steps=412 format=4 uid="uid://dwyg1wehj7f5g"]
 
-[ext_resource type="Script" path="res://movement.gd" id="2_50bmu"]
+[ext_resource type="Script" uid="uid://cm7erk8gvid75" path="res://movement.gd" id="2_50bmu"]
 [ext_resource type="Texture2D" uid="uid://ckk17daearvo7" path="res://tiles/platform_foundry.png" id="2_lwwrl"]
 [ext_resource type="Texture2D" uid="uid://2ak11hd0bo2k" path="res://arena/New Piskel-1.png (10).png" id="3_0hoge"]
 [ext_resource type="PackedScene" uid="uid://bel852y212xra" path="res://fireball.tscn" id="3_ng311"]
 [ext_resource type="Texture2D" uid="uid://4hhd7lngnw2y" path="res://tiles/platforms.png" id="4_odkf6"]
 [ext_resource type="Texture2D" uid="uid://d4laftk0b5c7f" path="res://tiles/final_boss-2.png.png" id="5_ejh27"]
 [ext_resource type="PackedScene" uid="uid://cg2w86vgbvq04" path="res://projectile.tscn" id="5_qtrld"]
-[ext_resource type="Script" path="res://floor_1.gd" id="5_y5bd0"]
+[ext_resource type="Script" uid="uid://c5oj1favlb4h0" path="res://floor_1.gd" id="5_y5bd0"]
 [ext_resource type="Texture2D" uid="uid://cbrlkbeuepc4u" path="res://tiles/tiles_but_better.png" id="9_f5c4o"]
 [ext_resource type="Texture2D" uid="uid://y85seejxk2er" path="res://arena/arena_cockblocker_final.png" id="11_1nutf"]
-[ext_resource type="Script" path="res://final_boss.gd" id="16_68x07"]
+[ext_resource type="Script" uid="uid://bnyaw8uflfdel" path="res://final_boss.gd" id="16_68x07"]
 [ext_resource type="Texture2D" uid="uid://cwkqi4v0x45wy" path="res://tiles/LAVA!.png" id="16_087il"]
 [ext_resource type="Texture2D" uid="uid://d3b6qse0hkajq" path="res://tiles/final_arena_turrets.png" id="16_270bl"]
 [ext_resource type="Texture2D" uid="uid://ca0x11lkragr7" path="res://tiles/final_tile-1.png.png" id="16_b0ng3"]
-[ext_resource type="Script" path="res://rocket_turret.gd" id="16_jxmfm"]
-[ext_resource type="Script" path="res://final_arena.gd" id="16_u2a3e"]
+[ext_resource type="Script" uid="uid://bopywhwdco8hj" path="res://rocket_turret.gd" id="16_jxmfm"]
+[ext_resource type="Script" uid="uid://cmfggal8dlfux" path="res://final_arena.gd" id="16_u2a3e"]
 [ext_resource type="Texture2D" uid="uid://cphvx81vtmmoi" path="res://tiles/crossbar-1.png.png" id="16_v6m2k"]
-[ext_resource type="Script" path="res://lava.gd" id="16_wn7qu"]
-[ext_resource type="Script" path="res://final_room.gd" id="16_y0d2g"]
+[ext_resource type="Script" uid="uid://cdx80d0vtwexj" path="res://lava.gd" id="16_wn7qu"]
+[ext_resource type="Script" uid="uid://bchfsrtukkt6v" path="res://final_room.gd" id="16_y0d2g"]
 [ext_resource type="Texture2D" uid="uid://bly4066k1v7de" path="res://tiles/final_monolith.png" id="17_6qjhr"]
 [ext_resource type="Texture2D" uid="uid://cmd5tsq7mr42k" path="res://tiles/climb_background-3.png (1).png" id="17_by4vt"]
 [ext_resource type="Texture2D" uid="uid://bww8ecfe7phl0" path="res://tiles/final_arena_turrets-1.png.png" id="17_e8ksh"]
-[ext_resource type="Script" path="res://light_follow.gd" id="17_jdte5"]
-[ext_resource type="Script" path="res://final_monolith.gd" id="17_qltf4"]
+[ext_resource type="Script" uid="uid://8b6mtfo0bbyj" path="res://light_follow.gd" id="17_jdte5"]
+[ext_resource type="Script" uid="uid://civeapoic7ni2" path="res://final_monolith.gd" id="17_qltf4"]
 [ext_resource type="Texture2D" uid="uid://c0dtelh40qyqu" path="res://tiles/final_boss_attacks.png" id="17_s4dhc"]
 [ext_resource type="Texture2D" uid="uid://wweyiqysi1xq" path="res://tiles/firefly-1.png.png" id="17_wjhvk"]
-[ext_resource type="Script" path="res://laser_detector.gd" id="18_cqy4t"]
+[ext_resource type="Script" uid="uid://blld3lgws5seg" path="res://laser_detector.gd" id="18_cqy4t"]
 [ext_resource type="Texture2D" uid="uid://dohq2pg2e72h7" path="res://tiles/door.png" id="18_gfxaq"]
 [ext_resource type="Texture2D" uid="uid://cb2ir6pcsox1f" path="res://enemy_spritesheets/final_boss_attacks (1).png" id="18_r3wka"]
 [ext_resource type="Texture2D" uid="uid://dloujane5ju5e" path="res://enemy_spritesheets/smoke-1.png.png" id="20_h4pd3"]
@@ -36,19 +36,19 @@
 [ext_resource type="Texture2D" uid="uid://c05eqbknhvbka" path="res://tiles/snow_i_think.png" id="22_pjau3"]
 [ext_resource type="Texture2D" uid="uid://clbqyibo33wj6" path="res://tiles/final_back_spine.png" id="23_ujtbq"]
 [ext_resource type="Texture2D" uid="uid://by8akpnjs8hbi" path="res://tiles/final_back_head.png" id="24_nv2b8"]
-[ext_resource type="Script" path="res://final_laser.gd" id="25_6mkml"]
+[ext_resource type="Script" uid="uid://d0poq83gvdhxm" path="res://final_laser.gd" id="25_6mkml"]
 [ext_resource type="Texture2D" uid="uid://bt3ceo31txod0" path="res://tiles/laser_thing (1).png" id="25_e770l"]
 [ext_resource type="Texture2D" uid="uid://i0p55ljehqku" path="res://tiles/final_laser_cross (1).png" id="25_rfd5q"]
-[ext_resource type="Script" path="res://final_boss_collider.gd" id="26_16iwo"]
+[ext_resource type="Script" uid="uid://dcqn4acfkruqe" path="res://final_boss_collider.gd" id="26_16iwo"]
 [ext_resource type="Texture2D" uid="uid://ddguersj37aau" path="res://tiles/laser_thing.png" id="26_86agr"]
-[ext_resource type="Script" path="res://laser_wall.gd" id="26_ifb45"]
+[ext_resource type="Script" uid="uid://bdf87qkh65l31" path="res://laser_wall.gd" id="26_ifb45"]
 [ext_resource type="Texture2D" uid="uid://dqcpe32deki1m" path="res://tiles/final_boss_reactor.png" id="26_wb1rm"]
-[ext_resource type="Script" path="res://final_laser_sprite.gd" id="27_uuics"]
+[ext_resource type="Script" uid="uid://djwxshywj0dic" path="res://final_laser_sprite.gd" id="27_uuics"]
 [ext_resource type="Texture2D" uid="uid://i3o2eplksauw" path="res://tiles/explosion (1).png" id="28_cm6u3"]
-[ext_resource type="Script" path="res://progress_bar.gd" id="28_qskxx"]
+[ext_resource type="Script" uid="uid://dcjebsioj4g1x" path="res://progress_bar.gd" id="28_qskxx"]
 [ext_resource type="Texture2D" uid="uid://bapwk4b5xmhh4" path="res://tiles/final_tiles.png" id="29_2che1"]
 [ext_resource type="Texture2D" uid="uid://ikrn6jtmvhm1" path="res://tiles/night_sky.png" id="29_ldha7"]
-[ext_resource type="Script" path="res://player_bar.gd" id="29_v5oaw"]
+[ext_resource type="Script" uid="uid://x4o4kae0nj6o" path="res://player_bar.gd" id="29_v5oaw"]
 [ext_resource type="Texture2D" uid="uid://cnqypig5utviu" path="res://tiles/firefly-1.png (1).png" id="30_ioy53"]
 [ext_resource type="Texture2D" uid="uid://c214sc5ygy3ey" path="res://player_bust_spell (1).png" id="30_l1cg2"]
 [ext_resource type="Texture2D" uid="uid://071v45388jal" path="res://tiles/final_tile_2-1.png.png" id="30_r4f6f"]
@@ -56,8 +56,8 @@
 [ext_resource type="PackedScene" uid="uid://bvwuk7m23cj2r" path="res://lava_pipe.tscn" id="31_7k1t8"]
 [ext_resource type="Texture2D" uid="uid://siompig61qhu" path="res://player_jump (1).png" id="31_32rmk"]
 [ext_resource type="PackedScene" uid="uid://fhf0q5jlw5l7" path="res://climb_background.tscn" id="31_ap6u8"]
-[ext_resource type="Script" path="res://cpu_particles_2d.gd" id="31_tx0g4"]
-[ext_resource type="Script" path="res://camera_follow.gd" id="32_dmc0x"]
+[ext_resource type="Script" uid="uid://btkgbva4koj2d" path="res://cpu_particles_2d.gd" id="31_tx0g4"]
+[ext_resource type="Script" uid="uid://cql412eeybx25" path="res://camera_follow.gd" id="32_dmc0x"]
 [ext_resource type="Texture2D" uid="uid://bjtamw2jenxel" path="res://skylayer1.png" id="32_kc4s7"]
 [ext_resource type="Texture2D" uid="uid://hir2i5lgysm0" path="res://tiles/blood sky-1.png (1).png" id="34_g780c"]
 [ext_resource type="Texture2D" uid="uid://dvyekssc020gt" path="res://tiles/climb_background-5.png.png" id="34_wqf1y"]
@@ -66,27 +66,27 @@
 [ext_resource type="Texture2D" uid="uid://b2ovvgwy8bw63" path="res://lightmap.png" id="36_1d65v"]
 [ext_resource type="Texture2D" uid="uid://cwr8ww4bg2rgm" path="res://player animations/you_died!.png" id="37_mjvve"]
 [ext_resource type="Texture2D" uid="uid://bls65cleqskka" path="res://tiles/final_pipe.png" id="37_w0dfv"]
-[ext_resource type="Shader" path="res://fade.gdshader" id="38_6v1qq"]
+[ext_resource type="Shader" uid="uid://bbw4be67kde8c" path="res://fade.gdshader" id="38_6v1qq"]
 [ext_resource type="Texture2D" uid="uid://daepfu7jiok2d" path="res://player_dash-1.png.png" id="38_j1gh1"]
 [ext_resource type="Texture2D" uid="uid://bf0adetma3tof" path="res://tiles/foundry_background-1.png.png" id="38_sqvic"]
 [ext_resource type="Texture2D" uid="uid://b1njyvjr7012k" path="res://tiles/foundry_background-2.png.png" id="39_l514x"]
 [ext_resource type="Texture2D" uid="uid://btiojqipxialt" path="res://tiles/escape_pod.png" id="40_5y35h"]
 [ext_resource type="Texture2D" uid="uid://bwhgxc7xfcj1j" path="res://player animations/player_dead_idle.png" id="40_cswio"]
-[ext_resource type="Script" path="res://run_away.gd" id="40_pq4v1"]
+[ext_resource type="Script" uid="uid://cfev1x4ta2r3k" path="res://run_away.gd" id="40_pq4v1"]
 [ext_resource type="Texture2D" uid="uid://cghg0vgenxalt" path="res://player animations/player_dead_rise.png" id="42_2rdbn"]
 [ext_resource type="Texture2D" uid="uid://2g15dsca2hb7" path="res://monolith/monolith_shift.png" id="42_ke3a6"]
 [ext_resource type="AudioStream" uid="uid://l8qgupckiaw1" path="res://sfx.mp3" id="43_4ofrc"]
 [ext_resource type="Texture2D" uid="uid://b174pfsjn7r1w" path="res://monolith/monolith_dash.png" id="43_y7fua"]
-[ext_resource type="Script" path="res://collision.gd" id="44_codg7"]
+[ext_resource type="Script" uid="uid://bhwlo4ps32dyq" path="res://collision.gd" id="44_codg7"]
 [ext_resource type="PackedScene" uid="uid://c75lq35jvpne3" path="res://climb_background_escape.tscn" id="44_h6245"]
 [ext_resource type="AudioStream" uid="uid://b73q5nlc3wujn" path="res://walljump.mp3" id="44_pw63y"]
 [ext_resource type="Texture2D" uid="uid://b72aluni64d0k" path="res://gun.png" id="45_a0t25"]
 [ext_resource type="Texture2D" uid="uid://eus2wqmako2i" path="res://Moon.png" id="45_yayod"]
 [ext_resource type="Texture2D" uid="uid://cdq0mgiob8gxx" path="res://player animations/rat_2 (2).png" id="46_6hmm2"]
-[ext_resource type="Script" path="res://cannon.gd" id="46_p1my7"]
+[ext_resource type="Script" uid="uid://bvn13okpcajhy" path="res://cannon.gd" id="46_p1my7"]
 [ext_resource type="PackedScene" uid="uid://dbuo074yyynq6" path="res://tree.tscn" id="46_ulrk7"]
 [ext_resource type="Texture2D" uid="uid://c5k2ee1dt5yek" path="res://tiles/climb_background-2.png.png" id="47_6anh5"]
-[ext_resource type="Script" path="res://helicopter_boss.gd" id="47_dlftf"]
+[ext_resource type="Script" uid="uid://8rr0sapq6nqx" path="res://helicopter_boss.gd" id="47_dlftf"]
 [ext_resource type="PackedScene" uid="uid://dl06ltd7gnpfm" path="res://lamp.tscn" id="47_o7qib"]
 [ext_resource type="Texture2D" uid="uid://c8kxy3hd6x4ee" path="res://enemy_spritesheets/boss_helicopter.png" id="47_wa7t2"]
 [ext_resource type="Texture2D" uid="uid://d3updn54v7kq5" path="res://enemy_spritesheets/boss_helicopter (1).png" id="48_5jkd5"]
@@ -98,9 +98,9 @@
 [ext_resource type="Texture2D" uid="uid://cb2v28m4y2lt2" path="res://tiles/climb_background-1.png.png" id="52_xfj5r"]
 [ext_resource type="AudioStream" uid="uid://383swah0x7s0" path="res://tiles/walk-on-grass-1-291984.mp3" id="55_2mlpi"]
 [ext_resource type="AudioStream" uid="uid://bp3ao8m5s1bb" path="res://tiles/grass-44887.mp3" id="55_ysse7"]
-[ext_resource type="Script" path="res://platform.gd" id="57_aui5p"]
-[ext_resource type="Script" path="res://final_bar_2.gd" id="61_5atpp"]
-[ext_resource type="Script" path="res://rat_king_soundtrack.gd" id="63_m201v"]
+[ext_resource type="Script" uid="uid://cof72gdoy7nci" path="res://platform.gd" id="57_aui5p"]
+[ext_resource type="Script" uid="uid://doxp6nuthaqc6" path="res://final_bar_2.gd" id="61_5atpp"]
+[ext_resource type="Script" uid="uid://d25n2mrqrcwwo" path="res://rat_king_soundtrack.gd" id="63_m201v"]
 [ext_resource type="Texture2D" uid="uid://bjkk5nn6161va" path="res://RatKing/rat_king_parts-8.png.png" id="64_rk7q7"]
 [ext_resource type="Texture2D" uid="uid://d312ybjxk6one" path="res://monolith/checkpoint_system-1.png.png" id="74_h1myx"]
 [ext_resource type="Texture2D" uid="uid://b6iin52sqm8xe" path="res://enemy_spritesheets/star_falling-1.png (1).png" id="75_0owx0"]
@@ -108,52 +108,52 @@
 [ext_resource type="Texture2D" uid="uid://cncgba38t76rk" path="res://tiles/cutscenebars.png" id="75_wds0q"]
 [ext_resource type="Texture2D" uid="uid://chsandsx5w1d2" path="res://monolith/checkpoint_system-2.png.png" id="75_xwmy5"]
 [ext_resource type="Texture2D" uid="uid://qiud350dr746" path="res://enemy_spritesheets/snow_particle-1.png.png" id="75_yxwco"]
-[ext_resource type="Script" path="res://bounce_bounce.gd" id="76_p7i4f"]
+[ext_resource type="Script" uid="uid://c2308lwe838m" path="res://bounce_bounce.gd" id="76_p7i4f"]
 [ext_resource type="Texture2D" uid="uid://dvr8iagi2vlu5" path="res://monolith/New Piskel-1.png (9).png" id="76_wk3m8"]
 [ext_resource type="Texture2D" uid="uid://ggdfsi1k48v8" path="res://monolith/monolith_deactive.png" id="77_e844n"]
 [ext_resource type="Texture2D" uid="uid://b5exj2xww5jc8" path="res://monolith/monolith_arrow.png" id="78_0bw18"]
-[ext_resource type="Script" path="res://monolith.gd" id="78_sljor"]
+[ext_resource type="Script" uid="uid://chjctbrhstewf" path="res://monolith.gd" id="78_sljor"]
 [ext_resource type="Texture2D" uid="uid://5bfc1iwomg1g" path="res://ActualPurpleBouncebounce.png" id="79_0k1an"]
 [ext_resource type="Texture2D" uid="uid://dg3jhk87xwm8p" path="res://rat_king_ost/bouncy_pad_animations.png" id="79_fppp4"]
 [ext_resource type="AudioStream" uid="uid://cf4j4hh7p18ei" path="res://tiles/background_music please.mp3" id="79_ombns"]
 [ext_resource type="Texture2D" uid="uid://br6wkon6a3yrk" path="res://monolith/monolith_run.png" id="79_wwett"]
 [ext_resource type="AudioStream" uid="uid://7qix0kxu1yyf" path="res://tiles/night-ambience-17064.mp3" id="79_ydmd7"]
-[ext_resource type="Script" path="res://background_music.gd" id="80_61x7h"]
+[ext_resource type="Script" uid="uid://di4r4tus44prn" path="res://background_music.gd" id="80_61x7h"]
 [ext_resource type="AudioStream" uid="uid://4y05ahtko0p1" path="res://new Boing boing.mp3" id="80_htl56"]
 [ext_resource type="Texture2D" uid="uid://fu8tbrydahet" path="res://monolith/monolith_active.png" id="80_mcgou"]
-[ext_resource type="Script" path="res://spikey.gd" id="80_p5oj2"]
+[ext_resource type="Script" uid="uid://bwo0gbob1pqp3" path="res://spikey.gd" id="80_p5oj2"]
 [ext_resource type="Texture2D" uid="uid://dyb55twfuxyrg" path="res://Spikey.png" id="81_tagsr"]
 [ext_resource type="Texture2D" uid="uid://cbb2iklunokk2" path="res://monolith/monolith_space.png" id="82_8afcb"]
 [ext_resource type="AudioStream" uid="uid://bck4iiqiwu3h3" path="res://monolith/monolith_active.mp3" id="82_yc8gm"]
 [ext_resource type="Texture2D" uid="uid://c62obis104rh3" path="res://monolith/monolith_jump.png" id="83_sp8oa"]
 [ext_resource type="Texture2D" uid="uid://3k3cg0jppwo8" path="res://monolith/monolith_c.png" id="84_o8xq1"]
-[ext_resource type="Script" path="res://cuttingmyballsoffwithscissors.gd" id="84_v5lqf"]
+[ext_resource type="Script" uid="uid://crlxrrj3aaww2" path="res://cuttingmyballsoffwithscissors.gd" id="84_v5lqf"]
 [ext_resource type="AudioStream" uid="uid://bi371h3h8hx3i" path="res://meaty-gunshot-101257.mp3" id="85_6w21d"]
 [ext_resource type="Texture2D" uid="uid://cvbk4aofqefdi" path="res://monolith/monolith_shoot.png" id="85_fw4ng"]
-[ext_resource type="VideoStream" path="res://cutscene_but_real.ogv" id="86_23el0"]
+[ext_resource type="VideoStream" uid="uid://dxxhog564oysm" path="res://cutscene_but_real.ogv" id="86_23el0"]
 [ext_resource type="AudioStream" uid="uid://dqxgavxbad7f4" path="res://mouse-squeak-261126.mp3" id="86_ae2ne"]
-[ext_resource type="Script" path="res://cheese_shrine.gd" id="90_cr4y3"]
-[ext_resource type="Script" path="res://arena_1.gd" id="90_jlorv"]
+[ext_resource type="Script" uid="uid://b4uaofeg4vbj1" path="res://cheese_shrine.gd" id="90_cr4y3"]
+[ext_resource type="Script" uid="uid://ckprjidsem3pk" path="res://arena_1.gd" id="90_jlorv"]
 [ext_resource type="Texture2D" uid="uid://dscwkh15jbcwb" path="res://tiles/cheese_shrine.png" id="93_nnc2o"]
 [ext_resource type="Texture2D" uid="uid://dp6n5f5mx4nq2" path="res://light_source.png" id="95_roop2"]
 [ext_resource type="Texture2D" uid="uid://fw7mglit7l7q" path="res://tiles/shrine_jump.png" id="98_blqiu"]
-[ext_resource type="Script" path="res://high_jump_powerup.gd" id="98_k1glc"]
-[ext_resource type="Script" path="res://high_speed_powerup.gd" id="99_cqmmu"]
+[ext_resource type="Script" uid="uid://dxy12qmlhon7d" path="res://high_jump_powerup.gd" id="98_k1glc"]
+[ext_resource type="Script" uid="uid://mk7ieqaljoge" path="res://high_speed_powerup.gd" id="99_cqmmu"]
 [ext_resource type="Texture2D" uid="uid://bqn3sbtsmesij" path="res://tiles/symbol_jump.png" id="99_i0nxv"]
 [ext_resource type="Texture2D" uid="uid://ddcurkvokn4w2" path="res://tiles/shrine_move.png" id="101_sf27p"]
 [ext_resource type="Texture2D" uid="uid://dr2c5x2mnrg7v" path="res://tiles/symbol_move.png" id="102_croxh"]
 [ext_resource type="Texture2D" uid="uid://d0rntwu6g5hn8" path="res://Screenshot_2025-03-22_175631-removebg-preview.png" id="104_n7j6x"]
 [ext_resource type="Texture2D" uid="uid://dwvi6cxdrujx6" path="res://tiles/fucking clump-1.png.png" id="123_46amh"]
-[ext_resource type="Script" path="res://audio_stream_player.gd" id="130_eki25"]
-[ext_resource type="Script" path="res://cockblocker.gd" id="131_8yw87"]
+[ext_resource type="Script" uid="uid://bv6vkbnhb1j8v" path="res://audio_stream_player.gd" id="130_eki25"]
+[ext_resource type="Script" uid="uid://dt1k7ddvgfekd" path="res://cockblocker.gd" id="131_8yw87"]
 [ext_resource type="Texture2D" uid="uid://cppb8tl08tc4k" path="res://crucified_rat.png" id="131_ebauq"]
 [ext_resource type="Texture2D" uid="uid://c0jcainq3pusw" path="res://tiles/arena_cockblocker-1.png.png" id="131_sb436"]
 [ext_resource type="Texture2D" uid="uid://c3np1nc8yx5i1" path="res://the world is red.png" id="132_7tq85"]
 [ext_resource type="Texture2D" uid="uid://bnsk8aqlvhh2v" path="res://arena/arena_radar.png" id="132_lgdl8"]
-[ext_resource type="Script" path="res://cockblocker_2.gd" id="134_bwxmr"]
-[ext_resource type="Script" path="res://cockblocker_3.gd" id="135_rhvct"]
+[ext_resource type="Script" uid="uid://behx7o1j4mfcj" path="res://cockblocker_2.gd" id="134_bwxmr"]
+[ext_resource type="Script" uid="uid://bgrtqr82ar4q" path="res://cockblocker_3.gd" id="135_rhvct"]
 [ext_resource type="Texture2D" uid="uid://bxgdwy5sbjkyr" path="res://purplTlee.png" id="138_xa3x5"]
-[ext_resource type="Script" path="res://area_transition_snow.gd" id="141_joask"]
+[ext_resource type="Script" uid="uid://bem5n2afsg450" path="res://area_transition_snow.gd" id="141_joask"]
 
 [sub_resource type="Theme" id="Theme_mlebm"]
 
@@ -2326,8 +2326,8 @@ shape = SubResource("RectangleShape2D_avd7o")
 
 [node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/final_monolith"]
 position = Vector2(0.502044, 5.01907)
-lifetime = 0.3
 texture = ExtResource("20_h4pd3")
+lifetime = 0.3
 direction = Vector2(1, 1)
 gravity = Vector2(0, -980)
 angular_velocity_min = 137.14
@@ -2372,8 +2372,8 @@ shape = SubResource("RectangleShape2D_7mrmi")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/rocket_turret"]
 position = Vector2(9.57865, -10.1773)
 emitting = false
-lifetime = 0.5
 texture = ExtResource("20_h4pd3")
+lifetime = 0.5
 direction = Vector2(1, 1)
 gravity = Vector2(0, -980)
 initial_velocity_min = 63.49
@@ -2420,8 +2420,8 @@ shape = SubResource("RectangleShape2D_7mrmi")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/rocket_turret2"]
 position = Vector2(9.57865, -10.1773)
 emitting = false
-lifetime = 0.5
 texture = ExtResource("20_h4pd3")
+lifetime = 0.5
 direction = Vector2(1, 1)
 gravity = Vector2(0, -980)
 initial_velocity_min = 63.49
@@ -2466,8 +2466,8 @@ shape = SubResource("RectangleShape2D_7mrmi")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/rocket_turret3"]
 position = Vector2(9.57865, -10.1773)
 emitting = false
-lifetime = 0.5
 texture = ExtResource("20_h4pd3")
+lifetime = 0.5
 direction = Vector2(1, 1)
 gravity = Vector2(0, -980)
 initial_velocity_min = 63.49
@@ -2512,8 +2512,8 @@ shape = SubResource("RectangleShape2D_7mrmi")
 [node name="CPUParticles2D" type="CPUParticles2D" parent="final_arena/rocket_turret4"]
 position = Vector2(9.57865, -10.1773)
 emitting = false
-lifetime = 0.5
 texture = ExtResource("20_h4pd3")
+lifetime = 0.5
 direction = Vector2(1, 1)
 gravity = Vector2(0, -980)
 initial_velocity_min = 63.49
@@ -2708,9 +2708,9 @@ offset = Vector2(-50, 0)
 [node name="CPUParticles2D" type="CPUParticles2D" parent="final_laser"]
 scale = Vector2(0.999999, 1)
 emitting = false
+texture = ExtResource("28_cm6u3")
 speed_scale = 5.0
 explosiveness = 0.5
-texture = ExtResource("28_cm6u3")
 direction = Vector2(1, 1)
 spread = 180.0
 gravity = Vector2(0, 0)
@@ -3591,8 +3591,8 @@ position = Vector2(1349, -171)
 rotation = -1.57079
 emitting = false
 amount = 32
-lifetime = 15.0
 texture = ExtResource("75_0owx0")
+lifetime = 15.0
 emission_shape = 3
 emission_rect_extents = Vector2(15, 500)
 direction = Vector2(1, 1)
@@ -3609,8 +3609,8 @@ rotation = 0.773062
 scale = Vector2(48.1852, 2.44232)
 emitting = false
 amount = 256
-lifetime = 5.0
 texture = ExtResource("75_yxwco")
+lifetime = 5.0
 emission_shape = 3
 emission_rect_extents = Vector2(15, 15)
 direction = Vector2(-1, -1)
@@ -3632,10 +3632,10 @@ position = Vector2(2134, -549)
 rotation = -0.270675
 scale = Vector2(48.1852, 2.44232)
 amount = 32
+texture = ExtResource("30_ioy53")
 lifetime = 10.0
 speed_scale = 0.7
 draw_order = 1
-texture = ExtResource("30_ioy53")
 emission_shape = 3
 emission_rect_extents = Vector2(50, 1)
 direction = Vector2(0, 0)

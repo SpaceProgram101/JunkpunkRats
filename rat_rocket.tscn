@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://cj2x1jdpqqh2t"]
 
 [ext_resource type="Texture2D" uid="uid://cyqjnmpp3fb1c" path="res://enemy_spritesheets/rat_rocket.png" id="1_tueo7"]
-[ext_resource type="Script" path="res://rat_rocket.gd" id="1_yfwkx"]
+[ext_resource type="Script" uid="uid://cp3jd7e3bt5hv" path="res://rat_rocket.gd" id="1_yfwkx"]
 [ext_resource type="Texture2D" uid="uid://dgi76mgeyfi3" path="res://enemy_spritesheets/boomba.png" id="2_v0vd3"]
 [ext_resource type="AudioStream" uid="uid://cmn2ry1n4ut2i" path="res://shot-and-reload-6158.mp3" id="4_aw0q5"]
 [ext_resource type="Texture2D" uid="uid://i3o2eplksauw" path="res://tiles/explosion (1).png" id="4_rp42o"]

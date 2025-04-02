@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://cb1c6mtm40tbf"]
 
-[ext_resource type="Script" path="res://wizard_fireball.gd" id="1_kfcww"]
+[ext_resource type="Script" uid="uid://cjkhrio578fbu" path="res://wizard_fireball.gd" id="1_kfcww"]
 [ext_resource type="Texture2D" uid="uid://bl5am82fb5yiw" path="res://sheet_lightning.png" id="2_gk6wf"]
 [ext_resource type="Texture2D" uid="uid://dp6n5f5mx4nq2" path="res://light_source.png" id="3_pi3u7"]
 

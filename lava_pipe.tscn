@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://d0o2w7pyd77e5" path="res://tiles/final_lavapipe.png" id="1_h301q"]
 [ext_resource type="Texture2D" uid="uid://wweyiqysi1xq" path="res://tiles/firefly-1.png.png" id="2_f8dqq"]
-[ext_resource type="Script" path="res://lava_pipe.gd" id="2_rhjnn"]
+[ext_resource type="Script" uid="uid://bywsmviv63tmw" path="res://lava_pipe.gd" id="2_rhjnn"]
 
 [sub_resource type="Gradient" id="Gradient_jdtk5"]
 offsets = PackedFloat32Array(0, 0.282927, 0.82439)

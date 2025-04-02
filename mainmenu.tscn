@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c6drhn5u4ahb2" path="res://title_screen/title.png" id="1_m2k8v"]
 [ext_resource type="Texture2D" uid="uid://b08ic3itts36d" path="res://title_screen/title_start.png" id="2_01jtf"]
 [ext_resource type="Texture2D" uid="uid://bjf14lrvktx2g" path="res://title_screen/title_quit.png" id="2_qy7nr"]
-[ext_resource type="Script" path="res://button.gd" id="3_sdkyk"]
+[ext_resource type="Script" uid="uid://calka35xrpbia" path="res://button.gd" id="3_sdkyk"]
 
 [node name="Node2D" type="Camera2D"]
 

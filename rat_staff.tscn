@@ -1,6 +1,6 @@
 [gd_scene load_steps=28 format=3 uid="uid://5l3a0mnnh61g"]
 
-[ext_resource type="Script" path="res://rat_staff.gd" id="1_2p4a8"]
+[ext_resource type="Script" uid="uid://7xh25enaj8dt" path="res://rat_staff.gd" id="1_2p4a8"]
 [ext_resource type="Texture2D" uid="uid://bm23i5udtqd1f" path="res://enemy_spritesheets/rat_staff.png" id="2_madb8"]
 [ext_resource type="Texture2D" uid="uid://bugbilo304tbc" path="res://enemy_spritesheets/rat_staff_dead.png" id="3_vceu2"]
 [ext_resource type="Texture2D" uid="uid://cs7t2gpxlxf71" path="res://enemy_spritesheets/laser.png" id="4_pysnh"]

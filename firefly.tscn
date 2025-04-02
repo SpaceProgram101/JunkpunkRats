@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://wweyiqysi1xq" path="res://tiles/firefly-1.png.png" id="1_e0hnh"]
 [ext_resource type="Texture2D" uid="uid://b2ovvgwy8bw63" path="res://lightmap.png" id="2_4areg"]
-[ext_resource type="Script" path="res://firefly.gd" id="2_r3drs"]
+[ext_resource type="Script" uid="uid://bdu8s4dc7b2sl" path="res://firefly.gd" id="2_r3drs"]
 
 [node name="Particle!" type="Sprite2D"]
 z_index = 3

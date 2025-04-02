@@ -1,6 +1,6 @@
 [gd_scene load_steps=14 format=3 uid="uid://c7ep461ni8urq"]
 
-[ext_resource type="Script" path="res://rat_king.gd" id="1_5n3n1"]
+[ext_resource type="Script" uid="uid://5bc40utx7ane" path="res://rat_king.gd" id="1_5n3n1"]
 [ext_resource type="Texture2D" uid="uid://ctrm6vxrsmfm8" path="res://rat_king.png" id="2_5fy5q"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_qokhn"]

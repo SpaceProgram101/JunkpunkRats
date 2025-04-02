@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dbrh818mlyxl5"]
 
-[ext_resource type="VideoStream" path="res://soundtrack/final_boss_exit (1).ogv" id="1_d5nx5"]
+[ext_resource type="VideoStream" uid="uid://cn6bcwav81xn5" path="res://soundtrack/final_boss_exit (1).ogv" id="1_d5nx5"]
 [ext_resource type="Texture2D" uid="uid://dkin2kksaew20" path="res://tiles/Untitled presentation (16).png" id="1_l10d2"]
-[ext_resource type="VideoStream" path="res://post-credits.ogv" id="2_j0bw6"]
-[ext_resource type="Script" path="res://video_stream_player_2.gd" id="3_1xh5k"]
+[ext_resource type="VideoStream" uid="uid://dodh7xfljpib2" path="res://post-credits.ogv" id="2_j0bw6"]
+[ext_resource type="Script" uid="uid://dk8v1ktvlx7vy" path="res://video_stream_player_2.gd" id="3_1xh5k"]
 
 [node name="Node2D2" type="Node2D"]
 

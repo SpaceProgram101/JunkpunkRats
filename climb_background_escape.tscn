@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://1utyix5udqcg" path="res://tiles/climb_background-3.png (2).png" id="1_gnaey"]
 [ext_resource type="Texture2D" uid="uid://dn6aa66glecu5" path="res://tiles/siren_lightmap.png" id="2_wryh3"]
-[ext_resource type="Script" path="res://climb_siren.gd" id="3_tavl5"]
+[ext_resource type="Script" uid="uid://dmuihavx4himm" path="res://climb_siren.gd" id="3_tavl5"]
 
 [node name="balls" type="Sprite2D"]
 texture_filter = 1

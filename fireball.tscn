@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://bel852y212xra"]
 
 [ext_resource type="Texture2D" uid="uid://dwnrpveqajdlc" path="res://sheet_fireball.png" id="1_b0hxv"]
-[ext_resource type="Script" path="res://fireball.gd" id="2_edfso"]
+[ext_resource type="Script" uid="uid://bur82lh6j8gia" path="res://fireball.gd" id="2_edfso"]
 [ext_resource type="Texture2D" uid="uid://o6psii2jsfwd" path="res://enemy_spritesheets/bullet_explosion.png" id="2_qobko"]
 [ext_resource type="Texture2D" uid="uid://b2ovvgwy8bw63" path="res://lightmap.png" id="4_rqwe4"]
 [ext_resource type="AudioStream" uid="uid://bi371h3h8hx3i" path="res://meaty-gunshot-101257.mp3" id="5_vu35g"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=33 format=3 uid="uid://meh3wuq0uq3d"]
 
-[ext_resource type="Script" path="res://flying_rat.gd" id="1_m0ad5"]
+[ext_resource type="Script" uid="uid://nded7xgwk87x" path="res://flying_rat.gd" id="1_m0ad5"]
 [ext_resource type="Texture2D" uid="uid://cfva0dfhpca0s" path="res://enemy_spritesheets/rat_copter_chilling.png" id="1_ssncs"]
 [ext_resource type="Texture2D" uid="uid://c5gt16cto1hyr" path="res://enemy_spritesheets/rat_copter_angy.png" id="2_djj73"]
 [ext_resource type="Texture2D" uid="uid://cupno4wbcgjxv" path="res://enemy_spritesheets/stupid_dead_rat_copter.png" id="3_gimgi"]
