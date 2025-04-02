@@ -10,6 +10,7 @@ var dead = false
 @onready var rocket3 = get_node("/root/Node2D/final_arena/rocket_turret3")
 @onready var rocket4 = get_node("/root/Node2D/final_arena/rocket_turret4")
 @onready var healthbar = get_node("/root/Node2D/CanvasLayer/Final_Bar2")
+@onready var music = get_node("/root/Node2D/AudioStreamPlayer")
 var r_health = 40
 var m_health = 20
 var c_health = 40
@@ -52,5 +53,7 @@ func die():
 		get_node("/root/Node2D/final_laser/StaticBody2D2").queue_free()
 		get_node("/root/Node2D/Floor_lava/door").rotation = 0
 		get_node("/root/Node2D/Floor_lava/door_collision").rotation = 0
+		music.stream = music.warning
+		music.play()
 		get_parent().dead = true
 		$AnimatedSprite2D.play("dead")

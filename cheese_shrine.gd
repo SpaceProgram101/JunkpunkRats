@@ -1,6 +1,7 @@
 extends Area2D
 
 @onready var full = $FullShrine
+@onready var light = $PointLight2D
 @onready var player = null
 var usedUp = false
 var respawn_position: Vector2
@@ -10,8 +11,8 @@ func _ready() -> void:
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
 	full.play("active")
-	$PointLight2D.enabled = true
-	$PointLight2D.energy = 3.5
+	light.enabled = true
+	light.energy = 3.5
 	respawn_position = position
 
 
@@ -19,19 +20,19 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
 	if (usedUp):
-		$PointLight2D.enabled = false
+		light.enabled = false
 		full.play("deactive")
 	
 
 
 func _on_body_entered(body):
 	if body.is_in_group("player"):
-		$PointLight2D.energy = 10
+		light.energy = 4
 		player = body
 		
 func _on_body_exited(body):
 	if body.is_in_group("player"):
-		$PointLight2D.energy = 3.5
+		light.energy = 2
 		player = null
 
 
@@ -41,7 +42,7 @@ func _input(event):
 		player.set_respawn_point(position)
 		full.play("consume")
 		await full.animation_finished
-		$PointLight2D.energy = 3.5
+		light.energy = 4
 		if not player.skibidi >= 100:
 			player.heal(50)
 		print ("Healed the player.")

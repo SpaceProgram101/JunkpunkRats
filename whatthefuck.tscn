@@ -1,4 +1,4 @@
-[gd_scene load_steps=412 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=413 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Script" uid="uid://cm7erk8gvid75" path="res://movement.gd" id="2_50bmu"]
 [ext_resource type="Texture2D" uid="uid://ckk17daearvo7" path="res://tiles/platform_foundry.png" id="2_lwwrl"]
@@ -801,6 +801,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qn3gc"]
 size = Vector2(565, 484)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6371u"]
+size = Vector2(319.247, 85.8901)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ukvd3"]
 atlas = ExtResource("35_btxxk")
@@ -3226,6 +3229,14 @@ shape = SubResource("RectangleShape2D_qn3gc")
 [node name="lava_delay" type="Timer" parent="Lava"]
 wait_time = 4.0
 
+[node name="StaticBody2D" type="StaticBody2D" parent="Lava"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Lava/StaticBody2D"]
+position = Vector2(-3.49561, -32.9451)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_6371u")
+
 [node name="FINAL_BOSS" type="Node2D" parent="."]
 texture_filter = 1
 position = Vector2(9252, -4822)
@@ -3302,6 +3313,14 @@ scale = Vector2(7.51563, 0.5625)
 z_index = -1
 position = Vector2(7500, -6146)
 scale = Vector2(1.41341, 1.41341)
+sprite_frames = SubResource("SpriteFrames_8hwlu")
+animation = &"asleep"
+
+[node name="Sprite2D3" type="AnimatedSprite2D" parent="floor1"]
+z_index = -1
+position = Vector2(8720, -6336)
+scale = Vector2(1.41341, 1.41341)
+skew = 0.0349066
 sprite_frames = SubResource("SpriteFrames_8hwlu")
 animation = &"asleep"
 
@@ -3837,7 +3856,7 @@ texture = ExtResource("36_1d65v")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(14290, -5163)
+position = Vector2(9237, -5332)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -4565,6 +4584,33 @@ energy = 3.42
 blend_mode = 2
 texture = ExtResource("95_roop2")
 
+[node name="CheeseShrine16" type="Area2D" parent="."]
+show_behind_parent = true
+texture_filter = 1
+script = ExtResource("90_cr4y3")
+
+[node name="cheeseShrine" type="CollisionShape2D" parent="CheeseShrine16"]
+z_index = 1
+position = Vector2(14398.2, -6125.8)
+shape = SubResource("RectangleShape2D_gsxlv")
+
+[node name="FullShrine" type="AnimatedSprite2D" parent="CheeseShrine16"]
+z_index = 1
+position = Vector2(14397.2, -6115.8)
+scale = Vector2(0.624467, 0.663579)
+sprite_frames = SubResource("SpriteFrames_22tg5")
+animation = &"consume"
+frame = 3
+frame_progress = 1.0
+
+[node name="PointLight2D" type="PointLight2D" parent="CheeseShrine16"]
+z_index = 1
+position = Vector2(14398.2, -6125.8)
+scale = Vector2(0.282046, 0.282046)
+color = Color(0.871828, 0.790567, 0.389753, 1)
+energy = 2.0
+texture = ExtResource("36_1d65v")
+
 [node name="CheeseShrine3" type="Area2D" parent="."]
 show_behind_parent = true
 texture_filter = 1
@@ -4584,12 +4630,12 @@ frame = 3
 frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="CheeseShrine3"]
-position = Vector2(37.0005, 31.9999)
+z_index = 1
+position = Vector2(38, 31)
 scale = Vector2(0.282046, 0.282046)
 color = Color(0.871828, 0.790567, 0.389753, 1)
-energy = 3.42
-blend_mode = 2
-texture = ExtResource("95_roop2")
+energy = 2.0
+texture = ExtResource("36_1d65v")
 
 [node name="CheeseShrine5" type="Area2D" parent="."]
 show_behind_parent = true
@@ -4620,7 +4666,7 @@ texture = ExtResource("95_roop2")
 [node name="CheeseShrine4" type="Area2D" parent="."]
 show_behind_parent = true
 texture_filter = 1
-position = Vector2(7973, -4810)
+position = Vector2(8136, -4808)
 script = ExtResource("90_cr4y3")
 
 [node name="cheeseShrine" type="CollisionShape2D" parent="CheeseShrine4"]
@@ -4636,12 +4682,11 @@ frame = 3
 frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="CheeseShrine4"]
-position = Vector2(-2.79637, 6.20388)
+z_index = 1
 scale = Vector2(0.282046, 0.282046)
 color = Color(0.871828, 0.790567, 0.389753, 1)
-energy = 3.42
-blend_mode = 2
-texture = ExtResource("95_roop2")
+energy = 2.0
+texture = ExtResource("36_1d65v")
 
 [node name="CheeseShrine10" type="Area2D" parent="."]
 show_behind_parent = true
@@ -4870,12 +4915,11 @@ frame = 3
 frame_progress = 1.0
 
 [node name="PointLight2D" type="PointLight2D" parent="CheeseShrine7"]
-position = Vector2(-0.000473022, 0.999778)
+z_index = 1
 scale = Vector2(0.282046, 0.282046)
 color = Color(0.871828, 0.790567, 0.389753, 1)
-energy = 3.42
-blend_mode = 2
-texture = ExtResource("95_roop2")
+energy = 2.0
+texture = ExtResource("36_1d65v")
 
 [node name="CheeseShrine9" type="Area2D" parent="."]
 show_behind_parent = true

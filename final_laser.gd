@@ -65,11 +65,11 @@ func _on_timer_timeout() -> void:
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not dead:
-		active = true
 		can_laser = true
 		if not active:
 			music.stream = music.final_boss_final
 			music.play()
+		active = true
 		door.visible = true
 		door_collider.set_deferred("disabled", false)
 	
