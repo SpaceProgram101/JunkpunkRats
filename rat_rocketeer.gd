@@ -24,6 +24,7 @@ func _ready():
 	health = 10
 	start_position = position
 	$AnimatedSprite2D.play("idle")
+	$spawn_in.play()
 
 
 func _physics_process(delta: float) -> void:

@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://cmnhhel56d52i" path="res://bullet.gd" id="1_v51x5"]
 [ext_resource type="Texture2D" uid="uid://xmbx3j67rsm4" path="res://enemy_spritesheets/bullet_flying_rat.png" id="1_vjias"]
 [ext_resource type="Texture2D" uid="uid://o6psii2jsfwd" path="res://enemy_spritesheets/bullet_explosion.png" id="2_tw7t0"]
-[ext_resource type="Texture2D" uid="uid://bamlwf7bg0xsy" path="res://tiles/light_source_2-1.png.png" id="4_2vapg"]
+[ext_resource type="Texture2D" uid="uid://b2ovvgwy8bw63" path="res://lightmap.png" id="4_vi5y0"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5n8id"]
 atlas = ExtResource("2_tw7t0")
@@ -104,7 +104,7 @@ shape = SubResource("RectangleShape2D_ejb3x")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 scale = Vector2(0.403254, 0.370645)
 energy = 1.7
-texture = ExtResource("4_2vapg")
+texture = ExtResource("4_vi5y0")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 5.0

@@ -3822,7 +3822,7 @@ texture = ExtResource("36_1d65v")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(12778, -5080)
+position = Vector2(66, -507)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -4354,7 +4354,7 @@ arenatype = 1
 position = Vector2(1139, -627)
 script = ExtResource("90_jlorv")
 warrior = 1
-helicopter = 1
+helicopter = 2
 rocket = 1
 arenatype = 2
 
@@ -4362,26 +4362,29 @@ arenatype = 2
 position = Vector2(2421, -1715)
 script = ExtResource("90_jlorv")
 warrior = 2
-rocket = 1
+helicopter = 3
 arenatype = 3
 
 [node name="Arena_4" type="Node2D" parent="."]
 position = Vector2(7104, -2429)
 script = ExtResource("90_jlorv")
 warrior = 3
+rocket = 1
 arenatype = 4
 
 [node name="Arena_5" type="Node2D" parent="."]
 position = Vector2(5772, -2929)
 script = ExtResource("90_jlorv")
 warrior = 2
+rocket = 1
 arenatype = 5
 
 [node name="Arena_6" type="Node2D" parent="."]
 position = Vector2(6110, -5145)
 script = ExtResource("90_jlorv")
-warrior = 5
-helicopter = 3
+warrior = 1
+helicopter = 2
+staff = 1
 arenatype = 6
 
 [node name="Arena_7" type="Node2D" parent="."]
@@ -4394,26 +4397,29 @@ arenatype = 7
 [node name="Arena_8" type="Node2D" parent="."]
 position = Vector2(7621, -5726)
 script = ExtResource("90_jlorv")
-rocket = 5
+staff = 2
+rocket = 1
 arenatype = 8
 
 [node name="Arena_9" type="Node2D" parent="."]
 position = Vector2(8897, -5712)
 script = ExtResource("90_jlorv")
-helicopter = 3
-rocket = 3
+staff = 3
+rocket = 2
 arenatype = 9
 
 [node name="Arena_10" type="Node2D" parent="."]
 position = Vector2(10603, -5318)
 script = ExtResource("90_jlorv")
 warrior = 3
+rocket = 2
 arenatype = 10
 
 [node name="Arena_11" type="Node2D" parent="."]
 position = Vector2(10090, -4769)
 script = ExtResource("90_jlorv")
-warrior = 7
+warrior = 3
+staff = 3
 arenatype = 11
 
 [node name="Arena_12" type="Node2D" parent="."]
@@ -4425,8 +4431,9 @@ arenatype = 12
 [node name="Arena_13" type="Node2D" parent="."]
 position = Vector2(11777, -5475)
 script = ExtResource("90_jlorv")
-warrior = 6
+warrior = 2
 helicopter = 1
+staff = 3
 arenatype = 13
 
 [node name="Arena_14" type="Node2D" parent="."]
@@ -4440,14 +4447,16 @@ arenatype = 14
 position = Vector2(11179, -4464)
 script = ExtResource("90_jlorv")
 helicopter = 2
-rocket = 2
+staff = 3
 arenatype = 15
 
 [node name="Arena_16" type="Node2D" parent="."]
 position = Vector2(11970, -4851)
 script = ExtResource("90_jlorv")
-warrior = 1
-rocket = 1
+warrior = 2
+helicopter = 2
+staff = 2
+rocket = 2
 arenatype = 16
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

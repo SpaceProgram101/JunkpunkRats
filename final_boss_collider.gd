@@ -44,9 +44,10 @@ func die():
 	if not dead:
 		dead = true
 		get_node("/root/Node2D/final_laser/Node2D").queue_free()
+		get_node("/root/Node2D/final_laser/bossdoor1").queue_free()
 		get_node("/root/Node2D/final_laser/StaticBody2D").queue_free()
 		get_node("/root/Node2D/Lava").queue_free()
-		get_node("/root/Node2D/final_laser/StaticBody2D2").queue_free()
+		get_node("/root/Node2D/final_laser/bossdoor2").queue_free()
 		get_node("/root/Node2D/Floor_lava/door").rotation = 0
 		get_node("/root/Node2D/Floor_lava/door_collision").rotation = 0
 		music.stream = music.warning

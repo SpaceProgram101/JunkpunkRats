@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://c57vowpxumgld"]
+[gd_scene load_steps=19 format=3 uid="uid://c57vowpxumgld"]
 
 [ext_resource type="Script" uid="uid://dkr7n353lklu2" path="res://rat_rocketeer.gd" id="1_le61l"]
 [ext_resource type="Texture2D" uid="uid://cd1j1pscng4c8" path="res://enemy_spritesheets/rat_rocketeer (1).png" id="2_lvqn3"]
 [ext_resource type="AudioStream" uid="uid://bs5clyaxbq44e" path="res://explosion-312361.mp3" id="3_kumfw"]
-[ext_resource type="Texture2D" uid="uid://wweyiqysi1xq" path="res://tiles/firefly-1.png.png" id="4_aw04p"]
+[ext_resource type="Texture2D" uid="uid://dloujane5ju5e" path="res://enemy_spritesheets/smoke-1.png.png" id="5_cldj0"]
+[ext_resource type="AudioStream" uid="uid://ckc7h7khn8vsl" path="res://soundtrack/dirty-siren-40635.mp3" id="5_l60mp"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ludpp"]
 atlas = ExtResource("2_lvqn3")
@@ -97,6 +98,9 @@ radius = 17.4174
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wgs1b"]
 size = Vector2(7.64314, 11.8793)
 
+[sub_resource type="Gradient" id="Gradient_8jlnk"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
 [node name="rat_rocketeer" type="CharacterBody2D" groups=["enemies"]]
 z_index = 2
 texture_filter = 1
@@ -128,17 +132,24 @@ shape = SubResource("RectangleShape2D_wgs1b")
 [node name="whycantheywalkthroughwallsivebeentryingtofixitallmorningwhyyyy" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_kumfw")
 
+[node name="spawn_in" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("5_l60mp")
+volume_db = -3.0
+pitch_scale = 1.5
+
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+position = Vector2(1.39991, 0)
 emitting = false
-amount = 64
-texture = ExtResource("4_aw04p")
+amount = 32
+texture = ExtResource("5_cldj0")
 one_shot = true
-direction = Vector2(0, 1)
+direction = Vector2(1, 1)
 spread = 180.0
-initial_velocity_min = 100.0
-initial_velocity_max = 250.0
-scale_amount_min = 0.01
-scale_amount_max = 0.1
+gravity = Vector2(0, -250)
+initial_velocity_min = 5.0
+initial_velocity_max = 25.0
+scale_amount_min = 0.5
+color_ramp = SubResource("Gradient_8jlnk")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

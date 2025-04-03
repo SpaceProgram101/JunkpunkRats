@@ -81,7 +81,7 @@ shape = SubResource("RectangleShape2D_gsxlv")
 scale = Vector2(0.624467, 0.663579)
 sprite_frames = SubResource("SpriteFrames_22tg5")
 animation = &"active"
-frame_progress = 0.161979
+frame_progress = 0.490735
 
 [node name="PointLight2D" type="PointLight2D" parent="FullShrine"]
 z_index = 1
