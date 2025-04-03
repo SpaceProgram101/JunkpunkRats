@@ -1,6 +1,6 @@
 [gd_scene load_steps=13 format=3 uid="uid://bhhqwu0j63cgw"]
 
-[ext_resource type="Script" uid="uid://dn30sq1qxnjtb" path="res://spawner.gd" id="1_dn8p0"]
+[ext_resource type="Script" path="res://spawner.gd" id="1_dn8p0"]
 [ext_resource type="Texture2D" uid="uid://dxf5modmvut4s" path="res://enemy_spritesheets/rat_dropship.png" id="2_pd6wo"]
 [ext_resource type="AudioStream" uid="uid://h156dawp7d7f" path="res://window-opening-100430.mp3" id="3_0rbks"]
 
