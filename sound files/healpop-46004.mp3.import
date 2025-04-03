@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8v3ybm42bd8e"
+path="res://.godot/imported/healpop-46004.mp3-0ef372e2ccc293320ebfdb45ae8d7dca.mp3str"
+
+[deps]
+
+source_file="res://sound files/healpop-46004.mp3"
+dest_files=["res://.godot/imported/healpop-46004.mp3-0ef372e2ccc293320ebfdb45ae8d7dca.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

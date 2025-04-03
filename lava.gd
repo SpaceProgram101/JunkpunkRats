@@ -8,7 +8,7 @@ var cinema = true
 var damage = 15
 var stop_big_lava = false
 var stop_pos = Vector2(0,0)
-
+var reset = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -32,12 +32,14 @@ func _process(_delta: float) -> void:
 			timer.one_shot = true
 			timer.start()
 			await timer.timeout
+			player.heal(100)
 			cinema = false
 		if not cinema:
 			position.y -= 0.3
 	if player.dead:
-		position.y = -5000		
-
+		position.y = -4639		
+		player.position = Vector2(14260, -5144)
+		player.respawn_position = Vector2(14260,-5144)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

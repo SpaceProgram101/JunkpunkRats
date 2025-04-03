@@ -1,0 +1,94 @@
+[gd_scene load_steps=13 format=3 uid="uid://cbgbbbms63oph"]
+
+[ext_resource type="Script" uid="uid://b4uaofeg4vbj1" path="res://cheese_shrine.gd" id="1_u3idh"]
+[ext_resource type="Texture2D" uid="uid://dscwkh15jbcwb" path="res://tiles/cheese_shrine.png" id="2_i75wx"]
+[ext_resource type="Texture2D" uid="uid://b2ovvgwy8bw63" path="res://lightmap.png" id="3_katpd"]
+[ext_resource type="AudioStream" uid="uid://b8v3ybm42bd8e" path="res://sound files/healpop-46004.mp3" id="4_i75wx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gsxlv"]
+size = Vector2(110, 101)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1s3i1"]
+atlas = ExtResource("2_i75wx")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o8xp8"]
+atlas = ExtResource("2_i75wx")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g43wr"]
+atlas = ExtResource("2_i75wx")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tkrix"]
+atlas = ExtResource("2_i75wx")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i82s4"]
+atlas = ExtResource("2_i75wx")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fgr6t"]
+atlas = ExtResource("2_i75wx")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_22tg5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1s3i1")
+}],
+"loop": true,
+"name": &"active",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o8xp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g43wr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tkrix")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i82s4")
+}],
+"loop": false,
+"name": &"consume",
+"speed": 15.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fgr6t")
+}],
+"loop": true,
+"name": &"deactive",
+"speed": 5.0
+}]
+
+[node name="CheeseShrine" type="Area2D"]
+show_behind_parent = true
+z_index = -1
+texture_filter = 1
+script = ExtResource("1_u3idh")
+
+[node name="cheeseShrine" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_gsxlv")
+
+[node name="FullShrine" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.624467, 0.663579)
+sprite_frames = SubResource("SpriteFrames_22tg5")
+animation = &"active"
+frame_progress = 0.161979
+
+[node name="PointLight2D" type="PointLight2D" parent="FullShrine"]
+z_index = 1
+scale = Vector2(0.451659, 0.425038)
+color = Color(0.871828, 0.790567, 0.389753, 1)
+energy = 2.0
+texture = ExtResource("3_katpd")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_i75wx")

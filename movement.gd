@@ -334,8 +334,9 @@ func take_damage(amount: int):
 		
 	
 func heal(amount: int):
-	if ((skibidi + amount) > 125):
-		skibidi = 125
+	if ((skibidi + amount) > 100):
+		skibidi = 100
+		healthbar.health = skibidi
 	else:
 		skibidi += amount
 		healthbar.health = skibidi
@@ -344,6 +345,7 @@ func die():
 	if not dead:
 		dying = true
 		await get_tree().create_timer(1.5).timeout  # Delay before showing respawn screen
+		get_node("/root/Node2D/final_laser").should_open_door = true
 		dead = true
 		velocity = Vector2(0,0)
 		show_respawn_screen()

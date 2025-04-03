@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://4tua3aqxbhyy"
+path="res://.godot/imported/metal-impact-247482.mp3-17ffee445ec63398d2b0be1277d94447.mp3str"
+
+[deps]
+
+source_file="res://sound files/metal-impact-247482.mp3"
+dest_files=["res://.godot/imported/metal-impact-247482.mp3-17ffee445ec63398d2b0be1277d94447.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,13 +1,14 @@
 extends Area2D
 
 @onready var full = $FullShrine
-@onready var light = $PointLight2D
+@onready var light = $FullShrine/PointLight2D
 @onready var player = null
 var usedUp = false
 var respawn_position: Vector2
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	position.y += 10
 	connect("body_entered", Callable(self, "_on_body_entered"))
 	connect("body_exited", Callable(self, "_on_body_exited"))
 	full.play("active")
@@ -39,6 +40,7 @@ func _on_body_exited(body):
 
 func _input(event):
 	if event.is_action_pressed("interact") and player and !usedUp:
+		$AudioStreamPlayer2D.play()
 		player.set_respawn_point(position)
 		full.play("consume")
 		await full.animation_finished

@@ -11,7 +11,7 @@ var once = true
 @onready var boss = get_node("/root/Node2D/helicopter_boss")
 @onready var music = get_node("/root/Node2D/AudioStreamPlayer")
 @onready var bar = get_node("/root/Node2D/CanvasLayer/ProgressBar")
-
+@onready var bossbar = get_node("/root/Node2D/CanvasLayer/Final_Bar2")
 var voicelines : Array = [
 	preload("res://cutscene_but_real.ogv"),
 	preload("res://boss_death_cutscene.ogv"),
@@ -38,6 +38,9 @@ func _input(event):
 		if theFnafMovie.stream == voicelines[3] and not entered:
 			player.position = Vector2(14260, -5144)
 			entered = true
+			bossbar.visible = true
+			music.stream = music.final_boss_internal
+			music.play()
 
 func _process(_delta):
 	
@@ -52,6 +55,7 @@ func _process(_delta):
 		await theFnafMovie.finished
 		entered = true
 		player.position = Vector2(14260, -5144)
+		bossbar.visible = true
 		music.stream = music.final_boss_internal
 		music.play()
 		player.frozen = false

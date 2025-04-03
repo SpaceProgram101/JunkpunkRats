@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b8qo3ojd7wtqo"
+path="res://.godot/imported/sound-of-geysers-and-bubbling-mud-pots-hd-263161.mp3-cba25e065c78258ffc765acb0a97d10e.mp3str"
+
+[deps]
+
+source_file="res://sound files/sound-of-geysers-and-bubbling-mud-pots-hd-263161.mp3"
+dest_files=["res://.godot/imported/sound-of-geysers-and-bubbling-mud-pots-hd-263161.mp3-cba25e065c78258ffc765acb0a97d10e.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
