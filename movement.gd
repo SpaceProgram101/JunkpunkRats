@@ -102,7 +102,6 @@ func _ready():
 	respawn_position = position
 	has_respawn_point = true
 	smoke.visible = false
-	
 	wall_ray_left = $WallRayLeft
 	wall_ray_right = $WallRayRight
 	if $KnockbackTimer:

@@ -9,9 +9,6 @@ var damage = 10
 @onready var timer = $Timer
 
 func _ready():
-	var player = get_node("/root/Node2D/Player")
-	direction = (player.global_position - global_position).normalized()
-	rotation = direction.angle()
 	$AnimatedSprite2D.play("default")
 	timer.start()
 	

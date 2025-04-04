@@ -61,7 +61,7 @@ func _process(_delta):
 		player.frozen = false
 	
 	if boss_spawned_yet and once:
-		player.set_spawn_point(player.position)
+		player.respawn_position = player.position
 		once = false
 
 func death():

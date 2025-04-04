@@ -35,6 +35,7 @@ var fade_time = 1.0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	position.y += 5
 	progress_bar.value = 0
 	left_wall.disabled = true
 	right_wall.disabled = true
@@ -126,6 +127,7 @@ func begin_arena():
 		begin_arena()
 		
 func arena_complete():
+	$AudioStreamPlayer2D.stop()
 	should_continue = false
 	siren_active = false
 	print ("Arena complete!")
@@ -148,8 +150,7 @@ func arena_complete():
 		get_node("/root/Node2D/cockblocker3").arenas_left -= 1
 	dead = true
 	
-	
-	
+
 	
 	
 func update_arena(progress : int):
@@ -163,6 +164,10 @@ func update_arena(progress : int):
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player") and not arena_started_yet:
 		player.respawn_position = player.position
+		left_wall.set_deferred("disabled", false)
+		right_wall.set_deferred("disabled", false)
+		$AudioStreamPlayer2D.play()
+		$AudioStreamPlayer2D2.play()
 		$AnimatedSprite2D.play("active")
 		siren_active = true
 		$AnimatedSprite2D/PointLight2D.visible = true
@@ -173,8 +178,8 @@ func _on_body_entered(body: Node2D) -> void:
 		left_tree.play("spawning")
 		right_tree.play("spawning")
 		await left_tree.animation_finished
-		left_wall.disabled = false
-		right_wall.disabled = false
+		$AudioStreamPlayer2D2.stop()
+		$AudioStreamPlayer2D3.play()
 		left_tree.play("idle")
 		right_tree.play("idle")
 	

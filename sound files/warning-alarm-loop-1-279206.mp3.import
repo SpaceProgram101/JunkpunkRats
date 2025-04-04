@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://dbm3hh54s35ci"
+path="res://.godot/imported/warning-alarm-loop-1-279206.mp3-60c24c0861276eabf6ca6ae9c0886b13.mp3str"
+
+[deps]
+
+source_file="res://sound files/warning-alarm-loop-1-279206.mp3"
+dest_files=["res://.godot/imported/warning-alarm-loop-1-279206.mp3-60c24c0861276eabf6ca6ae9c0886b13.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

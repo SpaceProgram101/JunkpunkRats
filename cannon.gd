@@ -19,14 +19,14 @@ func _ready() -> void:
 
 
 func shoot():
-	shooting = true
 	if not player.idle:
 		$PointLight2D.enabled = true
+		$CPUParticles2D.emitting = true
 		var fireball = fireball_scene.instantiate()
 		fireball.position = position
-		fireball.rotation = rotation
+		fireball.rotation = rotation + deg_to_rad(randi_range(-5,5))
 		get_parent().add_child(fireball)
-		
+	shooting = true	
 
 	
 

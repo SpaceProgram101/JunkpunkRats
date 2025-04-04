@@ -104,7 +104,9 @@ func crash_out():
 			var projectile = rocket.instantiate()
 			projectile.scale += Vector2(0.5,0.5)
 			projectile.position += Vector2(30 * direction, 15)
-			projectile.rotation = attack_direction.angle() + randi_range(-45, 45)
+			var rotation2 = attack_direction.angle() 
+			projectile.direction = attack_direction.normalized()
+			projectile.rotation = rotation2
 			add_child(projectile)
 			$AudioStreamPlayer2D.play()
 			await $AnimatedSprite2D.animation_finished

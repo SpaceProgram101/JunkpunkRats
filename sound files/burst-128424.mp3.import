@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://cc70tsan6thqc"
+path="res://.godot/imported/burst-128424.mp3-054596494a060da03e89277f70c2c48c.mp3str"
+
+[deps]
+
+source_file="res://sound files/burst-128424.mp3"
+dest_files=["res://.godot/imported/burst-128424.mp3-054596494a060da03e89277f70c2c48c.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -38,8 +38,9 @@ func _process(_delta: float) -> void:
 			position.y -= 0.3
 	if player.dead:
 		position.y = -4639		
-		player.position = Vector2(14260, -5144)
-		player.respawn_position = Vector2(14260,-5144)
+		if not cinema:
+			player.position = Vector2(14260, -5144)
+			player.respawn_position = Vector2(14260,-5144)
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

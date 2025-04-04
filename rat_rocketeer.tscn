@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://c57vowpxumgld"]
+[gd_scene load_steps=20 format=3 uid="uid://c57vowpxumgld"]
 
 [ext_resource type="Script" uid="uid://dkr7n353lklu2" path="res://rat_rocketeer.gd" id="1_le61l"]
 [ext_resource type="Texture2D" uid="uid://cd1j1pscng4c8" path="res://enemy_spritesheets/rat_rocketeer (1).png" id="2_lvqn3"]
+[ext_resource type="Texture2D" uid="uid://d3oq34fm0uton" path="res://enemy_spritesheets/rat_rocket_mech_2.png" id="3_cldj0"]
 [ext_resource type="AudioStream" uid="uid://bs5clyaxbq44e" path="res://explosion-312361.mp3" id="3_kumfw"]
 [ext_resource type="Texture2D" uid="uid://dloujane5ju5e" path="res://enemy_spritesheets/smoke-1.png.png" id="5_cldj0"]
 [ext_resource type="AudioStream" uid="uid://ckc7h7khn8vsl" path="res://soundtrack/dirty-siren-40635.mp3" id="5_l60mp"]
@@ -10,9 +11,9 @@
 atlas = ExtResource("2_lvqn3")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_358pm"]
-atlas = ExtResource("2_lvqn3")
-region = Rect2(64, 128, 64, 64)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8jlnk"]
+atlas = ExtResource("3_cldj0")
+region = Rect2(0, 128, 64, 64)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bnkkf"]
 atlas = ExtResource("2_lvqn3")
@@ -26,21 +27,21 @@ region = Rect2(128, 64, 64, 64)
 atlas = ExtResource("2_lvqn3")
 region = Rect2(0, 128, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_aqpe3"]
-atlas = ExtResource("2_lvqn3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmoib"]
+atlas = ExtResource("3_cldj0")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_mqx8v"]
-atlas = ExtResource("2_lvqn3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_vy0m3"]
+atlas = ExtResource("3_cldj0")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_0g626"]
-atlas = ExtResource("2_lvqn3")
-region = Rect2(128, 0, 64, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_y21ee"]
-atlas = ExtResource("2_lvqn3")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ji7c5"]
+atlas = ExtResource("3_cldj0")
 region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j2vab"]
+atlas = ExtResource("3_cldj0")
+region = Rect2(64, 64, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_ekye4"]
 animations = [{
@@ -54,7 +55,7 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_358pm")
+"texture": SubResource("AtlasTexture_8jlnk")
 }],
 "loop": true,
 "name": &"dead",
@@ -76,16 +77,16 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_aqpe3")
+"texture": SubResource("AtlasTexture_xmoib")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_mqx8v")
+"texture": SubResource("AtlasTexture_vy0m3")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_0g626")
+"texture": SubResource("AtlasTexture_ji7c5")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_y21ee")
+"texture": SubResource("AtlasTexture_j2vab")
 }],
 "loop": true,
 "name": &"idle",
@@ -112,7 +113,7 @@ script = ExtResource("1_le61l")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(0.430815, 0.305532)
 sprite_frames = SubResource("SpriteFrames_ekye4")
-animation = &"dead"
+animation = &"idle"
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0
