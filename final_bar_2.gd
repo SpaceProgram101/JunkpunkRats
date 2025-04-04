@@ -9,7 +9,7 @@ var should_shake = false
 
 func _set_health(new_health):
 	var prev_health = health
-	health = min(max_value, new_health)
+	health = min(max_value, new_health/5)
 	value = health
 	reduce = false
 	timer.start()
@@ -20,6 +20,7 @@ func _set_health(new_health):
 		
 func init_health(_health):
 	health = _health
+	print("Check:", health)
 	max_value = health
 	value = health
 	damage_bar.max_value = health

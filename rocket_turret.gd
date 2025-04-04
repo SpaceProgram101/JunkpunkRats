@@ -15,7 +15,7 @@ var dead = false
 
 func _ready():
 	smoke.emitting = false 
-	health = 10
+	health = 50
 	dead = false
 	room_active = finalarena.phase1
 	anim.play("default")

@@ -27,7 +27,8 @@ var direction = 1
 @onready var timer = $Timer
 @onready var rocket = preload("res://rat_rocket.tscn")
 @onready var bomb = preload("res://dynamite.tscn")
-@onready var music = get_node("/root/Node2D/Player/RatKingSOUNDTRACK")
+@onready var music = get_node("/root/Node2D/AudioStreamPlayer")
+@onready var pickup = preload("res://gun_upgrade.tscn")
 
 var can_attack = false
 var active = false
@@ -211,8 +212,10 @@ func take_damage(damage):
 func die():
 	active = false
 	can_attack = false
+	get_node("/root/Node2D/Area2D").can_give = true
+	get_node("/root/Node2D/Area2D").visible = true 
 	dead = true
-	get_node("/root/Node2D/boss_arena/StaticBody2D/CollisionShape2D").set_deferred("disabled",true)
-	get_node("/root/Node2D/boss_arena/StaticBody2D/Sprite2D").visible = false
+	music.stream = music.background
+	music.play()
 	queue_free() 
 	

@@ -11,9 +11,9 @@ var dead = false
 @onready var rocket4 = get_node("/root/Node2D/final_arena/rocket_turret4")
 @onready var healthbar = get_node("/root/Node2D/CanvasLayer/Final_Bar2")
 @onready var music = get_node("/root/Node2D/AudioStreamPlayer")
-var r_health = 40
-var m_health = 20
-var c_health = 40
+var r_health = 50
+var m_health = 100
+var c_health = 200
 var immune = false
 
 # Called when the node enters the scene tree for the first time.
@@ -22,6 +22,7 @@ func _ready() -> void:
 	r_health = rocket1.health + rocket2.health + rocket3.health + rocket4.health
 	m_health = monolith.health
 	health = c_health + m_health + r_health
+	print(health)
 	healthbar.init_health(health)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

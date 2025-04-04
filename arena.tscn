@@ -317,7 +317,7 @@ animations = [{
 size = Vector2(47.2717, 256.493)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6y7si"]
-size = Vector2(672.309, 302.889)
+size = Vector2(733.587, 71.7832)
 
 [node name="Arena_Spawner_1" type="Area2D" node_paths=PackedStringArray("progress_bar") groups=["arenas"]]
 z_index = -1
@@ -428,7 +428,8 @@ scale = Vector2(4.42445, 4.42445)
 texture = ExtResource("7_3y5w3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="head"]
-position = Vector2(-12.2557, -118.179)
+position = Vector2(-0.87539, -2.62613)
+scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_6y7si")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]

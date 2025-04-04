@@ -6,6 +6,7 @@ extends AudioStreamPlayer
 #4: play ascend music, looped
 #5: play final music
 @onready var final_boss_internal = preload("res://soundtrack/final_internal.mp3")
+@onready var background = preload("res://tiles/background_music please.mp3")
 @onready var climb_start = preload("res://soundtrack/final_neck_intro.mp3")
 @onready var climb_loop = preload("res://soundtrack/final_neck_loop.mp3")
 @onready var start = preload("res://soundtrack/final_start.mp3")
@@ -22,7 +23,8 @@ var final_boss_phase2 = false
 var final_boss_rise = false
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	stream = background
+	play()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

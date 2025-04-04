@@ -1,4 +1,4 @@
-[gd_scene load_steps=398 format=4 uid="uid://dwyg1wehj7f5g"]
+[gd_scene load_steps=397 format=4 uid="uid://dwyg1wehj7f5g"]
 
 [ext_resource type="Script" uid="uid://cm7erk8gvid75" path="res://movement.gd" id="2_50bmu"]
 [ext_resource type="Texture2D" uid="uid://2ak11hd0bo2k" path="res://arena/New Piskel-1.png (10).png" id="3_0hoge"]
@@ -116,10 +116,8 @@
 [ext_resource type="Texture2D" uid="uid://b5exj2xww5jc8" path="res://monolith/monolith_arrow.png" id="78_0bw18"]
 [ext_resource type="Script" uid="uid://chjctbrhstewf" path="res://monolith.gd" id="78_sljor"]
 [ext_resource type="Texture2D" uid="uid://dg3jhk87xwm8p" path="res://rat_king_ost/bouncy_pad_animations.png" id="79_fppp4"]
-[ext_resource type="AudioStream" uid="uid://cf4j4hh7p18ei" path="res://tiles/background_music please.mp3" id="79_ombns"]
 [ext_resource type="Texture2D" uid="uid://br6wkon6a3yrk" path="res://monolith/monolith_run.png" id="79_wwett"]
 [ext_resource type="AudioStream" uid="uid://7qix0kxu1yyf" path="res://tiles/night-ambience-17064.mp3" id="79_ydmd7"]
-[ext_resource type="Script" uid="uid://di4r4tus44prn" path="res://background_music.gd" id="80_61x7h"]
 [ext_resource type="AudioStream" uid="uid://4y05ahtko0p1" path="res://new Boing boing.mp3" id="80_htl56"]
 [ext_resource type="Texture2D" uid="uid://fu8tbrydahet" path="res://monolith/monolith_active.png" id="80_mcgou"]
 [ext_resource type="Texture2D" uid="uid://cbb2iklunokk2" path="res://monolith/monolith_space.png" id="82_8afcb"]
@@ -133,13 +131,13 @@
 [ext_resource type="AudioStream" uid="uid://dqxgavxbad7f4" path="res://mouse-squeak-261126.mp3" id="86_ae2ne"]
 [ext_resource type="Texture2D" uid="uid://cn0x1yrooy2qk" path="res://night_sky-3.png.png" id="86_k610g"]
 [ext_resource type="Script" uid="uid://ckprjidsem3pk" path="res://arena_1.gd" id="90_jlorv"]
-[ext_resource type="Texture2D" uid="uid://dp6n5f5mx4nq2" path="res://light_source.png" id="95_roop2"]
 [ext_resource type="Texture2D" uid="uid://fw7mglit7l7q" path="res://tiles/shrine_jump.png" id="98_blqiu"]
 [ext_resource type="Script" uid="uid://dxy12qmlhon7d" path="res://high_jump_powerup.gd" id="98_k1glc"]
 [ext_resource type="Script" uid="uid://mk7ieqaljoge" path="res://high_speed_powerup.gd" id="99_cqmmu"]
 [ext_resource type="Texture2D" uid="uid://bqn3sbtsmesij" path="res://tiles/symbol_jump.png" id="99_i0nxv"]
 [ext_resource type="Texture2D" uid="uid://ddcurkvokn4w2" path="res://tiles/shrine_move.png" id="101_sf27p"]
 [ext_resource type="Texture2D" uid="uid://dr2c5x2mnrg7v" path="res://tiles/symbol_move.png" id="102_croxh"]
+[ext_resource type="PackedScene" uid="uid://cwjxab50btubp" path="res://gun_upgrade.tscn" id="104_0ctbh"]
 [ext_resource type="Texture2D" uid="uid://d0rntwu6g5hn8" path="res://Screenshot_2025-03-22_175631-removebg-preview.png" id="104_n7j6x"]
 [ext_resource type="Texture2D" uid="uid://dwvi6cxdrujx6" path="res://tiles/fucking clump-1.png.png" id="123_46amh"]
 [ext_resource type="Script" uid="uid://bv6vkbnhb1j8v" path="res://audio_stream_player.gd" id="130_eki25"]
@@ -151,6 +149,7 @@
 [ext_resource type="Script" uid="uid://behx7o1j4mfcj" path="res://cockblocker_2.gd" id="134_bwxmr"]
 [ext_resource type="Script" uid="uid://bgrtqr82ar4q" path="res://cockblocker_3.gd" id="135_rhvct"]
 [ext_resource type="Texture2D" uid="uid://bxgdwy5sbjkyr" path="res://purplTlee.png" id="138_xa3x5"]
+[ext_resource type="VideoStream" uid="uid://c2eqqo7b1op3v" path="res://sound files/death_screen.ogv" id="140_0ctbh"]
 [ext_resource type="Script" uid="uid://bem5n2afsg450" path="res://area_transition_snow.gd" id="141_joask"]
 
 [sub_resource type="Theme" id="Theme_mlebm"]
@@ -2122,6 +2121,7 @@ offset_bottom = 690.0
 scale = Vector2(1.59682, 1.59682)
 theme_override_styles/background = SubResource("StyleBoxEmpty_fcpth")
 theme_override_styles/fill = SubResource("StyleBoxFlat_ewoku")
+step = 0.5
 value = 60.0
 show_percentage = false
 script = ExtResource("61_5atpp")
@@ -3746,8 +3746,7 @@ frame_progress = 1.0
 [node name="PointLight2D" type="PointLight2D" parent="helicopter_boss/main_cannon"]
 position = Vector2(-4.25639, 80.2654)
 scale = Vector2(0.692994, 1.05414)
-energy = 7.03
-blend_mode = 2
+energy = 3.0
 texture = ExtResource("64_rk7q7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="helicopter_boss"]
@@ -3763,8 +3762,7 @@ animation = &"aim"
 [node name="PointLight2D" type="PointLight2D" parent="helicopter_boss/cannon_left"]
 position = Vector2(-1.85111, 93.5271)
 scale = Vector2(0.321277, 1.50591)
-energy = 6.91
-blend_mode = 2
+energy = 3.0
 texture = ExtResource("64_rk7q7")
 
 [node name="cannon_right" type="AnimatedSprite2D" parent="helicopter_boss"]
@@ -3776,8 +3774,7 @@ animation = &"aim"
 [node name="PointLight2D" type="PointLight2D" parent="helicopter_boss/cannon_right"]
 position = Vector2(0.313965, 89.3826)
 scale = Vector2(0.321277, 1.50591)
-energy = 6.91
-blend_mode = 2
+energy = 3.0
 texture = ExtResource("64_rk7q7")
 
 [node name="missile_left" type="AnimatedSprite2D" parent="helicopter_boss"]
@@ -3802,8 +3799,11 @@ frame_progress = 0.104917
 position = Vector2(6.38432, 6.76937)
 scale = Vector2(0.975017, 0.975017)
 color = Color(0.478431, 1, 1, 1)
-energy = 3.32
-texture = ExtResource("95_roop2")
+texture = ExtResource("36_1d65v")
+
+[node name="Area2D" parent="." instance=ExtResource("104_0ctbh")]
+position = Vector2(3052, -2117)
+scale = Vector2(0.560977, 0.560977)
 
 [node name="boss_arena" type="Area2D" parent="."]
 position = Vector2(3101, -2192)
@@ -3841,7 +3841,7 @@ texture = ExtResource("36_1d65v")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(9236, -5322)
+position = Vector2(12692, -5084)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -3954,13 +3954,6 @@ one_shot = true
 stream = ExtResource("79_ydmd7")
 autoplay = true
 parameters/looping = false
-
-[node name="background_music" type="AudioStreamPlayer2D" parent="Player"]
-stream = ExtResource("79_ombns")
-volume_db = 15.0
-autoplay = true
-parameters/looping = false
-script = ExtResource("80_61x7h")
 
 [node name="gunshot" type="AudioStreamPlayer2D" parent="Player"]
 stream = ExtResource("85_6w21d")
@@ -4496,6 +4489,13 @@ stream = ExtResource("86_23el0")
 expand = true
 metadata/_edit_lock_ = true
 
+[node name="VideoStreamPlayer2" type="VideoStreamPlayer" parent="CanvasLayer2"]
+offset_left = 2.0
+offset_right = 1922.0
+offset_bottom = 1080.0
+scale = Vector2(0.838097, 0.838097)
+stream = ExtResource("140_0ctbh")
+
 [node name="HighJumpPowerup" type="Area2D" parent="."]
 z_index = -1
 texture_filter = 1
@@ -4819,9 +4819,9 @@ texture = ExtResource("36_1d65v")
 [connection signal="body_entered" from="FINAL_BOSS/Area2D3" to="FINAL_BOSS/Area2D3" method="_on_body_entered"]
 [connection signal="body_exited" from="FINAL_BOSS/Area2D3" to="FINAL_BOSS/Area2D3" method="_on_body_exited"]
 [connection signal="body_entered" from="floor1/TileMapLayer3/Area2D" to="floor1/TileMapLayer3/Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@270688" to="floor1/TileMapLayer3/@Area2D@270688" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@270689" to="floor1/TileMapLayer3/@Area2D@270689" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@270690" to="floor1/TileMapLayer3/@Area2D@270690" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@300739" to="floor1/TileMapLayer3/@Area2D@300739" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@300740" to="floor1/TileMapLayer3/@Area2D@300740" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@300741" to="floor1/TileMapLayer3/@Area2D@300741" method="_on_body_entered"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_exited"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow2" to="Node2D/Monolith_Arrow2" method="_on_body_entered"]
@@ -4840,6 +4840,5 @@ texture = ExtResource("36_1d65v")
 [connection signal="area_entered" from="Player/Area2D" to="Player/Area2D" method="_on_area_entered"]
 [connection signal="body_entered" from="Player/Area2D" to="Player/Area2D" method="_on_body_entered"]
 [connection signal="finished" from="Player/RatKingSOUNDTRACK" to="Player/RatKingSOUNDTRACK" method="_on_finished"]
-[connection signal="finished" from="Player/background_music" to="Player/background_music" method="_on_finished"]
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
 [connection signal="body_entered" from="AreaTransitionSnow" to="AreaTransitionSnow" method="_on_body_entered"]

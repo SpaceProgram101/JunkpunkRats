@@ -316,7 +316,7 @@ func apply_knockback(enemy_position: Vector2):
 
 func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
-	if not dead:
+	if not dead or not dying:
 		skibidi -= amount
 		if skibidi > 0:
 			healthbar.health = skibidi
@@ -341,13 +341,13 @@ func heal(amount: int):
 		healthbar.health = skibidi
 		
 func die():
-	if not dead:
+	if not dead or not dying:
 		dying = true
 		await get_tree().create_timer(1.5).timeout  # Delay before showing respawn screen
 		get_node("/root/Node2D/final_laser").should_open_door = true
 		dead = true
 		velocity = Vector2(0,0)
-		show_respawn_screen()
+		get_node("/root/Node2D/CanvasLayer2/VideoStreamPlayer2").play()
 		healthbar.health = 0
 	
 func set_respawn_point(new_position: Vector2):

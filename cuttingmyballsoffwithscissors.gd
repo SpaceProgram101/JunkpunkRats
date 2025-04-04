@@ -37,6 +37,7 @@ func _input(event):
 			
 		if theFnafMovie.stream == voicelines[3] and not entered:
 			player.position = Vector2(14260, -5144)
+			player.respawn_position = Vector2(14260, -5144)
 			entered = true
 			bossbar.visible = true
 			music.stream = music.final_boss_internal
@@ -55,6 +56,7 @@ func _process(_delta):
 		await theFnafMovie.finished
 		entered = true
 		player.position = Vector2(14260, -5144)
+		player.respawn_position = Vector2(14260, -5144)
 		bossbar.visible = true
 		music.stream = music.final_boss_internal
 		music.play()
