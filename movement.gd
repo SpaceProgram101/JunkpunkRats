@@ -162,9 +162,7 @@ func _physics_process(delta: float) -> void:
 		$Jump.play()
 		velocity.y = JUMP_VELOCITY * 1.2
 	elif Input.is_action_just_pressed("ui_accept") and dead:
-		$death_screen.visible = false
-		dead = false
-		dying = false
+		respawn()
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	if Input.is_action_pressed("left"):
@@ -317,9 +315,10 @@ func apply_knockback(enemy_position: Vector2):
 func take_damage(amount: int):
 	print ("Damage was taken, immunity status: ", immune)
 	if not dead or not dying:
-		skibidi -= amount
-		if skibidi > 0:
-			healthbar.health = skibidi
+		if not immune:
+			skibidi -= amount
+			if skibidi > 0:
+				healthbar.health = skibidi
 	if skibidi <= 0:
 		die()
 	immune = true
@@ -343,12 +342,12 @@ func heal(amount: int):
 func die():
 	if not dead or not dying:
 		dying = true
+		dead = true
+		get_node("/root/Node2D/CanvasLayer2/VideoStreamPlayer2").play()
+		velocity = Vector2(0,0)
+		healthbar.health = 0
 		await get_tree().create_timer(1.5).timeout  # Delay before showing respawn screen
 		get_node("/root/Node2D/final_laser").should_open_door = true
-		dead = true
-		velocity = Vector2(0,0)
-		get_node("/root/Node2D/CanvasLayer2/VideoStreamPlayer2").play()
-		healthbar.health = 0
 	
 func set_respawn_point(new_position: Vector2):
 	respawn_position = new_position
@@ -363,10 +362,13 @@ func show_respawn_screen():
 
 func respawn():
 	if has_respawn_point:
+		take_damage(0)
 		position = respawn_position
 		skibidi = 100  # Reset health
 		if is_instance_valid(healthbar):
 			healthbar.health = skibidi
+		get_node("/root/Node2D/CanvasLayer2/VideoStreamPlayer2").stop()
+		get_node("/root/Node2D/CanvasLayer2/VideoStreamPlayer2").visible = false
 		$death_screen.visible = false
 		dead = false
 		dying = false

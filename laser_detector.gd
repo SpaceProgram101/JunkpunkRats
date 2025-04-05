@@ -9,7 +9,7 @@ var rotation_speed = 0.25
 var find_new = true
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	$AnimatedSprite2D.play("default")
+	pass
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,10 +17,4 @@ func _process(delta: float) -> void:
 	awake = boss.awake
 	if awake:
 		visible = true
-		var direction = (player.global_position - global_position).normalized()
-		
-		if direction.length() > 0:	
-			var target_angle = direction.angle() * PI
-			rotation = lerp_angle(rotation, target_angle, rotation_speed * delta)
-			$CollisionShape2D.rotation = rotation
-			$CollisionShape2D.position = position
+		rotation += (PI / 12) * delta
