@@ -2463,13 +2463,11 @@ script = ExtResource("25_6mkml")
 
 [node name="bullet_barrier" type="StaticBody2D" parent="final_laser"]
 position = Vector2(-52.4224, -29.1268)
-scale = Vector2(1, 1)
 collision_layer = 49152
 collision_mask = 49152
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="final_laser/bullet_barrier"]
 position = Vector2(0, 0.462402)
-scale = Vector2(1, 1)
 shape = SubResource("RectangleShape2D_k610g")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="final_laser"]
@@ -3841,7 +3839,7 @@ texture = ExtResource("36_1d65v")
 [node name="Player" type="CharacterBody2D" parent="." groups=["player"]]
 z_index = 1
 texture_filter = 1
-position = Vector2(12692, -5084)
+position = Vector2(-1837, 70)
 scale = Vector2(1.41783, 1.61953)
 collision_layer = 513
 collision_mask = 19
@@ -4819,9 +4817,9 @@ texture = ExtResource("36_1d65v")
 [connection signal="body_entered" from="FINAL_BOSS/Area2D3" to="FINAL_BOSS/Area2D3" method="_on_body_entered"]
 [connection signal="body_exited" from="FINAL_BOSS/Area2D3" to="FINAL_BOSS/Area2D3" method="_on_body_exited"]
 [connection signal="body_entered" from="floor1/TileMapLayer3/Area2D" to="floor1/TileMapLayer3/Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@300739" to="floor1/TileMapLayer3/@Area2D@300739" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@300740" to="floor1/TileMapLayer3/@Area2D@300740" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@300741" to="floor1/TileMapLayer3/@Area2D@300741" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@22902" to="floor1/TileMapLayer3/@Area2D@22902" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@22903" to="floor1/TileMapLayer3/@Area2D@22903" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@22904" to="floor1/TileMapLayer3/@Area2D@22904" method="_on_body_entered"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_exited"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow2" to="Node2D/Monolith_Arrow2" method="_on_body_entered"]
