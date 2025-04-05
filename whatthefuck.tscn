@@ -3370,7 +3370,7 @@ position = Vector2(-1257, 58)
 
 [node name="Monolith_Arrow" type="Area2D" parent="Node2D"]
 z_index = -2
-position = Vector2(-367, 28)
+position = Vector2(-508, 25)
 scale = Vector2(2.10171, 1.80477)
 collision_layer = 0
 collision_mask = 512
@@ -4868,9 +4868,9 @@ texture = ExtResource("36_1d65v")
 [connection signal="body_entered" from="FINAL_BOSS/Area2D3" to="FINAL_BOSS/Area2D3" method="_on_body_entered"]
 [connection signal="body_exited" from="FINAL_BOSS/Area2D3" to="FINAL_BOSS/Area2D3" method="_on_body_exited"]
 [connection signal="body_entered" from="floor1/TileMapLayer3/Area2D" to="floor1/TileMapLayer3/Area2D" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@24377" to="floor1/TileMapLayer3/@Area2D@24377" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@24378" to="floor1/TileMapLayer3/@Area2D@24378" method="_on_body_entered"]
-[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@24379" to="floor1/TileMapLayer3/@Area2D@24379" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@327378" to="floor1/TileMapLayer3/@Area2D@327378" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@327379" to="floor1/TileMapLayer3/@Area2D@327379" method="_on_body_entered"]
+[connection signal="body_entered" from="floor1/TileMapLayer3/@Area2D@327380" to="floor1/TileMapLayer3/@Area2D@327380" method="_on_body_entered"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_entered"]
 [connection signal="body_exited" from="Node2D/Monolith_Arrow" to="Node2D/Monolith_Arrow" method="_on_body_exited"]
 [connection signal="body_entered" from="Node2D/Monolith_Arrow2" to="Node2D/Monolith_Arrow2" method="_on_body_entered"]
